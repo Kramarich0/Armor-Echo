@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fe0307d9d371a264ca230053e40b6c7d
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 189903
+  packageName: Fuel station pump
+  packageVersion: 1.0
+  assetPath: Assets/AssetsFromUS/FuelPump3D/Documentation/Guide.txt
+  uploadId: 419398

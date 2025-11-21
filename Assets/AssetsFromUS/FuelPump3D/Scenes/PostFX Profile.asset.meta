@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 44cd6329bb8040d45aaa448da4fee87e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 189903
+  packageName: Fuel station pump
+  packageVersion: 1.0
+  assetPath: Assets/AssetsFromUS/FuelPump3D/Scenes/PostFX Profile.asset
+  uploadId: 419398

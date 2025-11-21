@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b5ed92a562f35be459c796f953076c8c
+timeCreated: 1475929354
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104264
+  packageName: Free 3D Missile
+  packageVersion: 1.0
+  assetPath: Assets/Missile/Materials/smoke.mat
+  uploadId: 722804

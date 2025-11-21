@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 4d4b1a35503bb5347a295cbc1584f8a4
+timeCreated: 1509302025
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104264
+  packageName: Free 3D Missile
+  packageVersion: 1.0
+  assetPath: Assets/Missile/Prefabs/Missile.prefab
+  uploadId: 722804

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b87bae1322fdc4e4b9b6bbb4f476f708
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 189903
+  packageName: Fuel station pump
+  packageVersion: 1.0
+  assetPath: Assets/AssetsFromUS/FuelPump3D/Materials/aiStandardSurface3.mat
+  uploadId: 419398

@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9fdd3936ff7f6458645e70fc1bb8cc, type: 3}
+  m_Name: Panzer_II_F
+  m_EditorClassIdentifier: Assembly-CSharp::TankDefinition
+  tankName: Panzer II F
+  tankClass: 0
+  health: 100
+  moveSpeed: 5
+  rotationSpeed: 50
+  fireRate: 1
+  minGunAngle: -10
+  maxGunAngle: 10
+  shootRange: 100
+  bulletDamage: 50
+  projectileSpeed: 80
+  bulletUseGravity: 1
+  detectionRadius: 50
+  strafeRadius: 6
+  strafeSpeed: 0.22
+  baseSpreadDegrees: 1
+  movingSpreadFactor: 6
+  stationarySpreadFactor: 1
+  maxMotorTorque: 1500
+  maxBrakeTorque: 2000
+  moveResponse: 5
+  turnResponse: 5
+  maxForwardSpeed: 10
+  maxBackwardSpeed: 5
+  turnSharpness: 1.5
+  reverseLockDuration: 0.5
+  movingThreshold: 0.15
+  minIdleVolume: 0.2
+  maxIdleVolume: 0.5
+  minDriveVolume: 0
+  maxDriveVolume: 0.5
+  minIdlePitch: 0.8
+  maxIdlePitch: 1.2
+  minDrivePitch: 0.8
+  maxDrivePitch: 1.3
+  idleSound: {fileID: 0}
+  driveSound: {fileID: 0}
+  shootSound: {fileID: 0}
+  icon: {fileID: 21300000, guid: 922fdc92c6869b24f8980ee3b8bbe6ed, type: 3}
+  description: 

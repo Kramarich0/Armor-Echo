@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 0b64e0429a1414340aa5ab8472576ad8
+timeCreated: 1509635857
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104264
+  packageName: Free 3D Missile
+  packageVersion: 1.0
+  assetPath: Assets/Missile/Anims/Missile (Launching).controller
+  uploadId: 722804

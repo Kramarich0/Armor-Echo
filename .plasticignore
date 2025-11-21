@@ -1,0 +1,17 @@
+# Ignore cache and temp folders
+Library/
+Temp/
+Obj/
+Logs/
+Build/
+
+# Ignore IDE / user files
+*.csproj
+*.sln
+*.userprefs
+*.pidb
+*.booproj
+.vs/
+
+# Optional: ignore local package cache
+Packages/com.unity.package-manager-ui/

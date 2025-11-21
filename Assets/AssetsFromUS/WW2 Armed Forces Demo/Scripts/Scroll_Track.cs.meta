@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 775fefb26cc024d4a939e180464ded6b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 184465
+  packageName: WW2 Armed Forces Demo
+  packageVersion: 2.1.0
+  assetPath: Assets/AssetsFromUS/WW2 Armed Forces Demo/Scripts/Scroll_Track.cs
+  uploadId: 652993

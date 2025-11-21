@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b57f13aa97d120545946a0dd2576db0d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 189903
+  packageName: Fuel station pump
+  packageVersion: 1.0
+  assetPath: Assets/AssetsFromUS/FuelPump3D/Materials/Body.mat
+  uploadId: 419398

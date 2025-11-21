@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f0ab7be1d61b041a9e16d1c9122f04, type: 3}
+  m_Name: HE_76mm
+  m_EditorClassIdentifier: Assembly-CSharp::BulletDefinition
+  type: 1
+  caliber: 76
+  damage: 200
+  penetration: 30
+  speed: 549
+  useGravity: 1
+  ballisticK: 0.0012
+  deMarreK: 0
+  minSpeed: 10
+  minPenetration: 1
+  ricochetAngle: 87
+  normalization: 0
+  ignoreAngle: 1
+  overmatchFactor: 0.5
+  overmatchBonus: 1
+  ricochetSpeedLoss: 0.4
+  splashRadius: 8
+  visualPrefab: {fileID: 8159587991761770594, guid: 6e7bc57b3da442e4b819c0c9a6203a7d, type: 3}

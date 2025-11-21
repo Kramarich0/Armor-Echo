@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run C# Linter",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["build", "--no-restore", "/property:WarningLevel=4"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

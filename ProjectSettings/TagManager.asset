@@ -9,6 +9,10 @@ TagManager:
   - DefeatPanel
   - VictoryPanel
   - Wall
+  - DirectionalLight
+  - SettingsPanel
+  - PauseSettingsPanel
+  - PostProcessingVolume
   layers:
   - Default
   - TransparentFX

@@ -18,7 +18,8 @@ public class TankShoot : MonoBehaviour
     public float shotsPerSecond = 8f;
 
     [Header("Effects")]
-    public GameObject muzzleSmoke;
+    public ParticleSystem muzzleSmoke;
+    private ParticleSystem activeMuzzleSmoke;
     public AudioSource audioSource;
     public AudioClip shootSound;
     public AudioClip reloadSound;
@@ -56,6 +57,15 @@ public class TankShoot : MonoBehaviour
         audioSource.maxDistance = 500f;
 
         originalLocalPos = transform.localPosition;
+
+        if (muzzleSmoke != null)
+        {
+            activeMuzzleSmoke = Instantiate(muzzleSmoke);
+            activeMuzzleSmoke.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            var main = activeMuzzleSmoke.main;
+            main.simulationSpace = ParticleSystemSimulationSpace.World;
+        }
+
     }
 
     void OnEnable()
@@ -94,7 +104,7 @@ public class TankShoot : MonoBehaviour
                     nextFireTime = Time.time + fullReloadTime;
 
                     Debug.Log($"Reload reset: {fullReloadTime:F2}s for {bulletSlots[index].displayName}");
-                    
+
                     previousBulletIndex = currentBulletIndex;
                     currentBulletIndex = index;
                     isSwitchingAmmo = true;
@@ -183,7 +193,6 @@ public class TankShoot : MonoBehaviour
 
     private void PlayShootEffects()
     {
-        // Sound
         if (shootSound != null)
         {
             var tempSource = gameObject.AddComponent<AudioSource>();
@@ -199,12 +208,11 @@ public class TankShoot : MonoBehaviour
             Destroy(tempSource, shootSound.length + 0.1f);
         }
 
-        // Muzzle flash
-        if (muzzleSmoke != null)
+        if (activeMuzzleSmoke != null)
         {
-            muzzleSmoke.SetActive(true);
-            CancelInvoke(nameof(HideMuzzleSmoke));
-            Invoke(nameof(HideMuzzleSmoke), 1.2f);
+            activeMuzzleSmoke.transform.SetPositionAndRotation(gunEnd.position, gunEnd.rotation);
+            activeMuzzleSmoke.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            activeMuzzleSmoke.Play();
         }
     }
 
@@ -237,12 +245,6 @@ public class TankShoot : MonoBehaviour
         {
             parentRb.AddForceAtPosition(-gunEnd.forward * recoilPhysicalImpulse, gunEnd.position, ForceMode.Impulse);
         }
-    }
-
-
-    void HideMuzzleSmoke()
-    {
-        if (muzzleSmoke != null) muzzleSmoke.SetActive(false);
     }
 
 

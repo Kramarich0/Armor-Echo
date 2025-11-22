@@ -20,8 +20,47 @@ public class MapBoundaryVisualizer : MonoBehaviour
     private LineRenderer lrMain;
     private LineRenderer lrGlow;
 
+    private Material mainMaterial;
+    private Material glowMaterial;
+
     void OnEnable() => BuildBoundary();
     void OnValidate() => BuildBoundary();
+
+    void OnDisable()
+    {
+        CleanupMaterials();
+    }
+
+    void OnDestroy()
+    {
+        CleanupMaterials();
+        if (lrGlow != null)
+        {
+            if (Application.isPlaying)
+                Destroy(lrGlow.gameObject);
+            else
+                DestroyImmediate(lrGlow.gameObject);
+        }
+    }
+
+    private void CleanupMaterials()
+    {
+        if (mainMaterial != null)
+        {
+            if (Application.isPlaying)
+                Destroy(mainMaterial);
+            else
+                DestroyImmediate(mainMaterial);
+        }
+
+        if (glowMaterial != null)
+        {
+            if (Application.isPlaying)
+                Destroy(glowMaterial);
+            else
+                DestroyImmediate(glowMaterial);
+        }
+    }
 
     [ContextMenu("Rebuild Boundary")]
     public void BuildBoundary()
@@ -32,9 +71,13 @@ public class MapBoundaryVisualizer : MonoBehaviour
         lrMain.loop = true;
         lrMain.widthMultiplier = lineWidth;
 
-        lrMain.material = new Material(Shader.Find("Unlit/Color"));
-        lrMain.material.color = lineColor;
-        lrMain.startColor = lrMain.endColor = lineColor;
+        // Create or reuse main material
+        if (mainMaterial == null)
+        {
+            mainMaterial = new Material(Shader.Find("Unlit/Color"));
+        }
+        mainMaterial.color = lineColor;
+        lrMain.sharedMaterial = mainMaterial; // Use sharedMaterial with your own instance
 
         if (!lrGlow)
         {
@@ -47,8 +90,13 @@ public class MapBoundaryVisualizer : MonoBehaviour
         lrGlow.widthMultiplier = lineWidth * glowWidthMultiplier;
         lrGlow.useWorldSpace = true;
 
-        lrGlow.material = new Material(Shader.Find("Unlit/Transparent"));
-        lrGlow.material.color = lineColor;
+        // Create or reuse glow material
+        if (glowMaterial == null)
+        {
+            glowMaterial = new Material(Shader.Find("Unlit/Transparent"));
+        }
+        glowMaterial.color = lineColor;
+        lrGlow.sharedMaterial = glowMaterial;
 
         GameObject[] walls = GameObject.FindGameObjectsWithTag(wallTag);
         if (walls.Length == 0)
@@ -69,10 +117,10 @@ public class MapBoundaryVisualizer : MonoBehaviour
 
             Vector3[] corners = new Vector3[4]
             {
-                center + new Vector3(-halfSize.x,0,-halfSize.z),
-                center + new Vector3(-halfSize.x,0,halfSize.z),
-                center + new Vector3(halfSize.x,0,halfSize.z),
-                center + new Vector3(halfSize.x,0,-halfSize.z)
+                center + new Vector3(-halfSize.x, 0, -halfSize.z),
+                center + new Vector3(-halfSize.x, 0, halfSize.z),
+                center + new Vector3(halfSize.x, 0, halfSize.z),
+                center + new Vector3(halfSize.x, 0, -halfSize.z)
             };
 
             for (int i = 0; i < 4; i++)
@@ -95,10 +143,10 @@ public class MapBoundaryVisualizer : MonoBehaviour
 
         Vector3[] verts = new Vector3[4]
         {
-            new Vector3(minX,lineHeight,minZ),
-            new Vector3(minX,lineHeight,maxZ),
-            new Vector3(maxX,lineHeight,maxZ),
-            new Vector3(maxX,lineHeight,minZ)
+            new Vector3(minX, lineHeight, minZ),
+            new Vector3(minX, lineHeight, maxZ),
+            new Vector3(maxX, lineHeight, maxZ),
+            new Vector3(maxX, lineHeight, minZ)
         };
 
         lrMain.positionCount = verts.Length;
@@ -111,10 +159,17 @@ public class MapBoundaryVisualizer : MonoBehaviour
         lrGlow.positionCount = glowVerts.Length;
         lrGlow.SetPositions(glowVerts);
 
+        // Update glow alpha
         Gradient g = new Gradient();
         g.SetKeys(
-            new GradientColorKey[] { new GradientColorKey(lineColor, 0f), new GradientColorKey(lineColor, 1f) },
-            new GradientAlphaKey[] { new GradientAlphaKey(glowAlpha, 0f), new GradientAlphaKey(glowAlpha, 1f) }
+            new GradientColorKey[] {
+                new GradientColorKey(lineColor, 0f),
+                new GradientColorKey(lineColor, 1f)
+            },
+            new GradientAlphaKey[] {
+                new GradientAlphaKey(glowAlpha, 0f),
+                new GradientAlphaKey(glowAlpha, 1f)
+            }
         );
         lrGlow.colorGradient = g;
 

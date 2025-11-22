@@ -322,7 +322,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 227004396696467460}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!136 &136397860403507302
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -330,7 +330,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743353957770956}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 942d75633d65e564f9d0bd608fd72c40, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

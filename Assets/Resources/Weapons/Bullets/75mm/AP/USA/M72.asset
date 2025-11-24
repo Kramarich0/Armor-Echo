@@ -15,17 +15,19 @@ MonoBehaviour:
   type: 1
   bulletName: M72
   caliber: 75
+  massKg: 6.8
+  referenceVelocity: 619
   damage: 70
-  penetration: 89
+  penetration: 88
   useGravity: 1
-  ballisticK: 0.0011
-  deMarreK: 1.4
-  minSpeed: 30
+  ballisticK: 0.0008
+  deMarreK: 1.2
+  minSpeed: 200
   minPenetration: 5
-  ricochetAngle: 68
-  normalization: 4
+  ricochetAngle: 70
+  normalization: 5
   ignoreAngle: 0
   overmatchFactor: 1.5
-  ricochetSpeedLoss: 0.55
+  ricochetSpeedLoss: 0.6
   splashRadius: 0
   visualPrefab: {fileID: 4972424156559308381, guid: 540b287dd3b231b44bfc6b91402ab6bd, type: 3}

@@ -27,6 +27,7 @@ public class GunDefinition : ScriptableObject
         [Tooltip("Начальная скорость этого снаряда для данной пушки")]
         public float muzzleVelocity;
     }
+    
     public bool debugLogs = false;
 
     public float GetMuzzleVelocity(BulletDefinition bullet)

@@ -12,6 +12,8 @@ public class BulletDefinition : ScriptableObject
     public int caliber = 76;
     [Tooltip("Масса снаряда в килограммах.")]
     public float massKg = 6.8f;
+    [Tooltip("Скорость, при которой указано паспортное пробитие (м/с)")]
+    public float referenceVelocity = 773f;
 
     [Tooltip("Базовый урон при пробитии.")]
     public int damage = 40;

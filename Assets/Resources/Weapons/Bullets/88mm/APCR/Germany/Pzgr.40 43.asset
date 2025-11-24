@@ -10,23 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09f0ab7be1d61b041a9e16d1c9122f04, type: 3}
-  m_Name: Pzgr.
+  m_Name: Pzgr.40 43
   m_EditorClassIdentifier: Assembly-CSharp::BulletDefinition
-  type: 2
-  bulletName: Unknown bullet
+  type: 1
+  bulletName: PzGr.40/43
   caliber: 88
-  massKg: 9.2
-  damage: 120
-  penetration: 153
+  massKg: 7.3
+  referenceVelocity: 1030
+  damage: 40
+  penetration: 238
   useGravity: 1
-  ballisticK: 0.0005
-  deMarreK: 1.3
-  minSpeed: 30
+  ballisticK: 0.00072
+  deMarreK: 1.63
+  minSpeed: 320
   minPenetration: 5
-  ricochetAngle: 70
-  normalization: 5
+  ricochetAngle: 75
+  normalization: 2
   ignoreAngle: 0
   overmatchFactor: 1.5
-  ricochetSpeedLoss: 0.6
+  ricochetSpeedLoss: 0.55
   splashRadius: 0
-  visualPrefab: {fileID: 898282933906884019, guid: c77284e63d6359d45bf7601670bf92bb, type: 3}
+  visualPrefab: {fileID: 0}

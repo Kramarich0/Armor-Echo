@@ -10,23 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09f0ab7be1d61b041a9e16d1c9122f04, type: 3}
-  m_Name: Pzgr 39
+  m_Name: Gr. 39 HL
   m_EditorClassIdentifier: Assembly-CSharp::BulletDefinition
-  type: 2
-  bulletName: Pzgr 39
+  type: 5
+  bulletName: Hl.Gr 39
   caliber: 88
-  massKg: 10.2
-  damage: 100
-  penetration: 165
+  massKg: 7.65
+  referenceVelocity: 600
+  damage: 80
+  penetration: 90
   useGravity: 1
-  ballisticK: 0.0005
-  deMarreK: 1.3
-  minSpeed: 30
-  minPenetration: 5
-  ricochetAngle: 70
-  normalization: 5
-  ignoreAngle: 0
-  overmatchFactor: 1.5
-  ricochetSpeedLoss: 0.6
-  splashRadius: 0
-  visualPrefab: {fileID: 898282933906884019, guid: c77284e63d6359d45bf7601670bf92bb, type: 3}
+  ballisticK: 0.0002
+  deMarreK: 0
+  minSpeed: 200
+  minPenetration: 90
+  ricochetAngle: 85
+  normalization: 0
+  ignoreAngle: 1
+  overmatchFactor: 0
+  ricochetSpeedLoss: 0.4
+  splashRadius: 12
+  visualPrefab: {fileID: 2052275659163853635, guid: 15962ce1eff45754888cf05430cf3578, type: 3}

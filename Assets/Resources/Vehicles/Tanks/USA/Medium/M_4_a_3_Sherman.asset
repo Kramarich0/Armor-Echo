@@ -17,13 +17,7 @@ MonoBehaviour:
   health: 200
   moveSpeed: 11
   rotationSpeed: 50
-  fireRate: 0.3
-  minGunAngle: -10
-  maxGunAngle: 25
-  shootRange: 400
-  bulletDamage: 100
-  projectileSpeed: 80
-  bulletUseGravity: 1
+  primaryGun: {fileID: 11400000, guid: bbceb8ddbd25a384a8e2beb294d8696c, type: 2}
   detectionRadius: 50
   strafeRadius: 6
   strafeSpeed: 0.8
@@ -49,7 +43,6 @@ MonoBehaviour:
   maxDrivePitch: 1.3
   idleSound: {fileID: 8300000, guid: 37ba6ca7a36ccb342aee6c71e1a82d31, type: 3}
   driveSound: {fileID: 8300000, guid: 666a4b334b15c534da609c6b55bef1b2, type: 3}
-  shootSound: {fileID: 8300000, guid: 50d6a0caa7cd2854a95228cb6cca1c9e, type: 3}
   icon: {fileID: 21300000, guid: c5764947cf2547e4dbfa0c28030cc023, type: 3}
   description: "\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0439 \u0430\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0439
     \u0441\u0440\u0435\u0434\u043D\u0438\u0439 \u0442\u0430\u043D\u043A \u0441 75-\u043C\u043C

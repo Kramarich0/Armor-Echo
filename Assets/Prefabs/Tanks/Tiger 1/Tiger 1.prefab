@@ -2570,10 +2570,6 @@ MonoBehaviour:
     type: 2
     definition: {fileID: 11400000, guid: 121e22e2441500846bc896d94776a08f, type: 2}
     pool: {fileID: 0}
-  - displayName: Pzgr.
-    type: 2
-    definition: {fileID: 11400000, guid: 1dad814737db8f64083755f490d1546d, type: 2}
-    pool: {fileID: 0}
   - displayName: PzGr 40
     type: 3
     definition: {fileID: 11400000, guid: 965aec0a21c3bd048a247f7e8304f43a, type: 2}

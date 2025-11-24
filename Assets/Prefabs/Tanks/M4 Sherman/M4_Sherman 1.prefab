@@ -1959,8 +1959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51eb7dc7187fb8249a3a376f3f7b88ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankCollisionDamage
-  minCollisionSpeed: 3
-  damageMultiplier: 0.02
+  minCollisionSpeed: 2
+  damageMultiplier: 0.0002
   debugLogs: 0
 --- !u!54 &7693428364714219449
 Rigidbody:

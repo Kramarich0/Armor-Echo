@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09f0ab7be1d61b041a9e16d1c9122f04, type: 3}
-  m_Name: M61
+  m_Name: Pzgr .40
   m_EditorClassIdentifier: Assembly-CSharp::BulletDefinition
-  type: 1
-  bulletName: M61
-  caliber: 75
-  massKg: 6.79
-  referenceVelocity: 619
-  damage: 90
-  penetration: 102
+  type: 3
+  bulletName: PzGr 40
+  caliber: 88
+  massKg: 7.3
+  referenceVelocity: 930
+  damage: 60
+  penetration: 170
   useGravity: 1
   ballisticK: 0.00075
-  deMarreK: 1.25
+  deMarreK: 1.65
   minSpeed: 30
   minPenetration: 5
-  ricochetAngle: 68
-  normalization: 8
+  ricochetAngle: 75
+  normalization: 2
   ignoreAngle: 0
   overmatchFactor: 1.5
-  ricochetSpeedLoss: 0.55
-  splashRadius: 0.2
-  visualPrefab: {fileID: 898282933906884019, guid: c77284e63d6359d45bf7601670bf92bb, type: 3}
+  ricochetSpeedLoss: 0.5
+  splashRadius: 0
+  visualPrefab: {fileID: 4972424156559308381, guid: 540b287dd3b231b44bfc6b91402ab6bd, type: 3}

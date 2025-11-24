@@ -1767,7 +1767,19 @@ MonoBehaviour:
   gun: {fileID: 6037874240717466212}
   gunEnd: {fileID: 8783475529552488698}
   body: {fileID: 7100674820746053045}
-  bulletSlots: []
+  bulletSlots:
+  - displayName: "PzGr\u202F39"
+    type: 1
+    definition: {fileID: 11400000, guid: bc27dc69d7dede0439b455ec4a0eaa71, type: 2}
+    pool: {fileID: 0}
+  - displayName: PzGr 40
+    type: 3
+    definition: {fileID: 11400000, guid: 0c83a447854e2ae429dd2af871cedec9, type: 2}
+    pool: {fileID: 0}
+  - displayName: Sprgr 39
+    type: 0
+    definition: {fileID: 11400000, guid: 0b9a4f20db1b6594d9556ad33eba73a0, type: 2}
+    pool: {fileID: 0}
   leftTrack:
     wheels:
     - {fileID: 7943283988121682641}

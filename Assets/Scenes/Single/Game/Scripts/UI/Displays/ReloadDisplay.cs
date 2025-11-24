@@ -1,8 +1,10 @@
 using UnityEngine;
 using TMPro;
 using Serilog;
+using UnityEngine.Localization.Components;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
+[RequireComponent(typeof(LocalizeStringEvent))]
 public class ReloadDisplay : MonoBehaviour
 {
     private TextMeshProUGUI reloadText;
@@ -25,15 +27,15 @@ public class ReloadDisplay : MonoBehaviour
         maxReloadTime = maxTime;
         isReloading = remainingTime > 0f;
 
-        if (reloadText != null && isReloading)
+        if (!TryGetComponent<LocalizeStringEvent>(out var lse)) return;
+
+        if (isReloading)
         {
-            reloadText.text = $"<color=red>Перезарядка... {currentReloadTime:F1}с</color>";
-            gameObject.SetActive(true);
+            LocalizationHelper.SetLocalizedText(lse, "reload_in_progress", currentReloadTime.ToString("F1"));
         }
         else
         {
-            reloadText.text = "<color=green>Готово</color>";
-            gameObject.SetActive(true);
+            LocalizationHelper.SetLocalizedText(lse, "reload_ready");
         }
     }
 

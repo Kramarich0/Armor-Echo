@@ -23,25 +23,26 @@ public class AIWeapons
             return;
         }
 
-        Vector3 predicted = owner.combat.PredictTargetPosition(target);
+        float muzzleVel = owner.GetMuzzleVelocity(bulletSlot.definition);
+
+        Vector3 predicted = owner.combat.PredictTargetPosition(target, muzzleVel);
         Vector3 aim = predicted - owner.gunEnd.position;
 
-        Vector3 launchVelocity = CalculateLaunchVelocity(aim, bulletSlot.definition.speed);
-
+        Vector3 launchVelocity = CalculateLaunchVelocity(aim, muzzleVel);
         Vector3 finalVelocity = ApplySpread(launchVelocity, owner.gunEnd);
 
         string shooterDisplay = (owner.teamComp != null && !string.IsNullOrEmpty(owner.teamComp.displayName))
-            ? owner.teamComp.displayName
-            : owner.gameObject.name;
+                 ? owner.teamComp.displayName
+                 : owner.gameObject.name;
 
         bulletSlot.pool.SpawnBullet(
-            owner.gunEnd.position,
-            finalVelocity,
-            bulletSlot.definition,
-            owner.teamComp?.team ?? TeamEnum.Neutral,
-            shooterDisplay,
-            owner.cachedColliders
-        );
+          owner.gunEnd.position,
+          finalVelocity,
+          bulletSlot.definition,
+          owner.teamComp?.team ?? TeamEnum.Neutral,
+          shooterDisplay,
+          owner.cachedColliders
+      );
 
         owner.shootSource?.Play();
     }

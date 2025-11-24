@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad7d81ad51f4e42b8256b403db27e0, type: 3}
+  m_Name: 75 mm M3 L40
+  m_EditorClassIdentifier: Assembly-CSharp::GunDefinition
+  gunName: 75 mm M3 L/40
+  caliber: 75
+  fireRate: 0.2
+  minGunAngle: -10
+  maxGunAngle: 25
+  shootRange: 2500
+  bulletUseGravity: 1
+  shootSound: {fileID: 8300000, guid: 50d6a0caa7cd2854a95228cb6cca1c9e, type: 3}
+  bullets:
+  - bullet: {fileID: 11400000, guid: 02c8d480d2515684ba767ff2fc7ec88a, type: 2}
+    muzzleVelocity: 619
+  - bullet: {fileID: 11400000, guid: 806e7bd225ecc9e42ac32fff3af4e112, type: 2}
+    muzzleVelocity: 619
+  - bullet: {fileID: 11400000, guid: b76aad12a3f72864682bda22b06055aa, type: 2}
+    muzzleVelocity: 576

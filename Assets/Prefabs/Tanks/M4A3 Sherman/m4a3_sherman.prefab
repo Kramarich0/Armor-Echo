@@ -1284,7 +1284,19 @@ MonoBehaviour:
   gun: {fileID: 8750642076954178279}
   gunEnd: {fileID: 5422209462523803796}
   body: {fileID: 2883153919416591581}
-  bulletSlots: []
+  bulletSlots:
+  - displayName: M61
+    type: 2
+    definition: {fileID: 11400000, guid: 02c8d480d2515684ba767ff2fc7ec88a, type: 2}
+    pool: {fileID: 0}
+  - displayName: M72
+    type: 1
+    definition: {fileID: 11400000, guid: 806e7bd225ecc9e42ac32fff3af4e112, type: 2}
+    pool: {fileID: 0}
+  - displayName: M79
+    type: 0
+    definition: {fileID: 11400000, guid: b76aad12a3f72864682bda22b06055aa, type: 2}
+    pool: {fileID: 0}
   leftTrack:
     wheels:
     - {fileID: 2409879411131420910}

@@ -66,15 +66,17 @@ public class TankCollisionDamage : MonoBehaviour
         Rigidbody otherRb = collision.rigidbody;
         if (otherRb == null) { if (debugLogs) Log.Debug("[TC] other has no Rigidbody"); ; return; }
 
-        float impactSpeed = collision.relativeVelocity.sqrMagnitude;
+        float impactSpeed = collision.relativeVelocity.magnitude;
         if (impactSpeed < minCollisionSpeed * minCollisionSpeed) { if (debugLogs) Log.Debug("[TC] impactSpeed {ImpactSpeed} < min {Min}", Mathf.Sqrt(impactSpeed), minCollisionSpeed); return; }
 
         float massThis = rb.mass;
         float massOther = otherRb.mass;
 
-        int damageToOther = Mathf.Max(1, Mathf.RoundToInt(0.5f * massThis * impactSpeed * impactSpeed * damageMultiplier));
+        int damageToOther = Mathf.Max(1,
+            Mathf.RoundToInt(massThis * impactSpeed * impactSpeed * damageMultiplier));
 
-        int damageToThis = Mathf.Max(1, Mathf.RoundToInt(0.5f * massOther * impactSpeed * impactSpeed * damageMultiplier));
+        int damageToThis = Mathf.Max(1,
+            Mathf.RoundToInt(massOther * impactSpeed * impactSpeed * damageMultiplier));
 
         if (debugLogs)
         {

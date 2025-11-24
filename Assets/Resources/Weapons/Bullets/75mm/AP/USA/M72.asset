@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f0ab7be1d61b041a9e16d1c9122f04, type: 3}
+  m_Name: M72
+  m_EditorClassIdentifier: Assembly-CSharp::BulletDefinition
+  type: 1
+  bulletName: M72
+  caliber: 75
+  damage: 70
+  penetration: 89
+  useGravity: 1
+  ballisticK: 0.0011
+  deMarreK: 1.4
+  minSpeed: 30
+  minPenetration: 5
+  ricochetAngle: 68
+  normalization: 4
+  ignoreAngle: 0
+  overmatchFactor: 1.5
+  ricochetSpeedLoss: 0.55
+  splashRadius: 0
+  visualPrefab: {fileID: 4972424156559308381, guid: 540b287dd3b231b44bfc6b91402ab6bd, type: 3}

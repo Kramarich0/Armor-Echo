@@ -11,7 +11,6 @@ public class AIPerception
     private float enemyCheckTimer = 0f;
     private float captureCheckTimer = 0f;
 
-
     private readonly RaycastHit[] losHits = new RaycastHit[16];
     public AIPerception(TankAI owner)
     {
@@ -94,7 +93,7 @@ public class AIPerception
         if (owner.debugLogs && best != null)
         {
             Log.Debug("[AI] Found capture point: {CapturePointName} at distance {Distance}",
-                      best.gameObject.name, Mathf.Sqrt(bestDist));
+                        best.gameObject.name, Mathf.Sqrt(bestDist));
         }
     }
 

@@ -49,13 +49,12 @@ public class TankAI : MonoBehaviour
     public float MoveSpeed => tankDefinition.moveSpeed;
     public float RotationSpeed => tankDefinition.rotationSpeed;
 
-    public float ShootRange => tankDefinition.shootRange;
-    public int MaxGunAngle => tankDefinition.maxGunAngle;
-    public int MinGunAngle => tankDefinition.minGunAngle;
-    public float FireRate => tankDefinition.fireRate;
-    public float ProjectileSpeed => tankDefinition.projectileSpeed;
-    public bool BulletUseGravity => tankDefinition.bulletUseGravity;
-
+    public float ShootRange => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.shootRange : 0f;
+    public int MaxGunAngle => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.maxGunAngle : 0;
+    public int MinGunAngle => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.minGunAngle : 0;
+    public float FireRate => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.fireRate : 0f;
+    public bool BulletUseGravity => tankDefinition.primaryGun == null || tankDefinition.primaryGun.bulletUseGravity;
+    public AudioClip ShootSound => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.shootSound : null;
     public float DetectionRadius => tankDefinition.detectionRadius;
     public float StrafeRadius => tankDefinition.strafeRadius;
     public float StrafeSpeed => tankDefinition.strafeSpeed;
@@ -75,7 +74,6 @@ public class TankAI : MonoBehaviour
 
     public AudioClip IdleSound => tankDefinition.idleSound;
     public AudioClip DriveSound => tankDefinition.driveSound;
-    public AudioClip ShootSound => tankDefinition.shootSound;
     public float MinIdleVolume => tankDefinition.minIdleVolume;
     public float MaxIdleVolume => tankDefinition.maxIdleVolume;
     public float MinDriveVolume => tankDefinition.minDriveVolume;
@@ -174,10 +172,17 @@ public class TankAI : MonoBehaviour
         return null;
     }
 
+    public float GetMuzzleVelocity(BulletDefinition def)
+    {
+        GunDefinition g = tankDefinition != null ? tankDefinition.primaryGun : null;
+        if (g != null)
+            return g.GetMuzzleVelocity(def);
+
+        return 0f;
+    }
+
     // void OnEnable() => AIPerception.InvalidateCaches();
     // void OnDisable() => AIPerception.InvalidateCaches();
     // void OnDestroy() => AIPerception.InvalidateCaches();
-
-
 
 }

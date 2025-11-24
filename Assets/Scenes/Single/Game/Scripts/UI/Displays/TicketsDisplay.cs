@@ -14,6 +14,7 @@ public class TicketsDisplay : MonoBehaviour
 
     [Header("Animation")]
     public float smoothSpeed = 2f;
+    public bool debugLogs = false;
 
     private float currentFriendlyFill = 1f;
     private float currentEnemyFill = 1f;
@@ -47,7 +48,7 @@ public class TicketsDisplay : MonoBehaviour
             GameManager.Instance.friendlyTickets,
             GameManager.Instance.enemyTickets
         );
-        Log.Debug("[TicketsDisplay] Successfully subscribed to tickets events");
+        if (debugLogs) Log.Debug("[TicketsDisplay] Successfully subscribed to tickets events");
     }
 
     private void OnTicketsChanged(int friendly, int enemy)
@@ -64,8 +65,8 @@ public class TicketsDisplay : MonoBehaviour
         if (friendlyText != null) friendlyText.text = $"{friendly}";
         if (enemyText != null) enemyText.text = $"{enemy}";
 
-        Log.Debug("[Tickets] Targets: Friendly={FriendlyFill:P0}, Enemy={EnemyFill:P0} | Current tickets: Friendly={FriendlyTickets}, Enemy={EnemyTickets}",
-                  targetFriendlyFill, targetEnemyFill, friendly, enemy);
+        if (debugLogs) Log.Debug("[Tickets] Targets: Friendly={FriendlyFill:P0}, Enemy={EnemyFill:P0} | Current tickets: Friendly={FriendlyTickets}, Enemy={EnemyTickets}",
+                 targetFriendlyFill, targetEnemyFill, friendly, enemy);
     }
 
     void Update()

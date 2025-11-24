@@ -1470,6 +1470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbeb24ee0852ad4fa0778b9c4db9811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankShoot
+  gun: {fileID: 11400000, guid: e48aa69104e4a2a44ae3c356d3479e21, type: 2}
   gunEnd: {fileID: 6649746103647134625}
   bulletSlots:
   - displayName: M62
@@ -1485,12 +1486,12 @@ MonoBehaviour:
     definition: {fileID: 11400000, guid: 4d310cd20173304449d7069a23b769f2, type: 2}
     pool: {fileID: 0}
   - displayName: 'M93 '
-    type: 3
+    type: 9
     definition: {fileID: 11400000, guid: 58ac298f0c73d5e4493ec41cb85ca8be, type: 2}
     pool: {fileID: 0}
   currentBulletIndex: 0
   shotsPerSecond: 0.175
-  muzzleSmoke: {fileID: 3813045266623170088}
+  muzzleSmoke: {fileID: 3813045266607546184}
   audioSource: {fileID: 7424635070867828263}
   shootSound: {fileID: 8300000, guid: 50d6a0caa7cd2854a95228cb6cca1c9e, type: 3}
   reloadSound: {fileID: 8300000, guid: 5c7ad3df2bd2224468074329971cf6dc, type: 3}
@@ -5970,13 +5971,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ecfa3d3919108f4fbff80d1c4d920a1, type: 3}
+--- !u!198 &3813045266607546184 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800000, guid: 4ecfa3d3919108f4fbff80d1c4d920a1, type: 3}
+  m_PrefabInstance: {fileID: 3813045266623135880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3813045266622749192 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4ecfa3d3919108f4fbff80d1c4d920a1, type: 3}
-  m_PrefabInstance: {fileID: 3813045266623135880}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3813045266623170088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 4ecfa3d3919108f4fbff80d1c4d920a1, type: 3}
   m_PrefabInstance: {fileID: 3813045266623135880}
   m_PrefabAsset: {fileID: 0}

@@ -43,7 +43,7 @@ public class ArmorPlate : MonoBehaviour
         if (plateCollider != null)
         {
             Vector3 closest = plateCollider.ClosestPoint(contactPoint);
-            Vector3 n = (contactPoint - closest);
+            Vector3 n = contactPoint - closest;
             if (n.sqrMagnitude > 1e-6f)
                 return n.normalized;
         }

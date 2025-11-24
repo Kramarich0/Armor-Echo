@@ -3,6 +3,7 @@ using Serilog;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Localization.Components;
 using UnityEngine.SceneManagement;
 
 public class GameUIManager : MonoBehaviour
@@ -28,6 +29,7 @@ public class GameUIManager : MonoBehaviour
     private CursorLockMode cursorWasLockState;
     [Header("Victory")]
     public StarsDisplay victoryStarsDisplay;
+    public bool debugLogs = false;
 
     private void Awake()
     {
@@ -255,8 +257,15 @@ public class GameUIManager : MonoBehaviour
 
 
         if (victoryScoreText != null)
-            victoryScoreText.text = $"Очки: {score}";
-        Log.Debug("[NextLevel] Stars: {Stars}", stars);
+        {
+            var lse = victoryScoreText.GetComponent<LocalizeStringEvent>();
+            if (lse != null)
+            {
+                LocalizationHelper.SetLocalizedText(lse, "victory_score_text", score);
+            }
+        }
+
+        if (debugLogs) Log.Debug("[NextLevel] Stars: {Stars}", stars);
         victoryStarsDisplay?.SetStars(stars);
 
         cursorWasVisible = Cursor.visible;

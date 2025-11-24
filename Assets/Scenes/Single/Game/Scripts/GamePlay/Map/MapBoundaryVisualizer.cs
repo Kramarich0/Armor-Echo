@@ -1,183 +1,155 @@
+
+
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 [ExecuteAlways]
-[RequireComponent(typeof(LineRenderer))]
-public class MapBoundaryVisualizer : MonoBehaviour
+[RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshRenderer))]
+public class MapBoundaryMesh : MonoBehaviour
 {
-    [Header("Walls")]
-    public string wallTag = "Wall";
-    public float lineHeight = 0.5f;
-    public float lineWidth = 0.1f;
+    [Header("Settings")]
+    public float heightOffset = 0.5f;
+    public float lineWidth = 0.2f;
     public Color lineColor = Color.red;
-    public float padding = 0f;
+    public int detailPerSide = 50;
 
-    [Header("Glow Settings")]
-    public float glowHeightOffset = 0.05f;
-    public float glowWidthMultiplier = 4f;
-    public float glowAlpha = 0.8f;
+    [Header("Terrain")]
+    public Terrain terrain;
 
-    private LineRenderer lrMain;
-    private LineRenderer lrGlow;
+    [Header("Boundary Corners (unordered)")]
+    public Transform[] cornerTransforms = new Transform[4];
 
-    private Material mainMaterial;
-    private Material glowMaterial;
+    private MeshFilter mf;
+    private MeshRenderer mr;
+    private Mesh mesh;
 
-    void OnEnable() => BuildBoundary();
-    void OnValidate() => BuildBoundary();
+    private void OnValidate() => Build();
+    private void OnEnable() => Build();
 
-    void OnDisable()
+    [ContextMenu("Rebuild Mesh")]
+    public void Build()
     {
-        CleanupMaterials();
-    }
+        if (mf == null) mf = GetComponent<MeshFilter>();
+        if (mr == null) mr = GetComponent<MeshRenderer>();
 
-    void OnDestroy()
-    {
-        CleanupMaterials();
-        if (lrGlow != null)
+        if (mesh == null)
         {
-            if (Application.isPlaying)
-                Destroy(lrGlow.gameObject);
-            else
-                DestroyImmediate(lrGlow.gameObject);
-        }
-    }
-
-    private void CleanupMaterials()
-    {
-        if (mainMaterial != null)
-        {
-            if (Application.isPlaying)
-                Destroy(mainMaterial);
-            else
-                DestroyImmediate(mainMaterial);
+            mesh = new Mesh();
+            mf.sharedMesh = mesh;
         }
 
-        if (glowMaterial != null)
+        if (terrain == null) terrain = Terrain.activeTerrain;
+
+        if (cornerTransforms == null ||
+            cornerTransforms.Length < 3 ||
+            cornerTransforms.Any(t => t == null))
         {
-            if (Application.isPlaying)
-                Destroy(glowMaterial);
-            else
-                DestroyImmediate(glowMaterial);
-        }
-    }
-
-    [ContextMenu("Rebuild Boundary")]
-    public void BuildBoundary()
-    {
-        if (!lrMain) lrMain = GetComponent<LineRenderer>();
-        if (!lrMain) return;
-
-        lrMain.loop = true;
-        lrMain.widthMultiplier = lineWidth;
-
-        // Create or reuse main material
-        if (mainMaterial == null)
-        {
-            mainMaterial = new Material(Shader.Find("Unlit/Color"));
-        }
-        mainMaterial.color = lineColor;
-        lrMain.sharedMaterial = mainMaterial; // Use sharedMaterial with your own instance
-
-        if (!lrGlow)
-        {
-            GameObject glowObj = new GameObject("GlowLine");
-            glowObj.transform.SetParent(transform, false);
-            lrGlow = glowObj.AddComponent<LineRenderer>();
-        }
-
-        lrGlow.loop = true;
-        lrGlow.widthMultiplier = lineWidth * glowWidthMultiplier;
-        lrGlow.useWorldSpace = true;
-
-        // Create or reuse glow material
-        if (glowMaterial == null)
-        {
-            glowMaterial = new Material(Shader.Find("Unlit/Transparent"));
-        }
-        glowMaterial.color = lineColor;
-        lrGlow.sharedMaterial = glowMaterial;
-
-        GameObject[] walls = GameObject.FindGameObjectsWithTag(wallTag);
-        if (walls.Length == 0)
-        {
-            lrMain.positionCount = 0;
-            lrGlow.positionCount = 0;
+            Debug.LogError("CornerTransforms заданы неверно.");
             return;
         }
 
-        List<Vector3> allCorners = new List<Vector3>();
-        foreach (var w in walls)
+        Vector3 center = Vector3.zero;
+        foreach (var c in cornerTransforms)
+            center += c.position;
+        center /= cornerTransforms.Length;
+
+        Vector3[] sortedCorners = cornerTransforms
+            .OrderBy(t =>
+                Mathf.Atan2(t.position.z - center.z, t.position.x - center.x))
+            .Select(t => t.position)
+            .ToArray();
+
+        var contour = new List<Vector3>();
+
+        for (int i = 0; i < sortedCorners.Length; i++)
         {
-            BoxCollider bc = w.GetComponent<BoxCollider>();
-            if (!bc) continue;
+            Vector3 a = sortedCorners[i];
+            Vector3 b = sortedCorners[(i + 1) % sortedCorners.Length];
 
-            Vector3 halfSize = Vector3.Scale(bc.size * 0.5f, w.transform.lossyScale);
-            Vector3 center = bc.center;
-
-            Vector3[] corners = new Vector3[4]
+            for (int k = 0; k <= detailPerSide; k++)
             {
-                center + new Vector3(-halfSize.x, 0, -halfSize.z),
-                center + new Vector3(-halfSize.x, 0, halfSize.z),
-                center + new Vector3(halfSize.x, 0, halfSize.z),
-                center + new Vector3(halfSize.x, 0, -halfSize.z)
-            };
-
-            for (int i = 0; i < 4; i++)
-                allCorners.Add(w.transform.TransformPoint(corners[i]));
-        }
-
-        float minX = float.MaxValue, maxX = float.MinValue;
-        float minZ = float.MaxValue, maxZ = float.MinValue;
-
-        foreach (var c in allCorners)
-        {
-            minX = Mathf.Min(minX, c.x);
-            maxX = Mathf.Max(maxX, c.x);
-            minZ = Mathf.Min(minZ, c.z);
-            maxZ = Mathf.Max(maxZ, c.z);
-        }
-
-        minX -= padding; maxX += padding;
-        minZ -= padding; maxZ += padding;
-
-        Vector3[] verts = new Vector3[4]
-        {
-            new Vector3(minX, lineHeight, minZ),
-            new Vector3(minX, lineHeight, maxZ),
-            new Vector3(maxX, lineHeight, maxZ),
-            new Vector3(maxX, lineHeight, minZ)
-        };
-
-        lrMain.positionCount = verts.Length;
-        lrMain.SetPositions(verts);
-
-        Vector3[] glowVerts = new Vector3[verts.Length];
-        for (int i = 0; i < verts.Length; i++)
-            glowVerts[i] = verts[i] + Vector3.up * glowHeightOffset;
-
-        lrGlow.positionCount = glowVerts.Length;
-        lrGlow.SetPositions(glowVerts);
-
-        // Update glow alpha
-        Gradient g = new Gradient();
-        g.SetKeys(
-            new GradientColorKey[] {
-                new GradientColorKey(lineColor, 0f),
-                new GradientColorKey(lineColor, 1f)
-            },
-            new GradientAlphaKey[] {
-                new GradientAlphaKey(glowAlpha, 0f),
-                new GradientAlphaKey(glowAlpha, 1f)
+                float t = k / (float)detailPerSide;
+                contour.Add(Vector3.Lerp(a, b, t));
             }
-        );
-        lrGlow.colorGradient = g;
+        }
 
-        AnimationCurve widthCurve = new AnimationCurve();
-        widthCurve.AddKey(0f, 0f);
-        widthCurve.AddKey(0.05f, 1f);
-        widthCurve.AddKey(0.95f, 1f);
-        widthCurve.AddKey(1f, 0f);
-        lrGlow.widthCurve = widthCurve;
+        int count = contour.Count;
+        if (count < 2) return;
+
+        var verts = new Vector3[count * 2];
+        var uvs = new Vector2[count * 2];
+        var tris = new int[count * 6];
+
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 p0 = contour[(i - 1 + count) % count];
+            Vector3 p1 = contour[i];
+            Vector3 p2 = contour[(i + 1) % count];
+
+            Vector3 dir = (p2 - p0);
+            dir.y = 0;
+            dir.Normalize();
+
+            Vector3 perp = Vector3.Cross(Vector3.up, dir).normalized;
+
+            Vector3 left = p1 - perp * (lineWidth * 0.5f);
+            Vector3 right = p1 + perp * (lineWidth * 0.5f);
+
+            if (terrain != null)
+            {
+                left.y = terrain.SampleHeight(left) + heightOffset;
+                right.y = terrain.SampleHeight(right) + heightOffset;
+            }
+            else
+            {
+                left.y = right.y = heightOffset;
+            }
+
+            verts[i * 2] = left;
+            verts[i * 2 + 1] = right;
+
+            float u = i / (float)count;
+            uvs[i * 2] = new Vector2(0, u);
+            uvs[i * 2 + 1] = new Vector2(1, u);
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            int i0 = i * 2;
+            int i1 = ((i + 1) % count) * 2;
+
+            tris[i * 6 + 0] = i0;
+            tris[i * 6 + 1] = i1;
+            tris[i * 6 + 2] = i0 + 1;
+
+            tris[i * 6 + 3] = i0 + 1;
+            tris[i * 6 + 4] = i1;
+            tris[i * 6 + 5] = i1 + 1;
+        }
+
+
+        mesh.Clear();
+
+        mesh.vertices = verts;
+        mesh.triangles = tris;
+        mesh.uv = uvs;
+
+        Vector3[] norms = new Vector3[verts.Length];
+        for (int i = 0; i < norms.Length; i++)
+            norms[i] = Vector3.up;
+        mesh.normals = norms;
+
+        mesh.RecalculateBounds();
+
+        Shader sh = Shader.Find("Universal Render Pipeline/Unlit/Color") ??
+                    Shader.Find("Unlit/Color");
+
+        if (mr.sharedMaterial == null)
+            mr.sharedMaterial = new Material(sh);
+        mr.sharedMaterial.color = lineColor;
+        mr.sharedMaterial.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
+
     }
 }

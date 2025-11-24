@@ -2565,14 +2565,27 @@ MonoBehaviour:
   gun: {fileID: 9103224602226357386}
   gunEnd: {fileID: 6638456541141968631}
   body: {fileID: 4683581856932107850}
+  gunDefinition: {fileID: 11400000, guid: f9e52fdc677da6347b9a416faa1cd554, type: 2}
   bulletSlots:
-  - displayName: Pzgr 39.
+  - displayName: Pzgr 39
     type: 2
-    definition: {fileID: 11400000, guid: 1abe54a865551fb4099f4c94377a1580, type: 2}
+    definition: {fileID: 11400000, guid: 121e22e2441500846bc896d94776a08f, type: 2}
     pool: {fileID: 0}
-  - displayName: Pzgr 39.
+  - displayName: Pzgr.
+    type: 2
+    definition: {fileID: 11400000, guid: 1dad814737db8f64083755f490d1546d, type: 2}
+    pool: {fileID: 0}
+  - displayName: PzGr 40
+    type: 3
+    definition: {fileID: 11400000, guid: 965aec0a21c3bd048a247f7e8304f43a, type: 2}
+    pool: {fileID: 0}
+  - displayName: Hl.Gr 39
+    type: 5
+    definition: {fileID: 11400000, guid: 8fd839d16e2f0f44ca306c359202ba06, type: 2}
+    pool: {fileID: 0}
+  - displayName: "Sprgr. L/4.5\t"
     type: 1
-    definition: {fileID: 11400000, guid: de1f89de22658fa4ca04feda009b70b6, type: 2}
+    definition: {fileID: 11400000, guid: c6b6b2399ec15aa4d9d3cae5680cbcab, type: 2}
     pool: {fileID: 0}
   leftTrack:
     wheels:

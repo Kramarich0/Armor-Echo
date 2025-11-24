@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 public class TankShoot : MonoBehaviour
 {
     public System.Action onShotFired;
+    [Header("Gun")]
+    public GunDefinition gun;
     public Transform gunEnd;
     [Header("Bullet System")]
     public BulletSlot[] bulletSlots;
@@ -220,6 +222,12 @@ public class TankShoot : MonoBehaviour
     {
         if (gunEnd == null) return;
 
+        if (gun != null && CurrentBullet.definition != null)
+        {
+            if (gun.caliber != CurrentBullet.definition.caliber)
+                Debug.LogWarning($"[TankShoot] Gun caliber ({gun.caliber}mm) != ammo caliber ({CurrentBullet.definition.caliber}mm) for {CurrentBullet.displayName} on {gameObject.name}");
+        }
+
         TeamComponent teamComp = GetComponentInParent<TeamComponent>();
         TeamEnum team = teamComp ? teamComp.team : TeamEnum.Neutral;
         string shooterDisplay = teamComp != null && !string.IsNullOrEmpty(teamComp.displayName)
@@ -228,9 +236,18 @@ public class TankShoot : MonoBehaviour
 
         Collider[] shooterColliders = GetComponentsInParent<Collider>();
 
+        float muzzle = 0f;
+        if (gun != null && CurrentBullet.definition != null)
+        {
+            muzzle = gun.GetMuzzleVelocity(CurrentBullet.definition); 
+        }
+
+
+        Vector3 spawnVelocity = gunEnd.forward * muzzle;
+
         CurrentBullet.pool.SpawnBullet(
             gunEnd.position,
-            gunEnd.forward * CurrentBullet.definition.speed,
+            spawnVelocity,
             CurrentBullet.definition,
             team,
             shooterDisplay,

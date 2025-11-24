@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Serilog;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -25,6 +27,11 @@ public class GameManager : MonoBehaviour
     private readonly List<string> killLog = new();
     public int maxKillLogEntries = 10;
     public int MaxPossibleScore { get; private set; }
+    public bool debugLogs = false;
+
+    private GameObject cachedKillLogObj;
+    private LocalizeStringEvent cachedKillLogLse;
+    private TextMeshProUGUI cachedKillLogTmp;
 
     private void Awake()
     {
@@ -51,6 +58,10 @@ public class GameManager : MonoBehaviour
     {
         isGameFinished = false;
         killLog.Clear();
+
+        cachedKillLogObj = null;
+        cachedKillLogLse = null;
+        cachedKillLogTmp = null;
     }
 
     public void InitializeLevel()
@@ -100,8 +111,8 @@ public class GameManager : MonoBehaviour
         initialFriendlyTickets = friendlyTickets;
         initialEnemyTickets = enemyTickets;
 
-        Log.Debug("[GameManager] Tickets: Friendly={FriendlyTickets} | Enemy={EnemyTickets}", friendlyTickets, enemyTickets);
-        Log.Debug("[GameManager] Tanks: Friendly={AliveFriendlyTanks} | Enemy={AliveEnemyTanks}", aliveFriendlyTanks, aliveEnemyTanks);
+        if (debugLogs) Log.Debug("[GameManager] Tickets: Friendly={FriendlyTickets} | Enemy={EnemyTickets}", friendlyTickets, enemyTickets);
+        if (debugLogs) Log.Debug("[GameManager] Tanks: Friendly={AliveFriendlyTanks} | Enemy={AliveEnemyTanks}", aliveFriendlyTanks, aliveEnemyTanks);
 
         IsLevelInitialized = true;
     }
@@ -144,23 +155,25 @@ public class GameManager : MonoBehaviour
         }
 
         string victimColor = team == TeamEnum.Friendly ? "#00FF00" : "#FF0000";
-        string victimDisplay = victimName ?? (team == TeamEnum.Friendly ? "Союзник" : "Враг");
+        string victimDisplay = victimName ?? (team == TeamEnum.Friendly ? LocalizationHelper.GetLocalizedString("ally") : LocalizationHelper.GetLocalizedString("enemy"));
         victimDisplay = $"<color={victimColor}>{victimDisplay}</color>";
 
         string entry;
-
         if (!string.IsNullOrEmpty(killerName))
         {
-            TeamEnum killerTeam = (killerName == null) ? TeamEnum.Neutral : (team == TeamEnum.Friendly ? TeamEnum.Enemy : TeamEnum.Friendly);
+            TeamEnum killerTeam = team == TeamEnum.Friendly ? TeamEnum.Enemy : TeamEnum.Friendly;
             string killerColor = killerTeam == TeamEnum.Friendly ? "#00FF00" : "#FF0000";
             string killerDisplay = $"<color={killerColor}>{killerName}</color>";
 
-            entry = $"{killerDisplay} {(killerIsPlayer ? "(Вы)" : "")} уничтожил {victimDisplay}";
+            string youText = killerIsPlayer ? LocalizationHelper.GetLocalizedString("you_text") : "";
+
+            entry = LocalizationHelper.GetLocalizedString("kill_message_with_player", killerDisplay, youText, victimDisplay);
         }
         else
         {
-            entry = $"{victimDisplay} уничтожен";
+            entry = LocalizationHelper.GetLocalizedString("kill_message_without_player", victimDisplay);
         }
+
 
         AddKillLog(entry);
 
@@ -219,8 +232,15 @@ public class GameManager : MonoBehaviour
             if (int.TryParse(numPart, out int idx)) levelIndex = idx;
         }
 
-        PlayerPrefs.SetInt($"Level{levelIndex}_Score", score);
-        PlayerPrefs.SetInt($"Level{levelIndex}_Stars", stars);
+        int savedScore = PlayerPrefs.GetInt($"Level{levelIndex}_Score", 0);
+        int savedStars = PlayerPrefs.GetInt($"Level{levelIndex}_Stars", 0);
+
+        if (finalScore > savedScore)
+            PlayerPrefs.SetInt($"Level{levelIndex}_Score", finalScore);
+
+        if (stars > savedStars)
+            PlayerPrefs.SetInt($"Level{levelIndex}_Stars", stars);
+
         PlayerPrefs.SetInt($"Level{levelIndex}_Completed", 1);
         PlayerPrefs.SetInt($"Level{levelIndex + 1}_Unlocked", 1);
 
@@ -277,10 +297,45 @@ public class GameManager : MonoBehaviour
 
     private void AddKillLog(string entry)
     {
+        if (string.IsNullOrEmpty(entry)) return;
+
         killLog.Add(entry);
 
         if (killLog.Count > maxKillLogEntries)
             killLog.RemoveAt(0);
+
+        if (cachedKillLogObj == null)
+        {
+            cachedKillLogObj = GameObject.Find("KillLogList");
+            if (cachedKillLogObj != null)
+            {
+                cachedKillLogLse = cachedKillLogObj.GetComponent<LocalizeStringEvent>();
+                cachedKillLogTmp = cachedKillLogObj.GetComponent<TextMeshProUGUI>();
+            }
+            else
+            {
+                cachedKillLogLse = FindObjectOfType<LocalizeStringEvent>();
+                if (cachedKillLogLse != null)
+                    cachedKillLogObj = cachedKillLogLse.gameObject;
+                else
+                {
+                    cachedKillLogTmp = FindObjectOfType<TextMeshProUGUI>();
+                    if (cachedKillLogTmp != null)
+                        cachedKillLogObj = cachedKillLogTmp.gameObject;
+                }
+            }
+        }
+
+        string fullLog = string.Join("\n", killLog);
+
+        if (cachedKillLogLse != null)
+        {
+            LocalizationHelper.SetLocalizedText(cachedKillLogLse, "kill_log_text", fullLog);
+        }
+        else if (cachedKillLogTmp != null)
+        {
+            cachedKillLogTmp.text = fullLog;
+        }
 
         OnKillLogUpdated?.Invoke(entry);
     }

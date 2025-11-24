@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using Serilog;
+using UnityEngine.Localization.Components;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class SpeedDisplay : MonoBehaviour
@@ -18,8 +19,11 @@ public class SpeedDisplay : MonoBehaviour
 
     public void SetSpeed(int speedKmh)
     {
-        if (speedText != null)
-            speedText.text = Mathf.RoundToInt(speedKmh) + " км/ч";
+        if (!TryGetComponent<LocalizeStringEvent>(out var lse)) return;
+
+        LocalizationHelper.SetLocalizedText(lse, "speed_display", Mathf.RoundToInt(speedKmh));
+
+        lse.gameObject.SetActive(true);
     }
 
 }

@@ -9,7 +9,8 @@ public class BulletPool : MonoBehaviour
     [SerializeField] private int initialSize = 20;
 
     private ObjectPool<Bullet> pool;
-
+    public bool debugLogs = false;
+    
     void Awake()
     {
         pool = new ObjectPool<Bullet>(
@@ -59,8 +60,8 @@ public class BulletPool : MonoBehaviour
         bullet.Initialize(velocity, team, shooterName, ignoreColliders, definition);
 
         bullet.gameObject.SetActive(true);
-        Log.Debug("[Pool] Spawn at {Position} vel={Velocity} team={Team} def={Def}",
-                  position, velocity.magnitude, team, definition != null ? definition.name : "default");
+        if (debugLogs) Log.Debug("[Pool] Spawn at {Position} vel={Velocity} team={Team} def={Def}",
+                    position, velocity.magnitude, team, definition != null ? definition.name : "default");
 
         return bullet;
     }

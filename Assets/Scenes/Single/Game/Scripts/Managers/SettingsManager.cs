@@ -167,7 +167,7 @@ public class SettingsManager : MonoBehaviour
 
         if (createdPreviewRT == null)
         {
-            createdPreviewRT = new RenderTexture(1024, 1024, 16)
+            createdPreviewRT = new RenderTexture(1024, 1024, 32, RenderTextureFormat.Default)
             {
                 name = "PreviewRT",
                 filterMode = FilterMode.Bilinear,
@@ -1120,5 +1120,5 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    public void BackToMainMenu() => SceneManager.LoadScene("MainMenu");
+    public void BackToMainMenu() => SceneManager.LoadScene(SceneNames.MainMenu);
 }

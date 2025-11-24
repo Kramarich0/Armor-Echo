@@ -5,13 +5,15 @@ using System.Collections.Generic;
 using Serilog;
 using System.Collections;
 using System.Linq;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
+    public bool debugLogs = false;
     [Header("Bullet Settings")]
-    [SerializeField] private float lifeTime = 8f;
+    [SerializeField] private readonly float lifeTime = 8f;
     [SerializeField] private BulletDefinition bulletDef;
     private GameObject currentVisual;
     private Rigidbody rb;
@@ -21,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     private float lifetimeTimer;
     private ObjectPool<Bullet> pool;
-    private HashSet<Collider> ignoredColliders = new();
+    private readonly HashSet<Collider> ignoredColliders = new();
 
     private bool isInPool = true;
     public event Action<Bullet> OnBulletExpired;
@@ -35,7 +37,7 @@ public class Bullet : MonoBehaviour
     private readonly List<Collider> _removeBuffer = new(8);
 
 
-    private static Dictionary<Collider, CachedColliderData> colliderCache = new();
+    private static readonly Dictionary<Collider, CachedColliderData> colliderCache = new();
     private class CachedColliderData
     {
         public TeamEnum? team;
@@ -43,12 +45,13 @@ public class Bullet : MonoBehaviour
         public IDamageable damageable;
     }
 
-    private static Collider[] splashResults = new Collider[32];
+    private static readonly Collider[] splashResults = new Collider[32];
 
-    private Dictionary<Collider, float> ignoredCollidersTimed = new Dictionary<Collider, float>();
+    private readonly Dictionary<Collider, float> ignoredCollidersTimed = new Dictionary<Collider, float>();
 
     private float cachedSpeed = 0f;
     private float cachedPenetration = 0f;
+    private float initialMuzzleSpeed = 0f;
 
     void Awake()
     {
@@ -111,6 +114,7 @@ public class Bullet : MonoBehaviour
         rb.linearVelocity = velocity;
         lastVelocity = velocity;
         rb.useGravity = bulletDef.useGravity;
+        initialMuzzleSpeed = velocity.magnitude;
 
         col.enabled = true;
 
@@ -122,8 +126,11 @@ public class Bullet : MonoBehaviour
         cachedSpeed = velocity.magnitude;
         cachedPenetration = ComputePenetrationAtDistance(bulletDef);
 
-        Log.Debug("[Bullet] Init vel={Vel} team={Team} shooter={Shooter} dmg={Dmg} ignores={IgnoreCnt}",
-            velocity.magnitude, shooter, shooterName, bulletDef.damage, ignoreWith?.Length ?? 0);
+        if (debugLogs)
+        {
+            Log.Debug("[Bullet] Init vel={Vel} team={Team} shooter={Shooter} dmg={Dmg} ignores={IgnoreCnt}",
+              velocity.magnitude, shooter, shooterName, bulletDef.damage, ignoreWith?.Length ?? 0);
+        }
     }
 
     void FixedUpdate()
@@ -191,13 +198,13 @@ public class Bullet : MonoBehaviour
         if (isInPool || collision == null) return;
         if (collision.collider.gameObject == null) return;
 
-        Log.Debug("[Bullet] Collided with {ColName}", collision.collider.name);
+        if (debugLogs) Log.Debug("[Bullet] Collided with {ColName}", collision.collider.name);
 
         TeamEnum? targetTeam = GetCachedTeam(collision.collider);
 
         if (targetTeam.HasValue && targetTeam.Value == shooterTeam)
         {
-            Log.Debug("[Bullet] Hit friendly -> ignore");
+            if (debugLogs) Log.Debug("[Bullet] Hit friendly -> ignore");
             return;
         }
 
@@ -211,12 +218,12 @@ public class Bullet : MonoBehaviour
             : (rb.linearVelocity.sqrMagnitude > MIN_VELOCITY * MIN_VELOCITY ? rb.linearVelocity.normalized : transform.forward);
 
 
-        Log.Debug("[Bullet] collision.collider={Col} contactPoint={Point} contactNormal={Normal} rb.velocity={Vel} lastVelocity={Last}",
-                  collision.collider.name,
-                  contactPoint,
-                  contact.normal,
-                  rb.linearVelocity,
-                  lastVelocity);
+        if (debugLogs) Log.Debug("[Bullet] collision.collider={Col} contactPoint={Point} contactNormal={Normal} rb.velocity={Vel} lastVelocity={Last}",
+                      collision.collider.name,
+                      contactPoint,
+                      contact.normal,
+                      rb.linearVelocity,
+                      lastVelocity);
 
         if (armorPlate != null)
         {
@@ -224,8 +231,63 @@ public class Bullet : MonoBehaviour
             float speed = cachedSpeed;
             float penetration = cachedPenetration;
 
-            Log.Debug("[Bullet] Computed: speed={Speed:F1}m/s pen={Pen:F1}mm effArmor={Eff:F1}mm rawAngle={Angle:F1}deg",
-                       speed, penetration, effectiveArmor, rawAngle);
+            if (bulletDef.caliber >= armorPlate.thickness * bulletDef.overmatchFactor)
+            {
+                float ratio = bulletDef.caliber / armorPlate.thickness;
+                float overmatchFactor = Mathf.Clamp01((ratio - bulletDef.overmatchFactor) / 2f);
+
+                float kineticFactor = 1f;
+                if (bulletDef.type == BulletType.AP || bulletDef.type == BulletType.HVAP ||
+                    bulletDef.type == BulletType.APHE || bulletDef.type == BulletType.APCR || bulletDef.type == BulletType.APDS)
+                {
+                    float v0 = initialMuzzleSpeed > 0f ? initialMuzzleSpeed : 0f;
+                    kineticFactor = Mathf.Clamp01(speed / Mathf.Max(0.0001f, v0));
+                }
+
+                switch (bulletDef.type)
+                {
+                    case BulletType.AP:
+                    case BulletType.HVAP:
+                        effectiveArmor *= Mathf.Pow(0.6f, overmatchFactor) * kineticFactor;
+                        rawAngle *= Mathf.Pow(0.65f, overmatchFactor);
+                        break;
+
+                    case BulletType.APHE:
+                    case BulletType.APCR:
+                    case BulletType.APDS:
+                        effectiveArmor *= Mathf.Pow(0.7f, overmatchFactor) * kineticFactor;
+                        rawAngle *= Mathf.Pow(0.7f, overmatchFactor);
+
+                        if ((bulletDef.type == BulletType.APCR || bulletDef.type == BulletType.APDS) && rawAngle > 70f)
+                        {
+                            if (Random.value < 0.2f)
+                            {
+                                penetration *= 0.5f;
+                                if (debugLogs) Log.Debug("[Bullet] Sub-caliber broken due to high impact angle");
+                            }
+                        }
+                        break;
+
+                    case BulletType.HEAT:
+                        effectiveArmor *= Mathf.Lerp(1f, 0.85f, overmatchFactor);
+                        rawAngle *= Mathf.Lerp(1f, 0.8f, overmatchFactor);
+                        break;
+
+                    default:
+                        effectiveArmor *= Mathf.Pow(0.75f, overmatchFactor);
+                        rawAngle *= Mathf.Pow(0.75f, overmatchFactor);
+                        break;
+                }
+
+                effectiveArmor = Mathf.Max(effectiveArmor, armorPlate.thickness * 0.25f);
+                rawAngle = Mathf.Clamp(rawAngle, 0f, 90f);
+
+                if (debugLogs) Log.Debug("[Bullet] Realistic Overmatch + speed applied: type={Type} newEffArmor={Eff:F1}mm newAngle={Angle:F1}deg ratio={Ratio:F2} speedFactor={SpeedFactor:F2}",
+                             bulletDef.type, effectiveArmor, rawAngle, ratio, kineticFactor);
+            }
+
+            if (debugLogs) Log.Debug("[Bullet] Computed: speed={Speed:F1}m/s pen={Pen:F1}mm effArmor={Eff:F1}mm rawAngle={Angle:F1}deg",
+                          speed, penetration, effectiveArmor, rawAngle);
 
             if (!bulletDef.ignoreAngle && rawAngle > bulletDef.ricochetAngle)
             {
@@ -240,12 +302,12 @@ public class Bullet : MonoBehaviour
                     rb.linearVelocity = newVel;
                     lastVelocity = newVel;
 
-                    Log.Debug("[Bullet] RICOCHET: angle={Angle:F1} deg -> reflect dir={Dir} newSpeed={NewSpeed:F1}", rawAngle, reflectDir, newSpeed);
+                    if (debugLogs) Log.Debug("[Bullet] RICOCHET: angle={Angle:F1} deg -> reflect dir={Dir} newSpeed={NewSpeed:F1}", rawAngle, reflectDir, newSpeed);
                     return;
                 }
                 else
                 {
-                    Log.Debug("[Bullet] RICOCHET but max ricochets reached -> stop");
+                    if (debugLogs) Log.Debug("[Bullet] RICOCHET but max ricochets reached -> stop");
                     ReturnToPool();
                     return;
                 }
@@ -253,7 +315,7 @@ public class Bullet : MonoBehaviour
 
             if (penetration >= effectiveArmor)
             {
-                Log.Debug("[Bullet] PEN: pen={Pen} effArmor={Arm}", penetration, effectiveArmor);
+                if (debugLogs) Log.Debug("[Bullet] PEN: pen={Pen} effArmor={Arm}", penetration, effectiveArmor);
 
                 float residual = Mathf.Clamp01((penetration - effectiveArmor) / Mathf.Max(1f, penetration));
                 float speedAfter = speed * (0.4f + 0.6f * residual);
@@ -275,7 +337,7 @@ public class Bullet : MonoBehaviour
                     }
                     else
                     {
-                        Log.Debug("[Bullet] Skipped duplicate damage for same target.");
+                        if (debugLogs) Log.Debug("[Bullet] Skipped duplicate damage for same target.");
                     }
                 }
 
@@ -283,7 +345,7 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                Log.Debug("[Bullet] NO PEN: pen={Pen} effArmor={Arm}", penetration, effectiveArmor);
+                if (debugLogs) Log.Debug("[Bullet] NO PEN: pen={Pen} effArmor={Arm}", penetration, effectiveArmor);
 
                 if (bulletDef.type == BulletType.HE)
                 {
@@ -298,7 +360,7 @@ public class Bullet : MonoBehaviour
 
         else
         {
-            Log.Debug("[Bullet] No ArmorPlate found for collider {Col}", collision.collider.name);
+            if (debugLogs) Log.Debug("[Bullet] No ArmorPlate found for collider {Col}", collision.collider.name);
 
             IDamageable damageable = GetCachedDamageable(collision.collider);
             if (damageable != null)
@@ -310,7 +372,7 @@ public class Bullet : MonoBehaviour
                 }
                 else
                 {
-                    Log.Debug("[Bullet] Skipped duplicate damage for same target (no armorPlate).");
+                    if (debugLogs) Log.Debug("[Bullet] Skipped duplicate damage for same target (no armorPlate).");
                 }
             }
 
@@ -322,26 +384,25 @@ public class Bullet : MonoBehaviour
 
     private void DebugDumpColliderHierarchy(Collider collider, Vector3 contactPoint)
     {
-        if (collider == null) { Log.Debug("[Bullet][DBG] DebugDump: collider == null"); return; }
+        if (collider == null) { if (debugLogs) Log.Debug("[Bullet][DBG] DebugDump: collider == null"); return; }
 
         var go = collider.gameObject;
-        Log.Debug("[Bullet][DBG] Collider GO: {Name} pos={Pos} root={Root}", go.name, go.transform.position, go.transform.root.name);
+        if (debugLogs) Log.Debug("[Bullet][DBG] Collider GO: {Name} pos={Pos} root={Root}", go.name, go.transform.position, go.transform.root.name);
 
         var comps = go.GetComponents<Component>();
         foreach (var c in comps)
         {
             if (c == null) continue;
-            Log.Debug("[Bullet][DBG] Component on {GO}: {Type}", go.name, c.GetType().Name);
+            if (debugLogs) Log.Debug("[Bullet][DBG] Component on {GO}: {Type}", go.name, c.GetType().Name);
         }
 
         var t = go.transform;
         int depth = 0;
         while (t != null)
         {
-            Log.Debug("[Bullet][DBG] Parent[{Depth}] {Name} (pos={Pos})", depth, t.name, t.position);
-            var plate = t.GetComponent<ArmorPlate>();
-            if (plate != null)
-                Log.Debug("[Bullet][DBG] Found ArmorPlate on transform {Name}", t.name);
+            if (debugLogs) Log.Debug("[Bullet][DBG] Parent[{Depth}] {Name} (pos={Pos})", depth, t.name, t.position);
+            if (t.TryGetComponent<ArmorPlate>(out var plate))
+                if (debugLogs) Log.Debug("[Bullet][DBG] Found ArmorPlate on transform {Name}", t.name);
             t = t.parent;
             depth++;
         }
@@ -351,7 +412,7 @@ public class Bullet : MonoBehaviour
         {
             var p = hits[i].GetComponentInParent<ArmorPlate>();
             if (p != null)
-                Log.Debug("[Bullet][DBG] OverlapSphere found ArmorPlate {Plate} on collider {C}", p.name, hits[i].name);
+                if (debugLogs) Log.Debug("[Bullet][DBG] OverlapSphere found ArmorPlate {Plate} on collider {C}", p.name, hits[i].name);
         }
     }
 
@@ -362,56 +423,6 @@ public class Bullet : MonoBehaviour
         Physics.IgnoreCollision(col, hitCollider, true);
         ignoredCollidersTimed[hitCollider] = duration;
     }
-
-    // private ArmorPlate FindBestArmorPlateOptimized(Collision collision, Vector3 contactPoint)
-    // {
-    //     Collider collider = collision.collider;
-
-
-    //     if (!colliderCache.TryGetValue(collider, out CachedColliderData cachedData))
-    //     {
-
-    //         cachedData = new CachedColliderData();
-
-
-    //         var armorPlatesList = new List<ArmorPlate>();
-
-
-    //         if (collider.TryGetComponent<ArmorPlate>(out var plateOnCollider))
-    //             armorPlatesList.Add(plateOnCollider);
-
-
-    //         armorPlatesList.AddRange(collider.GetComponentsInChildren<ArmorPlate>(true));
-    //         armorPlatesList.AddRange(collider.GetComponentsInParent<ArmorPlate>(true));
-
-    //         cachedData.armorPlates = armorPlatesList.ToArray();
-    //         colliderCache[collider] = cachedData;
-    //     }
-
-    //     if (cachedData.armorPlates == null || cachedData.armorPlates.Length == 0)
-    //         return null;
-
-    //     if (cachedData.armorPlates.Length == 1)
-    //         return cachedData.armorPlates[0];
-
-
-    //     ArmorPlate best = null;
-    //     float bestDist = float.MaxValue;
-
-    //     foreach (var p in cachedData.armorPlates)
-    //     {
-    //         if (p == null) continue;
-    //         Vector3 center = p.GetPlateWorldCenter();
-    //         float d = Vector3.SqrMagnitude(contactPoint - center);
-    //         if (d < bestDist)
-    //         {
-    //             bestDist = d;
-    //             best = p;
-    //         }
-    //     }
-
-    //     return best;
-    // }
 
     private ArmorPlate FindBestArmorPlateOptimized(Collision collision, Vector3 contactPoint)
     {
@@ -469,7 +480,7 @@ public class Bullet : MonoBehaviour
 
         if (dedup.Count == 0)
         {
-            Log.Debug("[Bullet] FindBestArmorPlateOptimized: no plates found for collider {C}. Not caching negative result.", collider.name);
+            if (debugLogs) Log.Debug("[Bullet] FindBestArmorPlateOptimized: no plates found for collider {C}. Not caching negative result.", collider.name);
             return null;
         }
 
@@ -508,24 +519,6 @@ public class Bullet : MonoBehaviour
         return cachedData.team;
     }
 
-    // private IDamageable GetCachedDamageable(Collider collider)
-    // {
-    //     if (!colliderCache.TryGetValue(collider, out CachedColliderData cachedData))
-    //     {
-    //         cachedData = new CachedColliderData();
-
-
-    //         if (collider.TryGetComponent<IDamageable>(out var dmg))
-    //             cachedData.damageable = dmg;
-    //         else
-    //             cachedData.damageable = collider.GetComponentInParent<IDamageable>();
-
-    //         colliderCache[collider] = cachedData;
-    //     }
-
-    //     return cachedData.damageable;
-    // }
-
     private IDamageable GetCachedDamageable(Collider collider)
     {
         if (collider == null) return null;
@@ -556,7 +549,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            Log.Debug("[Bullet] GetCachedDamageable: no IDamageable found for collider {C}", collider.name);
+            if (debugLogs) Log.Debug("[Bullet] GetCachedDamageable: no IDamageable found for collider {C}", collider.name);
         }
 
         return dmg;
@@ -589,18 +582,21 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private float ComputeSpeed(float distance, BulletDefinition def)
+    private float ComputeSpeed(float distance)
     {
-        if (def == null) return 0f;
-        float v = def.speed * Mathf.Exp(-def.ballisticK * distance);
-        return Mathf.Max(def.minSpeed, v);
+        float v = initialMuzzleSpeed * Mathf.Exp(-bulletDef.ballisticK * distance);
+        return Mathf.Max(bulletDef.minSpeed, v);
     }
 
     private float ComputePenetrationAtDistance(BulletDefinition def)
     {
         if (def == null) return 0f;
-        float v0 = def.speed;
-        float vDist = ComputeSpeed(travelledDistance, def);
+
+        if (def.type == BulletType.HE)
+            return def.penetration;
+
+        float v0 = initialMuzzleSpeed > 0f ? initialMuzzleSpeed : 0f;
+        float vDist = ComputeSpeed(travelledDistance);
         float ratio = Mathf.Clamp01(vDist / Mathf.Max(0.0001f, v0));
         float pen = def.penetration * Mathf.Pow(ratio, def.deMarreK);
 
@@ -634,7 +630,7 @@ public class Bullet : MonoBehaviour
     {
         if (isInPool) return;
         isInPool = true;
-        Log.Debug("Пуля вернулась в пул!");
+        if (debugLogs) Log.Debug("Пуля вернулась в пул!");
         col.enabled = false;
 
         foreach (var oc in ignoredColliders)
@@ -675,14 +671,12 @@ public class Bullet : MonoBehaviour
 
     void OnEnable()
     {
-        var c = GetComponent<Collider>();
-        if (c != null) Bullet.ClearColliderCache(c);
+        if (TryGetComponent<Collider>(out var c)) Bullet.ClearColliderCache(c);
     }
 
     void OnDisable()
     {
-        var c = GetComponent<Collider>();
-        if (c != null) Bullet.ClearColliderCache(c);
+        if (TryGetComponent<Collider>(out var c)) Bullet.ClearColliderCache(c);
     }
 
 

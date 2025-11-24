@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad7d81ad51f4e42b8256b403db27e0, type: 3}
+  m_Name: 2 cm KwK 38 L 55
+  m_EditorClassIdentifier: Assembly-CSharp::GunDefinition
+  gunName: 2 cm KwK 38 L 55
+  caliber: 20
+  fireRate: 0.5
+  minGunAngle: -10
+  maxGunAngle: 20
+  shootRange: 1200
+  bulletUseGravity: 1
+  shootSound: {fileID: 0}
+  bullets:
+  - bullet: {fileID: 11400000, guid: bc27dc69d7dede0439b455ec4a0eaa71, type: 2}
+    muzzleVelocity: 1000
+  - bullet: {fileID: 11400000, guid: 0c83a447854e2ae429dd2af871cedec9, type: 2}
+    muzzleVelocity: 1060
+  - bullet: {fileID: 11400000, guid: 0b9a4f20db1b6594d9556ad33eba73a0, type: 2}
+    muzzleVelocity: 995

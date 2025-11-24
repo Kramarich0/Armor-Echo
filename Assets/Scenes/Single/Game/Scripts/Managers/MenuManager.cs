@@ -3,14 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene(SceneNames.MainMenu);
+    }
     public void DirectToLevelSelect()
     {
-        SceneManager.LoadScene("SelectLevel");
+        SceneManager.LoadScene(SceneNames.SelectLevel);
     }
 
     public void SettingsScene()
     {
-        SceneManager.LoadScene("Settings");
+        SceneManager.LoadScene(SceneNames.Settings);
     }
 
     public void QuitGame()

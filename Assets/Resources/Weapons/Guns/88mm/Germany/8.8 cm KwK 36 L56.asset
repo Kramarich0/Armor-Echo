@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad7d81ad51f4e42b8256b403db27e0, type: 3}
+  m_Name: 8.8 cm KwK 36 L56
+  m_EditorClassIdentifier: Assembly-CSharp::GunDefinition
+  gunName: 8.8 cm KwK 36 L56
+  caliber: 88
+  fireRate: 1
+  minGunAngle: -10
+  maxGunAngle: 10
+  shootRange: 100
+  bulletUseGravity: 1
+  shootSound: {fileID: 8300000, guid: 604a1b602c1b2304fbb9812e184c259f, type: 3}
+  bullets:
+  - bullet: {fileID: 11400000, guid: 121e22e2441500846bc896d94776a08f, type: 2}
+    muzzleVelocity: 773
+  - bullet: {fileID: 11400000, guid: 1dad814737db8f64083755f490d1546d, type: 2}
+    muzzleVelocity: 810
+  - bullet: {fileID: 11400000, guid: 965aec0a21c3bd048a247f7e8304f43a, type: 2}
+    muzzleVelocity: 930
+  - bullet: {fileID: 11400000, guid: 8fd839d16e2f0f44ca306c359202ba06, type: 2}
+    muzzleVelocity: 600
+  - bullet: {fileID: 11400000, guid: c6b6b2399ec15aa4d9d3cae5680cbcab, type: 2}
+    muzzleVelocity: 800

@@ -6,6 +6,7 @@ public class BulletDefinition : ScriptableObject
     public BulletType type = BulletType.AP;
 
     [Header("=== CORE (основные характеристики снаряда) ===")]
+    public string bulletName = "Unknown bullet";
 
     [Tooltip("Калибр снаряда в мм (влияет на оверматч и поведение брони).")]
     public int caliber = 76;
@@ -16,12 +17,8 @@ public class BulletDefinition : ScriptableObject
     [Tooltip("Паспортная пробиваемость при вылете из ствола (мм).")]
     public float penetration = 120f;
 
-    [Tooltip("Начальная скорость снаряда (м/с).")]
-    public float speed = 800f;
-
     [Tooltip("Использует ли снаряд гравитацию в полёте.")]
     public bool useGravity = true;
-
 
     [Header("=== BALLISTICS (падение скорости/пробития по дистанции) ===")]
 
@@ -48,14 +45,10 @@ public class BulletDefinition : ScriptableObject
     [Tooltip("Если true — угол вообще игнорируется (кумулятивы).")]
     public bool ignoreAngle = false;
 
-
     [Header("=== OVERMATCH (эффект большого калибра) ===")]
 
     [Tooltip("Если калибр больше толщины брони × этот коэффициент → снаряд получает бонус.")]
     public float overmatchFactor = 1.5f;
-
-    [Tooltip("Множитель пробития при оверматче.")]
-    public float overmatchBonus = 1.15f;
 
 
     [Header("=== RICOCHET PHYSICS (поведение после рикошета) ===")]

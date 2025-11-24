@@ -1,0 +1,256 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: GameStrings Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: GameStrings
+  m_TableCollectionNameGuidString: 62387acf809e2dc4e863a007d737d832
+  m_Entries:
+  - m_Id: 8977327841280
+    m_Key: main_menu_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34404818944
+    m_Key: btn_start_single
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8779784511488
+    m_Key: btn_settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8869932687360
+    m_Key: btn_exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13591615889408
+    m_Key: select_level_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21380794933248
+    m_Key: level_name_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21503612542976
+    m_Key: level_name_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21519706087424
+    m_Key: level_name_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21520335233024
+    m_Key: level_name_4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21520876298240
+    m_Key: level_name_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21521455112192
+    m_Key: level_name_6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21597149716480
+    m_Key: level_name_7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21597745307648
+    m_Key: level_name_8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23660545957888
+    m_Key: level_card_score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25099385167872
+    m_Key: level_card_locked
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35365657239552
+    m_Key: victory_score_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35629499932672
+    m_Key: victory_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36372290199552
+    m_Key: btn_restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36661239996416
+    m_Key: ' btn_next_level'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36829205094400
+    m_Key: btn_back_to_main_menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37609681182720
+    m_Key: pause_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37684918607872
+    m_Key: btn_resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39154669838336
+    m_Key: defeat_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44859338514432
+    m_Key: ally
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44902212689920
+    m_Key: enemy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44935150559232
+    m_Key: you_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44973650075648
+    m_Key: kill_message_with_player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45032848482304
+    m_Key: kill_message_without_player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45065643745280
+    m_Key: kill_log_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51265986879488
+    m_Key: reload_in_progress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51298178162688
+    m_Key: reload_ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51549240811520
+    m_Key: speed_display
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54242533433344
+    m_Key: settings_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54326704726016
+    m_Key: graphic_quality_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54523547607040
+    m_Key: quality_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54571811463168
+    m_Key: texture_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54587615600640
+    m_Key: cascade_shadows_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54613809029120
+    m_Key: screen_resolution_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54653529088000
+    m_Key: smoothing_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54737457111040
+    m_Key: shadow_resolution_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54908031066112
+    m_Key: antisotropic_filtration_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55015640129536
+    m_Key: graphic_precet_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55569175011328
+    m_Key: efficiency_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55656655609856
+    m_Key: level_of_detail_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55858259025920
+    m_Key: power_of_shadows
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56626840068096
+    m_Key: shadow_range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55981353459712
+    m_Key: v_sync_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56886601703424
+    m_Key: post_effects_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57000103763968
+    m_Key: glare_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57138368995328
+    m_Key: depth_of_field
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57542867673088
+    m_Key: color_correction_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57884237881344
+    m_Key: motion_blur_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57953041244160
+    m_Key: vignette_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58029260136448
+    m_Key: ambient_shading_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58139821989888
+    m_Key: fog_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58623496544256
+    m_Key: fog_density_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59726107762688
+    m_Key: fullscreen_text
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2896097655336993163
+  references:
+    version: 2
+    RefIds:
+    - rid: 2896097655336993163
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1763899327335

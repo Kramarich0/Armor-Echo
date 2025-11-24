@@ -1,0 +1,251 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: GameStrings_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 62387acf809e2dc4e863a007d737d832, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 34404818944
+    m_Localized: Start single
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8779784511488
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8869932687360
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8977327841280
+    m_Localized: Main menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13591615889408
+    m_Localized: Choose level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25099385167872
+    m_Localized: ???
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21503612542976
+    m_Localized: IVAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21380794933248
+    m_Localized: The abandoned village
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21519706087424
+    m_Localized: IVAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21520335233024
+    m_Localized: IVAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21520876298240
+    m_Localized: IVAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21521455112192
+    m_Localized: IVAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21597149716480
+    m_Localized: IVAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21597745307648
+    m_Localized: IVAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23660545957888
+    m_Localized: '{0} points'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35365657239552
+    m_Localized: 'Score: {0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35629499932672
+    m_Localized: <color=green> Victory!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36372290199552
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36661239996416
+    m_Localized: Next level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36829205094400
+    m_Localized: Back to main menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37609681182720
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37684918607872
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39154669838336
+    m_Localized: <color=red> Defeat!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44859338514432
+    m_Localized: Ally
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44902212689920
+    m_Localized: Enemy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44935150559232
+    m_Localized: (You)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44973650075648
+    m_Localized: '{0} {1} destroyed {2}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45032848482304
+    m_Localized: '{0} destroyed'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45065643745280
+    m_Localized: '{0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51265986879488
+    m_Localized: <color=red> Reloading... {0}s
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51298178162688
+    m_Localized: <color=green> Ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51549240811520
+    m_Localized: '{0} km/h'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54242533433344
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54326704726016
+    m_Localized: Graphic / Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54523547607040
+    m_Localized: Graphics quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54571811463168
+    m_Localized: Texture quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54587615600640
+    m_Localized: Cascades of shadows
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54613809029120
+    m_Localized: Screen resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54653529088000
+    m_Localized: Smoothing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54737457111040
+    m_Localized: Shadow resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54908031066112
+    m_Localized: Antisotropic filtration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55015640129536
+    m_Localized: General graphics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55569175011328
+    m_Localized: Efficiency
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55656655609856
+    m_Localized: Level of detail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55858259025920
+    m_Localized: Power of shadows
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55981353459712
+    m_Localized: V-sync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56626840068096
+    m_Localized: Shadow range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56886601703424
+    m_Localized: Post-effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57000103763968
+    m_Localized: Glare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57138368995328
+    m_Localized: Depth of field
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57542867673088
+    m_Localized: Color correction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57884237881344
+    m_Localized: Motion blur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57953041244160
+    m_Localized: Vignette
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58029260136448
+    m_Localized: Ambient shading
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58139821989888
+    m_Localized: Fog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 58623496544256
+    m_Localized: Fog density
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59726107762688
+    m_Localized: Full Screen
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Localization.Components;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -29,7 +30,6 @@ public class LevelSelectManager : MonoBehaviour
     public RectTransform gridParent;
 
     private GameObject[] levelCards;
-
     private void Start()
     {
         if (levelSelectCanvas == null || levelCardPrefab == null)
@@ -59,165 +59,150 @@ public class LevelSelectManager : MonoBehaviour
                 clickHandler = card.AddComponent<LevelCardClick>();
             clickHandler.level = i + 1;
             clickHandler.manager = this;
+
+            UpdateSingleLevelCard(card, i + 1, i);
         }
-
-        StartCoroutine(DelayedUpdate());
-    }
-
-    private IEnumerator DelayedUpdate()
-    {
-        yield return new WaitForEndOfFrame();
-        UpdateLevelCards();
 
         if (loadingScreen != null)
             loadingScreen.SetActive(false);
     }
 
-    private void UpdateLevelCards()
+    private void UpdateSingleLevelCard(GameObject card, int level, int index)
     {
-        for (int i = 0; i < levelCards.Length; i++)
+        var images = card.GetComponentsInChildren<Image>(true);
+        TextMeshProUGUI levelName = null;
+        TextMeshProUGUI scoreText = null;
+
+        foreach (var img in images)
         {
-            int level = i + 1;
-            GameObject card = levelCards[i];
-            var images = card.GetComponentsInChildren<Image>(true);
-
-            foreach (var img in images)
+            if (img.name.ToLower().Contains("thumbnail"))
             {
-                if (img.name.ToLower().Contains("thumbnail"))
-                {
-                    img.sprite = IsLevelUnlocked(level) ? GetLevelThumbnail(level) : placeholderSprite;
-                    break;
-                }
+                img.sprite = IsLevelUnlocked(level) ? GetLevelThumbnail(level) : placeholderSprite;
+                break;
             }
+        }
 
-            TextMeshProUGUI levelName = null;
-            TextMeshProUGUI scoreText = null;
+        var texts = card.GetComponentsInChildren<TextMeshProUGUI>(true);
+        foreach (var text in texts)
+        {
+            string n = text.name.ToLower();
+            if (n.Contains("name")) levelName = text;
+            else if (n.Contains("score")) scoreText = text;
+        }
 
-            var texts = card.GetComponentsInChildren<TextMeshProUGUI>(true);
-            foreach (var text in texts)
+        Image checkmark = null;
+        foreach (var img in images)
+        {
+            if (img.name.ToLower().Contains("check"))
             {
-                string n = text.name.ToLower();
-                if (n.Contains("name")) levelName = text;
-                else if (n.Contains("score")) scoreText = text;
+                checkmark = img;
+                break;
             }
+        }
 
-            Image checkmark = null;
-            foreach (var img in images)
+        bool unlocked = IsLevelUnlocked(level);
+        bool completed = IsLevelCompleted(level);
+
+        if (levelName != null)
+        {
+            string entryKey = unlocked && levelNames != null && index < levelNames.Length
+                ? levelNames[index]
+                : "level_card_locked";
+            var lseName = levelName.GetComponent<LocalizeStringEvent>();
+            LocalizationHelper.SetLocalizedText(lseName, entryKey);
+        }
+
+        if (checkmark != null)
+            checkmark.gameObject.SetActive(completed);
+
+        if (unlocked && completed)
+        {
+            int stars = PlayerPrefs.GetInt($"Level{level}_Stars", 0);
+            stars = Mathf.Clamp(stars, 0, 3);
+            int totalStarsToShow = 3;
+
+            Transform starsContainer = FindChildByName(card, "Stars");
+            if (starsContainer == null)
             {
-                if (img.name.ToLower().Contains("check"))
-                {
-                    checkmark = img;
-                    break;
-                }
-            }
-
-            bool unlocked = IsLevelUnlocked(level);
-            bool completed = IsLevelCompleted(level);
-
-            if (levelName != null)
-                levelName.text = (levelNames != null && i < levelNames.Length) ? levelNames[i] : $"???";
-
-            if (checkmark != null)
-                checkmark.gameObject.SetActive(completed);
-
-            if (unlocked && completed)
-            {
-                int stars = PlayerPrefs.GetInt($"Level{level}_Stars", 0);
-                stars = Mathf.Clamp(stars, 0, 3);
-                int totalStarsToShow = 3;
-
-                Debug.Log($"--- Level {level} ---");
-                Debug.Log($"Stars from PlayerPrefs: {stars}");
-
-                Transform starsContainer = null;
-                var cardImages = card.GetComponentsInChildren<Transform>(true);
-                foreach (var t in cardImages)
-                {
-                    if (t.name == "Stars")
-                    {
-                        starsContainer = t;
-                        break;
-                    }
-                }
-
-                if (starsContainer == null)
-                {
-                    Debug.LogError($"Карточка уровня {level}: Не найден контейнер 'Stars' по всему дереву!");
-                    if (scoreText != null) scoreText.text = "";
-                    continue;
-                }
-                Transform templateStarsContainer = null;
-                var prefabImages = levelCardPrefab.GetComponentsInChildren<Transform>(true);
-                foreach (var t in prefabImages)
-                {
-                    if (t.name == "Stars")
-                    {
-                        templateStarsContainer = t;
-                        break;
-                    }
-                }
-
-                if (templateStarsContainer == null)
-                {
-                    Debug.LogError($"Шаблон {levelCardPrefab.name}: Не найден контейнер 'Stars' по всему дереву!");
-                    if (scoreText != null) scoreText.text = "";
-                    continue;
-                }
-                var templateStarImages = templateStarsContainer.GetComponentsInChildren<Image>(true);
-                if (templateStarImages.Length < 2)
-                {
-                    Debug.LogError($"Шаблон {levelCardPrefab.name}: В контейнере 'Stars' найдено {templateStarImages.Length} Image компонентов (нужно минимум 2)!");
-                    if (scoreText != null) scoreText.text = "";
-                    continue;
-                }
-
-                Sprite templateFilledSprite = templateStarImages[0].sprite;
-                Sprite templateEmptySprite = templateStarImages[1].sprite;
-
-                Debug.Log($"Шаблон {levelCardPrefab.name}: Filled sprite name = '{templateFilledSprite?.name}', Empty sprite name = '{templateEmptySprite?.name}'");
-
-                for (int c = starsContainer.childCount - 1; c >= 0; c--)
-                {
-                    DestroyImmediate(starsContainer.GetChild(c).gameObject);
-                }
-
-                for (int s = 0; s < totalStarsToShow; s++)
-                {
-                    GameObject starObj = new($"Star_{s}", typeof(Image));
-                    Image starImage = starObj.GetComponent<Image>();
-                    starImage.transform.SetParent(starsContainer, false);
-
-                    bool isFilled = s < stars;
-                    starImage.sprite = isFilled ? templateFilledSprite : templateEmptySprite;
-
-                    Debug.Log($"Level {level}, Star {s}: isFilled={isFilled}, spriteName={(isFilled ? templateFilledSprite?.name : templateEmptySprite?.name)}");
-
-                    starImage.rectTransform.sizeDelta = new Vector2(32, 32);
-                    starImage.rectTransform.anchorMin = new Vector2(0, 0.5f);
-                    starImage.rectTransform.anchorMax = new Vector2(0, 0.5f);
-                    starImage.rectTransform.pivot = new Vector2(0.5f, 0.5f);
-                }
-
-                int score = PlayerPrefs.GetInt($"Level{level}_Score", 0);
-                if (scoreText != null) scoreText.text = $"{score} очков";
-            }
-            else
-            {
-                Transform starsContainer;
-                var cardImages = card.GetComponentsInChildren<Transform>(true);
-                foreach (var t in cardImages)
-                {
-                    if (t.name == "Stars")
-                    {
-                        starsContainer = t;
-                        break;
-                    }
-                }
-
+                Debug.LogError($"Карточка уровня {level}: Не найден контейнер 'Stars' по всему дереву!");
                 if (scoreText != null) scoreText.text = "";
+                return;
+            }
+
+            Transform templateStarsContainer = FindChildByName(levelCardPrefab, "Stars");
+            if (templateStarsContainer == null)
+            {
+                Debug.LogError($"Шаблон {levelCardPrefab.name}: Не найден контейнер 'Stars' по всему дереву!");
+                if (scoreText != null) scoreText.text = "";
+                return;
+            }
+
+            var templateStarImages = templateStarsContainer.GetComponentsInChildren<Image>(true);
+            if (templateStarImages.Length < 2)
+            {
+                Debug.LogError($"Шаблон {levelCardPrefab.name}: В контейнере 'Stars' найдено {templateStarImages.Length} Image компонентов (нужно минимум 2)!");
+                if (scoreText != null) scoreText.text = "";
+                return;
+            }
+
+            Sprite templateFilledSprite = templateStarImages[0].sprite;
+            Sprite templateEmptySprite = templateStarImages[1].sprite;
+
+            for (int c = starsContainer.childCount - 1; c >= 0; c--)
+                DestroyImmediate(starsContainer.GetChild(c).gameObject);
+
+            for (int s = 0; s < totalStarsToShow; s++)
+            {
+                GameObject starObj = new($"Star_{s}", typeof(Image));
+                Image starImage = starObj.GetComponent<Image>();
+                starImage.transform.SetParent(starsContainer, false);
+
+                bool isFilled = s < stars;
+                starImage.sprite = isFilled ? templateFilledSprite : templateEmptySprite;
+
+            }
+
+            int score = PlayerPrefs.GetInt($"Level{level}_Score", 0);
+            if (scoreText != null)
+            {
+                var lseScore = scoreText.GetComponent<LocalizeStringEvent>();
+                LocalizationHelper.SetLocalizedText(lseScore, "level_card_score", score);
+            }
+        }
+        else
+        {
+            Transform starsContainer = FindChildByName(card, "Stars");
+            if (starsContainer != null)
+            {
+                for (int c = starsContainer.childCount - 1; c >= 0; c--)
+                    DestroyImmediate(starsContainer.GetChild(c).gameObject);
+            }
+
+            if (scoreText != null)
+            {
+                var lseScore = scoreText.GetComponent<LocalizeStringEvent>();
+                if (lseScore != null)
+                {
+                    lseScore.enabled = false;
+                }
+
+                scoreText.text = "";
             }
         }
     }
+
+    private Transform FindChildByName(GameObject parent, string name)
+    {
+        Transform[] transforms = parent.GetComponentsInChildren<Transform>(true);
+        foreach (Transform t in transforms)
+        {
+            if (t.name == name)
+                return t;
+        }
+        return null;
+    }
+
+
 
     public void PlayLevel(int level)
     {
@@ -250,8 +235,11 @@ public class LevelSelectManager : MonoBehaviour
 
             if (loadingText != null)
             {
-                int dots = Mathf.FloorToInt(Time.time % 3) + 1;
-                loadingText.text = "Загрузка" + new string('.', dots);
+                if (loadingText.TryGetComponent<LocalizeStringEvent>(out var lse))
+                {
+                    int dots = Mathf.FloorToInt(Time.time % 3) + 1;
+                    LocalizationHelper.SetLocalizedText(lse, "loading_text", dots);
+                }
             }
 
             if (displayedProgress >= 0.99f && timer >= minDisplayTime)
@@ -265,6 +253,17 @@ public class LevelSelectManager : MonoBehaviour
         }
     }
 
+    private void HandleLanguageChanged(string languageCode)
+    {
+        if (levelCards != null)
+        {
+            for (int i = 0; i < levelCards.Length; i++)
+            {
+                UpdateSingleLevelCard(levelCards[i], i + 1, i);
+            }
+        }
+    }
+
     public bool IsLevelUnlocked(int level) => level == 1 || PlayerPrefs.GetInt($"Level{level}_Unlocked", 0) == 1;
     private bool IsLevelCompleted(int level) => PlayerPrefs.GetInt($"Level{level}_Completed", 0) == 1;
 
@@ -275,7 +274,7 @@ public class LevelSelectManager : MonoBehaviour
         return placeholderSprite;
     }
 
-    public void BackToMainMenu() => SceneManager.LoadScene("MainMenu");
+    public void BackToMainMenu() => SceneManager.LoadScene(SceneNames.MainMenu);
 }
 
 public class LevelCardClick : MonoBehaviour, IPointerClickHandler

@@ -24,6 +24,7 @@ public class CapturePoint : MonoBehaviour
     public TeamEnum startingTeam = TeamEnum.Neutral;
 
     private TeamEnum controllingTeam = TeamEnum.Neutral;
+    public bool debugLogs = false;
 
 
     private float captureProgress = 0f;
@@ -61,7 +62,7 @@ public class CapturePoint : MonoBehaviour
         if (!col.isTrigger)
         {
             col.isTrigger = true;
-            Log.Debug("[CapturePoint] Collider set to Trigger");
+            if (debugLogs) Log.Debug("[CapturePoint] Collider set to Trigger");
         }
     }
 
@@ -74,13 +75,13 @@ public class CapturePoint : MonoBehaviour
         {
             if (presentTankIds[tc.team].Add(tc.tankId))
             {
-                Log.Debug("[CapturePoint] Entered: {TankName} (ID: {TankId}), team={Team}. Count now: {TeamCount}",
-                          tc.displayName ?? tc.gameObject.name, tc.tankId, tc.team, presentTankIds[tc.team].Count);
+                if (debugLogs) Log.Debug("[CapturePoint] Entered: {TankName} (ID: {TankId}), team={Team}. Count now: {TeamCount}",
+                              tc.displayName ?? tc.gameObject.name, tc.tankId, tc.team, presentTankIds[tc.team].Count);
             }
         }
         else
         {
-            Log.Debug("[CapturePoint] Entered by {OtherName}, but no TeamComponent (or Neutral)", other.name);
+            if (debugLogs) Log.Debug("[CapturePoint] Entered by {OtherName}, but no TeamComponent (or Neutral)", other.name);
         }
     }
 
@@ -93,8 +94,8 @@ public class CapturePoint : MonoBehaviour
         {
             if (presentTankIds[tc.team].Remove(tc.tankId))
             {
-                Log.Debug("[CapturePoint] Exited: {TankName} (ID: {TankId}), team={Team}. Count now: {TeamCount}",
-                          tc.displayName ?? tc.gameObject.name, tc.tankId, tc.team, presentTankIds[tc.team].Count);
+                if (debugLogs) Log.Debug("[CapturePoint] Exited: {TankName} (ID: {TankId}), team={Team}. Count now: {TeamCount}",
+                              tc.displayName ?? tc.gameObject.name, tc.tankId, tc.team, presentTankIds[tc.team].Count);
             }
         }
     }
@@ -203,7 +204,7 @@ public class CapturePoint : MonoBehaviour
             StopCoroutine(ticketCoroutine);
             ticketCoroutine = null;
         }
-        Log.Debug("[CapturePoint] Owner lost (progress {CaptureProgress}). Control removed.", captureProgress);
+        if (debugLogs) Log.Debug("[CapturePoint] Owner lost (progress {CaptureProgress}). Control removed.", captureProgress);
         controllingTeam = TeamEnum.Neutral;
     }
 
@@ -250,7 +251,7 @@ public class CapturePoint : MonoBehaviour
             if (!fullyCaptured)
             {
 
-                Log.Debug("[CapturePoint] TicketDrain: ownership no longer full — stopping drain.");
+                if (debugLogs) Log.Debug("[CapturePoint] TicketDrain: ownership no longer full — stopping drain.");
                 yield break;
             }
 
@@ -258,7 +259,7 @@ public class CapturePoint : MonoBehaviour
             if (GameManager.Instance != null)
             {
                 GameManager.Instance.DrainTickets(enemyTeam, ticketsPerInterval);
-                Log.Debug("[CapturePoint] Ticket drained from {EnemyTeam} by {TicketsPerInterval}", enemyTeam, ticketsPerInterval);
+                if (debugLogs) Log.Debug("[CapturePoint] Ticket drained from {EnemyTeam} by {TicketsPerInterval}", enemyTeam, ticketsPerInterval);
             }
         }
     }
@@ -277,11 +278,11 @@ public class CapturePoint : MonoBehaviour
         {
             if (presentTankIds[tc.team].Remove(tc.tankId))
             {
-                Log.Debug("[CapturePoint] Removed tank ID: {TankId}, team={Team}", tc.tankId, tc.team);
+                if (debugLogs) Log.Debug("[CapturePoint] Removed tank ID: {TankId}, team={Team}", tc.tankId, tc.team);
             }
             else
             {
-                Log.Debug("[CapturePoint] Tank with ID {TankId} not found in removal list", tc.tankId);
+                if (debugLogs) Log.Debug("[CapturePoint] Tank with ID {TankId} not found in removal list", tc.tankId);
             }
         }
     }

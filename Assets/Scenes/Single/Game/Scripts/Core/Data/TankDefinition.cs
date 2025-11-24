@@ -12,13 +12,8 @@ public class TankDefinition : ScriptableObject
     public float moveSpeed = 5f;
     public float rotationSpeed = 50f;
 
-    [Header("Combat Stats")]
-    public float fireRate = 1f;
-    public int minGunAngle = -10;
-    public int maxGunAngle = 10;
-    public float shootRange = 100f;
-    public float projectileSpeed = 80f;
-    public bool bulletUseGravity = true;
+    [Header("Combat")]
+    public GunDefinition primaryGun;
 
     [Header("AI Behavior")]
     public float detectionRadius = 50f;
@@ -53,10 +48,10 @@ public class TankDefinition : ScriptableObject
     [Header("Audio Clips")]
     public AudioClip idleSound;
     public AudioClip driveSound;
-    public AudioClip shootSound;
 
     [Header("Visual")]
     public Sprite icon;
     [TextArea(3, 5)]
     public string description;
+    
 }

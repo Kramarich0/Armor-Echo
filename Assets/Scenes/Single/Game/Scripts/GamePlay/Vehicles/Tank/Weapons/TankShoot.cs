@@ -242,7 +242,6 @@ public class TankShoot : MonoBehaviour
             muzzle = gun.GetMuzzleVelocity(CurrentBullet.definition); 
         }
 
-
         Vector3 spawnVelocity = gunEnd.forward * muzzle;
 
         CurrentBullet.pool.SpawnBullet(

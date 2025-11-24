@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Pzgr 39
   m_EditorClassIdentifier: Assembly-CSharp::BulletDefinition
   type: 2
+  bulletName: Pzgr 39
   caliber: 88
+  massKg: 10.2
   damage: 100
   penetration: 165
-  speed: 773
   useGravity: 1
   ballisticK: 0.0005
   deMarreK: 1.3

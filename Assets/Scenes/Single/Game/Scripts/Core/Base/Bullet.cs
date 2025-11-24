@@ -349,7 +349,7 @@ public class Bullet : MonoBehaviour
 
                 if (bulletDef.type == BulletType.HE)
                 {
-                    TryApplySplashDamageOptimized(contactPoint, bulletDef);
+                    TryApplySplashDamage(contactPoint, bulletDef);
                 }
 
                 ReturnToPool();
@@ -562,7 +562,7 @@ public class Bullet : MonoBehaviour
     }
 
 
-    private void TryApplySplashDamageOptimized(Vector3 center, BulletDefinition def)
+    private void TryApplySplashDamage(Vector3 center, BulletDefinition def)
     {
         float radius = def.splashRadius;
         if (radius <= 0f) return;
@@ -584,7 +584,9 @@ public class Bullet : MonoBehaviour
 
     private float ComputeSpeed(float distance)
     {
-        float v = initialMuzzleSpeed * Mathf.Exp(-bulletDef.ballisticK * distance);
+        float massFactor = 1f / Mathf.Sqrt(Mathf.Max(bulletDef.massKg, 0.01f));
+        float v = initialMuzzleSpeed * Mathf.Exp(-bulletDef.ballisticK * distance * massFactor);
+
         return Mathf.Max(bulletDef.minSpeed, v);
     }
 
@@ -592,16 +594,18 @@ public class Bullet : MonoBehaviour
     {
         if (def == null) return 0f;
 
-        if (def.type == BulletType.HE)
+        if (def.type == BulletType.HE || def.type == BulletType.HEAT)
             return def.penetration;
 
         float v0 = initialMuzzleSpeed > 0f ? initialMuzzleSpeed : 0f;
         float vDist = ComputeSpeed(travelledDistance);
-        float ratio = Mathf.Clamp01(vDist / Mathf.Max(0.0001f, v0));
-        float pen = def.penetration * Mathf.Pow(ratio, def.deMarreK);
+
+        float keRatio = (0.5f * def.massKg * vDist * vDist) / Mathf.Max(0.0001f, 0.5f * def.massKg * v0 * v0);
+        float pen = def.penetration * Mathf.Pow(Mathf.Clamp01(keRatio), def.deMarreK);
 
         return Mathf.Max(def.minPenetration, pen);
     }
+
 
     public void CleanupBeforeSpawn()
     {
@@ -664,21 +668,19 @@ public class Bullet : MonoBehaviour
         if (visualPrefab != null)
         {
             currentVisual = Instantiate(visualPrefab, transform);
-            currentVisual.transform.localPosition = Vector3.zero;
-            currentVisual.transform.localRotation = Quaternion.identity;
+            currentVisual.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         }
     }
 
     void OnEnable()
     {
-        if (TryGetComponent<Collider>(out var c)) Bullet.ClearColliderCache(c);
+        if (TryGetComponent<Collider>(out var c)) ClearColliderCache(c);
     }
 
     void OnDisable()
     {
-        if (TryGetComponent<Collider>(out var c)) Bullet.ClearColliderCache(c);
+        if (TryGetComponent<Collider>(out var c)) ClearColliderCache(c);
     }
-
 
     public void SetPool(ObjectPool<Bullet> pool)
     {

@@ -10,6 +10,8 @@ public class BulletDefinition : ScriptableObject
 
     [Tooltip("Калибр снаряда в мм (влияет на оверматч и поведение брони).")]
     public int caliber = 76;
+    [Tooltip("Масса снаряда в килограммах.")]
+    public float massKg = 6.8f;
 
     [Tooltip("Базовый урон при пробитии.")]
     public int damage = 40;

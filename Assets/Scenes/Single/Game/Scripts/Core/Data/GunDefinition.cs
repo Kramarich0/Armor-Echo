@@ -7,8 +7,10 @@ public class GunDefinition : ScriptableObject
 {
     [Header("Основные параметры")]
     public string gunName = "Unnamed gun";
-    public int caliber = 76;
-    public float fireRate = 1f;
+    public float caliber = 76;
+    [Tooltip("Время между выстрелами в секундах")]
+    public float fireInterval = 1f;
+    public float FireRate => 1f / Mathf.Max(0.0001f, fireInterval); public float liftSpeed = 1f;
     public int minGunAngle = -10;
     public int maxGunAngle = 10;
     public float shootRange = 100f;
@@ -16,6 +18,7 @@ public class GunDefinition : ScriptableObject
 
     [Header("Аудио")]
     public AudioClip shootSound;
+    public AudioClip reloadSound;
 
     [Header("Снаряды и их скорости")]
     public BulletSlotDefinition[] bullets;
@@ -27,7 +30,7 @@ public class GunDefinition : ScriptableObject
         [Tooltip("Начальная скорость этого снаряда для данной пушки")]
         public float muzzleVelocity;
     }
-    
+
     public bool debugLogs = false;
 
     public float GetMuzzleVelocity(BulletDefinition bullet)

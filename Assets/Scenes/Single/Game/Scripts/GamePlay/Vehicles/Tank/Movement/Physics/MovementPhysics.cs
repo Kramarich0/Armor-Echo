@@ -2,61 +2,80 @@ using UnityEngine;
 
 public class MovementPhysics
 {
-    readonly TankMovement owner;
+    readonly Tank owner;
     readonly MovementContext ctx;
 
-    public MovementPhysics(TankMovement owner, MovementContext ctx) { this.owner = owner; this.ctx = ctx; }
+    public MovementPhysics(Tank owner, MovementContext ctx)
+    {
+        this.owner = owner;
+        this.ctx = ctx;
+    }
 
     public void HandleMovementPhysics(float moveInput, float turnInput)
     {
         if (owner.rb == null) return;
 
-        float currentForwardSpeed = Vector3.Dot(owner.rb.linearVelocity, owner.transform.forward);
-        float absForwardSpeed = Mathf.Abs(currentForwardSpeed);
+        Rigidbody rb = owner.rb;
 
-        if (absForwardSpeed > owner.movingThreshold && moveInput != 0f && Mathf.Sign(currentForwardSpeed) != Mathf.Sign(moveInput) && ctx.reverseLockTimer <= 0f)
+        float forwardSpeed = Vector3.Dot(rb.linearVelocity, owner.transform.forward);
+        float absSpeed = Mathf.Abs(forwardSpeed);
+
+        if (absSpeed > owner.MovingThreshold &&
+            moveInput != 0 &&
+            Mathf.Sign(forwardSpeed) != Mathf.Sign(moveInput) &&
+            ctx.reverseLockTimer <= 0)
         {
-            ctx.reverseLockTimer = owner.reverseLockDuration;
+            ctx.reverseLockTimer = owner.ReverseLockDuration;
         }
 
-        float desiredBrake = 0f;
+        float brakeTorque = 0f;
+
         if (ctx.reverseLockTimer > 0f)
         {
-            desiredBrake = owner.maxBrakeTorque;
-            owner.leftTrack?.ApplyTorque(0f, desiredBrake);
-            owner.rightTrack?.ApplyTorque(0f, desiredBrake);
+            brakeTorque = owner.MaxBrakeTorque;
+            owner.leftTrack?.ApplyTorque(0f, brakeTorque);
+            owner.rightTrack?.ApplyTorque(0f, brakeTorque);
             return;
         }
 
-        float speedFactor = Mathf.Clamp01(absForwardSpeed / owner.maxForwardSpeed);
-        float lowSpeedBoost = 1f + (1f - speedFactor) * 2.0f;
-        float effectiveTurnSharpness = owner.turnSharpness * lowSpeedBoost;
+        float speed01 = Mathf.Clamp01(absSpeed / owner.MaxForwardSpeed);
+        float lowSpeedTurnBoost = 1f + (1f - speed01) * 1.5f;
 
-        float leftPower = Mathf.Clamp(moveInput + turnInput * effectiveTurnSharpness, -1f, 1f);
-        float rightPower = Mathf.Clamp(moveInput - turnInput * effectiveTurnSharpness, -1f, 1f);
+        float turn = turnInput * owner.TurnSharpness * lowSpeedTurnBoost;
 
-        bool wantsReverse = Mathf.Sign(moveInput) != Mathf.Sign(currentForwardSpeed);
-        if (absForwardSpeed > 0.5f && wantsReverse)
+        float leftPower = Mathf.Clamp(moveInput + turn, -1f, 1f);
+        float rightPower = Mathf.Clamp(moveInput - turn, -1f, 1f);
+
+        bool changingDirection = Mathf.Sign(moveInput) != Mathf.Sign(forwardSpeed);
+
+        if (absSpeed > 0.5f && changingDirection)
         {
-            float speedRatio = Mathf.InverseLerp(0.5f, owner.maxForwardSpeed, absForwardSpeed);
-            desiredBrake = Mathf.Lerp(owner.maxBrakeTorque * 0.2f, owner.maxBrakeTorque, speedRatio);
-            leftPower *= 0.2f;
-            rightPower *= 0.2f;
+            float ratio = Mathf.InverseLerp(0.5f, owner.MaxForwardSpeed, absSpeed);
+            brakeTorque = Mathf.Lerp(owner.MaxBrakeTorque * 0.2f, owner.MaxBrakeTorque, ratio);
+
+            leftPower *= 0.25f;
+            rightPower *= 0.25f;
         }
 
-        float currentMaxSpeed = currentForwardSpeed > 0f ? owner.maxForwardSpeed : owner.maxBackwardSpeed;
-        float speedLimitFactor = 1f;
-        if (absForwardSpeed > currentMaxSpeed * 0.8f)
+        float leftMotorForce = leftPower * owner.MaxMotorTorque * ctx.enginePower;
+        float rightMotorForce = rightPower * owner.MaxMotorTorque * ctx.enginePower;
+
+        owner.leftTrack?.ApplyTorque(leftMotorForce, brakeTorque);
+        owner.rightTrack?.ApplyTorque(rightMotorForce, brakeTorque);
+
+        Vector3 vel = rb.linearVelocity;
+        float fwd = Vector3.Dot(vel, owner.transform.forward);
+
+        float maxAllowed = fwd >= 0 ? owner.MaxForwardSpeed : owner.MaxBackwardSpeed;
+
+        if (Mathf.Abs(fwd) > maxAllowed)
         {
-            speedLimitFactor = Mathf.InverseLerp(currentMaxSpeed, currentMaxSpeed * 0.8f, absForwardSpeed);
-            speedLimitFactor = Mathf.Clamp01(speedLimitFactor);
+            float clamped = Mathf.Clamp(fwd, -owner.MaxBackwardSpeed, owner.MaxForwardSpeed);
+
+            Vector3 forwardPart = owner.transform.forward * clamped;
+            Vector3 sidewaysPart = Vector3.Project(vel, owner.transform.right);
+
+            rb.linearVelocity = forwardPart + sidewaysPart;
         }
-
-        float reverseFactor = 0.6f;
-        float leftMotor = leftPower * owner.maxMotorTorque * speedLimitFactor * ctx.enginePower * (leftPower < 0f ? reverseFactor : 1f);
-        float rightMotor = rightPower * owner.maxMotorTorque * speedLimitFactor * ctx.enginePower * (rightPower < 0f ? reverseFactor : 1f);
-
-        owner.leftTrack?.ApplyTorque(leftMotor, desiredBrake);
-        owner.rightTrack?.ApplyTorque(rightMotor, desiredBrake);
     }
 }

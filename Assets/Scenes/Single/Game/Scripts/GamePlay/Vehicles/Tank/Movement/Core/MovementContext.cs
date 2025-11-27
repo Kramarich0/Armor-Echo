@@ -16,7 +16,6 @@ public class MovementContext
     public float rawTurnSmoothed = 0f;
     public float moveVelocity = 0f;
     public float turnVelocity = 0f;
-
     public AudioSource idleSource;
     public AudioSource driveSource;
     public float reverseLockTimer = 0f;

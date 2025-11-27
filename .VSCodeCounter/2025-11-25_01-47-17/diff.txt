@@ -1,0 +1,88 @@
+Date : 2025-11-25 01:47:17
+Directory : c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts
+Total : 37 files,  201 codes, -2 comments, 60 blanks, all 259 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C#       |         37 |        201 |         -2 |         60 |        259 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                      | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                         |         37 |        201 |         -2 |         60 |        259 |
+| Core                                                                                                                      |         15 |         87 |         -3 |         27 |        111 |
+| Core\Base                                                                                                                 |         10 |         45 |         -3 |         21 |         63 |
+| Core\Base (Files)                                                                                                         |          5 |       -597 |         -3 |       -154 |       -754 |
+| Core\Base\Bullet                                                                                                          |          5 |        642 |          0 |        175 |        817 |
+| Core\Data                                                                                                                 |          3 |         24 |          0 |          4 |         28 |
+| Core\Enums                                                                                                                |          2 |         18 |          0 |          2 |         20 |
+| GamePlay                                                                                                                  |         18 |        111 |          1 |         32 |        144 |
+| GamePlay\AI                                                                                                               |          4 |          8 |          0 |         -1 |          7 |
+| GamePlay\AI (Files)                                                                                                       |          1 |          0 |          0 |         -1 |         -1 |
+| GamePlay\AI\Components                                                                                                    |          2 |          3 |          0 |          0 |          3 |
+| GamePlay\AI\Core                                                                                                          |          1 |          5 |          0 |          0 |          5 |
+| GamePlay\CaptureSystem                                                                                                    |          1 |          1 |          0 |          0 |          1 |
+| GamePlay\Vehicles                                                                                                         |         13 |        102 |          1 |         33 |        136 |
+| GamePlay\Vehicles\Tank                                                                                                    |         13 |        102 |          1 |         33 |        136 |
+| GamePlay\Vehicles\Tank\Audio                                                                                              |          1 |         43 |          1 |         11 |         55 |
+| GamePlay\Vehicles\Tank\Movement                                                                                           |          7 |         59 |          0 |         14 |         73 |
+| GamePlay\Vehicles\Tank\Movement (Files)                                                                                   |          1 |          3 |          0 |          0 |          3 |
+| GamePlay\Vehicles\Tank\Movement\Core                                                                                      |          3 |         45 |          0 |          7 |         52 |
+| GamePlay\Vehicles\Tank\Movement\Input                                                                                     |          1 |          0 |          0 |         -2 |         -2 |
+| GamePlay\Vehicles\Tank\Movement\Physics                                                                                   |          1 |         10 |          0 |          9 |         19 |
+| GamePlay\Vehicles\Tank\Movement\Tracks                                                                                    |          1 |          1 |          0 |          0 |          1 |
+| GamePlay\Vehicles\Tank\Turret                                                                                             |          4 |          0 |          0 |          9 |          9 |
+| GamePlay\Vehicles\Tank\Weapons                                                                                            |          1 |          0 |          0 |         -1 |         -1 |
+| Managers                                                                                                                  |          2 |          2 |          0 |          0 |          2 |
+| Networking                                                                                                                |          1 |          0 |          0 |          1 |          1 |
+| UI                                                                                                                        |          1 |          1 |          0 |          0 |          1 |
+| UI\Displays                                                                                                               |          1 |          1 |          0 |          0 |          1 |
++---------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                                  | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Base\ArmorProfile.cs                                     | C#       |          3 |          0 |         -2 |          1 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Base\Bullet.cs                                           | C#       |       -546 |         -3 |       -140 |       -689 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Base\BulletPool.cs                                       | C#       |        -56 |          0 |        -13 |        -69 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Base\Bullet\Ballistics.cs                                | C#       |        156 |          0 |         31 |        187 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Base\Bullet\Bullet.cs                                    | C#       |        322 |          0 |         90 |        412 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Base\Bullet\BulletPool.cs                                | C#       |         57 |          0 |         13 |         70 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Base\Bullet\ColliderCache.cs                             | C#       |        102 |          0 |         40 |        142 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Base\Bullet\ColliderCacheHelper.cs                       | C#       |          5 |          0 |          1 |          6 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Base\PlayerTankHealth.cs                                 | C#       |          0 |          0 |          1 |          1 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Base\TankCollisionDamage.cs                              | C#       |          2 |          0 |          0 |          2 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Data\BulletDefinition.cs                                 | C#       |          5 |          0 |         -3 |          2 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Data\GunDefinition.cs                                    | C#       |         15 |          0 |          5 |         20 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Data\TankDefinition.cs                                   | C#       |          4 |          0 |          2 |          6 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Enums\ArmorType.cs                                       | C#       |          9 |          0 |          1 |         10 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Core\Enums\NoseType.cs                                        | C#       |          9 |          0 |          1 |         10 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\AI\Components\AiCombat.cs                            | C#       |          3 |          0 |          1 |          4 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\AI\Components\AiPerception.cs                        | C#       |          0 |          0 |         -1 |         -1 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\AI\Core\TankAi.cs                                    | C#       |          5 |          0 |          0 |          5 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\AI\TankAiImpl.cs                                     | C#       |          0 |          0 |         -1 |         -1 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\CaptureSystem\CapturePoint.cs                        | C#       |          1 |          0 |          0 |          1 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Audio\TurretAudio.cs                   | C#       |         43 |          1 |         11 |         55 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Movement\Core\Movement.cs              | C#       |        -40 |          0 |         -8 |        -48 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Movement\Core\MovementContext.cs       | C#       |          0 |          0 |         -1 |         -1 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Movement\Core\Tank.cs                  | C#       |         85 |          0 |         16 |        101 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Movement\Input\MovementInputHandler.cs | C#       |          0 |          0 |         -2 |         -2 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Movement\MovementImpl.cs               | C#       |          3 |          0 |          0 |          3 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Movement\Physics\MovementPhysics.cs    | C#       |         10 |          0 |          9 |         19 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Movement\Tracks\TrackController.cs     | C#       |          1 |          0 |          0 |          1 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Turret\TurretAiming.cs                 | C#       |       -121 |          0 |        -28 |       -149 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Turret\TurretAimingImpl.cs             | C#       |         30 |          0 |          9 |         39 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Turret\TurretPitch.cs                  | C#       |         32 |          0 |         11 |         43 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Turret\TurretYaw.cs                    | C#       |         59 |          0 |         17 |         76 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\GamePlay\Vehicles\Tank\Weapons\TankShoot.cs                   | C#       |          0 |          0 |         -1 |         -1 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Managers\GameManager.cs                                       | C#       |          1 |          0 |          0 |          1 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Managers\GameUIManager.cs                                     | C#       |          1 |          0 |          0 |          1 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\Networking\NetworkOwnerInput.cs                               | C#       |          0 |          0 |          1 |          1 |
+| c:\Users\karen\Armor Echo\Assets\Scenes\Single\Game\Scripts\UI\Displays\TicketsDisplay.cs                                 | C#       |          1 |          0 |          0 |          1 |
+| Total                                                                                                                     |          |        201 |         -2 |         60 |        259 |
++---------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

@@ -7,14 +7,15 @@ public class NetworkOwnerInput : NetworkBehaviour
     {
         if (IsSpawned && !IsOwner)
         {
-            if (TryGetComponent<TankMovement>(out var movement))
-                movement.enabled = false;
+            if (TryGetComponent<Tank>(out var tank))
+                tank.SetMovementEnabled(false);
         }
     }
 
     public override void OnNetworkDespawn()
     {
-        if (TryGetComponent<TankMovement>(out var movement))
-            movement.enabled = true;
+        if (TryGetComponent<Tank>(out var tank))
+            tank.SetMovementEnabled(true);
     }
+
 }

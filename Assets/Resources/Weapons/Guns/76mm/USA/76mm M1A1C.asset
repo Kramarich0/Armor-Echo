@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunDefinition
   gunName: 76mm M1A1C
   caliber: 76
-  fireRate: 0.175
+  fireInterval: 6
+  liftSpeed: 10
   minGunAngle: -10
   maxGunAngle: 25
   shootRange: 3000
   bulletUseGravity: 1
   shootSound: {fileID: 8300000, guid: 50d6a0caa7cd2854a95228cb6cca1c9e, type: 3}
+  reloadSound: {fileID: 8300000, guid: 5c7ad3df2bd2224468074329971cf6dc, type: 3}
   bullets:
   - bullet: {fileID: 11400000, guid: 1abe54a865551fb4099f4c94377a1580, type: 2}
     muzzleVelocity: 730

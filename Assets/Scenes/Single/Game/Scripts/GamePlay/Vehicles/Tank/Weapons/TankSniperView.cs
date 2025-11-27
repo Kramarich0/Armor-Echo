@@ -187,11 +187,35 @@ public class TankSniperView : MonoBehaviour
 
         recoilDecay = 1.5f + (1f - zoomCurrent) * 2.5f;
     }
-    
+
     public bool IsSniperActive()
     {
         return isSniperView;
     }
 
+    public void InitializeDynamicReferences()
+    {
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+
+        if (sniperCamera == null)
+            sniperCamera = GameObject.Find("SniperCamera")?.GetComponent<Camera>();
+
+        if (crosshairAimUI == null)
+            crosshairAimUI = GameObject.Find("CrossHair");
+
+        if (crosshairSniperUI == null)
+            crosshairSniperUI = GameObject.Find("CrossHairSniper");
+
+        if (sniperVignette == null)
+            sniperVignette = GameObject.Find("CrossHairVignette");
+
+        if (crosshairAimUI != null && crosshairAimUI.TryGetComponent<CrosshairAim>(out var aim))
+            aim.SetCamera(mainCamera);
+
+        if (crosshairSniperUI != null && crosshairSniperUI.TryGetComponent<CrosshairAim>(out var sniper))
+            sniper.SetCamera(sniperCamera);
+
+    }
 
 }

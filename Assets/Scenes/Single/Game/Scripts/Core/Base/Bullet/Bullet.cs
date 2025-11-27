@@ -62,6 +62,7 @@ public class Bullet : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.useGravity = bulletDef.useGravity;
+        rb.includeLayers = LayerMask.GetMask("Default", "GroundLayer");
 
         col.enabled = false;
     }
@@ -183,12 +184,11 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (isInPool || collision == null) return;
-        if (collision.collider.gameObject == null) return;
+        if (collision.collider?.gameObject == null) return;
 
         if (debugLogs) Log.Debug("[Bullet] Collided with {ColName}", collision.collider.name);
 
         TeamEnum? targetTeam = ColliderCache.GetCachedTeam(collision.collider);
-
         if (targetTeam.HasValue && targetTeam.Value == shooterTeam)
         {
             if (debugLogs) Log.Debug("[Bullet] Hit friendly -> ignore");
@@ -205,90 +205,33 @@ public class Bullet : MonoBehaviour
             : (rb.linearVelocity.sqrMagnitude > MIN_VELOCITY * MIN_VELOCITY ? rb.linearVelocity.normalized : transform.forward);
 
         if (debugLogs) Log.Debug("[Bullet] collision.collider={Col} contactPoint={Point} contactNormal={Normal} rb.velocity={Vel} lastVelocity={Last}",
-                      collision.collider.name,
-                      contactPoint,
-                      contact.normal,
-                      rb.linearVelocity,
-                      lastVelocity);
+                      collision.collider.name, contactPoint, contact.normal, rb.linearVelocity, lastVelocity);
 
         if (armorPlate != null)
         {
             float effectiveArmor = armorPlate.CalculateEffectiveArmor(bulletDirection, bulletDef, out float rawAngle);
+
             float speed = cachedSpeed;
             float penetration = cachedPenetration;
 
-            if (bulletDef.caliber >= armorPlate.thickness * bulletDef.overmatchFactor)
-            {
-                float ratio = bulletDef.caliber / armorPlate.thickness;
-                float overmatchFactor = Mathf.Clamp01((ratio - bulletDef.overmatchFactor) / 2f);
+            var impact = Ballistics.EvaluateImpact(bulletDef, speed, penetration, effectiveArmor, rawAngle, armorPlate.armorType, out float effArmorAfter);
 
-                float kineticFactor = 1f;
-                if (bulletDef.type == BulletType.AP || bulletDef.type == BulletType.HVAP ||
-                    bulletDef.type == BulletType.APHE || bulletDef.type == BulletType.APCR || bulletDef.type == BulletType.APDS)
-                {
-                    float v0 = initialMuzzleSpeed > 0f ? initialMuzzleSpeed : 0f;
-                    kineticFactor = Mathf.Clamp01(speed / Mathf.Max(0.0001f, v0));
-                }
-
-                switch (bulletDef.type)
-                {
-                    case BulletType.AP:
-                    case BulletType.HVAP:
-                        effectiveArmor *= Mathf.Pow(0.6f, overmatchFactor) * kineticFactor;
-                        rawAngle *= Mathf.Pow(0.65f, overmatchFactor);
-                        break;
-
-                    case BulletType.APHE:
-                    case BulletType.APCR:
-                    case BulletType.APDS:
-                        effectiveArmor *= Mathf.Pow(0.7f, overmatchFactor) * kineticFactor;
-                        rawAngle *= Mathf.Pow(0.7f, overmatchFactor);
-
-                        if ((bulletDef.type == BulletType.APCR || bulletDef.type == BulletType.APDS) && rawAngle > 70f)
-                        {
-                            if (Random.value < 0.2f)
-                            {
-                                penetration *= 0.5f;
-                                if (debugLogs) Log.Debug("[Bullet] Sub-caliber broken due to high impact angle");
-                            }
-                        }
-                        break;
-
-                    case BulletType.HEAT:
-                        effectiveArmor *= Mathf.Lerp(1f, 0.85f, overmatchFactor);
-                        rawAngle *= Mathf.Lerp(1f, 0.8f, overmatchFactor);
-                        break;
-
-                    default:
-                        effectiveArmor *= Mathf.Pow(0.75f, overmatchFactor);
-                        rawAngle *= Mathf.Pow(0.75f, overmatchFactor);
-                        break;
-                }
-
-                effectiveArmor = Mathf.Max(effectiveArmor, armorPlate.thickness * 0.25f);
-                rawAngle = Mathf.Clamp(rawAngle, 0f, 90f);
-
-                if (debugLogs) Log.Debug("[Bullet] Realistic Overmatch + speed applied: type={Type} newEffArmor={Eff:F1}mm newAngle={Angle:F1}deg ratio={Ratio:F2} speedFactor={SpeedFactor:F2}",
-                             bulletDef.type, effectiveArmor, rawAngle, ratio, kineticFactor);
-            }
-
-            if (debugLogs) Log.Debug("[Bullet] Computed: speed={Speed:F1}m/s pen={Pen:F1}mm effArmor={Eff:F1}mm rawAngle={Angle:F1}deg",
-                          speed, penetration, effectiveArmor, rawAngle);
-
-            if (!bulletDef.ignoreAngle && rawAngle > bulletDef.ricochetAngle)
+            if (impact.causedRicochet && !bulletDef.ignoreAngle)
             {
                 if (ricochetCount < maxRicochets)
                 {
                     ricochetCount++;
                     Vector3 contactNormal = armorPlate.GetSmartWorldNormal(contactPoint);
                     Vector3 reflectDir = Vector3.Reflect(bulletDirection, contactNormal).normalized;
-                    float newSpeed = Ballistics.ComputeSpeedAfterRicochet(speed, bulletDef);
+
+                    float newSpeed = Ballistics.ComputeSpeedAfterRicochet(speed, bulletDef, rawAngle);
                     Vector3 newVel = reflectDir * newSpeed;
 
                     rb.linearVelocity = newVel;
                     lastVelocity = newVel;
 
-                    if (debugLogs) Log.Debug("[Bullet] RICOCHET: angle={Angle:F1} deg -> reflect dir={Dir} newSpeed={NewSpeed:F1}", rawAngle, reflectDir, newSpeed);
+                    if (debugLogs) Log.Debug("[Bullet] RICOCHET: angle={Angle:F1} deg -> reflect dir={Dir} newSpeed={NewSpeed:F1}",
+                                  rawAngle, reflectDir, newSpeed);
                     return;
                 }
                 else
@@ -299,11 +242,20 @@ public class Bullet : MonoBehaviour
                 }
             }
 
-            if (penetration >= effectiveArmor)
+            if (impact.brokeSubcaliber)
             {
-                if (debugLogs) Log.Debug("[Bullet] PEN: pen={Pen} effArmor={Arm}", penetration, effectiveArmor);
+                penetration = impact.penetration;
+                if (debugLogs) Log.Debug("[Bullet] Sub-caliber broken -> reduced penetration to {Pen:F1}mm", penetration);
+            }
 
-                float residual = Mathf.Clamp01((penetration - effectiveArmor) / Mathf.Max(1f, penetration));
+            if (debugLogs) Log.Debug("[Bullet] Computed: speed={Speed:F1}m/s pen={Pen:F1}mm effArmor={Eff:F1}mm rawAngle={Angle:F1}deg",
+                          speed, penetration, effArmorAfter, rawAngle);
+
+            if (penetration >= effArmorAfter)
+            {
+                if (debugLogs) Log.Debug("[Bullet] PEN: pen={Pen} effArmor={Arm}", penetration, effArmorAfter);
+
+                float residual = Mathf.Clamp01((penetration - effArmorAfter) / Mathf.Max(1f, penetration));
                 float speedAfter = speed * (0.4f + 0.6f * residual);
                 Vector3 forwardVel = bulletDirection * speedAfter;
 
@@ -314,24 +266,17 @@ public class Bullet : MonoBehaviour
                 lastVelocity = forwardVel;
 
                 IDamageable damageable = ColliderCache.GetCachedDamageable(collision.collider);
-                if (damageable != null)
+                if (damageable != null && !damagedTargets.Contains(damageable))
                 {
-                    if (!damagedTargets.Contains(damageable))
-                    {
-                        damagedTargets.Add(damageable);
-                        damageable.TakeDamage(bulletDef.damage, shooterName);
-                    }
-                    else
-                    {
-                        if (debugLogs) Log.Debug("[Bullet] Skipped duplicate damage for same target.");
-                    }
+                    damagedTargets.Add(damageable);
+                    damageable.TakeDamage(bulletDef.damage, shooterName);
                 }
 
                 return;
             }
             else
             {
-                if (debugLogs) Log.Debug("[Bullet] NO PEN: pen={Pen} effArmor={Arm}", penetration, effectiveArmor);
+                if (debugLogs) Log.Debug("[Bullet] NO PEN: pen={Pen} effArmor={Arm}", penetration, effArmorAfter);
 
                 if (bulletDef.type == BulletType.HE)
                 {
@@ -341,32 +286,23 @@ public class Bullet : MonoBehaviour
                 ReturnToPool();
                 return;
             }
-
         }
-
         else
         {
             if (debugLogs) Log.Debug("[Bullet] No ArmorPlate found for collider {Col}", collision.collider.name);
 
             IDamageable damageable = ColliderCache.GetCachedDamageable(collision.collider);
-            if (damageable != null)
+            if (damageable != null && !damagedTargets.Contains(damageable))
             {
-                if (!damagedTargets.Contains(damageable))
-                {
-                    damagedTargets.Add(damageable);
-                    damageable.TakeDamage(bulletDef.damage, shooterName);
-                }
-                else
-                {
-                    if (debugLogs) Log.Debug("[Bullet] Skipped duplicate damage for same target (no armorPlate).");
-                }
+                damagedTargets.Add(damageable);
+                damageable.TakeDamage(bulletDef.damage, shooterName);
             }
 
             ReturnToPool();
             return;
         }
-
     }
+
 
     #endregion
 

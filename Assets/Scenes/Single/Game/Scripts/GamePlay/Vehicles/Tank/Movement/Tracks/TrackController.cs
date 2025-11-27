@@ -12,6 +12,7 @@ public class TrackController : MonoBehaviour
     public float scrollSpeedFactor = 0.05f;
     public float turnScrollFactor = 0.7f;
     public float wheelRadius = 0.3f;
+    public float wheelLODDistance = 50f;
 
     [Header("Wheels (optional)")]
     public Transform[] leftWheels;

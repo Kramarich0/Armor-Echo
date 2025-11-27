@@ -47,13 +47,14 @@ public class PlayerTankHealth : MonoBehaviour, IDamageable
 
     private void DisablePlayerComponents()
     {
-        if (TryGetComponent<TankMovement>(out var movement))
-            movement.enabled = false;
+        if (TryGetComponent<Tank>(out var tank))
+            tank.SetMovementEnabled(false);
+
         if (TryGetComponent<TurretAiming>(out var aiming))
             aiming.enabled = false;
+
         if (TryGetComponent<TankShoot>(out var shoot))
             shoot.enabled = false;
-
     }
 
 }

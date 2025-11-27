@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 1bb5be2483ebeee428242c6a8ef45ac1
   - enabled: 1
+    path: Assets/Scenes/TankSelection.unity
+    guid: d2507b9a266c2ea4084685aa2cf45dbe
+  - enabled: 1
     path: Assets/Scenes/SelectLevel/SelectLevel.unity
     guid: c124f638293a3c84184a4f25ba6dfd76
   - enabled: 1

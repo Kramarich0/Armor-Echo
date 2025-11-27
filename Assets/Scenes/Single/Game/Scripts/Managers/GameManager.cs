@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private static WaitForSecondsRealtime _waitForSecondsRealtime2;
 
     public static GameManager Instance { get; private set; }
+    public TankSpawner tankSpawner;
 
     public int score = 0;
     public int initialFriendlyTickets;
@@ -70,6 +71,27 @@ public class GameManager : MonoBehaviour
         {
             Log.Warning("[GameManager] Level already initialized");
             return;
+        }
+
+        if (PlayerSelection.selectedTank != null && tankSpawner != null)
+        {
+            GameObject playerTank = tankSpawner.SpawnPlayerTank(PlayerSelection.selectedTank);
+            if (playerTank != null)
+            {
+                playerTank.tag = "Player";
+
+                var healthDisplay = FindObjectOfType<HealthDisplay>();
+                if (healthDisplay != null)
+                    healthDisplay.Initialize(playerTank.GetComponent<PlayerTankHealth>());
+
+                var sniperView = playerTank.GetComponentInChildren<TankSniperView>();
+                if (sniperView != null)
+                    sniperView.InitializeDynamicReferences();
+
+                var cameraSetup = playerTank.AddComponent<TankCameraSetup>();
+                cameraSetup.playerTank = playerTank;
+                cameraSetup.InitializeCameras();
+            }
         }
 
         aliveEnemyTanks = 0;
@@ -314,12 +336,12 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                cachedKillLogLse = FindObjectOfType<LocalizeStringEvent>();
+                cachedKillLogLse = FindFirstObjectByType<LocalizeStringEvent>();
                 if (cachedKillLogLse != null)
                     cachedKillLogObj = cachedKillLogLse.gameObject;
                 else
                 {
-                    cachedKillLogTmp = FindObjectOfType<TextMeshProUGUI>();
+                    cachedKillLogTmp = FindFirstObjectByType<TextMeshProUGUI>();
                     if (cachedKillLogTmp != null)
                         cachedKillLogObj = cachedKillLogTmp.gameObject;
                 }

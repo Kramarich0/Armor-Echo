@@ -8,10 +8,13 @@ public class ArmorPlate : MonoBehaviour
 {
     [Header("Бронеплита")]
     public float thickness = 80f;
+
+    [Header("Тип брони")]
+    public ArmorType armorType = ArmorType.RHA;
+
     private Collider plateCollider;
     [Header("Направление брони")]
     public Vector3 armorNormal = Vector3.forward;
-
 
     void Awake()
     {
@@ -63,7 +66,6 @@ public class ArmorPlate : MonoBehaviour
             return thickness;
 
         float angle = rawAngle;
-
         float cal = bulletDef.caliber;
         float t = thickness;
 
@@ -81,10 +83,10 @@ public class ArmorPlate : MonoBehaviour
         }
 
         float effectiveAngle = Mathf.Max(0f, angle - bulletDef.normalization);
-
         float clampedAngle = Mathf.Min(effectiveAngle, 89f);
 
         float effArmor = thickness / Mathf.Cos(clampedAngle * Mathf.Deg2Rad);
+        effArmor *= Ballistics.GetArmorTypeModifier(armorType);
 
         return effArmor;
     }
@@ -109,7 +111,7 @@ public class ArmorPlate : MonoBehaviour
     {
         if (!cacheDirty) return;
         cachedMaxThickness = 50f;
-        var all = FindObjectsOfType<ArmorPlate>();
+        var all = FindObjectsByType<ArmorPlate>(FindObjectsSortMode.None);
         for (int i = 0; i < all.Length; i++)
             if (all[i] != null && all[i].thickness > cachedMaxThickness)
                 cachedMaxThickness = all[i].thickness;
@@ -178,7 +180,6 @@ public class ArmorPlate : MonoBehaviour
         Gizmos.DrawRay(position, right * 0.1f);
         Gizmos.DrawRay(position, left * 0.1f);
     }
-
 
     private void DrawCompactLabel(Vector3 worldPos, float angle)
     {

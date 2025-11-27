@@ -4,36 +4,32 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(AudioSource))]
 public class TankShoot : MonoBehaviour
 {
+    Tank owner;
     public System.Action onShotFired;
     [Header("Gun")]
-    public GunDefinition gun;
     public Transform gunEnd;
     [Header("Bullet System")]
     public BulletSlot[] bulletSlots;
 
-    private int previousBulletIndex = -1;
     public int currentBulletIndex = 0;
-
-    private bool isSwitchingAmmo = false;
-
-    [Header("Shooting Settings")]
-    public float shotsPerSecond = 8f;
 
     [Header("Effects")]
     public ParticleSystem muzzleSmoke;
     private ParticleSystem activeMuzzleSmoke;
     public AudioSource audioSource;
-    public AudioClip shootSound;
-    public AudioClip reloadSound;
 
     [Header("Reload UI")]
     public ReloadDisplay reloadDisplay;
 
-    [Header("Recoil")]
-    public float recoilBack = 0.12f;
+    [Header("Recoil Settings")]
     public float recoilDecay = 8f;
     public float recoilJitter = 0.01f;
-    public float recoilPhysicalImpulse = 150f;
+    [Tooltip("Base multiplier for visual recoil")]
+    public float visualRecoilMultiplier = 1f;
+    [Tooltip("Base multiplier for physical recoil")]
+    public float physicalRecoilMultiplier = 1f;
+    [Tooltip("Max visual recoil distance to prevent excessive movement")]
+    public float maxVisualRecoil = 0.3f;
 
     [Header("Controls")]
     public InputActionReference shootAction;
@@ -48,8 +44,20 @@ public class TankShoot : MonoBehaviour
        ? bulletSlots[currentBulletIndex]
        : null;
 
+
+    void Awake()
+    {
+        owner = GetComponentInParent<Tank>();
+        if (owner == null)
+            Debug.LogError("TankShoot: Не найден компонент Tank в родителях!");
+    }
+
     void Start()
     {
+        owner = GetComponentInParent<Tank>();
+        if (owner == null)
+            Debug.LogError("TankShoot: Не найден компонент Tank в родителях!");
+
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
         if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
 
@@ -63,11 +71,14 @@ public class TankShoot : MonoBehaviour
         if (muzzleSmoke != null)
         {
             activeMuzzleSmoke = Instantiate(muzzleSmoke);
-            activeMuzzleSmoke.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            activeMuzzleSmoke.transform.SetParent(gunEnd);
+            activeMuzzleSmoke.transform.localPosition = Vector3.zero;
+            activeMuzzleSmoke.transform.localRotation = Quaternion.identity;
+
             var main = activeMuzzleSmoke.main;
             main.simulationSpace = ParticleSystemSimulationSpace.World;
+            activeMuzzleSmoke.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
-
     }
 
     void OnEnable()
@@ -86,7 +97,6 @@ public class TankShoot : MonoBehaviour
             switchBulletAction.action.performed -= OnSwitchBullet;
     }
 
-
     private void OnSwitchBullet(InputAction.CallbackContext ctx)
     {
         if (GameUIManager.Instance != null && GameUIManager.Instance.IsPaused) return;
@@ -102,14 +112,12 @@ public class TankShoot : MonoBehaviour
                 {
                     if (index == currentBulletIndex) return;
 
-                    float fullReloadTime = 1f / Mathf.Max(0.0001f, shotsPerSecond);
+                    float fullReloadTime = 1f / Mathf.Max(0.0001f, owner.FireRate);
                     nextFireTime = Time.time + fullReloadTime;
 
                     Debug.Log($"Reload reset: {fullReloadTime:F2}s for {bulletSlots[index].displayName}");
 
-                    previousBulletIndex = currentBulletIndex;
                     currentBulletIndex = index;
-                    isSwitchingAmmo = true;
 
                     Debug.Log($"Switched to: {CurrentBullet.displayName}");
                     reloadClipPlayed = false;
@@ -139,7 +147,7 @@ public class TankShoot : MonoBehaviour
         if (reloadDisplay != null)
         {
             float remainingTime = Mathf.Max(0f, nextFireTime - Time.time);
-            reloadDisplay.SetReload(remainingTime, 1f / shotsPerSecond);
+            reloadDisplay.SetReload(remainingTime, 1f / owner.FireRate);
         }
     }
 
@@ -148,9 +156,9 @@ public class TankShoot : MonoBehaviour
         if (Time.time < nextFireTime)
         {
             float remainingTime = nextFireTime - Time.time;
-            if (!reloadClipPlayed && remainingTime <= 2.5f && reloadSound != null)
+            if (!reloadClipPlayed && remainingTime <= 2.5f && owner.ReloadSound != null)
             {
-                audioSource.PlayOneShot(reloadSound);
+                audioSource.PlayOneShot(owner.ReloadSound);
                 reloadClipPlayed = true;
             }
         }
@@ -174,11 +182,32 @@ public class TankShoot : MonoBehaviour
             return;
         }
 
-        float fireInterval = 1f / Mathf.Max(0.0001f, shotsPerSecond);
+        float fireInterval = 1f / Mathf.Max(0.0001f, owner.FireRate);
         nextFireTime = Time.time + fireInterval;
 
-        // Recoil
-        recoilOffset += -transform.forward * recoilBack;
+        CalculateAndApplyRecoil();
+        PlayShootEffects();
+        SpawnBullet();
+
+        onShotFired?.Invoke();
+    }
+
+    private void CalculateAndApplyRecoil()
+    {
+        if (CurrentBullet.definition == null) return;
+
+        float caliber = CurrentBullet.definition.caliber;
+        float bulletMass = CurrentBullet.definition.massKg;
+        float muzzleVelocity = owner.GetMuzzleVelocity(CurrentBullet.definition);
+
+        float bulletMomentum = bulletMass * muzzleVelocity;
+
+        float baseVisualRecoil = bulletMomentum * caliber / 10000f;
+        float visualRecoil = Mathf.Min(baseVisualRecoil * visualRecoilMultiplier, maxVisualRecoil);
+
+        float physicalRecoil = bulletMomentum * caliber / 5000f * physicalRecoilMultiplier;
+
+        recoilOffset += -transform.forward * visualRecoil;
         if (recoilJitter > 0f)
         {
             Vector3 jitter = Random.insideUnitSphere * recoilJitter;
@@ -186,19 +215,27 @@ public class TankShoot : MonoBehaviour
             recoilOffset += jitter;
         }
 
-        PlayShootEffects();
-        SpawnBullet();
-        ApplyRecoilForce();
+        ApplyPhysicalRecoil(physicalRecoil);
 
-        onShotFired?.Invoke();
+        Debug.Log($"Recoil - Caliber: {caliber}mm, Mass: {bulletMass}kg, Velocity: {muzzleVelocity}m/s, " +
+                 $"Visual: {visualRecoil:F4}, Physical: {physicalRecoil:F2}N");
+    }
+
+    private void ApplyPhysicalRecoil(float recoilForce)
+    {
+        Rigidbody parentRb = GetComponentInParent<Rigidbody>();
+        if (parentRb != null && recoilForce > 0f)
+        {
+            parentRb.AddForceAtPosition(-gunEnd.forward * recoilForce, gunEnd.position, ForceMode.Impulse);
+        }
     }
 
     private void PlayShootEffects()
     {
-        if (shootSound != null)
+        if (owner.ShootSound != null)
         {
             var tempSource = gameObject.AddComponent<AudioSource>();
-            tempSource.clip = shootSound;
+            tempSource.clip = owner.ShootSound;
             tempSource.volume = Random.Range(0.9f, 1.1f);
             tempSource.pitch = Random.Range(0.95f, 1.05f);
             tempSource.spatialBlend = 1f;
@@ -207,25 +244,35 @@ public class TankShoot : MonoBehaviour
             tempSource.rolloffMode = AudioRolloffMode.Linear;
             AudioManager.AssignToMaster(tempSource);
             tempSource.Play();
-            Destroy(tempSource, shootSound.length + 0.1f);
+            Destroy(tempSource, owner.ShootSound.length + 0.1f);
         }
 
         if (activeMuzzleSmoke != null)
         {
-            activeMuzzleSmoke.transform.SetPositionAndRotation(gunEnd.position, gunEnd.rotation);
-            activeMuzzleSmoke.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            activeMuzzleSmoke.transform.position = gunEnd.position;
+            activeMuzzleSmoke.transform.rotation = gunEnd.rotation;
             activeMuzzleSmoke.Play();
         }
+        else
+        {
+            if (muzzleSmoke != null)
+            {
+                ParticleSystem ps = Instantiate(muzzleSmoke, gunEnd.position, gunEnd.rotation);
+                ps.Play();
+                Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
+            }
+        }
     }
+
 
     private void SpawnBullet()
     {
         if (gunEnd == null) return;
 
-        if (gun != null && CurrentBullet.definition != null)
+        if (owner != null && CurrentBullet.definition != null)
         {
-            if (gun.caliber != CurrentBullet.definition.caliber)
-                Debug.LogWarning($"[TankShoot] Gun caliber ({gun.caliber}mm) != ammo caliber ({CurrentBullet.definition.caliber}mm) for {CurrentBullet.displayName} on {gameObject.name}");
+            if (owner.Caliber != CurrentBullet.definition.caliber)
+                Debug.LogWarning($"[TankShoot] Gun caliber ({owner.Caliber}mm) != ammo caliber ({CurrentBullet.definition.caliber}mm) for {CurrentBullet.displayName} on {gameObject.name}");
         }
 
         TeamComponent teamComp = GetComponentInParent<TeamComponent>();
@@ -237,9 +284,9 @@ public class TankShoot : MonoBehaviour
         Collider[] shooterColliders = GetComponentsInParent<Collider>();
 
         float muzzle = 0f;
-        if (gun != null && CurrentBullet.definition != null)
+        if (owner != null && CurrentBullet.definition != null)
         {
-            muzzle = gun.GetMuzzleVelocity(CurrentBullet.definition); 
+            muzzle = owner.GetMuzzleVelocity(CurrentBullet.definition);
         }
 
         Vector3 spawnVelocity = gunEnd.forward * muzzle;
@@ -252,15 +299,6 @@ public class TankShoot : MonoBehaviour
             shooterDisplay,
             shooterColliders
         );
-    }
-
-    private void ApplyRecoilForce()
-    {
-        Rigidbody parentRb = GetComponentInParent<Rigidbody>();
-        if (parentRb != null && recoilPhysicalImpulse > 0f)
-        {
-            parentRb.AddForceAtPosition(-gunEnd.forward * recoilPhysicalImpulse, gunEnd.position, ForceMode.Impulse);
-        }
     }
 
 

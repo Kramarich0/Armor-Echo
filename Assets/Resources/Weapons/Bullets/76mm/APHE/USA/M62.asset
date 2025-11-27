@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f0ab7be1d61b041a9e16d1c9122f04, type: 3}
+  m_Name: M62
+  m_EditorClassIdentifier: Assembly-CSharp::BulletDefinition
+  type: 2
+  bulletName: M62
+  caliber: 76
+  massKg: 6.8
+  referenceVelocity: 773
+  noseType: 4
+  damage: 100
+  penetration: 127
+  useGravity: 1
+  ballisticK: 0.00085
+  deMarreK: 1.5
+  minSpeed: 40
+  minPenetration: 15
+  ricochetAngle: 70
+  normalization: 6
+  ignoreAngle: 0
+  overmatchFactor: 1.4
+  ricochetSpeedLoss: 0.6
+  splashRadius: 0
+  visualPrefab: {fileID: 898282933906884019, guid: c77284e63d6359d45bf7601670bf92bb, type: 3}

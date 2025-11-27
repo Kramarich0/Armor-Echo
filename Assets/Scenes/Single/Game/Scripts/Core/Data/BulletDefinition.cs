@@ -9,12 +9,13 @@ public class BulletDefinition : ScriptableObject
     public string bulletName = "Unknown bullet";
 
     [Tooltip("Калибр снаряда в мм (влияет на оверматч и поведение брони).")]
-    public int caliber = 76;
+    public float caliber = 76;
     [Tooltip("Масса снаряда в килограммах.")]
     public float massKg = 6.8f;
     [Tooltip("Скорость, при которой указано паспортное пробитие (м/с)")]
     public float referenceVelocity = 773f;
-
+    [Tooltip("Тип носа снаряда")]
+    public NoseType noseType = NoseType.APCBC;
     [Tooltip("Базовый урон при пробитии.")]
     public int damage = 40;
 

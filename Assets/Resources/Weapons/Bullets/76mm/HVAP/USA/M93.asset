@@ -15,17 +15,19 @@ MonoBehaviour:
   type: 9
   bulletName: M93
   caliber: 76
+  massKg: 3.9
+  referenceVelocity: 1036
   damage: 50
   penetration: 180
   useGravity: 1
-  ballisticK: 0.0018
-  deMarreK: 1.3
-  minSpeed: 80
-  minPenetration: 20
-  ricochetAngle: 65
-  normalization: 1.5
+  ballisticK: 0.00055
+  deMarreK: 1.75
+  minSpeed: 150
+  minPenetration: 10
+  ricochetAngle: 70
+  normalization: 1
   ignoreAngle: 0
-  overmatchFactor: 2
-  ricochetSpeedLoss: 0.7
+  overmatchFactor: 1.5
+  ricochetSpeedLoss: 0.4
   splashRadius: 0
   visualPrefab: {fileID: 4972424156559308381, guid: 540b287dd3b231b44bfc6b91402ab6bd, type: 3}

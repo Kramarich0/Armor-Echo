@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunDefinition
   gunName: 8.8 cm KwK 36 L56
   caliber: 88
-  fireRate: 0.12
+  fireInterval: 7
+  liftSpeed: 7
   minGunAngle: -10
-  maxGunAngle: 10
+  maxGunAngle: 20
   shootRange: 100
   bulletUseGravity: 1
   shootSound: {fileID: 8300000, guid: 604a1b602c1b2304fbb9812e184c259f, type: 3}
+  reloadSound: {fileID: 0}
   bullets:
   - bullet: {fileID: 11400000, guid: 121e22e2441500846bc896d94776a08f, type: 2}
     muzzleVelocity: 773

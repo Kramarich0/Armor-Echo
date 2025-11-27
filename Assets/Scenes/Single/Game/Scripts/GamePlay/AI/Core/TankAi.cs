@@ -48,11 +48,12 @@ public class TankAI : MonoBehaviour
 
     public float MoveSpeed => tankDefinition.moveSpeed;
     public float RotationSpeed => tankDefinition.rotationSpeed;
+    public float TurretRotationSpeed => tankDefinition.turretRotationSpeed;
 
     public float ShootRange => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.shootRange : 0f;
     public int MaxGunAngle => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.maxGunAngle : 0;
     public int MinGunAngle => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.minGunAngle : 0;
-    public float FireRate => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.fireRate : 0f;
+    public float FireRate => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.FireRate : 0f;
     public bool BulletUseGravity => tankDefinition.primaryGun == null || tankDefinition.primaryGun.bulletUseGravity;
     public AudioClip ShootSound => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.shootSound : null;
     public float DetectionRadius => tankDefinition.detectionRadius;
@@ -66,8 +67,8 @@ public class TankAI : MonoBehaviour
     public float MaxBrakeTorque => tankDefinition.maxBrakeTorque;
     public float MoveResponse => tankDefinition.moveResponse;
     public float TurnResponse => tankDefinition.turnResponse;
-    public float MaxForwardSpeed => tankDefinition.maxForwardSpeed;
-    public float MaxBackwardSpeed => tankDefinition.maxBackwardSpeed;
+    public float MaxForwardSpeed => tankDefinition.MaxForwardSpeed;
+    public float MaxBackwardSpeed => tankDefinition.MaxBackwardSpeed;
     public float TurnSharpness => tankDefinition.turnSharpness;
     public float ReverseLockDuration => tankDefinition.reverseLockDuration;
     public float MovingThreshold => tankDefinition.movingThreshold;

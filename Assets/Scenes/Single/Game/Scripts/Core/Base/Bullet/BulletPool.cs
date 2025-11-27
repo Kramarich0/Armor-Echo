@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Serilog;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -8,9 +10,12 @@ public class BulletPool : MonoBehaviour
     [SerializeField] private Bullet prefab;
     [SerializeField] private int initialSize = 20;
 
+    public BulletDefinition[] supportedDefinitions;
+    public string poolName;
+
     private ObjectPool<Bullet> pool;
     public bool debugLogs = false;
-    
+
     void Awake()
     {
         pool = new ObjectPool<Bullet>(
@@ -64,6 +69,27 @@ public class BulletPool : MonoBehaviour
                     position, velocity.magnitude, team, definition != null ? definition.name : "default");
 
         return bullet;
+    }
+
+    public bool HandlesDefinition(BulletDefinition def)
+    {
+        if (def == null) return false;
+
+        if (supportedDefinitions != null && supportedDefinitions.Any(d => d == def)) return true;
+
+        if (prefab != null && def.visualPrefab != null)
+        {
+            if (string.Equals(prefab.gameObject.name, def.visualPrefab.name, StringComparison.OrdinalIgnoreCase))
+                return true;
+        }
+
+        if (prefab != null && !string.IsNullOrEmpty(def.bulletName))
+        {
+            if (prefab.gameObject.name.IndexOf(def.bulletName, StringComparison.OrdinalIgnoreCase) >= 0)
+                return true;
+        }
+
+        return false;
     }
 
 }

@@ -9,7 +9,6 @@ public class TankAIImpl
     readonly AINavigation navigation;
     readonly AICombat combat;
     readonly AIWeapons weapons;
-
     readonly AIStateHandler stateHandler;
 
     public TankAIImpl(TankAI owner)

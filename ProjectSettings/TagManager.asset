@@ -13,6 +13,8 @@ TagManager:
   - SettingsPanel
   - PauseSettingsPanel
   - PostProcessingVolume
+  - MainCameraVC
+  - CommanderCameraVC
   layers:
   - Default
   - TransparentFX

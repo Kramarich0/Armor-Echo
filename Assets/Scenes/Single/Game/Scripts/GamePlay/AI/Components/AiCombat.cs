@@ -31,7 +31,7 @@ public class AICombat
             {
                 Vector3 forwardDir = dir.normalized * (owner.invertTurretForward ? -1f : 1f);
                 Quaternion targetRot = Quaternion.LookRotation(forwardDir, Vector3.up);
-                owner.turret.rotation = Quaternion.RotateTowards(owner.turret.rotation, targetRot, owner.RotationSpeed * Time.deltaTime);
+                owner.turret.rotation = Quaternion.RotateTowards(owner.turret.rotation, targetRot, owner.TurretRotationSpeed * Time.deltaTime);
             }
         }
 
@@ -68,7 +68,7 @@ public class AICombat
         }
         else
         {
-            float maxDelta = owner.RotationSpeed * Time.deltaTime;
+            float maxDelta = owner.TurretRotationSpeed * Time.deltaTime;
             float newPitch = Mathf.MoveTowardsAngle(currentPitch, targetPitch, maxDelta);
             float smooth = Mathf.SmoothDampAngle(currentPitch, newPitch, ref pitchVelocity, smoothTime, Mathf.Infinity, Time.deltaTime);
             currentPitch = smooth;

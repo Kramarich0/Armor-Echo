@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class MovementInit
 {
-    readonly TankMovement owner;
+    readonly Tank owner;
     readonly MovementContext ctx;
 
-    public MovementInit(TankMovement owner, MovementContext ctx) { this.owner = owner; this.ctx = ctx; }
+    public MovementInit(Tank owner, MovementContext ctx) { this.owner = owner; this.ctx = ctx; }
 
     public void Awake()
     {
@@ -34,8 +34,8 @@ public class MovementInit
         ctx.driveSource = owner.gameObject.AddComponent<AudioSource>();
         AudioManager.AssignToMaster(ctx.idleSource);
         AudioManager.AssignToMaster(ctx.driveSource);
-        SetupAudioSource(ctx.idleSource, owner.idleSound, true);
-        SetupAudioSource(ctx.driveSource, owner.driveSound, true);
+        SetupAudioSource(ctx.idleSource, owner.IdleSound, true);
+        SetupAudioSource(ctx.driveSource, owner.DriveSound, true);
 
         if (owner.leftTrack != null && owner.rightTrack != null)
             TankWheelSetup.ApplyToAllWheels(owner.leftTrack.wheels, owner.rightTrack.wheels, owner.rb.mass);

@@ -39,7 +39,7 @@ public class LanguageSelector : MonoBehaviour
     {
         if (dropdown == null)
         {
-            var allDropdowns = FindObjectsOfType<TMP_Dropdown>(true);
+            var allDropdowns = FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             foreach (var dd in allDropdowns)
             {
                 if (dd.name.ToLower().Contains("language"))
@@ -139,7 +139,7 @@ public class LanguageSelector : MonoBehaviour
     {
         dropdown = null;
 
-        var allDropdowns = FindObjectsOfType<TMP_Dropdown>(true);
+        var allDropdowns = FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (var dd in allDropdowns)
         {
             if (dd.name.ToLower().Contains("language"))

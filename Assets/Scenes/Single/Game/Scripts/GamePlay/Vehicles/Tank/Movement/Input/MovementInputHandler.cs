@@ -3,11 +3,9 @@ using UnityEngine;
 
 public class MovementInputHandler
 {
-    readonly TankMovement owner;
+    readonly Tank owner;
     readonly MovementContext ctx;
-
-    public MovementInputHandler(TankMovement owner, MovementContext ctx) { this.owner = owner; this.ctx = ctx; }
-
+    public MovementInputHandler(Tank owner, MovementContext ctx) { this.owner = owner; this.ctx = ctx; }
     public void OnEnable()
     {
         if (owner.actionsAsset == null)
@@ -23,13 +21,13 @@ public class MovementInputHandler
         }
         ctx.moveAction.Enable();
 
-        if (owner.idleSound != null) ctx.idleSource.Play();
-        if (owner.driveSound != null) ctx.driveSource.Play();
+        if (owner.IdleSound != null) ctx.idleSource.Play();
+        if (owner.DriveSound != null) ctx.driveSource.Play();
     }
 
     public void OnDisable()
     {
-        if (ctx.moveAction != null) ctx.moveAction.Disable();
+        ctx.moveAction?.Disable();
         if (ctx.idleSource != null) ctx.idleSource.Stop();
         if (ctx.driveSource != null) ctx.driveSource.Stop();
     }
@@ -51,10 +49,10 @@ public class MovementInputHandler
         float targetBlend = Mathf.Clamp01(absMove + absTurn);
         ctx.currentBlend = Mathf.SmoothDamp(ctx.currentBlend, targetBlend, ref ctx.blendVelocity, 0.2f);
 
-        float idleVolume = Mathf.Lerp(owner.maxVolume, owner.minVolume, ctx.currentBlend);
-        float driveVolume = Mathf.Lerp(0f, owner.maxVolume, ctx.currentBlend);
-        float idlePitch = Mathf.Lerp(owner.maxPitch, owner.minPitch, ctx.currentBlend);
-        float drivePitch = Mathf.Lerp(owner.minPitch, owner.maxPitch, ctx.currentBlend);
+        float idleVolume = Mathf.Lerp(owner.MaxIdleVolume, owner.MinIdleVolume, ctx.currentBlend);
+        float driveVolume = Mathf.Lerp(0f, owner.MaxDriveVolume, ctx.currentBlend);
+        float idlePitch = Mathf.Lerp(owner.MaxIdlePitch, owner.MinIdlePitch, ctx.currentBlend);
+        float drivePitch = Mathf.Lerp(owner.MinDrivePitch, owner.MaxDrivePitch, ctx.currentBlend);
 
         if (ctx.idleSource != null) { ctx.idleSource.volume = idleVolume; ctx.idleSource.pitch = idlePitch; }
         if (ctx.driveSource != null) { ctx.driveSource.volume = driveVolume; ctx.driveSource.pitch = drivePitch; }

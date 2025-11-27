@@ -6,11 +6,14 @@ public class TankDefinition : ScriptableObject
     [Header("Basic Info")]
     public string tankName;
     public TankClass tankClass;
+    public GameObject tankPrefab;
+    public GameObject previewPrefab;
 
     [Header("Core Stats")]
     public float health = 100f;
     public float moveSpeed = 5f;
     public float rotationSpeed = 50f;
+    public float turretRotationSpeed = 30f;
 
     [Header("Combat")]
     public GunDefinition primaryGun;
@@ -29,11 +32,16 @@ public class TankDefinition : ScriptableObject
     public float maxBrakeTorque = 2000f;
     public float moveResponse = 5f;
     public float turnResponse = 5f;
-    public float maxForwardSpeed = 10f;
-    public float maxBackwardSpeed = 5f;
     public float turnSharpness = 1.5f;
     public float reverseLockDuration = 0.5f;
     public float movingThreshold = 0.15f;
+
+    [Header("Speed (km/h)")]
+    public float maxForwardSpeedKmh = 40f;
+    public float maxBackwardSpeedKmh = 12f;
+
+    public float MaxForwardSpeed => maxForwardSpeedKmh / 3.6f;
+    public float MaxBackwardSpeed => maxBackwardSpeedKmh / 3.6f;
 
     [Header("Audio Settings")]
     [Range(0f, 1f)] public float minIdleVolume = 0.2f;
@@ -53,5 +61,4 @@ public class TankDefinition : ScriptableObject
     public Sprite icon;
     [TextArea(3, 5)]
     public string description;
-    
 }

@@ -12,6 +12,11 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(SceneNames.SelectLevel);
     }
 
+    public void TankSelectionScene()
+    {
+        SceneManager.LoadScene(SceneNames.TankSelection);
+    }
+
     public void SettingsScene()
     {
         SceneManager.LoadScene(SceneNames.Settings);

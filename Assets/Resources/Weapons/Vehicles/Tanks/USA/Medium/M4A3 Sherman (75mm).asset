@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9fdd3936ff7f6458645e70fc1bb8cc, type: 3}
+  m_Name: M4A3 Sherman (75mm)
+  m_EditorClassIdentifier: Assembly-CSharp::TankDefinition
+  tankName: M4A3 Sherman (75mm)
+  tankClass: 1
+  tankPrefab: {fileID: 2679315486412185968, guid: ad899c9168e7f5c4db7f2447350a5249, type: 3}
+  previewPrefab: {fileID: 2679315486412185968, guid: ad899c9168e7f5c4db7f2447350a5249, type: 3}
+  health: 200
+  moveSpeed: 11
+  rotationSpeed: 50
+  turretRotationSpeed: 30
+  primaryGun: {fileID: 11400000, guid: bbceb8ddbd25a384a8e2beb294d8696c, type: 2}
+  detectionRadius: 50
+  strafeRadius: 6
+  strafeSpeed: 0.8
+  baseSpreadDegrees: 1
+  movingSpreadFactor: 6
+  stationarySpreadFactor: 1
+  maxMotorTorque: 3600
+  maxBrakeTorque: 280
+  moveResponse: 5
+  turnResponse: 1.5
+  turnSharpness: 1.5
+  reverseLockDuration: 0.5
+  movingThreshold: 0.15
+  maxForwardSpeedKmh: 40
+  maxBackwardSpeedKmh: 12
+  minIdleVolume: 0.2
+  maxIdleVolume: 0.5
+  minDriveVolume: 0
+  maxDriveVolume: 0.5
+  minIdlePitch: 0.8
+  maxIdlePitch: 1.2
+  minDrivePitch: 0.8
+  maxDrivePitch: 1.3
+  idleSound: {fileID: 8300000, guid: 37ba6ca7a36ccb342aee6c71e1a82d31, type: 3}
+  driveSound: {fileID: 8300000, guid: 666a4b334b15c534da609c6b55bef1b2, type: 3}
+  icon: {fileID: 21300000, guid: c5764947cf2547e4dbfa0c28030cc023, type: 3}
+  description: "\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0439 \u0430\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0439
+    \u0441\u0440\u0435\u0434\u043D\u0438\u0439 \u0442\u0430\u043D\u043A \u0441 75-\u043C\u043C
+    \u043E\u0440\u0443\u0434\u0438\u0435\u043C. \u0421\u0431\u0430\u043B\u0430\u043D\u0441\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0435
+    \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438."

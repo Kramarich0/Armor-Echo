@@ -30,6 +30,7 @@ public class LevelSelectManager : MonoBehaviour
     public RectTransform gridParent;
 
     private GameObject[] levelCards;
+    private bool isLoadingLevel = false;
     private void Start()
     {
         if (levelSelectCanvas == null || levelCardPrefab == null)
@@ -149,7 +150,7 @@ public class LevelSelectManager : MonoBehaviour
             Sprite templateEmptySprite = templateStarImages[1].sprite;
 
             for (int c = starsContainer.childCount - 1; c >= 0; c--)
-                DestroyImmediate(starsContainer.GetChild(c).gameObject);
+                Destroy(starsContainer.GetChild(c).gameObject);
 
             for (int s = 0; s < totalStarsToShow; s++)
             {
@@ -175,7 +176,7 @@ public class LevelSelectManager : MonoBehaviour
             if (starsContainer != null)
             {
                 for (int c = starsContainer.childCount - 1; c >= 0; c--)
-                    DestroyImmediate(starsContainer.GetChild(c).gameObject);
+                    Destroy(starsContainer.GetChild(c).gameObject);
             }
 
             if (scoreText != null)
@@ -207,8 +208,17 @@ public class LevelSelectManager : MonoBehaviour
     public void PlayLevel(int level)
     {
         if (!IsLevelUnlocked(level)) return;
+        if (isLoadingLevel) return;
+
+        isLoadingLevel = true;
         StartCoroutine(LoadLevelWithStyle($"Level{level}"));
     }
+
+    private void OnEnable()
+    {
+        StopAllCoroutines();
+    }
+
 
     private IEnumerator LoadLevelWithStyle(string sceneName)
     {
@@ -242,11 +252,13 @@ public class LevelSelectManager : MonoBehaviour
                 }
             }
 
-            if (displayedProgress >= 0.99f && timer >= minDisplayTime)
+            if (op.progress >= 0.9f && timer >= minDisplayTime)
             {
                 if (progressBar != null) progressBar.value = 1f;
                 yield return _waitForSeconds0_1;
                 op.allowSceneActivation = true;
+
+                isLoadingLevel = false;
             }
 
             yield return null;

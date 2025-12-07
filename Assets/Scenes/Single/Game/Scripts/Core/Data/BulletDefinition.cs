@@ -68,9 +68,4 @@ public class BulletDefinition : ScriptableObject
     [Tooltip("Радиус осколочного урона. 0 = без сплэша (обычные AP).")]
     public float splashRadius = 0f;
 
-
-    [Header("=== VISUAL (визуал снаряда) ===")]
-
-    [Tooltip("Префаб визуальной модели пули.")]
-    public GameObject visualPrefab;
 }

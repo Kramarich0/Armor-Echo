@@ -77,12 +77,6 @@ public class BulletPool : MonoBehaviour
 
         if (supportedDefinitions != null && supportedDefinitions.Any(d => d == def)) return true;
 
-        if (prefab != null && def.visualPrefab != null)
-        {
-            if (string.Equals(prefab.gameObject.name, def.visualPrefab.name, StringComparison.OrdinalIgnoreCase))
-                return true;
-        }
-
         if (prefab != null && !string.IsNullOrEmpty(def.bulletName))
         {
             if (prefab.gameObject.name.IndexOf(def.bulletName, StringComparison.OrdinalIgnoreCase) >= 0)

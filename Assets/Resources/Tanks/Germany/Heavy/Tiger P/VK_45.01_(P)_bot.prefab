@@ -83,11 +83,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6730827045119362486}
   m_SourcePrefab: {fileID: 100100000, guid: 2e04a7f39e57c7d4e9a08ba4f897fbc5, type: 3}
---- !u!4 &242479972467350996 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9101104650238229433, guid: 2e04a7f39e57c7d4e9a08ba4f897fbc5, type: 3}
-  m_PrefabInstance: {fileID: 9011958171870881389}
-  m_PrefabAsset: {fileID: 0}
 --- !u!146 &449065630874793254 stripped
 WheelCollider:
   m_CorrespondingSourceObject: {fileID: 8875344696602923851, guid: 2e04a7f39e57c7d4e9a08ba4f897fbc5, type: 3}
@@ -111,6 +106,11 @@ WheelCollider:
 --- !u!4 &2029654456965611856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7005964724105094973, guid: 2e04a7f39e57c7d4e9a08ba4f897fbc5, type: 3}
+  m_PrefabInstance: {fileID: 9011958171870881389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2398381782417598868 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6654116499886575609, guid: 2e04a7f39e57c7d4e9a08ba4f897fbc5, type: 3}
   m_PrefabInstance: {fileID: 9011958171870881389}
   m_PrefabAsset: {fileID: 0}
 --- !u!146 &2885733619761125495 stripped
@@ -323,6 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AITankHealth
   tankDef: {fileID: 11400000, guid: bdbff26dba98eea45ba9d777b9c9ba78, type: 2}
+  destructibleParts: []
   currentHealth: 0
 --- !u!195 &8885036448919793821
 NavMeshAgent:
@@ -360,13 +361,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankAI
   tankDefinition: {fileID: 11400000, guid: bdbff26dba98eea45ba9d777b9c9ba78, type: 2}
   turret: {fileID: 7774482500882946051}
-  gun: {fileID: 242479972467350996}
+  gun: {fileID: 2398381782417598868}
   gunEnd: {fileID: 2029654456965611856}
   body: {fileID: 6821388094839893255}
   bulletSlots:
-  - displayName: 
+  - displayName: Pzgr. 39
     type: 2
-    definition: {fileID: 0}
+    definition: {fileID: 11400000, guid: 121e22e2441500846bc896d94776a08f, type: 2}
     pool: {fileID: 0}
   - displayName: 
     type: 2
@@ -412,6 +413,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   capturePointDetectionRadius: 60
+  reverseLockTimer: 0
   cachedTransform: {fileID: 0}
   rb: {fileID: 0}
   cachedColliders: []

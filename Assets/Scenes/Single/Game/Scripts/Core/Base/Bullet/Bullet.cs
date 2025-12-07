@@ -82,8 +82,6 @@ public class Bullet : MonoBehaviour
         if (definition != null)
             bulletDef = definition;
 
-        SetVisual(bulletDef.visualPrefab);
-
         ignoredColliders.Clear();
         ignoredCollidersTimed.Clear();
 
@@ -198,33 +196,40 @@ public class Bullet : MonoBehaviour
         ContactPoint contact = collision.GetContact(0);
         Vector3 contactPoint = contact.point;
 
-        ArmorPlate armorPlate = ColliderCache.FindBestArmorPlateOptimized(collision.collider, contactPoint);
 
         Vector3 bulletDirection = (lastVelocity.sqrMagnitude > MIN_VELOCITY * MIN_VELOCITY)
             ? lastVelocity.normalized
             : (rb.linearVelocity.sqrMagnitude > MIN_VELOCITY * MIN_VELOCITY ? rb.linearVelocity.normalized : transform.forward);
 
+        float debugAngle = Vector3.Angle(contact.normal, -bulletDirection);
+        Debug.Log($"[DEBUG] contact.normal angle={debugAngle}");
+
         if (debugLogs) Log.Debug("[Bullet] collision.collider={Col} contactPoint={Point} contactNormal={Normal} rb.velocity={Vel} lastVelocity={Last}",
                       collision.collider.name, contactPoint, contact.normal, rb.linearVelocity, lastVelocity);
+        ArmorPlate armorPlate = ColliderCache.FindBestArmorPlateOptimized(collision.collider, contactPoint);
 
         if (armorPlate != null)
         {
-            float effectiveArmor = armorPlate.CalculateEffectiveArmor(bulletDirection, bulletDef, out float rawAngle);
+            float effectiveArmor = armorPlate.CalculateEffectiveArmor(contactPoint, bulletDirection, bulletDef, out float rawAngle, out Vector3 plateNormal);
 
             float speed = cachedSpeed;
             float penetration = cachedPenetration;
 
             var impact = Ballistics.EvaluateImpact(bulletDef, speed, penetration, effectiveArmor, rawAngle, armorPlate.armorType, out float effArmorAfter);
+            if (debugLogs) Log.Debug("[Bullet] Plate normal={Normal} rawAngle={Angle:F1}", plateNormal, rawAngle);
 
             if (impact.causedRicochet && !bulletDef.ignoreAngle)
             {
+                if (debugLogs)
+                    Log.Debug("[Bullet] RICOCHET condition: rawAngle={Angle:F1} ricochetAngle={RicochetAngle:F1} noseMod={NoseMod:F2}",
+                              rawAngle, bulletDef.ricochetAngle, bulletDef.noseType);
                 if (ricochetCount < maxRicochets)
                 {
                     ricochetCount++;
-                    Vector3 contactNormal = armorPlate.GetSmartWorldNormal(contactPoint);
-                    Vector3 reflectDir = Vector3.Reflect(bulletDirection, contactNormal).normalized;
 
-                    float newSpeed = Ballistics.ComputeSpeedAfterRicochet(speed, bulletDef, rawAngle);
+                    Vector3 reflectDir = Vector3.Reflect(bulletDirection, plateNormal).normalized;
+
+                    float newSpeed = Ballistics.ComputeSpeedAfterRicochet(speed, bulletDef, rawAngle, effArmorAfter);
                     Vector3 newVel = reflectDir * newSpeed;
 
                     rb.linearVelocity = newVel;
@@ -246,6 +251,7 @@ public class Bullet : MonoBehaviour
             {
                 penetration = impact.penetration;
                 if (debugLogs) Log.Debug("[Bullet] Sub-caliber broken -> reduced penetration to {Pen:F1}mm", penetration);
+
             }
 
             if (debugLogs) Log.Debug("[Bullet] Computed: speed={Speed:F1}m/s pen={Pen:F1}mm effArmor={Eff:F1}mm rawAngle={Angle:F1}deg",
@@ -257,6 +263,7 @@ public class Bullet : MonoBehaviour
 
                 float residual = Mathf.Clamp01((penetration - effArmorAfter) / Mathf.Max(1f, penetration));
                 float speedAfter = speed * (0.4f + 0.6f * residual);
+
                 Vector3 forwardVel = bulletDirection * speedAfter;
 
                 TemporarilyIgnoreColliderOptimized(collision.collider, 0.06f);
@@ -374,26 +381,6 @@ public class Bullet : MonoBehaviour
 
         pool?.Release(this);
         OnBulletExpired?.Invoke(this);
-    }
-
-    private void SetVisual(GameObject visualPrefab)
-    {
-        if (currentVisual != null)
-        {
-            string currentName = currentVisual.name.Replace("(Clone)", "").Trim();
-            string targetName = visualPrefab.name.Replace("(Clone)", "").Trim();
-
-            if (currentName == targetName)
-                return;
-
-            Destroy(currentVisual);
-        }
-
-        if (visualPrefab != null)
-        {
-            currentVisual = Instantiate(visualPrefab, transform);
-            currentVisual.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-        }
     }
 
     void OnEnable()

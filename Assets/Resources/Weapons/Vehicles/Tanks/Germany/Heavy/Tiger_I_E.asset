@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankDefinition
   tankName: Tiger I E
   tankClass: 2
+  playerTankPrefab: {fileID: 8963044645880213150, guid: 789550dc38c7b5341831d79ffdf18428, type: 3}
+  deathPrefab: {fileID: 1260240336708361179, guid: a1508c0061f43344b9447db0b4d0de07, type: 3}
+  previewPrefab: {fileID: 104648940869306611, guid: 2e04a7f39e57c7d4e9a08ba4f897fbc5, type: 3}
   health: 350
-  moveSpeed: 7.8
   rotationSpeed: 25
+  turretRotationSpeed: 30
   primaryGun: {fileID: 11400000, guid: f9e52fdc677da6347b9a416faa1cd554, type: 2}
   detectionRadius: 400
   strafeRadius: 12
@@ -24,15 +27,15 @@ MonoBehaviour:
   baseSpreadDegrees: 0.8
   movingSpreadFactor: 5
   stationarySpreadFactor: 0.8
-  maxMotorTorque: 5000
+  maxMotorTorque: 3500
   maxBrakeTorque: 1200
   moveResponse: 3
   turnResponse: 2
-  maxForwardSpeed: 8
-  maxBackwardSpeed: 3
   turnSharpness: 1.2
   reverseLockDuration: 0.8
   movingThreshold: 0.1
+  maxForwardSpeedKmh: 33
+  maxBackwardSpeedKmh: 12
   minIdleVolume: 0.2
   maxIdleVolume: 0.5
   minDriveVolume: 0

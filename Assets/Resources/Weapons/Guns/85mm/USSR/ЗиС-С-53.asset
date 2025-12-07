@@ -15,13 +15,13 @@ MonoBehaviour:
   gunName: "\u0417\u0438\u0421-\u0421-53"
   caliber: 85
   fireInterval: 7
-  liftSpeed: 1
-  minGunAngle: -5
-  maxGunAngle: 22
-  shootRange: 100
+  liftSpeed: 10
+  minGunAngle: -10
+  maxGunAngle: 25
+  shootRange: 1000
   bulletUseGravity: 1
-  shootSound: {fileID: 0}
-  reloadSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 50d6a0caa7cd2854a95228cb6cca1c9e, type: 3}
+  reloadSound: {fileID: 8300000, guid: 5c7ad3df2bd2224468074329971cf6dc, type: 3}
   bullets:
   - bullet: {fileID: 11400000, guid: 5ddbf2559794fcd40860ed2b7fef162f, type: 2}
     muzzleVelocity: 792

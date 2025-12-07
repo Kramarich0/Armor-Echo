@@ -157,7 +157,6 @@ public class TankSelectionUI : MonoBehaviour
             sb.AppendLine($"   Баллистика: ballisticK={bullet.ballisticK:F6}, deMarreK={bullet.deMarreK:F2}, minSpeed={bullet.minSpeed:F0} m/s");
             sb.AppendLine($"   Рикошет: ricochetAngle={bullet.ricochetAngle:F0}°, normalization={bullet.normalization:F1}, ignoreAngle={bullet.ignoreAngle}");
             sb.AppendLine($"   OvermatchFactor: {bullet.overmatchFactor:F2} | SplashRadius: {bullet.splashRadius:F2} m");
-            sb.AppendLine($"   useGravity: {bullet.useGravity} | visualPrefab: {(bullet.visualPrefab ? bullet.visualPrefab.name : "—")}");
             sb.AppendLine("");
         }
 

@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6b121d28af42145a06e2c47976ea42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tank
-  definition: {fileID: 0}
+  definition: {fileID: 11400000, guid: bdbff26dba98eea45ba9d777b9c9ba78, type: 2}
   rb: {fileID: 5647458603916418823}
   leftTrack:
     wheels:
@@ -623,9 +623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2fd5c84a8ad41a4fbf5fbdc00437cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTankHealth
-  maxHealth: 500
+  tankDef: {fileID: 0}
   currentHealth: 0
-  deathPrefab: {fileID: 0}
 --- !u!114 &5063417225654437595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -640,7 +639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TeamComponent
   tankId: 1baecd2d-1b2a-4c86-92ff-cd0f0994e37e
   team: 1
-  displayName: Tiger (P)
+  tankDefinition: {fileID: 0}
 --- !u!114 &9053349211623060839
 MonoBehaviour:
   m_ObjectHideFlags: 0

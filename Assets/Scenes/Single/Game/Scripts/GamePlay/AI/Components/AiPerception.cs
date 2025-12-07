@@ -26,11 +26,15 @@ public class AIPerception
 
     private void CacheEnemiesAndCapturePoints()
     {
-        if (allEnemiesCache == null || allEnemiesCache.Length == 0)
-            allEnemiesCache = Object.FindObjectsOfType<TeamComponent>(true);
+        allEnemiesCache = Object.FindObjectsByType<TeamComponent>(
+            FindObjectsInactive.Include,   
+            FindObjectsSortMode.None       
+        );
 
-        if (allCapturePointsCache == null || allCapturePointsCache.Length == 0)
-            allCapturePointsCache = Object.FindObjectsOfType<CapturePoint>(true);
+        allCapturePointsCache = Object.FindObjectsByType<CapturePoint>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
     }
 
     public void UpdatePerception()
@@ -57,6 +61,7 @@ public class AIPerception
 
         float bestDist = float.MaxValue;
         Transform best = null;
+
         foreach (var tc in allEnemiesCache)
         {
             if (tc == null) continue;
@@ -70,6 +75,22 @@ public class AIPerception
                 best = tc.transform;
             }
         }
+
+        var playerObj = GameObject.FindWithTag("Player");
+        if (playerObj != null)
+        {
+            var playerTeam = playerObj.GetComponent<TeamComponent>();
+            if (playerTeam != null && playerTeam.team != owner.teamComp?.team)
+            {
+                float pd = Vector3.SqrMagnitude(playerObj.transform.position - owner.transform.position);
+                if (pd < bestDist)
+                {
+                    bestDist = pd;
+                    best = playerObj.transform;
+                }
+            }
+        }
+
         owner.currentTarget = best;
         owner.targetRigidbody = best != null ? best.GetComponentInParent<Rigidbody>() : null;
         owner.targetAgent = best != null ? best.GetComponentInParent<NavMeshAgent>() : null;

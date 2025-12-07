@@ -73,10 +73,10 @@ public class AIStateHandler
                 hasTacticalPosition = false;
                 navigation?.MoveTo(owner.currentCapturePointTarget.transform.position);
             }
-            else
-            {
-                navigation?.PatrolRandom();
-            }
+            // else
+            // {
+            //     navigation?.PatrolRandom();
+            // }
         }
 
         if (hasTacticalPosition && Vector3.Distance(owner.transform.position, currentTacticalPosition) < Mathf.Max(1f, owner.StrafeRadius * 0.35f))
@@ -393,7 +393,7 @@ public class AIStateHandler
     {
         if (!owner.debugGizmos) return;
         perception.DrawGizmos();
-        navigation.DrawGizmos();
+        // navigation.DrawGizmos();
 
         if (hasTacticalPosition)
         {

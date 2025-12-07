@@ -746,6 +746,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 5552732549192560177, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5556038550511867200, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -1376,6 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTankHealth
   tankDef: {fileID: 11400000, guid: 6b9d2abbad6ada4478d785036d942bd7, type: 2}
+  destructibleParts: []
   currentHealth: 0
 --- !u!114 &3813386605292072114
 MonoBehaviour:

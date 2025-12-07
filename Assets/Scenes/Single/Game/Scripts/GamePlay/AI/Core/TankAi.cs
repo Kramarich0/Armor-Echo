@@ -82,6 +82,7 @@ public class TankAI : MonoBehaviour
     public float MaxDrivePitch => tankDefinition != null ? tankDefinition.maxDrivePitch : 1.2f;
 
     [Header("=== СЛУЖЕБНЫЕ ПЕРЕМЕННЫЕ ===")]
+    public float reverseLockTimer = 0f;
     internal NavMeshAgent agent;
     internal bool navAvailable = false;
     internal TeamComponent teamComp;

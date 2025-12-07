@@ -29,7 +29,6 @@ public class ArmorPlate : MonoBehaviour
     }
 
 
-
     public Vector3 GetPlateWorldCenter()
     {
         if (plateCollider is BoxCollider box)
@@ -41,51 +40,37 @@ public class ArmorPlate : MonoBehaviour
         return transform.position;
     }
 
-    public Vector3 GetSmartWorldNormal(Vector3 contactPoint)
+    public Vector3 GetSmartWorldNormal(Vector3 contactPoint, Vector3 bulletDir)
     {
-        if (plateCollider != null)
-        {
-            Vector3 closest = plateCollider.ClosestPoint(contactPoint);
-            Vector3 n = contactPoint - closest;
-            if (n.sqrMagnitude > 1e-6f)
-                return n.normalized;
-        }
-        return transform.forward.normalized;
+        Vector3 plateNormal = GetArmorWorldNormal();
+
+        if (Vector3.Dot(plateNormal, -bulletDir) < 0f)
+            plateNormal = -plateNormal;
+
+        return plateNormal.normalized;
     }
 
 
-    public float CalculateEffectiveArmor(Vector3 bulletDirection, BulletDefinition bulletDef, out float rawAngleDeg)
+    public float CalculateEffectiveArmor(Vector3 contactPoint, Vector3 bulletDirection, BulletDefinition bulletDef, out float rawAngleDeg, out Vector3 outPlateNormal)
     {
-        Vector3 plateNormal = GetArmorWorldNormal();
+        Vector3 plateNormal = GetSmartWorldNormal(contactPoint, bulletDirection);
+        outPlateNormal = plateNormal;
+
         Vector3 bulletInto = -bulletDirection.normalized;
 
         float rawAngle = Vector3.Angle(plateNormal, bulletInto);
-        rawAngleDeg = rawAngle;
+        rawAngleDeg = Mathf.Clamp(rawAngle, 0f, 90f);
 
-        if (bulletDef.ignoreAngle)
-            return thickness;
+        if (bulletDef != null && bulletDef.ignoreAngle)
+            return thickness * Ballistics.GetArmorTypeModifier(armorType);
 
-        float angle = rawAngle;
-        float cal = bulletDef.caliber;
-        float t = thickness;
-
-        if (cal > t * 3f)
-        {
-            angle = 0f;
-        }
-        else if (cal > t * 2.5f)
-        {
-            angle *= 0.5f;
-        }
-        else if (cal > t * 2f)
-        {
-            angle *= 0.7f;
-        }
-
-        float effectiveAngle = Mathf.Max(0f, angle - bulletDef.normalization);
+        float effectiveAngle = Mathf.Max(0f, rawAngle - (bulletDef?.normalization ?? 0f));
         float clampedAngle = Mathf.Min(effectiveAngle, 89f);
 
-        float effArmor = thickness / Mathf.Cos(clampedAngle * Mathf.Deg2Rad);
+        float cos = Mathf.Cos(clampedAngle * Mathf.Deg2Rad);
+        cos = Mathf.Max(0.001f, cos); 
+        float effArmor = thickness / cos;
+
         effArmor *= Ballistics.GetArmorTypeModifier(armorType);
 
         return effArmor;
@@ -157,7 +142,7 @@ public class ArmorPlate : MonoBehaviour
 
         Gizmos.matrix = old;
 
-        Vector3 normal = (thicknessAxis == 0 ? box.transform.right : (thicknessAxis == 1 ? box.transform.up : box.transform.forward)).normalized;
+        Vector3 normal = GetArmorWorldNormal();
         Gizmos.color = Color.cyan;
         Gizmos.DrawRay(center, normal * 0.25f);
         DrawArrow(center + normal * 0.25f, normal * 0.06f, Color.cyan);

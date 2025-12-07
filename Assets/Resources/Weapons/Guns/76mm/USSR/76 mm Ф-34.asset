@@ -17,7 +17,7 @@ MonoBehaviour:
   fireInterval: 6.5
   liftSpeed: 10
   minGunAngle: -5
-  maxGunAngle: 26
+  maxGunAngle: 22
   shootRange: 100
   bulletUseGravity: 1
   shootSound: {fileID: 0}

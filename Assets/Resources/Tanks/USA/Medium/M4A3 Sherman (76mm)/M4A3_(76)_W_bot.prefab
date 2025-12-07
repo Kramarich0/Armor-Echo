@@ -1128,6 +1128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AITankHealth
   tankDef: {fileID: 11400000, guid: 555330a6a377ec449aa278cd1e532e0c, type: 2}
+  destructibleParts: []
   currentHealth: 0
 --- !u!195 &3936796004142384801
 NavMeshAgent:
@@ -1217,6 +1218,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   capturePointDetectionRadius: 60
+  reverseLockTimer: 0
   cachedTransform: {fileID: 0}
   rb: {fileID: 0}
   cachedColliders: []

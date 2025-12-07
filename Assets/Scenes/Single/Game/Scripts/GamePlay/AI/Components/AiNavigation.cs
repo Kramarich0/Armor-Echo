@@ -6,7 +6,7 @@ public class AINavigation
     readonly TankAI owner;
 
     float smoothedMove = 0f;
-    float smoothedTurn = 0f;
+    float smoothedTurn = 0f; // normalized -1..1 representing turn command (mapped to degrees internally)
     float moveVelocity = 0f;
     float turnVelocity = 0f;
     float enginePower = 0f;
@@ -20,22 +20,26 @@ public class AINavigation
         if (reverseLockTimer > 0f)
             reverseLockTimer -= Time.deltaTime;
 
-        if (Mathf.Abs(smoothedTurn) < 0.05f) smoothedTurn = 0f;
+        if (Mathf.Abs(smoothedTurn) < 0.01f) smoothedTurn = 0f;
 
         float targetMove = GetTargetMoveInput();
         float targetTurn = GetTargetTurnInput();
 
-        smoothedMove = Mathf.SmoothDamp(smoothedMove, targetMove, ref moveVelocity, 1f / Mathf.Max(owner.MoveResponse, 0.1f));
-        smoothedTurn = Mathf.SmoothDamp(smoothedTurn, targetTurn, ref turnVelocity, 1f / Mathf.Max(owner.TurnResponse, 0.1f));
+        float moveSmoothTime = Mathf.Clamp(owner.MoveResponse, 0.02f, 1f);
+        float turnSmoothTime = Mathf.Clamp(owner.TurnResponse, 0.02f, 1f);
+
+        smoothedMove = Mathf.SmoothDamp(smoothedMove, targetMove, ref moveVelocity, moveSmoothTime);
+        float targetTurnDeg = targetTurn * 180f;
+        float smoothedTurnDeg = Mathf.SmoothDampAngle(smoothedTurn * 180f, targetTurnDeg, ref turnVelocity, turnSmoothTime);
+        smoothedTurn = Mathf.Clamp(smoothedTurnDeg / 180f, -1f, 1f);
 
         float inputMagnitude = Mathf.Max(Mathf.Abs(smoothedMove), Mathf.Abs(smoothedTurn));
-        // float targetEnginePower = inputMagnitude > 0.01f ? 1f : 0f;
-        enginePower = Mathf.MoveTowards(enginePower, inputMagnitude > 0.01f ? 1f : 0f, Time.deltaTime * 0.8f);
+        enginePower = Mathf.MoveTowards(enginePower, inputMagnitude > 0.01f ? 1f : 0f, Time.deltaTime * 4f);
     }
 
     public void MoveTo(Vector3 position)
     {
-        if (owner.agent == null || !owner.navAvailable || !owner.agent.isOnNavMesh) return;
+        if (owner == null || owner.agent == null || !owner.navAvailable || !owner.agent.isOnNavMesh) return;
 
         UpdateNavigation();
 
@@ -48,13 +52,18 @@ public class AINavigation
         if (!hasTracks)
         {
             owner.agent.updatePosition = true;
+            owner.agent.updateRotation = true;
             owner.agent.isStopped = false;
             AlignBodyToVelocity();
             return;
         }
 
         owner.agent.updatePosition = false;
+        owner.agent.updateRotation = false;
         owner.agent.isStopped = false;
+
+        // keep agent internal position synced with physical
+        owner.agent.nextPosition = owner.transform.position;
 
         float stopDist = Mathf.Max(0.25f, owner.agent.stoppingDistance);
         Vector3 toTarget = position - owner.transform.position;
@@ -67,9 +76,25 @@ public class AINavigation
             return;
         }
 
-        ApplyTankPhysics(smoothedMove, smoothedTurn, rb);
+        float navAngleBoost = 0f;
+        if (owner.agent.hasPath)
+        {
+            Vector3 toNext = owner.agent.steeringTarget - owner.transform.position;
+            toNext.y = 0f;
+            if (toNext.sqrMagnitude > 0.0001f)
+            {
+                float angle = Vector3.SignedAngle(owner.transform.forward, toNext.normalized, Vector3.up);
+                if (Mathf.Abs(angle) > 35f)
+                    navAngleBoost = Mathf.Clamp(angle / 45f, -1f, 1f) * 1.2f;
+            }
+        }
 
-        AlignBodyToMovementDirection(smoothedMove, smoothedTurn);
+        float finalTurn = smoothedTurn;
+        if (Mathf.Abs(navAngleBoost) > Mathf.Abs(finalTurn))
+            finalTurn = Mathf.Lerp(finalTurn, navAngleBoost, 0.7f);
+
+        ApplyTankPhysics(smoothedMove, finalTurn, rb);
+        AlignBodyToMovementDirection(smoothedMove, finalTurn);
     }
 
     private float GetTargetMoveInput()
@@ -87,7 +112,7 @@ public class AINavigation
         float moveInput = Vector3.Dot(owner.transform.forward, dir);
 
         if (Mathf.Abs(angle) > 60f)
-            moveInput = Mathf.Clamp(moveInput, -0.3f, 0.3f);
+            moveInput = Mathf.Clamp(moveInput, -0.6f, 0.6f);
 
         return Mathf.Clamp(moveInput, -1f, 1f);
     }
@@ -105,6 +130,9 @@ public class AINavigation
         float angle = Vector3.SignedAngle(owner.transform.forward, dir, Vector3.up);
 
         float turnInput = Mathf.Clamp(angle / 45f, -1f, 1f);
+
+        if (Mathf.Abs(angle) > 60f)
+            turnInput = Mathf.Sign(angle) * Mathf.Lerp(0.9f, 1f, (Mathf.Abs(angle) - 60f) / 120f);
 
         return turnInput;
     }
@@ -131,14 +159,14 @@ public class AINavigation
             return;
         }
 
-        float speedFactor = Mathf.Clamp01(absForwardSpeed / owner.MaxForwardSpeed);
+        float speedFactor = Mathf.Clamp01(absForwardSpeed / Mathf.Max(0.0001f, owner.MaxForwardSpeed));
         float lowSpeedBoost = 1f + (1f - speedFactor) * 2.0f;
         float effectiveTurnSharpness = owner.TurnSharpness * lowSpeedBoost;
 
         float leftPower = Mathf.Clamp(moveInput + turnInput * effectiveTurnSharpness, -1f, 1f);
         float rightPower = Mathf.Clamp(moveInput - turnInput * effectiveTurnSharpness, -1f, 1f);
 
-        bool wantsReverse = Mathf.Sign(moveInput) != Mathf.Sign(currentForwardSpeed);
+        bool wantsReverse = moveInput != 0f && Mathf.Sign(moveInput) != Mathf.Sign(currentForwardSpeed);
         if (absForwardSpeed > 0.5f && wantsReverse)
         {
             float speedRatio = Mathf.InverseLerp(0.5f, owner.MaxForwardSpeed, absForwardSpeed);
@@ -174,10 +202,10 @@ public class AINavigation
 
         Vector3 desiredForward = owner.transform.forward;
 
-        if (Mathf.Abs(moveInput) > 0.1f || Mathf.Abs(turnInput) > 0.1f)
+        if (Mathf.Abs(moveInput) > 0.01f || Mathf.Abs(turnInput) > 0.01f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(desiredForward);
-            owner.body.rotation = Quaternion.RotateTowards(owner.body.rotation, targetRotation, owner.RotationSpeed * Time.deltaTime);
+            owner.body.rotation = Quaternion.RotateTowards(owner.body.rotation, targetRotation, owner.RotationSpeed * Time.deltaTime * 40f);
         }
     }
 
@@ -190,7 +218,7 @@ public class AINavigation
             {
                 Vector3 forwardDir = vel.normalized * (owner.invertBodyForward ? -1f : 1f);
                 Quaternion target = Quaternion.LookRotation(forwardDir);
-                owner.body.rotation = Quaternion.RotateTowards(owner.body.rotation, target, owner.RotationSpeed * Time.deltaTime);
+                owner.body.rotation = Quaternion.RotateTowards(owner.body.rotation, target, owner.RotationSpeed * Time.deltaTime * 40f);
             }
         }
     }
@@ -211,7 +239,7 @@ public class AINavigation
 
     public void DrawGizmos()
     {
-        if (!owner.debugGizmos) return;
+        if (owner == null || !owner.debugGizmos) return;
         Gizmos.color = Color.green;
         if (owner.agent != null)
             Gizmos.DrawLine(owner.transform.position, owner.transform.position + owner.agent.velocity);

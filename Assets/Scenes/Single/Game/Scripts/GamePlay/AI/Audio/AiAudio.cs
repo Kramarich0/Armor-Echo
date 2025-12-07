@@ -7,10 +7,16 @@ public class AIAudio
 
     public void UpdateEngineAudio()
     {
-        if (owner.agent == null) return;
+        if (owner == null) return;
 
-        float speed = owner.agent.velocity.magnitude;
-        float blend = Mathf.Clamp01(speed / owner.MoveSpeed);
+        float speed = 0f;
+
+        if (owner.rb != null)
+            speed = owner.rb.linearVelocity.magnitude;
+        else if (owner.agent != null)
+            speed = owner.agent.velocity.magnitude;
+
+        float blend = (owner.MoveSpeed > 0f) ? Mathf.Clamp01(speed / owner.MoveSpeed) : 0f;
 
         if (owner.idleSource != null)
         {

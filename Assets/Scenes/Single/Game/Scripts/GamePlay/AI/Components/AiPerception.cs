@@ -1,4 +1,3 @@
-// пока не коммитить!
 using Serilog;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,6 +11,7 @@ public class AIPerception
     private float captureCheckTimer = 0f;
 
     private readonly RaycastHit[] losHits = new RaycastHit[16];
+
     public AIPerception(TankAI owner)
     {
         this.owner = owner;
@@ -27,10 +27,10 @@ public class AIPerception
     private void CacheEnemiesAndCapturePoints()
     {
         if (allEnemiesCache == null || allEnemiesCache.Length == 0)
-            allEnemiesCache = Object.FindObjectsByType<TeamComponent>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            allEnemiesCache = Object.FindObjectsOfType<TeamComponent>(true);
 
         if (allCapturePointsCache == null || allCapturePointsCache.Length == 0)
-            allCapturePointsCache = Object.FindObjectsByType<CapturePoint>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            allCapturePointsCache = Object.FindObjectsOfType<CapturePoint>(true);
     }
 
     public void UpdatePerception()
@@ -41,7 +41,7 @@ public class AIPerception
         if (enemyCheckTimer <= 0f)
         {
             FindNearestEnemy();
-            enemyCheckTimer = 0.3f;
+            enemyCheckTimer = 0.25f;
         }
 
         if (captureCheckTimer <= 0f)
@@ -53,12 +53,15 @@ public class AIPerception
 
     public void FindNearestEnemy()
     {
+        CacheEnemiesAndCapturePoints();
+
         float bestDist = float.MaxValue;
         Transform best = null;
         foreach (var tc in allEnemiesCache)
         {
-            if (tc == null || tc == owner.teamComp) continue;
-            if (tc.team == owner.teamComp.team) continue;
+            if (tc == null) continue;
+            if (owner.teamComp != null && tc == owner.teamComp) continue;
+            if (owner.teamComp != null && tc.team == owner.teamComp.team) continue;
 
             float d = Vector3.SqrMagnitude(tc.transform.position - owner.transform.position);
             if (d < bestDist)
@@ -68,18 +71,21 @@ public class AIPerception
             }
         }
         owner.currentTarget = best;
-        owner.targetRigidbody = best != null ? best.GetComponent<Rigidbody>() : null;
+        owner.targetRigidbody = best != null ? best.GetComponentInParent<Rigidbody>() : null;
+        owner.targetAgent = best != null ? best.GetComponentInParent<NavMeshAgent>() : null;
     }
 
     public void FindNearestCapturePoint()
     {
+        CacheEnemiesAndCapturePoints();
+
         float bestDist = float.MaxValue;
         CapturePoint best = null;
 
         foreach (var cp in allCapturePointsCache)
         {
             if (cp == null) continue;
-            if (cp.GetControllingTeam() == owner.teamComp.team) continue;
+            if (owner.teamComp != null && cp.GetControllingTeam() == owner.teamComp.team) continue;
 
             float d = Vector3.SqrMagnitude(cp.transform.position - owner.transform.position);
             if (d < bestDist)
@@ -99,7 +105,7 @@ public class AIPerception
 
     public bool HasLineOfSight(Transform t)
     {
-        if (t == null || owner.gunEnd == null) return false;
+        if (t == null || owner == null || owner.gunEnd == null) return false;
 
         Vector3 from = owner.gunEnd.position + owner.gunEnd.forward * 0.15f;
         Vector3 to = t.position + Vector3.up * 1.2f;
@@ -119,17 +125,17 @@ public class AIPerception
                 closestHit = losHits[i];
             }
         }
-        var hitTransform = closestHit.collider.transform;
 
+        var hitTransform = closestHit.collider != null ? closestHit.collider.transform : null;
+        if (closestHit.collider == null) return true;
         if (closestHit.collider.isTrigger) return true;
-        if (hitTransform.IsChildOf(owner.transform)) return true;
-        if (hitTransform == t || hitTransform.IsChildOf(t)) return true;
+        if (hitTransform != null && hitTransform.IsChildOf(owner.transform)) return true;
+        if (hitTransform == t || (hitTransform != null && hitTransform.IsChildOf(t))) return true;
         if (closestHit.collider.TryGetComponent<TeamComponent>(out var team))
-            return team.team != owner.teamComp.team;
+            return team.team != owner.teamComp?.team;
 
         return false;
     }
-
 
     public void DrawGizmos()
     {

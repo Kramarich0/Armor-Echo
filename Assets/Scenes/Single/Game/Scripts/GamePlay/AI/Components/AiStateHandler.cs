@@ -12,8 +12,8 @@ public class AIStateHandler
     readonly AIWeapons weapons;
 
     float decisionTimer;
-    float minDecisionInterval = 4f;
-    float maxDecisionInterval = 8f;
+    float minDecisionInterval = 2.5f;
+    float maxDecisionInterval = 6f;
 
     Vector3 currentTacticalPosition;
     bool hasTacticalPosition = false;
@@ -23,7 +23,7 @@ public class AIStateHandler
 
     float microMoveTimer = 0f;
     const float microMoveInterval = 1.2f;
-    const float microMoveRadius = 1.0f;
+    const float microMoveRadius = 0.9f;
 
     public AIStateHandler(TankAI owner, AIPerception perception, AINavigation navigation, AICombat combat, AIWeapons weapons)
     {
@@ -132,50 +132,50 @@ public class AIStateHandler
         switch (currentTactic)
         {
             case Tactic.Strafe:
+            {
+                float dist = Vector3.Distance(owner.transform.position, currentTacticalPosition);
+                if (dist < Mathf.Max(1f, owner.StrafeRadius * 0.4f))
                 {
-                    float dist = Vector3.Distance(owner.transform.position, currentTacticalPosition);
-                    if (dist < Mathf.Max(1f, owner.StrafeRadius * 0.4f))
-                    {
-                        if (owner.agent != null) owner.agent.stoppingDistance = Mathf.Max(0.3f, owner.ShootRange * 0.06f);
-                    }
-                    else
-                    {
-                        navigation?.MoveTo(currentTacticalPosition);
-                    }
-                    UpdateAgentDefaultMovement(currentTacticalPosition);
-                    break;
+                    if (owner.agent != null) owner.agent.stoppingDistance = Mathf.Max(0.3f, owner.ShootRange * 0.06f);
                 }
+                else
+                {
+                    navigation?.MoveTo(currentTacticalPosition);
+                }
+                UpdateAgentDefaultMovement(currentTacticalPosition);
+                break;
+            }
             case Tactic.Flank:
-                {
-                    navigation?.MoveTo(currentTacticalPosition);
-                    if (owner.agent != null) owner.agent.stoppingDistance = Mathf.Clamp(owner.ShootRange * 0.12f, 0.3f, owner.ShootRange * 0.4f);
-                    UpdateAgentDefaultMovement(currentTacticalPosition);
-                    break;
-                }
+            {
+                navigation?.MoveTo(currentTacticalPosition);
+                if (owner.agent != null) owner.agent.stoppingDistance = Mathf.Clamp(owner.ShootRange * 0.12f, 0.3f, owner.ShootRange * 0.4f);
+                UpdateAgentDefaultMovement(currentTacticalPosition);
+                break;
+            }
             case Tactic.Retreat:
-                {
-                    navigation?.MoveTo(currentTacticalPosition);
-                    if (owner.agent != null) owner.agent.stoppingDistance = Mathf.Max(0.3f, owner.ShootRange * 0.05f);
-                    UpdateAgentDefaultMovement(currentTacticalPosition);
-                    break;
-                }
+            {
+                navigation?.MoveTo(currentTacticalPosition);
+                if (owner.agent != null) owner.agent.stoppingDistance = Mathf.Max(0.3f, owner.ShootRange * 0.05f);
+                UpdateAgentDefaultMovement(currentTacticalPosition);
+                break;
+            }
             case Tactic.Capture:
-                {
-                    if (owner.currentCapturePointTarget != null)
-                        navigation?.MoveTo(owner.currentCapturePointTarget.transform.position);
-                    UpdateAgentDefaultMovement(owner.currentCapturePointTarget != null ? owner.currentCapturePointTarget.transform.position : owner.transform.position);
-                    break;
-                }
+            {
+                if (owner.currentCapturePointTarget != null)
+                    navigation?.MoveTo(owner.currentCapturePointTarget.transform.position);
+                UpdateAgentDefaultMovement(owner.currentCapturePointTarget != null ? owner.currentCapturePointTarget.transform.position : owner.transform.position);
+                break;
+            }
             default:
-                {
-                    float dist = Vector3.Distance(owner.transform.position, target.position);
-                    if (dist < owner.ShootRange * 0.6f)
-                        navigation?.MoveTo(owner.transform.position + (owner.transform.position - target.position).normalized * (owner.ShootRange * 0.6f));
-                    else
-                        navigation?.MoveTo(target.position);
-                    UpdateAgentDefaultMovement(target.position);
-                    break;
-                }
+            {
+                float dist = Vector3.Distance(owner.transform.position, target.position);
+                if (dist < owner.ShootRange * 0.6f)
+                    navigation?.MoveTo(owner.transform.position + (owner.transform.position - target.position).normalized * (owner.ShootRange * 0.6f));
+                else
+                    navigation?.MoveTo(target.position);
+                UpdateAgentDefaultMovement(target.position);
+                break;
+            }
         }
     }
 
@@ -222,10 +222,7 @@ public class AIStateHandler
         hasTacticalPosition = false;
     }
 
-    bool IsAllyClusteredNear(Vector3 pos, float radius)
-    {
-        return CountNearbyAllies(pos) >= 2;
-    }
+    bool IsAllyClusteredNear(Vector3 pos, float radius) => CountNearbyAllies(pos) >= 2;
 
     Vector3 PickApproachOrStrafe(Transform target)
     {
@@ -392,29 +389,12 @@ public class AIStateHandler
         return null;
     }
 
-    Vector3 GetStrafePoint(Transform target, float radius, float speed, float phaseOffset)
-    {
-        if (target == null) return owner.transform.position;
-        float phase = (Time.time * Mathf.Max(0.001f, speed) + phaseOffset + Random.value * 0.2f) % 1f;
-        float angle = phase * Mathf.PI * 2f;
-        Vector3 toBot = owner.transform.position - target.position;
-        Vector3 flat = Vector3.ProjectOnPlane(toBot, Vector3.up);
-        if (flat.sqrMagnitude < 0.001f) flat = -owner.transform.forward;
-        flat.Normalize();
-        Vector3 perp = Vector3.Cross(flat, Vector3.up).normalized;
-        float rad = radius * Random.Range(0.9f, 1.1f);
-        Vector3 offset = (perp * Mathf.Cos(angle) + flat * Mathf.Sin(angle)) * rad;
-        return target.position + offset;
-    }
-
-
     public void OnDrawGizmos()
     {
         if (!owner.debugGizmos) return;
         perception.DrawGizmos();
         navigation.DrawGizmos();
 
-        // NEW: show tactical point
         if (hasTacticalPosition)
         {
             Gizmos.color = Color.cyan;

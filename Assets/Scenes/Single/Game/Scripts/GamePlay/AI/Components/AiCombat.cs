@@ -13,15 +13,12 @@ public class AICombat
 
     static float NormalizeAngle(float a)
     {
-        a %= 360f;
-        if (a > 180f) a -= 360f;
-        if (a < -180f) a += 360f;
-        return a;
+        return Mathf.DeltaAngle(0f, a);
     }
 
     public void AimAt(Transform t)
     {
-        if (t == null) return;
+        if (t == null || owner == null) return;
 
         if (owner.turret != null)
         {
@@ -35,7 +32,7 @@ public class AICombat
         }
 
         if (owner.gun == null || owner.gunEnd == null) return;
-        if (owner.tankDefinition.primaryGun == null || owner.tankDefinition.primaryGun.bullets.Length == 0) return;
+        if (owner.tankDefinition == null || owner.tankDefinition.primaryGun == null || owner.tankDefinition.primaryGun.bullets.Length == 0) return;
 
         BulletDefinition bullet = owner.tankDefinition.primaryGun.bullets[0].bullet;
         float projectileSpeed = owner.GetMuzzleVelocity(bullet);
@@ -80,19 +77,22 @@ public class AICombat
 
     public Vector3 PredictTargetPosition(Transform t, float projectileSpeed)
     {
+        if (t == null || owner == null) return Vector3.zero;
+
         Vector3 targetPos = t.position;
-        Rigidbody rb = owner.targetRigidbody;
         Vector3 targetVel = Vector3.zero;
+
         if (owner.targetAgent != null)
             targetVel = owner.targetAgent.velocity;
-        else if (rb != null)
-            targetVel = rb.linearVelocity;
+        else if (owner.targetRigidbody != null)
+            targetVel = owner.targetRigidbody.linearVelocity;
 
         Vector3 dir = targetPos - owner.gunEnd.position;
         float dist = dir.magnitude;
         float time = dist / Mathf.Max(0.001f, projectileSpeed);
 
-        for (int i = 0; i < 2; i++)
+        // iterate couple times for better lead
+        for (int i = 0; i < 3; i++)
         {
             Vector3 predicted = targetPos + targetVel * time;
             Vector3 toPred = predicted - owner.gunEnd.position;
@@ -102,5 +102,4 @@ public class AICombat
 
         return targetPos + targetVel * time;
     }
-
 }

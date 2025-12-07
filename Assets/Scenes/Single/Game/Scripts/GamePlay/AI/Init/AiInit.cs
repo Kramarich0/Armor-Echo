@@ -8,7 +8,6 @@ public class AIInit
     readonly TankAI owner;
     public AIInit(TankAI owner) { this.owner = owner; }
 
-
     public void Awake()
     {
         owner.tankHealth = owner.GetComponent<AITankHealth>();
@@ -16,15 +15,13 @@ public class AIInit
         owner.teamComp = owner.GetComponent<TeamComponent>();
     }
 
-
     public void Start()
     {
-
         if (owner.agent != null)
         {
             owner.agent.speed = owner.MoveSpeed;
             owner.agent.angularSpeed = 120f;
-            owner.agent.acceleration = 8f;
+            owner.agent.acceleration = Mathf.Max(4f, owner.MoveSpeed * 2f);
             owner.agent.updateRotation = false;
             owner.agent.updatePosition = false;
             owner.agent.stoppingDistance = 0f;
@@ -47,7 +44,6 @@ public class AIInit
                 if (owner.debugLogs)
                     Log.Warning("[AI] NavMesh not found nearby for {AgentName}. Using fallback movement.", owner.name);
             }
-
         }
 
         if (owner.leftTrack != null && owner.rightTrack != null)
@@ -69,7 +65,6 @@ public class AIInit
             frames++;
             yield return null;
         }
-
 
         SetupAudio();
     }

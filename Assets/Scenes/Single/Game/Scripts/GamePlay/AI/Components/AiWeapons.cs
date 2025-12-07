@@ -8,6 +8,7 @@ public class AIWeapons
 
     public void ShootAt(Transform target, BulletType bulletType = BulletType.APHE)
     {
+        if (owner == null) return;
         if (owner.gunEnd == null)
         {
             if (owner.debugLogs)
@@ -24,7 +25,6 @@ public class AIWeapons
         }
 
         float muzzleVel = owner.GetMuzzleVelocity(bulletSlot.definition);
-
         Vector3 predicted = owner.combat.PredictTargetPosition(target, muzzleVel);
         Vector3 aim = predicted - owner.gunEnd.position;
 
@@ -49,9 +49,12 @@ public class AIWeapons
 
     private Vector3 CalculateLaunchVelocity(Vector3 aim, float speed)
     {
+        if (owner == null) return Vector3.zero;
+        if (speed <= 0f) return aim.normalized * 0f;
+
         if (owner.BulletUseGravity)
         {
-            Vector3 horizontal = new(aim.x, 0f, aim.z);
+            Vector3 horizontal = new Vector3(aim.x, 0f, aim.z);
             float distance = horizontal.magnitude;
             float height = aim.y;
 
@@ -72,7 +75,10 @@ public class AIWeapons
             float angleLow = Mathf.Atan2(v2 - sqrtDisc, g * distance);
 
             Vector3 flatDir = horizontal.normalized;
-            Vector3 launchDir = Quaternion.AngleAxis(angleLow * Mathf.Rad2Deg, Vector3.Cross(flatDir, Vector3.up)) * flatDir;
+            // Rotate flatDir up by angleLow around cross(flatDir, up)
+            Vector3 axis = Vector3.Cross(flatDir, Vector3.up);
+            Quaternion launchQuat = Quaternion.AngleAxis(angleLow * Mathf.Rad2Deg, axis);
+            Vector3 launchDir = launchQuat * flatDir;
             return launchDir * v;
         }
         else
@@ -83,7 +89,10 @@ public class AIWeapons
 
     private Vector3 ApplySpread(Vector3 velocity, Transform gunEnd)
     {
-        float moveSpeed = owner.agent?.velocity.magnitude ?? 0f;
+        float moveSpeed = 0f;
+        if (owner.rb != null) moveSpeed = owner.rb.linearVelocity.magnitude;
+        else if (owner.agent != null) moveSpeed = owner.agent.velocity.magnitude;
+
         float speedFactor = Mathf.Clamp01(moveSpeed / Mathf.Max(0.1f, owner.MoveSpeed));
         float spreadDeg = owner.BaseSpreadDegrees * Mathf.Lerp(owner.StationarySpreadFactor, owner.MovingSpreadFactor, speedFactor);
 

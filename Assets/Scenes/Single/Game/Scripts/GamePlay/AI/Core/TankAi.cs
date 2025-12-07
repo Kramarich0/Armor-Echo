@@ -35,54 +35,51 @@ public class TankAI : MonoBehaviour
     public bool debugLogs = false;
 
     [Header("Корректировки осей моделей")]
-    [Tooltip("Если модель корпуса в сцене смотрит 'назад' относительно forward (Z), включи это")]
     public bool invertBodyForward = false;
-    [Tooltip("Если башня у модели смотрит в -Z (назад), включи это")]
     public bool invertTurretForward = false;
-    [Tooltip("Если ствол вверх/вниз использует локальную ось X вместо Z, включи это")]
     public bool gunUsesLocalXForPitch = true;
     [Header("Другое")]
     public bool enableStrafeWhileShooting = true;
     public LayerMask capturePointsLayer = -1;
     public float capturePointDetectionRadius = 60f;
 
-    public float MoveSpeed => tankDefinition.MaxForwardSpeed;
-    public float RotationSpeed => tankDefinition.rotationSpeed;
-    public float TurretRotationSpeed => tankDefinition.turretRotationSpeed;
+    public float MoveSpeed => tankDefinition != null ? tankDefinition.MaxForwardSpeed : 0f;
+    public float RotationSpeed => tankDefinition != null ? tankDefinition.rotationSpeed : 90f;
+    public float TurretRotationSpeed => tankDefinition != null ? tankDefinition.turretRotationSpeed : 90f;
 
-    public float ShootRange => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.shootRange : 0f;
-    public int MaxGunAngle => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.maxGunAngle : 0;
-    public int MinGunAngle => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.minGunAngle : 0;
-    public float FireRate => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.FireRate : 0f;
-    public bool BulletUseGravity => tankDefinition.primaryGun == null || tankDefinition.primaryGun.bulletUseGravity;
-    public AudioClip ShootSound => tankDefinition.primaryGun != null ? tankDefinition.primaryGun.shootSound : null;
-    public float DetectionRadius => tankDefinition.detectionRadius;
-    public float StrafeRadius => tankDefinition.strafeRadius;
-    public float StrafeSpeed => tankDefinition.strafeSpeed;
-    public float BaseSpreadDegrees => tankDefinition.baseSpreadDegrees;
-    public float MovingSpreadFactor => tankDefinition.movingSpreadFactor;
-    public float StationarySpreadFactor => tankDefinition.stationarySpreadFactor;
+    public float ShootRange => tankDefinition != null && tankDefinition.primaryGun != null ? tankDefinition.primaryGun.shootRange : 0f;
+    public int MaxGunAngle => tankDefinition != null && tankDefinition.primaryGun != null ? tankDefinition.primaryGun.maxGunAngle : 0;
+    public int MinGunAngle => tankDefinition != null && tankDefinition.primaryGun != null ? tankDefinition.primaryGun.minGunAngle : 0;
+    public float FireRate => tankDefinition != null && tankDefinition.primaryGun != null ? tankDefinition.primaryGun.FireRate : 0f;
+    public bool BulletUseGravity => tankDefinition == null || tankDefinition.primaryGun == null || tankDefinition.primaryGun.bulletUseGravity;
+    public AudioClip ShootSound => tankDefinition != null && tankDefinition.primaryGun != null ? tankDefinition.primaryGun.shootSound : null;
+    public float DetectionRadius => tankDefinition != null ? tankDefinition.detectionRadius : 0f;
+    public float StrafeRadius => tankDefinition != null ? tankDefinition.strafeRadius : 4f;
+    public float StrafeSpeed => tankDefinition != null ? tankDefinition.strafeSpeed : 1f;
+    public float BaseSpreadDegrees => tankDefinition != null ? tankDefinition.baseSpreadDegrees : 1f;
+    public float MovingSpreadFactor => tankDefinition != null ? tankDefinition.movingSpreadFactor : 2f;
+    public float StationarySpreadFactor => tankDefinition != null ? tankDefinition.stationarySpreadFactor : 1f;
 
-    public float MaxMotorTorque => tankDefinition.maxMotorTorque;
-    public float MaxBrakeTorque => tankDefinition.maxBrakeTorque;
-    public float MoveResponse => tankDefinition.moveResponse;
-    public float TurnResponse => tankDefinition.turnResponse;
-    public float MaxForwardSpeed => tankDefinition.MaxForwardSpeed;
-    public float MaxBackwardSpeed => tankDefinition.MaxBackwardSpeed;
-    public float TurnSharpness => tankDefinition.turnSharpness;
-    public float ReverseLockDuration => tankDefinition.reverseLockDuration;
-    public float MovingThreshold => tankDefinition.movingThreshold;
+    public float MaxMotorTorque => tankDefinition != null ? tankDefinition.maxMotorTorque : 1000f;
+    public float MaxBrakeTorque => tankDefinition != null ? tankDefinition.maxBrakeTorque : 1000f;
+    public float MoveResponse => tankDefinition != null ? tankDefinition.moveResponse : 0.1f;
+    public float TurnResponse => tankDefinition != null ? tankDefinition.rotationSpeed : 0.1f; // if your field name differs, adjust
+    public float MaxForwardSpeed => tankDefinition != null ? tankDefinition.MaxForwardSpeed : 6f;
+    public float MaxBackwardSpeed => tankDefinition != null ? tankDefinition.MaxBackwardSpeed : 3f;
+    public float TurnSharpness => tankDefinition != null ? tankDefinition.turnSharpness : 1f;
+    public float ReverseLockDuration => tankDefinition != null ? tankDefinition.reverseLockDuration : 0.4f;
+    public float MovingThreshold => tankDefinition != null ? tankDefinition.movingThreshold : 0.1f;
 
-    public AudioClip IdleSound => tankDefinition.idleSound;
-    public AudioClip DriveSound => tankDefinition.driveSound;
-    public float MinIdleVolume => tankDefinition.minIdleVolume;
-    public float MaxIdleVolume => tankDefinition.maxIdleVolume;
-    public float MinDriveVolume => tankDefinition.minDriveVolume;
-    public float MaxDriveVolume => tankDefinition.maxDriveVolume;
-    public float MinIdlePitch => tankDefinition.minIdlePitch;
-    public float MaxIdlePitch => tankDefinition.maxIdlePitch;
-    public float MinDrivePitch => tankDefinition.minDrivePitch;
-    public float MaxDrivePitch => tankDefinition.maxDrivePitch;
+    public AudioClip IdleSound => tankDefinition != null ? tankDefinition.idleSound : null;
+    public AudioClip DriveSound => tankDefinition != null ? tankDefinition.driveSound : null;
+    public float MinIdleVolume => tankDefinition != null ? tankDefinition.minIdleVolume : 0.1f;
+    public float MaxIdleVolume => tankDefinition != null ? tankDefinition.maxIdleVolume : 0.5f;
+    public float MinDriveVolume => tankDefinition != null ? tankDefinition.minDriveVolume : 0.1f;
+    public float MaxDriveVolume => tankDefinition != null ? tankDefinition.maxDriveVolume : 0.7f;
+    public float MinIdlePitch => tankDefinition != null ? tankDefinition.minIdlePitch : 0.9f;
+    public float MaxIdlePitch => tankDefinition != null ? tankDefinition.maxIdlePitch : 1.2f;
+    public float MinDrivePitch => tankDefinition != null ? tankDefinition.minDrivePitch : 0.9f;
+    public float MaxDrivePitch => tankDefinition != null ? tankDefinition.maxDrivePitch : 1.2f;
 
     [Header("=== СЛУЖЕБНЫЕ ПЕРЕМЕННЫЕ ===")]
     internal NavMeshAgent agent;
@@ -101,7 +98,7 @@ public class TankAI : MonoBehaviour
     internal AudioSource shootSource;
     internal Rigidbody targetRigidbody;
 
-    public TankClass CurrentTankClass => tankDefinition.tankClass;
+    public TankClass CurrentTankClass => tankDefinition != null ? tankDefinition.tankClass : TankClass.Light;
 
     [Header("=== КЕШИ ДЛЯ ИИ ===")]
     [HideInInspector] public Transform cachedTransform;
@@ -126,6 +123,10 @@ public class TankAI : MonoBehaviour
         cachedTransform = transform;
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+
+        // teamComp may be assigned in AIInit.Awake; ensure null-safety
+        teamComp = GetComponent<TeamComponent>();
+
         navAvailable = agent != null && agent.isOnNavMesh;
 
         cachedColliders = GetComponentsInParent<Collider>();
@@ -135,10 +136,8 @@ public class TankAI : MonoBehaviour
         weapons = new AIWeapons(this);
         stateHandler = new AIStateHandler(this, perception, navigation, combat, weapons);
 
-
         impl = new TankAIImpl(this);
         impl.Awake();
-
     }
 
     void Start()
@@ -176,9 +175,4 @@ public class TankAI : MonoBehaviour
 
         return 0f;
     }
-
-    // void OnEnable() => AIPerception.InvalidateCaches();
-    // void OnDisable() => AIPerception.InvalidateCaches();
-    // void OnDestroy() => AIPerception.InvalidateCaches();
-
 }

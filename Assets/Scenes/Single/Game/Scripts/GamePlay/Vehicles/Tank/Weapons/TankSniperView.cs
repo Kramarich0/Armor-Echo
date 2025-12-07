@@ -165,6 +165,7 @@ public class TankSniperView : MonoBehaviour
             normalSnapshot.TransitionTo(0.2f);
     }
 
+
     void OnDestroy()
     {
         if (tankShoot != null)

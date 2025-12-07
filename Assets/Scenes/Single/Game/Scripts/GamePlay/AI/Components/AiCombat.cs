@@ -26,7 +26,6 @@ public class AICombat
         if (owner.turret != null)
         {
             Vector3 dir = t.position - owner.turret.position;
-            dir.y = 0f;
             if (dir.sqrMagnitude > 0.0001f)
             {
                 Vector3 forwardDir = dir.normalized * (owner.invertTurretForward ? -1f : 1f);

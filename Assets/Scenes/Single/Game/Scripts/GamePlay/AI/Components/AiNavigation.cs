@@ -29,8 +29,8 @@ public class AINavigation
         smoothedTurn = Mathf.SmoothDamp(smoothedTurn, targetTurn, ref turnVelocity, 1f / Mathf.Max(owner.TurnResponse, 0.1f));
 
         float inputMagnitude = Mathf.Max(Mathf.Abs(smoothedMove), Mathf.Abs(smoothedTurn));
-        float targetEnginePower = inputMagnitude > 0.01f ? 1f : 0f;
-        enginePower = Mathf.MoveTowards(enginePower, targetEnginePower, Time.deltaTime * 0.8f);
+        // float targetEnginePower = inputMagnitude > 0.01f ? 1f : 0f;
+        enginePower = Mathf.MoveTowards(enginePower, inputMagnitude > 0.01f ? 1f : 0f, Time.deltaTime * 0.8f);
     }
 
     public void MoveTo(Vector3 position)

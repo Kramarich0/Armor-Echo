@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretAiming
   turretPivot: {fileID: 6335338290622939}
-  gunPivot: {fileID: 978846907847173888}
+  gunPivot: {fileID: 6460402366672941790}
   cameraTransform: {fileID: 0}
   sniperView: {fileID: 7136350954082995956}
   aimDistance: 200
@@ -1392,6 +1392,11 @@ MonoBehaviour:
   minCollisionSpeed: 3
   damageMultiplier: 0.02
   debugLogs: 0
+--- !u!4 &6460402366672941790 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3931792059651187579, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}
+  m_PrefabInstance: {fileID: 8014012268567581093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6646188381032214983 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3678170599464050786, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}

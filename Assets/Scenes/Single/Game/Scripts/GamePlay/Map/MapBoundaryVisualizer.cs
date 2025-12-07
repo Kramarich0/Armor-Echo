@@ -25,8 +25,20 @@ public class MapBoundaryMesh : MonoBehaviour
     private MeshRenderer mr;
     private Mesh mesh;
 
-    private void OnValidate() => Build();
-    private void OnEnable() => Build();
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (!Application.isPlaying)
+            Build();
+    }
+#endif
+
+    private void OnEnable()
+    {
+        if (Application.isPlaying)
+            Build();
+    }
+
 
     [ContextMenu("Rebuild Mesh")]
     public void Build()
@@ -36,9 +48,17 @@ public class MapBoundaryMesh : MonoBehaviour
 
         if (mesh == null)
         {
-            mesh = new Mesh();
-            mf.sharedMesh = mesh;
+            mesh = mf.sharedMesh;
+            if (mesh == null)
+            {
+                mesh = new Mesh
+                {
+                    name = "MapBoundaryMeshRuntime"
+                };
+                mf.sharedMesh = mesh;
+            }
         }
+
 
         if (terrain == null) terrain = Terrain.activeTerrain;
 

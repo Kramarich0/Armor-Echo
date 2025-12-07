@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad7d81ad51f4e42b8256b403db27e0, type: 3}
+  m_Name: "\u0417\u0438\u0421-\u0421-53"
+  m_EditorClassIdentifier: Assembly-CSharp::GunDefinition
+  gunName: "\u0417\u0438\u0421-\u0421-53"
+  caliber: 85
+  fireInterval: 7
+  liftSpeed: 1
+  minGunAngle: -5
+  maxGunAngle: 22
+  shootRange: 100
+  bulletUseGravity: 1
+  shootSound: {fileID: 0}
+  reloadSound: {fileID: 0}
+  bullets:
+  - bullet: {fileID: 11400000, guid: 5ddbf2559794fcd40860ed2b7fef162f, type: 2}
+    muzzleVelocity: 792
+  - bullet: {fileID: 11400000, guid: 16c687080837a0d4bb7c18626744d877, type: 2}
+    muzzleVelocity: 780
+  - bullet: {fileID: 11400000, guid: 8ad7c1abbd0fdaf488426f3c7f60022d, type: 2}
+    muzzleVelocity: 610
+  debugLogs: 0

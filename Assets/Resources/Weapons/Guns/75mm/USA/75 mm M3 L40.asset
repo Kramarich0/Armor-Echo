@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunDefinition
   gunName: 75 mm M3 L/40
   caliber: 75
-  fireRate: 0.2
+  fireInterval: 6
+  liftSpeed: 1
   minGunAngle: -10
   maxGunAngle: 25
   shootRange: 2500
   bulletUseGravity: 1
   shootSound: {fileID: 8300000, guid: 50d6a0caa7cd2854a95228cb6cca1c9e, type: 3}
+  reloadSound: {fileID: 0}
   bullets:
   - bullet: {fileID: 11400000, guid: 02c8d480d2515684ba767ff2fc7ec88a, type: 2}
     muzzleVelocity: 619
@@ -27,3 +29,4 @@ MonoBehaviour:
     muzzleVelocity: 619
   - bullet: {fileID: 11400000, guid: b76aad12a3f72864682bda22b06055aa, type: 2}
     muzzleVelocity: 576
+  debugLogs: 0

@@ -1,0 +1,95 @@
+newmtl 06ebbbf7-2eae-4a72-ad00-2792da9ffb0d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_panzerjager_tiger_p_ferdinand_track_c.jpg
+map_Ks textures/ger_panzerjager_tiger_p_ferdinand_track_n_s.jpg
+map_normal textures/ger_panzerjager_tiger_p_ferdinand_track_n_n.jpg
+map_ao textures/ger_panzerjager_tiger_p_ferdinand_track_ao_ao.jpg
+map_d textures/ger_panzerjager_tiger_p_ferdinand_track_c_a.png
+
+newmtl 700b6ecd-deec-4893-9bd9-b2b32d4d94b7
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_tiger_p_body_c_ger_camo_grey.jpg
+map_Ks textures/pzkpfw_vi_tiger_p_body_n_s.jpg
+map_normal textures/pzkpfw_vi_tiger_p_body_n_n.jpg
+map_ao textures/pzkpfw_vi_tiger_p_body_ao_ao.jpg
+
+newmtl 2fc480c8-2e5f-4bb4-9d56-70729ce36d08
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_tiger_p_body_c_ger_camo_grey.jpg
+map_Ks textures/pzkpfw_vi_tiger_p_body_n_s.jpg
+map_normal textures/pzkpfw_vi_tiger_p_body_n_n.jpg
+map_ao textures/pzkpfw_vi_tiger_p_body_ao_ao.jpg
+
+newmtl 8094b544-0db3-4674-bd0a-1b2e339ea443
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_panzerjager_tiger_p_ferdinand_track_c.jpg
+map_Ks textures/ger_panzerjager_tiger_p_ferdinand_track_n_s.jpg
+map_normal textures/ger_panzerjager_tiger_p_ferdinand_track_n_n.jpg
+map_ao textures/ger_panzerjager_tiger_p_ferdinand_track_ao_ao.jpg
+map_d textures/ger_panzerjager_tiger_p_ferdinand_track_c_a.png
+
+newmtl 95d61b7c-2898-4b52-a9d8-933ae488e91a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_tiger_p_turret_c_ger_camo_grey.jpg
+map_Ks textures/pzkpfw_vi_tiger_p_turret_n_s.jpg
+map_normal textures/pzkpfw_vi_tiger_p_turret_n_n.jpg
+map_ao textures/pzkpfw_vi_tiger_p_turret_ao_ao.jpg
+
+newmtl a72c1a7e-c00b-45b6-9d1b-5046348c46ea
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_tiger_p_gun_c_ger_camo_grey.jpg
+map_Ks textures/pzkpfw_vi_tiger_p_gun_n_s.jpg
+map_normal textures/pzkpfw_vi_tiger_p_gun_n_n.jpg
+map_ao textures/pzkpfw_vi_tiger_p_gun_ao_ao.jpg
+
+newmtl 0b8ded7e-569d-4d37-8ac8-dd2c9575eed0
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_mg_34_c.jpg
+map_Ks textures/mg_mg_34_n_s.jpg
+map_normal textures/mg_mg_34_n_n.jpg
+map_ao textures/mg_mg_34_ao_ao.jpg
+map_d textures/mg_mg_34_c_a.png
+
+newmtl c1da7fc9-adfc-499d-b094-7a4ceafad4a4
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_tiger_p_body_c.jpg
+map_Ks textures/pzkpfw_vi_tiger_p_body_n_s.jpg
+map_normal textures/pzkpfw_vi_tiger_p_body_n_n.jpg
+map_ao textures/pzkpfw_vi_tiger_p_body_ao_ao.jpg
+map_Ke textures/pzkpfw_vi_tiger_p_body_c.jpg
+
+newmtl 7af4ef50-9d47-4abf-b20d-0e36cdf03dee
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_f_c.jpg
+map_Ks textures/net_f_n_s.jpg
+map_normal textures/net_f_n_n.jpg
+map_ao textures/net_f_ao_ao.jpg
+map_d textures/net_f_c_a.png
+

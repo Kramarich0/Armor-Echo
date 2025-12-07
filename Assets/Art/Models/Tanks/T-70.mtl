@@ -1,0 +1,115 @@
+newmtl 89b1cf95-c01c-42b3-bb4a-df7b346041d2
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_t_60_track_c.jpg
+map_Ks textures/ussr_t_60_track_n_s.jpg
+map_normal textures/ussr_t_60_track_n_n.jpg
+map_ao textures/ussr_t_60_track_ao_ao.jpg
+map_d textures/ussr_t_60_track_c_a.png
+
+newmtl dce4fdfe-122d-4dae-8989-ecf4a4d02d08
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t_70_body_c_ussr_camo_green.jpg
+map_Ks textures/t_70_body_n_s.jpg
+map_normal textures/t_70_body_n_n.jpg
+map_ao textures/t_70_body_ao_ao.jpg
+
+newmtl 20813cea-4b9b-42b4-9818-4372000c27c6
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_t_60_track_c.jpg
+map_Ks textures/ussr_t_60_track_n_s.jpg
+map_normal textures/ussr_t_60_track_n_n.jpg
+map_ao textures/ussr_t_60_track_ao_ao.jpg
+map_d textures/ussr_t_60_track_c_a.png
+
+newmtl 744e65fe-27ae-4930-b81f-f37296a68b09
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t_70_body_c.jpg
+map_Ks textures/t_70_body_n_s.jpg
+map_normal textures/t_70_body_n_n.jpg
+map_ao textures/t_70_body_ao_ao.jpg
+map_d textures/t_70_body_c_a.png
+
+newmtl e9b52307-dcf2-4984-942c-49c9bf045d12
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t_70_turret_c_ussr_camo_green.jpg
+map_Ks textures/t_70_turret_n_s.jpg
+map_normal textures/t_70_turret_n_n.jpg
+map_ao textures/t_70_turret_ao_ao.jpg
+
+newmtl 42653acf-9376-42d0-b8e1-a68304d82c51
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t_70_gun_c_ussr_camo_green.jpg
+map_Ks textures/t_70_gun_n_s.jpg
+map_normal textures/t_70_gun_n_n.jpg
+map_ao textures/t_70_gun_ao_ao.jpg
+
+newmtl 2e4a8ffe-c7bd-4fb9-8f2b-a0ef6cbd74e0
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_b_c.jpg
+map_Ks textures/rifled_barrel_b_n_s.jpg
+map_normal textures/rifled_barrel_b_n_n.jpg
+map_ao textures/rifled_barrel_b_n_ao.jpg
+
+newmtl 8b6c47a2-dba9-45ec-8481-ba8c791393dd
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_mg_dt_c_ussr_mg_dt_c.jpg
+map_Ks textures/ussr_mg_dt_n_s.jpg
+map_normal textures/ussr_mg_dt_n_n.jpg
+map_ao textures/ussr_mg_dt_ao_ao.jpg
+
+newmtl 2b054957-af2e-41b5-9511-7a289ab70a50
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/t_70_body_c.jpg
+map_Ks textures/t_70_body_n_s.jpg
+map_normal textures/t_70_body_n_n.jpg
+map_ao textures/t_70_body_ao_ao.jpg
+map_Ke textures/t_70_body_c.jpg
+
+newmtl 473bbabe-5094-42da-8765-aba798200531
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl 6c49edce-2ba0-4688-8d47-4fc15bc47664
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+

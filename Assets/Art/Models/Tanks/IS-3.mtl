@@ -1,0 +1,147 @@
+newmtl 1ee306bc-4d66-4fa2-9dcb-38b15214573a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/is_3_body_c_ussr_camo_green.jpg
+map_Ks textures/is_3_body_n_s.jpg
+map_normal textures/is_3_body_n_n.jpg
+map_ao textures/is_3_body_ao_ao.jpg
+
+newmtl 14291f1f-89ee-4f87-b76b-e764e2577a12
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl 5bb43888-efdd-40bd-8de1-95f20c11e0c9
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl ef723196-f4c2-44e0-b40f-f8ec55d25926
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/is_3_body_c.jpg
+map_Ks textures/is_3_body_n_s.jpg
+map_normal textures/is_3_body_n_n.jpg
+map_ao textures/is_3_body_ao_ao.jpg
+map_Ke textures/is_3_body_c.jpg
+
+newmtl ff1f668e-a50a-41f4-b7b5-4ae673daf32b
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_is_1_track_c.jpg
+map_Ks textures/ussr_is_1_track_n_s.jpg
+map_normal textures/ussr_is_1_track_n_n.jpg
+map_ao textures/ussr_is_1_track_ao_ao.jpg
+map_d textures/ussr_is_1_track_c_a.png
+
+newmtl 2bcec23b-2bc5-4417-8481-faaefe0089c6
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_is_1_track_c.jpg
+map_Ks textures/ussr_is_1_track_n_s.jpg
+map_normal textures/ussr_is_1_track_n_n.jpg
+map_ao textures/ussr_is_1_track_ao_ao.jpg
+map_d textures/ussr_is_1_track_c_a.png
+
+newmtl 630611a3-83a0-45e5-b4bc-4f5cd5f868d2
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/is_3_turret_c_ussr_camo_green.jpg
+map_Ks textures/is_3_turret_n_s.jpg
+map_normal textures/is_3_turret_n_n.jpg
+map_ao textures/is_3_turret_ao_ao.jpg
+
+newmtl 2092cf1e-d984-4b1b-b235-06fc329f7e7e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/is_3_gun_c_ussr_camo_green.jpg
+map_Ks textures/is_3_gun_n_s.jpg
+map_normal textures/is_3_gun_n_n.jpg
+map_ao textures/is_3_gun_ao_ao.jpg
+
+newmtl 1679bdc2-c621-42a1-813b-18e25a80be6e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_c_c.jpg
+map_Ks textures/rifled_barrel_c_n_s.jpg
+map_normal textures/rifled_barrel_c_n_n.jpg
+map_ao textures/rifled_barrel_c_n_ao.jpg
+
+newmtl 554e50b0-ee95-427a-b39f-6e13a48ae23b
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_mg_dt_c_ussr_mg_dt_c.jpg
+map_Ks textures/ussr_mg_dt_n_s.jpg
+map_normal textures/ussr_mg_dt_n_n.jpg
+map_ao textures/ussr_mg_dt_ao_ao.jpg
+
+newmtl 3620efb9-d5ef-4f8c-9b09-3fd8215b58c5
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_mg_mount_c.jpg
+map_Ks textures/ussr_mg_mount_n_s.jpg
+map_normal textures/ussr_mg_mount_n_n.jpg
+map_ao textures/ussr_mg_mount_ao_ao.jpg
+map_d textures/ussr_mg_mount_c_a.png
+
+newmtl c705f800-735a-4f3f-b6fe-2f04b53eb360
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_dshkm_ammo_c.jpg
+map_Ks textures/mg_dshkm_ammo_n_s.jpg
+map_normal textures/mg_dshkm_ammo_n_n.jpg
+map_ao textures/mg_dshkm_ammo_ao_ao.jpg
+map_d textures/mg_dshkm_ammo_c_a.png
+
+newmtl 8b1f9735-a3e5-4ac4-9a65-741c2dba53ce
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_dshkm_c.jpg
+map_Ks textures/mg_dshkm_n_s.jpg
+map_normal textures/mg_dshkm_n_n.jpg
+map_ao textures/mg_dshkm_ao_ao.jpg
+map_d textures/mg_dshkm_c_a.png
+
+newmtl 2f2d04f0-f15e-444f-8891-1f3bc2befc15
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/is_3_turret_c_ussr_camo_green.jpg
+map_Ks textures/is_3_turret_n_s.jpg
+map_normal textures/is_3_turret_n_n.jpg
+map_ao textures/is_3_turret_ao_ao.jpg
+

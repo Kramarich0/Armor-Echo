@@ -13,13 +13,13 @@ public class TankSpawner : MonoBehaviour
 
     public GameObject SpawnPlayerTank(TankDefinition def)
     {
-        if (def == null || def.tankPrefab == null)
+        if (def == null || def.playerTankPrefab == null)
         {
             Debug.LogError("TankSpawner: def или def.tankPrefab не задан!");
             return null;
         }
 
-        var prefab = def.tankPrefab;
+        var prefab = def.playerTankPrefab;
 
         GameObject instance = Instantiate(
             prefab,

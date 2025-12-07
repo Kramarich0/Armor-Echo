@@ -1,0 +1,71 @@
+newmtl a70546ec-1b03-408e-a0bb-41d25f66946c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/sdkfz_234_2_body_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/sdkfz_234_2_body_n_s.jpg
+map_normal textures/sdkfz_234_2_body_n_n.jpg
+map_ao textures/sdkfz_234_2_body_ao_ao.jpg
+
+newmtl e01bb9fb-bdad-47fc-a4d6-3c15ef2d291e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/sdkfz_234_2_body_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/sdkfz_234_2_body_n_s.jpg
+map_normal textures/sdkfz_234_2_body_n_n.jpg
+map_ao textures/sdkfz_234_2_body_ao_ao.jpg
+
+newmtl 51b51cdf-2466-49b2-9324-264466f2b2c5
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/sdkfz_234_2_turret_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/sdkfz_234_2_turret_n_s.jpg
+map_normal textures/sdkfz_234_2_turret_n_n.jpg
+map_ao textures/sdkfz_234_2_turret_ao_ao.jpg
+
+newmtl 7cf9e65a-20a1-4b57-bec0-e352b0c25b5d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/sdkfz_234_2_gun_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/sdkfz_234_2_gun_n_s.jpg
+map_normal textures/sdkfz_234_2_gun_n_n.jpg
+map_ao textures/sdkfz_234_2_gun_ao_ao.jpg
+
+newmtl e3e1e093-143a-47aa-980d-e8950d94b238
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_c_c.jpg
+map_Ks textures/rifled_barrel_c_n_s.jpg
+map_normal textures/rifled_barrel_c_n_n.jpg
+map_ao textures/rifled_barrel_c_n_ao.jpg
+
+newmtl f5562566-7c24-4b3d-8878-531f7ea0e61d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_mg_42_c.jpg
+map_Ks textures/mg_mg_42_n_s.jpg
+map_normal textures/mg_mg_42_n_n.jpg
+map_ao textures/mg_mg_42_ao_ao.jpg
+map_d textures/mg_mg_42_c_a.png
+
+newmtl 6faef886-4435-4248-8e0a-6de91f93b02e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/sdkfz_234_2_turret_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/sdkfz_234_2_turret_n_s.jpg
+map_normal textures/sdkfz_234_2_turret_n_n.jpg
+map_ao textures/sdkfz_234_2_turret_ao_ao.jpg
+

@@ -1,0 +1,82 @@
+newmtl fb48f656-9938-472b-b2c2-ce24f00757f7
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/matilda_hedgehog_body_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/matilda_hedgehog_body_n_s.jpg
+map_normal textures/matilda_hedgehog_body_n_n.jpg
+map_ao textures/matilda_hedgehog_body_ao_ao.jpg
+
+newmtl 96e6c4b3-4a3f-4424-8d19-dc7076e541ef
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/uk_a_12_mk_2_matilda_2_tracks_c.jpg
+map_Ks textures/uk_a_12_mk_2_matilda_2_tracks_n_s.jpg
+map_normal textures/uk_a_12_mk_2_matilda_2_tracks_n_n.jpg
+map_ao textures/uk_a_12_mk_2_matilda_2_tracks_ao_ao.jpg
+map_d textures/uk_a_12_mk_2_matilda_2_tracks_c_a.png
+
+newmtl 68e9a58d-fc2b-472e-b9af-093f2a2ecf04
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/uk_a_12_mk_2_matilda_2_tracks_c.jpg
+map_Ks textures/uk_a_12_mk_2_matilda_2_tracks_n_s.jpg
+map_normal textures/uk_a_12_mk_2_matilda_2_tracks_n_n.jpg
+map_ao textures/uk_a_12_mk_2_matilda_2_tracks_ao_ao.jpg
+map_d textures/uk_a_12_mk_2_matilda_2_tracks_c_a.png
+
+newmtl 4798a73d-32bc-4542-83e7-b4dd89bcdfda
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/matilda_hedgehog_turret_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/matilda_hedgehog_turret_n_s.jpg
+map_normal textures/matilda_hedgehog_turret_n_n.jpg
+map_ao textures/matilda_hedgehog_turret_ao_ao.jpg
+
+newmtl a7bdcd1f-d272-41da-bb6d-c57b34e896bb
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/matilda_hedgehog_gun_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/matilda_hedgehog_gun_n_s.jpg
+map_normal textures/matilda_hedgehog_gun_n_n.jpg
+map_ao textures/matilda_hedgehog_gun_ao_ao.jpg
+
+newmtl 0a273247-b4d1-4f2e-b6b3-31b23b6a5481
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_a_c.jpg
+map_Ks textures/rifled_barrel_a_n_s.jpg
+map_normal textures/rifled_barrel_a_n_n.jpg
+map_ao textures/rifled_barrel_a_n_ao.jpg
+
+newmtl 63f173d6-9b48-4f4f-b174-b6c02a76b99a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_besa_mkii_c.jpg
+map_Ks textures/mg_besa_mkii_n_s.jpg
+map_normal textures/mg_besa_mkii_n_n.jpg
+map_ao textures/mg_besa_mkii_ao_ao.jpg
+
+newmtl 03568923-4e62-4be4-9624-558c2c80a97e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/hedgehog_projectile_c.jpg
+map_Ks textures/hedgehog_projectile_n_s.jpg
+map_normal textures/hedgehog_projectile_n_n.jpg
+map_ao textures/hedgehog_projectile_n_ao.jpg
+

@@ -1,0 +1,158 @@
+newmtl 82a3efa7-99a5-4d38-a68f-cb4c6ab9dec1
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m18_hellcat_body_c_us_camo_olive.jpg
+map_Ks textures/m18_hellcat_body_n_s.jpg
+map_normal textures/m18_hellcat_body_n_n.jpg
+map_ao textures/m18_hellcat_body_ao_ao.jpg
+
+newmtl edb8db99-ab0a-44ea-ad07-a1854010834f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_f_c.jpg
+map_Ks textures/net_f_n_s.jpg
+map_normal textures/net_f_n_n.jpg
+map_ao textures/net_f_ao_ao.jpg
+map_d textures/net_f_c_a.png
+
+newmtl 961f4b29-01b6-41ad-8020-f1c4b0c100b1
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_m18_hellcat_track_c.jpg
+map_Ks textures/us_m18_hellcat_track_n_s.jpg
+map_normal textures/us_m18_hellcat_track_n_n.jpg
+map_ao textures/us_m18_hellcat_track_ao_ao.jpg
+map_d textures/us_m18_hellcat_track_c_a.png
+
+newmtl ffb5bf8c-8a94-464e-801c-42a280a9f82c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_m18_hellcat_track_c.jpg
+map_Ks textures/us_m18_hellcat_track_n_s.jpg
+map_normal textures/us_m18_hellcat_track_n_n.jpg
+map_ao textures/us_m18_hellcat_track_ao_ao.jpg
+map_d textures/us_m18_hellcat_track_c_a.png
+
+newmtl ed229f0e-6784-4918-a7dd-87e2da78d797
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m18_hellcat_turret_c_ger_camo_inside_elfebein.jpg
+map_Ks textures/m18_hellcat_turret_n_s.jpg
+map_normal textures/m18_hellcat_turret_n_n.jpg
+map_ao textures/m18_hellcat_turret_ao_ao.jpg
+
+newmtl 08f481fb-17af-4366-98aa-3cd199dd0f7b
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m18_hellcat_turret_c_us_camo_olive.jpg
+map_Ks textures/m18_hellcat_turret_n_s.jpg
+map_normal textures/m18_hellcat_turret_n_n.jpg
+map_ao textures/m18_hellcat_turret_ao_ao.jpg
+
+newmtl 4430fa8d-4f8d-4690-a718-f42e1143e936
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_mount_c_us_camo_olive.jpg
+map_Ks textures/mg_browning_m2hb_mount_n_s.jpg
+map_normal textures/mg_browning_m2hb_mount_n_n.jpg
+map_ao textures/mg_browning_m2hb_mount_ao_ao.jpg
+
+newmtl 5cbe13d9-445a-414d-b73e-31cf04f1da00
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+d 1
+map_Kd textures/mg_browning_m2hb_c.jpg
+map_Ks textures/mg_browning_m2hb_n_s.jpg
+map_normal textures/mg_browning_m2hb_n_n.jpg
+map_ao textures/mg_browning_m2hb_ao_ao.jpg
+map_d textures/mg_browning_m2hb_c_a.png
+
+newmtl 728ec806-817a-4d7f-8b10-8d1ce9421016
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_ammo_c.jpg
+map_Ks textures/mg_browning_m2hb_ammo_n_s.jpg
+map_normal textures/mg_browning_m2hb_ammo_n_n.jpg
+map_ao textures/mg_browning_m2hb_ammo_ao_ao.jpg
+map_d textures/mg_browning_m2hb_ammo_c_a.png
+
+newmtl 0ff55b90-81da-4adb-b100-7032cd29870f
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/m18_hellcat_body_c.jpg
+map_Ks textures/m18_hellcat_body_n_s.jpg
+map_normal textures/m18_hellcat_body_n_n.jpg
+map_ao textures/m18_hellcat_body_ao_ao.jpg
+map_Ke textures/m18_hellcat_body_c.jpg
+
+newmtl 423e97f9-e3f6-473e-8608-10e4cd1054bd
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl 9319972e-9722-4c99-813b-8f570bc68fcb
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl e9da34dc-543a-4f22-99c7-3d521fb9e8e0
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m18_hellcat_body_c_ger_camo_inside_elfebein.jpg
+map_Ks textures/m18_hellcat_body_n_s.jpg
+map_normal textures/m18_hellcat_body_n_n.jpg
+map_ao textures/m18_hellcat_body_ao_ao.jpg
+
+newmtl 4d1d6c5d-930d-4b17-980e-b066ea25b284
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m18_hellcat_body_c_us_camo_olive.jpg
+map_Ks textures/m18_hellcat_body_n_s.jpg
+map_normal textures/m18_hellcat_body_n_n.jpg
+map_ao textures/m18_hellcat_body_ao_ao.jpg
+
+newmtl 4f2ab6a6-f77b-4b76-8fc5-c658bf1aad4e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m18_hellcat_turret_c_us_camo_olive.jpg
+map_Ks textures/m18_hellcat_turret_n_s.jpg
+map_normal textures/m18_hellcat_turret_n_n.jpg
+map_ao textures/m18_hellcat_turret_ao_ao.jpg
+

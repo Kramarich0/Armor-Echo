@@ -1,0 +1,105 @@
+newmtl 94def555-ad6f-45be-a48d-c8391cb8f089
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/a27m_cromwell_5_body_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/a27m_cromwell_5_body_n_s.jpg
+map_normal textures/a27m_cromwell_5_body_n_n.jpg
+map_ao textures/a27m_cromwell_5_body_ao_ao.jpg
+
+newmtl a24a22ce-405d-46ca-9da8-3b6be410e4d3
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_d_c.jpg
+map_Ks textures/net_d_n_s.jpg
+map_normal textures/net_d_n_n.jpg
+map_ao textures/net_d_ao_ao.jpg
+map_d textures/net_d_c_a.png
+
+newmtl 9c431c4d-a3c6-4c57-b352-87638f45a5fc
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_besa_mkii_c.jpg
+map_Ks textures/mg_besa_mkii_n_s.jpg
+map_normal textures/mg_besa_mkii_n_n.jpg
+map_ao textures/mg_besa_mkii_ao_ao.jpg
+map_d textures/mg_besa_mkii_c_a.png
+
+newmtl 6b301004-0eea-45c1-95d7-650ff1331a36
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/a27m_cromwell_5_turret_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/a27m_cromwell_5_turret_n_s.jpg
+map_normal textures/a27m_cromwell_5_turret_n_n.jpg
+map_ao textures/a27m_cromwell_5_turret_ao_ao.jpg
+
+newmtl 853c04ee-1b7b-498d-b9f9-76de73a952e9
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl 54013157-2d8f-4854-9b5f-24edc4c9225b
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl da7ef4da-b313-4600-a1b1-6c2a4fd90582
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/a27m_cromwell_5_gun_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/a27m_cromwell_5_gun_n_s.jpg
+map_normal textures/a27m_cromwell_5_gun_n_n.jpg
+map_ao textures/a27m_cromwell_5_gun_ao_ao.jpg
+
+newmtl fde83109-eede-43bc-90e9-4b3dcdb826e6
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/a27m_cromwell_5_turret_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/a27m_cromwell_5_turret_n_s.jpg
+map_normal textures/a27m_cromwell_5_turret_n_n.jpg
+map_ao textures/a27m_cromwell_5_turret_ao_ao.jpg
+
+newmtl 27354d4f-2d29-4a3e-bafc-b86cf490f628
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/uk_a27m_cromwell_5_track_c.jpg
+map_Ks textures/uk_a27m_cromwell_5_track_n_s.jpg
+map_normal textures/uk_a27m_cromwell_5_track_n_n.jpg
+map_ao textures/uk_a27m_cromwell_5_track_ao_ao.jpg
+map_d textures/uk_a27m_cromwell_5_track_c_a.png
+
+newmtl c80754d2-907c-4306-a3f8-1ae6fa9a019d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/uk_a27m_cromwell_5_track_c.jpg
+map_Ks textures/uk_a27m_cromwell_5_track_n_s.jpg
+map_normal textures/uk_a27m_cromwell_5_track_n_n.jpg
+map_ao textures/uk_a27m_cromwell_5_track_ao_ao.jpg
+map_d textures/uk_a27m_cromwell_5_track_c_a.png
+

@@ -1,0 +1,104 @@
+newmtl 8e81b77d-daca-45e8-acda-a483aecb8bbc
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_pzkpfw_viii_maus_track_c.jpg
+map_Ks textures/ger_pzkpfw_viii_maus_track_n_s.jpg
+map_normal textures/ger_pzkpfw_viii_maus_track_n_n.jpg
+map_ao textures/ger_pzkpfw_viii_maus_track_ao_ao.jpg
+map_d textures/ger_pzkpfw_viii_maus_track_c_a.png
+
+newmtl aee0da5c-366f-4128-b870-21083ef2d43f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_pzkpfw_viii_maus_track_c.jpg
+map_Ks textures/ger_pzkpfw_viii_maus_track_n_s.jpg
+map_normal textures/ger_pzkpfw_viii_maus_track_n_n.jpg
+map_ao textures/ger_pzkpfw_viii_maus_track_ao_ao.jpg
+map_d textures/ger_pzkpfw_viii_maus_track_c_a.png
+
+newmtl 5873959b-cbf2-4fc1-ae34-5f0db33adb96
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_viii_maus_body_c_ger_camo_dunkelgelb_green.jpg
+map_Ks textures/pzkpfw_viii_maus_body_n_s.jpg
+map_normal textures/pzkpfw_viii_maus_body_n_n.jpg
+map_ao textures/pzkpfw_viii_maus_body_ao_ao.jpg
+
+newmtl 433afc24-8adf-4735-acf2-9047bb4c2b2f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_viii_maus_body_c_ger_camo_dunkelgelb_green.jpg
+map_Ks textures/pzkpfw_viii_maus_body_n_s.jpg
+map_normal textures/pzkpfw_viii_maus_body_n_n.jpg
+map_ao textures/pzkpfw_viii_maus_body_ao_ao.jpg
+
+newmtl c55d283e-1ec4-41bc-90c2-24ca3a60ac6b
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_viii_maus_body_c.jpg
+map_Ks textures/pzkpfw_viii_maus_body_n_s.jpg
+map_normal textures/pzkpfw_viii_maus_body_n_n.jpg
+map_ao textures/pzkpfw_viii_maus_body_ao_ao.jpg
+map_Ke textures/pzkpfw_viii_maus_body_c.jpg
+
+newmtl 0eea2f00-d97c-4b3e-8403-1afc699efcf7
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_viii_maus_turret_c_ger_camo_dunkelgelb_green.jpg
+map_Ks textures/pzkpfw_viii_maus_turret_n_s.jpg
+map_normal textures/pzkpfw_viii_maus_turret_n_n.jpg
+map_ao textures/pzkpfw_viii_maus_turret_ao_ao.jpg
+
+newmtl 03ec73b5-113c-4197-8bc5-4184872e7e57
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_34_c.jpg
+map_Ks textures/mg_34_n_s.jpg
+map_normal textures/mg_34_n_n.jpg
+map_ao textures/mg_34_ao_ao.jpg
+map_d textures/mg_34_c_a.png
+
+newmtl 9a59c50d-8c13-4d78-8b5d-bad3b6634670
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_viii_maus_gun_c_ger_camo_dunkelgelb_green.jpg
+map_Ks textures/pzkpfw_viii_maus_gun_n_s.jpg
+map_normal textures/pzkpfw_viii_maus_gun_n_n.jpg
+map_ao textures/pzkpfw_viii_maus_gun_ao_ao.jpg
+
+newmtl 27753625-6826-4dc6-86a1-3c20fa87521b
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_b_c.jpg
+map_Ks textures/rifled_barrel_b_n_s.jpg
+map_normal textures/rifled_barrel_b_n_n.jpg
+map_ao textures/rifled_barrel_b_n_ao.jpg
+
+newmtl f6928089-094f-4503-99c1-6b269286856c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_d_c.jpg
+map_Ks textures/rifled_barrel_d_n_s.jpg
+map_normal textures/rifled_barrel_d_n_n.jpg
+map_ao textures/rifled_barrel_d_n_ao.jpg
+

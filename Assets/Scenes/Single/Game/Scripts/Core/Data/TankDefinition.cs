@@ -6,12 +6,12 @@ public class TankDefinition : ScriptableObject
     [Header("Basic Info")]
     public string tankName;
     public TankClass tankClass;
-    public GameObject tankPrefab;
+    public GameObject playerTankPrefab;
+    public GameObject deathPrefab;
     public GameObject previewPrefab;
 
     [Header("Core Stats")]
     public float health = 100f;
-    public float moveSpeed = 5f;
     public float rotationSpeed = 50f;
     public float turretRotationSpeed = 30f;
 

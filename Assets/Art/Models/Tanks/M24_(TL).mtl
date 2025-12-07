@@ -1,0 +1,198 @@
+newmtl a31dec96-3df8-46a6-8698-aa335fcfb125
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m24_chaffee_body_c_tl_camo_desert_chopped.jpg
+map_Ks textures/m24_chaffee_body_n_s.jpg
+map_normal textures/m24_chaffee_body_n_n.jpg
+map_ao textures/m24_chaffee_body_ao_ao.jpg
+
+newmtl 517d4bbf-75cc-45a1-9849-b4920de32bb4
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_d_c.jpg
+map_Ks textures/net_d_n_s.jpg
+map_normal textures/net_d_n_n.jpg
+map_ao textures/net_d_ao_ao.jpg
+map_d textures/net_d_c_a.png
+
+newmtl 853c82e8-c7e2-47d0-9ad7-8cd5b108225c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_m24_chaffee_track_c.jpg
+map_Ks textures/us_m24_chaffee_track_n_s.jpg
+map_normal textures/us_m24_chaffee_track_n_n.jpg
+map_ao textures/us_m24_chaffee_track_ao_ao.jpg
+map_d textures/us_m24_chaffee_track_c_a.png
+
+newmtl f41bb686-040f-4dd8-adfa-590910a1ce59
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_m24_chaffee_track_c.jpg
+map_Ks textures/us_m24_chaffee_track_n_s.jpg
+map_normal textures/us_m24_chaffee_track_n_n.jpg
+map_ao textures/us_m24_chaffee_track_ao_ao.jpg
+map_d textures/us_m24_chaffee_track_c_a.png
+
+newmtl 81bf6236-902b-4869-b994-7b0330d739f2
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/m24_chaffee_glass_c.jpg
+map_d textures/m24_chaffee_glass_c_a.png
+
+newmtl 84a1a32f-2003-4e04-8583-4289c425eb6f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m24_chaffee_turret_c_tl_camo_desert_chopped.jpg
+map_Ks textures/m24_chaffee_turret_n_s.jpg
+map_normal textures/m24_chaffee_turret_n_n.jpg
+map_ao textures/m24_chaffee_turret_ao_ao.jpg
+
+newmtl adb97baa-f12d-4829-acdb-6235996f0ad1
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m24_chaffee_turret_c_tl_camo_desert_chopped.jpg
+map_Ks textures/m24_chaffee_turret_n_s.jpg
+map_normal textures/m24_chaffee_turret_n_n.jpg
+map_ao textures/m24_chaffee_turret_ao_ao.jpg
+
+newmtl c6c72ab2-3847-4828-b251-40032251fdba
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/m24_chaffee_turret_c.jpg
+map_Ks textures/m24_chaffee_turret_n_s.jpg
+map_normal textures/m24_chaffee_turret_n_n.jpg
+map_ao textures/m24_chaffee_turret_ao_ao.jpg
+map_Ke textures/m24_chaffee_turret_c.jpg
+
+newmtl 1a2b8b5c-f739-429f-b437-967949240ac3
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl 9b52c8c5-3960-4db6-9a73-349e11bb51a1
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl 092f8760-ffcf-4ab1-8bcc-b7b4f222317c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m24_chaffee_gun_c_tl_camo_desert_chopped.jpg
+map_Ks textures/m24_chaffee_gun_n_s.jpg
+map_normal textures/m24_chaffee_gun_n_n.jpg
+map_ao textures/m24_chaffee_gun_ao_ao.jpg
+
+newmtl 0e7b699d-f32f-4fca-90bb-a7df460c3636
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_b_c.jpg
+map_Ks textures/rifled_barrel_b_n_s.jpg
+map_normal textures/rifled_barrel_b_n_n.jpg
+map_ao textures/rifled_barrel_b_n_ao.jpg
+
+newmtl d6b63bdf-b148-4d1b-9658-28efb14ca6ad
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m1919a4_c.jpg
+map_Ks textures/mg_browning_m1919a4_n_s.jpg
+map_normal textures/mg_browning_m1919a4_n_n.jpg
+map_ao textures/mg_browning_m1919a4_ao_ao.jpg
+map_d textures/mg_browning_m1919a4_c_a.png
+
+newmtl 79bed041-12f0-42fb-a11c-748a69dedc45
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_mount_c_tl_camo_desert_chopped.jpg
+map_Ks textures/mg_browning_m2hb_mount_n_s.jpg
+map_normal textures/mg_browning_m2hb_mount_n_n.jpg
+map_ao textures/mg_browning_m2hb_mount_ao_ao.jpg
+
+newmtl 385c4909-b595-4c71-a8bd-59cc56155c16
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_ammo_c.jpg
+map_Ks textures/mg_browning_m2hb_ammo_n_s.jpg
+map_normal textures/mg_browning_m2hb_ammo_n_n.jpg
+map_ao textures/mg_browning_m2hb_ammo_ao_ao.jpg
+map_d textures/mg_browning_m2hb_ammo_c_a.png
+
+newmtl 8485a3be-17e8-44e5-965f-c1b037890bc9
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_c.jpg
+map_Ks textures/mg_browning_m2hb_n_s.jpg
+map_normal textures/mg_browning_m2hb_n_n.jpg
+map_ao textures/mg_browning_m2hb_ao_ao.jpg
+map_d textures/mg_browning_m2hb_c_a.png
+
+newmtl eea5f536-2ba9-4f9c-809f-5f0a8fd57e51
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/m24_chaffee_body_c.jpg
+map_Ks textures/m24_chaffee_body_n_s.jpg
+map_normal textures/m24_chaffee_body_n_n.jpg
+map_ao textures/m24_chaffee_body_ao_ao.jpg
+map_Ke textures/m24_chaffee_body_c.jpg
+
+newmtl 499782cc-abef-4dd0-a81d-4ce86ddbb58e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m24_chaffee_body_c_tl_camo_desert_chopped.jpg
+map_Ks textures/m24_chaffee_body_n_s.jpg
+map_normal textures/m24_chaffee_body_n_n.jpg
+map_ao textures/m24_chaffee_body_ao_ao.jpg
+
+newmtl 27628544-64ef-42af-87fd-874fa0e7b230
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m24_chaffee_turret_c_tl_camo_desert_chopped.jpg
+map_Ks textures/m24_chaffee_turret_n_s.jpg
+map_normal textures/m24_chaffee_turret_n_n.jpg
+map_ao textures/m24_chaffee_turret_ao_ao.jpg
+

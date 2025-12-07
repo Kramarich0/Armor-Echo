@@ -8,17 +8,15 @@ public class TrackController : MonoBehaviour
     public Renderer rightTrackRenderer;
 
     [Header("Settings")]
-    public string textureProperty = "_MainTex";
-    public float scrollSpeedFactor = 0.05f;
     public float turnScrollFactor = 0.7f;
     public float wheelRadius = 0.3f;
-    public float wheelLODDistance = 50f;
 
     [Header("Wheels (optional)")]
     public Transform[] leftWheels;
     public Transform[] rightWheels;
 
-    private Vector2 leftOffset, rightOffset;
+    private float leftDistance = 0f;
+    private float rightDistance = 0f;
 
     void Start()
     {
@@ -35,17 +33,19 @@ public class TrackController : MonoBehaviour
         float leftSpeed = forwardSpeed - turnSpeed * turnScrollFactor * tankRigidbody.transform.localScale.x;
         float rightSpeed = forwardSpeed + turnSpeed * turnScrollFactor * tankRigidbody.transform.localScale.x;
 
-        leftOffset.y += leftSpeed * scrollSpeedFactor * Time.deltaTime;
-        rightOffset.y += rightSpeed * scrollSpeedFactor * Time.deltaTime;
+        leftDistance += -leftSpeed * Time.deltaTime / (2f * Mathf.PI * wheelRadius);
+        rightDistance += -rightSpeed * Time.deltaTime / (2f * Mathf.PI * wheelRadius);
 
-        if (leftTrackRenderer)
-            leftTrackRenderer.material.SetTextureOffset(textureProperty, leftOffset);
-        if (rightTrackRenderer)
-            rightTrackRenderer.material.SetTextureOffset(textureProperty, rightOffset);
+        if (Application.isPlaying)
+        {
+            if (leftTrackRenderer)
+                leftTrackRenderer.material.SetFloat("_Distance", leftDistance);
+            if (rightTrackRenderer)
+                rightTrackRenderer.material.SetFloat("_Distance", rightDistance);
+        }
 
-        float avgSpeed = (forwardSpeed + (turnSpeed * 0.5f)) * Time.deltaTime;
-        float distance = avgSpeed;
-        float rotationDegrees = distance / (2f * Mathf.PI * wheelRadius) * 360f;
+        float avgSpeed = (forwardSpeed + turnSpeed * 0.5f) * Time.deltaTime;
+        float rotationDegrees = avgSpeed / (2f * Mathf.PI * wheelRadius) * 360f;
 
         RotateWheels(leftWheels, rotationDegrees);
         RotateWheels(rightWheels, rotationDegrees);

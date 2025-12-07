@@ -1,0 +1,84 @@
+newmtl dfebbb76-2852-4561-9c29-7eb98c55181e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t_34_747_body_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/t_34_747_body_n_s.jpg
+map_normal textures/t_34_747_body_n_n.jpg
+map_ao textures/t_34_747_body_ao_ao.jpg
+
+newmtl 7c4d6bf9-013a-4b3e-b9c1-433af1de437d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t_34_747_turret_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/t_34_747_turret_n_s.jpg
+map_normal textures/t_34_747_turret_n_n.jpg
+map_ao textures/t_34_747_turret_ao_ao.jpg
+
+newmtl f1690318-66a0-42d6-8da6-e6c986541e5c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t_34_747_gun_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/t_34_747_gun_n_s.jpg
+map_normal textures/t_34_747_gun_n_n.jpg
+map_ao textures/t_34_747_gun_ao_ao.jpg
+
+newmtl 7ada19b6-b9b3-47c8-b915-8f832ae580de
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_b_c.jpg
+map_Ks textures/rifled_barrel_b_n_s.jpg
+map_normal textures/rifled_barrel_b_n_n.jpg
+map_ao textures/rifled_barrel_b_n_ao.jpg
+
+newmtl 60ba288a-21e9-43a0-888c-500ee53dd35c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_dt_c.jpg
+map_Ks textures/mg_dt_n_s.jpg
+map_normal textures/mg_dt_n_n.jpg
+map_ao textures/mg_dt_ao_ao.jpg
+map_d textures/mg_dt_c_a.png
+
+newmtl dd836305-0727-4556-9a16-997e0e26d02f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_b_c.jpg
+map_Ks textures/net_b_n_s.jpg
+map_normal textures/net_b_n_n.jpg
+map_ao textures/net_b_ao_ao.jpg
+map_d textures/net_b_c_a.png
+
+newmtl d9964518-a907-4fc1-9a4a-669478bc4d69
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_t_34_e_stz_1942_track_c.jpg
+map_Ks textures/ussr_t_34_e_stz_1942_track_n_s.jpg
+map_normal textures/ussr_t_34_e_stz_1942_track_n_n.jpg
+map_ao textures/ussr_t_34_e_stz_1942_track_ao_ao.jpg
+map_d textures/ussr_t_34_e_stz_1942_track_c_a.png
+
+newmtl d4202666-8e55-461d-bc6a-2405fb0e8765
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_t_34_e_stz_1942_track_c.jpg
+map_Ks textures/ussr_t_34_e_stz_1942_track_n_s.jpg
+map_normal textures/ussr_t_34_e_stz_1942_track_n_n.jpg
+map_ao textures/ussr_t_34_e_stz_1942_track_ao_ao.jpg
+map_d textures/ussr_t_34_e_stz_1942_track_c_a.png
+

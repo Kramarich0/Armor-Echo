@@ -1,0 +1,197 @@
+newmtl b1efca83-2353-4afd-9d8c-cc70de8865e2
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_v_panther_ii_body_c_ger_camo_dunkelgelb_green_braun_big_blots.jpg
+map_Ks textures/pzkpfw_v_panther_ii_body_n_s.jpg
+map_normal textures/pzkpfw_v_panther_ii_body_n_n.jpg
+map_ao textures/pzkpfw_v_panther_ii_body_ao_ao.jpg
+
+newmtl d740f775-4574-4664-9c09-1effbea874c4
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_v_panther_ii_body_c_ger_camo_dunkelgelb_green_braun_big_blots.jpg
+map_Ks textures/pzkpfw_v_panther_ii_body_n_s.jpg
+map_normal textures/pzkpfw_v_panther_ii_body_n_n.jpg
+map_ao textures/pzkpfw_v_panther_ii_body_ao_ao.jpg
+
+newmtl 33eee487-5f03-4bb7-bb20-332db6d6d5c1
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/chain_c_c.jpg
+map_Ks textures/chain_c_n_s.jpg
+map_normal textures/chain_c_n_n.jpg
+map_ao textures/chain_c_ao_ao.jpg
+map_d textures/chain_c_c_a.png
+
+newmtl 19bd3db6-3ca9-41ec-8a1c-a71f20437763
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_pzkpfw_v_panther_ii_track_c.jpg
+map_Ks textures/ger_pzkpfw_v_panther_ii_track_n_s.jpg
+map_normal textures/ger_pzkpfw_v_panther_ii_track_n_n.jpg
+map_ao textures/ger_pzkpfw_v_panther_ii_track_ao_ao.jpg
+map_d textures/ger_pzkpfw_v_panther_ii_track_c_a.png
+
+newmtl 77fd1378-c3a5-45b6-b1df-c976a8664694
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_pzkpfw_v_panther_ii_track_c.jpg
+map_Ks textures/ger_pzkpfw_v_panther_ii_track_n_s.jpg
+map_normal textures/ger_pzkpfw_v_panther_ii_track_n_n.jpg
+map_ao textures/ger_pzkpfw_v_panther_ii_track_ao_ao.jpg
+map_d textures/ger_pzkpfw_v_panther_ii_track_c_a.png
+
+newmtl d83e4040-2fea-41bc-9cae-1ff2463e5b6d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_v_panther_ii_addarmor_c_ger_camo_dunkelgelb_green_braun_big_blots.jpg
+map_Ks textures/pzkpfw_v_panther_ii_addarmor_n_s.jpg
+map_normal textures/pzkpfw_v_panther_ii_addarmor_n_n.jpg
+map_ao textures/pzkpfw_v_panther_ii_addarmor_ao_ao.jpg
+
+newmtl b71d8fd9-36f7-4e32-8f14-168cd2b32957
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_v_panther_ii_body_c.jpg
+map_Ks textures/pzkpfw_v_panther_ii_body_n_s.jpg
+map_normal textures/pzkpfw_v_panther_ii_body_n_n.jpg
+map_ao textures/pzkpfw_v_panther_ii_body_ao_ao.jpg
+map_Ke textures/pzkpfw_v_panther_ii_body_c.jpg
+
+newmtl 15cbdcfd-e20c-40f4-8994-fc4d6e36b18e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_v_panther_ii_turret_c_ger_camo_dunkelgelb_green_braun_big_blots.jpg
+map_Ks textures/pzkpfw_v_panther_ii_turret_n_s.jpg
+map_normal textures/pzkpfw_v_panther_ii_turret_n_n.jpg
+map_ao textures/pzkpfw_v_panther_ii_turret_ao_ao.jpg
+
+newmtl 3d48584b-6ca9-4bb0-9230-be92d74ce049
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_v_panther_ii_gun_c_ger_camo_dunkelgelb_green_braun_big_blots.jpg
+map_Ks textures/pzkpfw_v_panther_ii_gun_n_s.jpg
+map_normal textures/pzkpfw_v_panther_ii_gun_n_n.jpg
+map_ao textures/pzkpfw_v_panther_ii_gun_ao_ao.jpg
+
+newmtl 0481f2af-d15a-4c91-9655-3ab5dd46a94a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_c_c.jpg
+map_Ks textures/rifled_barrel_c_n_s.jpg
+map_normal textures/rifled_barrel_c_n_n.jpg
+map_ao textures/rifled_barrel_c_n_ao.jpg
+
+newmtl a38dac47-ae16-4b2f-8095-2dc808655963
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_34_c.jpg
+map_Ks textures/mg_34_n_s.jpg
+map_normal textures/mg_34_n_n.jpg
+map_ao textures/mg_34_ao_ao.jpg
+map_d textures/mg_34_c_a.png
+
+newmtl 314835e6-57b8-4e39-a3fb-d04e825151b6
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/nbks_39b_c_nbks_39b_c.jpg
+map_Ks textures/nbks_39b_n_s.jpg
+map_normal textures/nbks_39b_n_n.jpg
+map_ao textures/nbks_39b_ao_ao.jpg
+
+newmtl cf508a53-7e33-4267-a6fd-9fc74a313305
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_infravision_fg_1250_c_ger_camo_inside_dark.jpg
+map_Ks textures/ger_infravision_fg_1250_n_s.jpg
+map_normal textures/ger_infravision_fg_1250_n_n.jpg
+map_ao textures/ger_infravision_fg_1250_ao_ao.jpg
+
+newmtl 192d7539-3956-4409-b6c5-edeb11e6d5eb
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_infravision_fg_1250_c.jpg
+map_Ks textures/ger_infravision_fg_1250_n_s.jpg
+map_normal textures/ger_infravision_fg_1250_n_n.jpg
+map_ao textures/ger_infravision_fg_1250_ao_ao.jpg
+map_Ke textures/ger_infravision_fg_1250_c.jpg
+
+newmtl 27662530-233a-44e2-95c0-a298a7ed2aa9
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_infravision_fg_1250_c.jpg
+map_Ks textures/ger_infravision_fg_1250_n_s.jpg
+map_normal textures/ger_infravision_fg_1250_n_n.jpg
+map_ao textures/ger_infravision_fg_1250_ao_ao.jpg
+map_d textures/ger_infravision_fg_1250_c_a.png
+
+newmtl d6dddaeb-f164-4278-b232-acaacec14d35
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/ger_infravision_fg_1250_c.jpg
+map_d textures/ger_infravision_fg_1250_c_a.png
+
+newmtl 74f6ffd8-1367-4bc6-bd07-7581a256c916
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_v_panther_ii_turret_c_ger_camo_dunkelgelb_green_braun_big_blots.jpg
+map_Ks textures/pzkpfw_v_panther_ii_turret_n_s.jpg
+map_normal textures/pzkpfw_v_panther_ii_turret_n_n.jpg
+map_ao textures/pzkpfw_v_panther_ii_turret_ao_ao.jpg
+
+newmtl 64ad3125-7839-458f-b689-4431f23f4c47
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_infravision_fg_1250_c_ger_camo_inside_dark.jpg
+map_Ks textures/ger_infravision_fg_1250_n_s.jpg
+map_normal textures/ger_infravision_fg_1250_n_n.jpg
+map_ao textures/ger_infravision_fg_1250_ao_ao.jpg
+
+newmtl 809044ba-c8e9-454d-87eb-24533d52fb00
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_f_c.jpg
+map_Ks textures/net_f_n_s.jpg
+map_normal textures/net_f_n_n.jpg
+map_ao textures/net_f_ao_ao.jpg
+map_d textures/net_f_c_a.png
+

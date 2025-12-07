@@ -3,18 +3,17 @@ using UnityEngine;
 
 public class PlayerTankHealth : MonoBehaviour, IDamageable
 {
-    [Header("Health")]
-    public float maxHealth = 300f;
+    [Header("Tank Definition")]
+    public TankDefinition tankDef;
+    [HideInInspector]
+    public float PlayerHealth => tankDef != null ? tankDef.health : 10f;
     [HideInInspector] public float currentHealth;
     public System.Action<float, float> OnHealthChanged;
 
-    [Header("Death")]
-    public GameObject deathPrefab;
-
     void Start()
     {
-        currentHealth = maxHealth;
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        currentHealth = tankDef.health;
+        OnHealthChanged?.Invoke(currentHealth, tankDef.health);
     }
 
     public void TakeDamage(int amount, string source = null)
@@ -23,7 +22,7 @@ public class PlayerTankHealth : MonoBehaviour, IDamageable
 
         currentHealth -= amount;
         currentHealth = Mathf.Max(currentHealth, 0f);
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        OnHealthChanged?.Invoke(currentHealth, tankDef.health);
 
         if (currentHealth <= 0f)
         {
@@ -35,9 +34,9 @@ public class PlayerTankHealth : MonoBehaviour, IDamageable
     {
         DisablePlayerComponents();
 
-        if (deathPrefab != null)
+        if (tankDef.deathPrefab != null)
         {
-            Instantiate(deathPrefab, transform.position, transform.rotation);
+            Instantiate(tankDef.deathPrefab, transform.position, transform.rotation);
         }
 
         GameManager.Instance.OnPlayerTankDestroyed();

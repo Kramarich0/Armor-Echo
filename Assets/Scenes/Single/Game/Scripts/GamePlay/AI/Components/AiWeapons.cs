@@ -31,8 +31,8 @@ public class AIWeapons
         Vector3 launchVelocity = CalculateLaunchVelocity(aim, muzzleVel);
         Vector3 finalVelocity = ApplySpread(launchVelocity, owner.gunEnd);
 
-        string shooterDisplay = (owner.teamComp != null && !string.IsNullOrEmpty(owner.teamComp.displayName))
-                 ? owner.teamComp.displayName
+        string shooterDisplay = (owner.teamComp != null && !string.IsNullOrEmpty(owner.teamComp.DisplayName))
+                 ? owner.teamComp.DisplayName
                  : owner.gameObject.name;
 
         bulletSlot.pool.SpawnBullet(

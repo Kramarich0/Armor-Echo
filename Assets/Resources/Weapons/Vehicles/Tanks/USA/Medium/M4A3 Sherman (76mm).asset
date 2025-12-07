@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankDefinition
   tankName: M4A3 Sherman (76mm)
   tankClass: 1
-  tankPrefab: {fileID: 2530738448712720481, guid: 807c6609fb2db57428d8a740942c2d00, type: 3}
-  previewPrefab: {fileID: 2530738448712720481, guid: 41c6ed942918648459e230a8de6e5087, type: 3}
+  playerTankPrefab: {fileID: 1162357594381774910, guid: e0f29f56e7568db4d922bff49da58b6e, type: 3}
+  deathPrefab: {fileID: 8363971149364536791, guid: 38f42f1dc7aa6504dad03d6ab3e324e3, type: 3}
+  previewPrefab: {fileID: 5085754229505223180, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
   health: 300
-  moveSpeed: 12
   rotationSpeed: 30
   turretRotationSpeed: 27
   primaryGun: {fileID: 11400000, guid: e48aa69104e4a2a44ae3c356d3479e21, type: 2}
@@ -47,4 +47,4 @@ MonoBehaviour:
   idleSound: {fileID: 8300000, guid: 37ba6ca7a36ccb342aee6c71e1a82d31, type: 3}
   driveSound: {fileID: 8300000, guid: 666a4b334b15c534da609c6b55bef1b2, type: 3}
   icon: {fileID: 0}
-  description: 
+  description: "\u043F\u0440\u0438\u0432\u0435\u0442"

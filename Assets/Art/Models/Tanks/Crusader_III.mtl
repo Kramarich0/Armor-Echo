@@ -1,0 +1,103 @@
+newmtl 5c5a7117-e1af-4ed8-9935-5b234cedba5d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/crusader_mk_2_body_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/crusader_mk_2_body_n_s.jpg
+map_normal textures/crusader_mk_2_body_n_n.jpg
+map_ao textures/crusader_mk_2_body_ao_ao.jpg
+
+newmtl a1157757-b4ef-4337-ac14-5676b6a8bf1a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/crusader_mk_3_turret_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/crusader_mk_3_turret_n_s.jpg
+map_normal textures/crusader_mk_3_turret_n_n.jpg
+map_ao textures/crusader_mk_3_turret_ao_ao.jpg
+
+newmtl d11aac9d-abd4-4240-bc98-8ae3d817a84f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/crusader_mk_3_gun_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/crusader_mk_3_gun_n_s.jpg
+map_normal textures/crusader_mk_3_gun_n_n.jpg
+map_ao textures/crusader_mk_3_gun_ao_ao.jpg
+
+newmtl d61393ab-6e58-48e1-997d-cc87d4cded8c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_b_c.jpg
+map_Ks textures/rifled_barrel_b_n_s.jpg
+map_normal textures/rifled_barrel_b_n_n.jpg
+map_ao textures/rifled_barrel_b_n_ao.jpg
+
+newmtl 0fcd44e9-53bb-4a78-a587-722375af9ae0
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_besa_mkii_c.jpg
+map_Ks textures/mg_besa_mkii_n_s.jpg
+map_normal textures/mg_besa_mkii_n_n.jpg
+map_ao textures/mg_besa_mkii_ao_ao.jpg
+
+newmtl 43d29572-781d-494f-9602-5876191c0e34
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl b480959e-5d58-41d5-abe7-85fd73298b92
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl 05a1191d-6c52-4b5d-9947-3ced46194e13
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/uk_crusader_mk_2_track_c.jpg
+map_Ks textures/uk_crusader_mk_2_track_n_s.jpg
+map_normal textures/uk_crusader_mk_2_track_n_n.jpg
+map_ao textures/uk_crusader_mk_2_track_ao_ao.jpg
+map_d textures/uk_crusader_mk_2_track_c_a.png
+
+newmtl 251ad8ef-f65a-414b-83fa-6485f8915332
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/uk_crusader_mk_2_track_c.jpg
+map_Ks textures/uk_crusader_mk_2_track_n_s.jpg
+map_normal textures/uk_crusader_mk_2_track_n_n.jpg
+map_ao textures/uk_crusader_mk_2_track_ao_ao.jpg
+map_d textures/uk_crusader_mk_2_track_c_a.png
+
+newmtl a6374264-bb09-458b-b1d0-a4b61161bab5
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/crusader_mk_3_turret_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/crusader_mk_3_turret_n_s.jpg
+map_normal textures/crusader_mk_3_turret_n_n.jpg
+map_ao textures/crusader_mk_3_turret_ao_ao.jpg
+

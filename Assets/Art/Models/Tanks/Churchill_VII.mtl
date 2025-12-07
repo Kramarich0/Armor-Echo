@@ -1,0 +1,135 @@
+newmtl 1fe44e1e-7328-4db4-a273-2c5b6733145c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/a22f_mk_vii_churchill_body_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/a22f_mk_vii_churchill_body_n_s.jpg
+map_normal textures/a22f_mk_vii_churchill_body_n_n.jpg
+map_ao textures/a22f_mk_vii_churchill_body_ao_ao.jpg
+
+newmtl 4968a43c-ce8d-4732-a6f4-cd3deaec7d7a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl 15f11ff4-65b0-48e6-ad7a-cc656e656334
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl e75d5a41-0c9e-4a05-9e4c-166b4f3d30c6
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/a22f_mk_vii_churchill_turret_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/a22f_mk_vii_churchill_turret_n_s.jpg
+map_normal textures/a22f_mk_vii_churchill_turret_n_n.jpg
+map_ao textures/a22f_mk_vii_churchill_turret_ao_ao.jpg
+
+newmtl 0a8fbbec-8771-4a1c-8d4a-6dd6b02f2912
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/a22f_mk_vii_churchill_gun_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/a22f_mk_vii_churchill_gun_n_s.jpg
+map_normal textures/a22f_mk_vii_churchill_gun_n_n.jpg
+map_ao textures/a22f_mk_vii_churchill_gun_ao_ao.jpg
+
+newmtl d9840283-e95a-4e0d-843e-5bac4eddbe06
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_b_c.jpg
+map_Ks textures/rifled_barrel_b_n_s.jpg
+map_normal textures/rifled_barrel_b_n_n.jpg
+map_ao textures/rifled_barrel_b_n_ao.jpg
+
+newmtl ba77dbe2-ebad-4299-b610-dd00cf39f571
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_besa_mkii_c.jpg
+map_Ks textures/mg_besa_mkii_n_s.jpg
+map_normal textures/mg_besa_mkii_n_n.jpg
+map_ao textures/mg_besa_mkii_ao_ao.jpg
+map_d textures/mg_besa_mkii_c_a.png
+
+newmtl ffa617c0-6123-4a99-ad3b-8c8eea4de0e2
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/attch_sherman_track_c_attch_sherman_track_c.jpg
+map_Ks textures/attch_sherman_track_n_s.jpg
+map_normal textures/attch_sherman_track_n_n.jpg
+map_ao textures/attch_sherman_track_ao_ao.jpg
+
+newmtl 17dc1c5f-d9f7-4e40-825a-211e3e24ab41
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_g_c.jpg
+map_Ks textures/net_g_n_s.jpg
+map_normal textures/net_g_n_n.jpg
+map_ao textures/net_g_ao_ao.jpg
+map_d textures/net_g_c_a.png
+
+newmtl 23dbb350-d40d-4a2c-95b7-e4d73ebc34e4
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/uk_a22b_mk_iii_churchill_1942_track_c.jpg
+map_Ks textures/uk_a22b_mk_iii_churchill_1942_track_n_s.jpg
+map_normal textures/uk_a22b_mk_iii_churchill_1942_track_n_n.jpg
+map_ao textures/uk_a22b_mk_iii_churchill_1942_track_ao_ao.jpg
+map_d textures/uk_a22b_mk_iii_churchill_1942_track_c_a.png
+
+newmtl 7d292d4d-196d-4088-bfd9-157a5d4ea5dd
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/a22f_mk_vii_churchill_body_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/a22f_mk_vii_churchill_body_n_s.jpg
+map_normal textures/a22f_mk_vii_churchill_body_n_n.jpg
+map_ao textures/a22f_mk_vii_churchill_body_ao_ao.jpg
+
+newmtl b4d9d821-1b82-4473-8b2d-aa9490fa6daf
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/attch_churchill_track_c_attch_churchill_track_c.jpg
+map_Ks textures/attch_churchill_track_n_s.jpg
+map_normal textures/attch_churchill_track_n_n.jpg
+map_ao textures/attch_churchill_track_ao_ao.jpg
+
+newmtl 0062c7a7-3989-4be7-9499-b08aab6f7fb8
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/uk_a22b_mk_iii_churchill_1942_track_c.jpg
+map_Ks textures/uk_a22b_mk_iii_churchill_1942_track_n_s.jpg
+map_normal textures/uk_a22b_mk_iii_churchill_1942_track_n_n.jpg
+map_ao textures/uk_a22b_mk_iii_churchill_1942_track_ao_ao.jpg
+map_d textures/uk_a22b_mk_iii_churchill_1942_track_c_a.png
+

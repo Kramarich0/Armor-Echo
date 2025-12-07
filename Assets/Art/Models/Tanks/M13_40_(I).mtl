@@ -1,0 +1,104 @@
+newmtl 07780cc1-45d8-48ab-a6bc-cb7907f45ad6
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m13_m14_body_c_it_camo_graygreen.jpg
+map_Ks textures/m13_m14_body_n_s.jpg
+map_normal textures/m13_m14_body_n_n.jpg
+map_ao textures/m13_m14_body_ao_ao.jpg
+
+newmtl 0363c40b-191f-4850-9dac-c155bf7d62e5
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m13_m14_m15_boards_c_it_camo_graygreen.jpg
+map_Ks textures/m13_m14_m15_boards_n_s.jpg
+map_normal textures/m13_m14_m15_boards_n_n.jpg
+map_ao textures/m13_m14_m15_boards_ao_ao.jpg
+
+newmtl 6b60c813-b38d-48c9-842e-3a98d108a438
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/it_m15_42_track_c.jpg
+map_Ks textures/it_m15_42_track_n_s.jpg
+map_normal textures/it_m15_42_track_n_n.jpg
+map_ao textures/it_m15_42_track_ao_ao.jpg
+map_d textures/it_m15_42_track_c_a.png
+
+newmtl dcb0e77e-d0db-4b73-9f75-6bfd0ca08788
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl caa340a4-8bab-44f5-85a9-d1d3d9a9a3cb
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl 0fd4a914-760f-46fe-8498-82a88da9fa90
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/it_m15_42_track_c.jpg
+map_Ks textures/it_m15_42_track_n_s.jpg
+map_normal textures/it_m15_42_track_n_n.jpg
+map_ao textures/it_m15_42_track_ao_ao.jpg
+map_d textures/it_m15_42_track_c_a.png
+
+newmtl f65b1526-3332-481c-ba79-4887273f6708
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_breda_mod_38_c.jpg
+map_Ks textures/mg_breda_mod_38_n_s.jpg
+map_normal textures/mg_breda_mod_38_n_n.jpg
+map_ao textures/mg_breda_mod_38_ao_ao.jpg
+map_d textures/mg_breda_mod_38_c_a.png
+
+newmtl 2a040a39-ad8f-4f0f-9876-da7acddf5d92
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m13_40_turret_c_it_camo_graygreen.jpg
+map_Ks textures/m13_40_turret_n_s.jpg
+map_normal textures/m13_40_turret_n_n.jpg
+map_ao textures/m13_40_turret_ao_ao.jpg
+
+newmtl fbc821aa-29a6-426b-8c36-06c75645ed07
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m14_41_gun_c_it_camo_graygreen.jpg
+map_Ks textures/m14_41_gun_n_s.jpg
+map_normal textures/m14_41_gun_n_n.jpg
+map_ao textures/m14_41_gun_ao_ao.jpg
+
+newmtl 7fdf6ff8-1300-4c62-9c5b-a4349da2f318
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m13_m14_body_c_it_camo_graygreen.jpg
+map_Ks textures/m13_m14_body_n_s.jpg
+map_normal textures/m13_m14_body_n_n.jpg
+map_ao textures/m13_m14_body_ao_ao.jpg
+

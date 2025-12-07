@@ -302,13 +302,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285229355}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 0, z: -0.62}
+  m_LocalRotation: {x: 0.47348943, y: -0, z: -0, w: 0.88079953}
+  m_LocalPosition: {x: 0.136, y: -0.023, z: -0.474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1425117476}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 56.522, y: 0, z: 0}
 --- !u!114 &285229357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,9 +1375,8 @@ MonoBehaviour:
   previewCamera: {fileID: 285229358}
   previewSpawnPoint: {fileID: 1880637097}
   availableTanks:
-  - {fileID: 11400000, guid: 8fae0d0dd57391b46921f80845b85735, type: 2}
   - {fileID: 11400000, guid: 555330a6a377ec449aa278cd1e532e0c, type: 2}
-  - {fileID: 11400000, guid: 24215e34ddb2070469d72883e67abdd1, type: 2}
+  - {fileID: 11400000, guid: 6b9d2abbad6ada4478d785036d942bd7, type: 2}
 --- !u!4 &992104305
 Transform:
   m_ObjectHideFlags: 0

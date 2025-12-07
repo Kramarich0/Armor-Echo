@@ -1,0 +1,105 @@
+newmtl 4178b929-e777-4780-b827-0255986b1519
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/jp_type_95_ha_go_track_c.jpg
+map_Ks textures/jp_type_95_ha_go_track_n_s.jpg
+map_normal textures/jp_type_95_ha_go_track_n_n.jpg
+map_ao textures/jp_type_95_ha_go_track_ao_ao.jpg
+map_d textures/jp_type_95_ha_go_track_c_a.png
+
+newmtl cbecaa9c-155c-4f65-81e0-6ef8d84275f1
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/jp_type_95_ha_go_track_c.jpg
+map_Ks textures/jp_type_95_ha_go_track_n_s.jpg
+map_normal textures/jp_type_95_ha_go_track_n_n.jpg
+map_ao textures/jp_type_95_ha_go_track_ao_ao.jpg
+map_d textures/jp_type_95_ha_go_track_c_a.png
+
+newmtl 7bba1065-74d4-4236-aba3-2785e7530647
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/type_95_ha_go_body_c_jp_camo_chairo_brown.jpg
+map_Ks textures/type_95_ha_go_body_n_s.jpg
+map_normal textures/type_95_ha_go_body_n_n.jpg
+map_ao textures/type_95_ha_go_body_ao_ao.jpg
+
+newmtl eebf83f0-8c9c-4fbf-bfd9-319042aa270e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_d_c.jpg
+map_Ks textures/net_d_n_s.jpg
+map_normal textures/net_d_n_n.jpg
+map_ao textures/net_d_ao_ao.jpg
+map_d textures/net_d_c_a.png
+
+newmtl 46f7098d-5b2b-4ff5-ac5a-a42e299f954e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl 871adc97-f81d-4528-b213-f106a6bd34fd
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl a2b6e650-87be-4e00-ae03-bca77fe2dfe7
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_type_97_c.jpg
+map_Ks textures/mg_type_97_n_s.jpg
+map_normal textures/mg_type_97_n_n.jpg
+map_ao textures/mg_type_97_ao_ao.jpg
+map_d textures/mg_type_97_c_a.png
+
+newmtl a7a6d50f-de14-4f17-aa53-6a8dce013f7d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/type_95_ha_go_turret_c_jp_camo_chairo_brown.jpg
+map_Ks textures/type_95_ha_go_turret_n_s.jpg
+map_normal textures/type_95_ha_go_turret_n_n.jpg
+map_ao textures/type_95_ha_go_turret_ao_ao.jpg
+
+newmtl c737f90d-dd0d-4460-834d-b38ceb466b9a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/type_95_ha_go_gun_c_jp_camo_chairo_brown.jpg
+map_Ks textures/type_95_ha_go_gun_n_s.jpg
+map_normal textures/type_95_ha_go_gun_n_n.jpg
+map_ao textures/type_95_ha_go_gun_ao_ao.jpg
+
+newmtl 878afff7-6057-46ac-92aa-4d12e16ac5cf
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_b_c.jpg
+map_Ks textures/rifled_barrel_b_n_s.jpg
+map_normal textures/rifled_barrel_b_n_n.jpg
+map_ao textures/rifled_barrel_b_n_ao.jpg
+

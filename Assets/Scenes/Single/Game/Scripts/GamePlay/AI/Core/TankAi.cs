@@ -46,7 +46,7 @@ public class TankAI : MonoBehaviour
     public LayerMask capturePointsLayer = -1;
     public float capturePointDetectionRadius = 60f;
 
-    public float MoveSpeed => tankDefinition.moveSpeed;
+    public float MoveSpeed => tankDefinition.MaxForwardSpeed;
     public float RotationSpeed => tankDefinition.rotationSpeed;
     public float TurretRotationSpeed => tankDefinition.turretRotationSpeed;
 
@@ -139,11 +139,6 @@ public class TankAI : MonoBehaviour
         impl = new TankAIImpl(this);
         impl.Awake();
 
-        if (tankHealth != null)
-        {
-            tankHealth.maxHealth = tankDefinition.health;
-            tankHealth.currentHealth = tankDefinition.health;
-        }
     }
 
     void Start()

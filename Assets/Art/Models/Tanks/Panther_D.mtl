@@ -1,0 +1,94 @@
+newmtl 4586db7d-0bc3-4e37-b9ab-71f7a5ec4692
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_pzkpfw_v_ausf_d_panther_track_c.jpg
+map_Ks textures/ger_pzkpfw_v_ausf_d_panther_track_n_s.jpg
+map_normal textures/ger_pzkpfw_v_ausf_d_panther_track_n_n.jpg
+map_ao textures/ger_pzkpfw_v_ausf_d_panther_track_ao_ao.jpg
+map_d textures/ger_pzkpfw_v_ausf_d_panther_track_c_a.png
+
+newmtl 102a92ae-c892-4275-b766-9887b040c7aa
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_pzkpfw_v_ausf_d_panther_track_c.jpg
+map_Ks textures/ger_pzkpfw_v_ausf_d_panther_track_n_s.jpg
+map_normal textures/ger_pzkpfw_v_ausf_d_panther_track_n_n.jpg
+map_ao textures/ger_pzkpfw_v_ausf_d_panther_track_ao_ao.jpg
+map_d textures/ger_pzkpfw_v_ausf_d_panther_track_c_a.png
+
+newmtl db88d266-7219-490b-bde5-f4920a41411c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_v_ausf_d_panther_body_c_ger_camo_tiger_green.jpg
+map_Ks textures/pzkpfw_v_ausf_d_panther_body_n_s.jpg
+map_normal textures/pzkpfw_v_ausf_d_panther_body_n_n.jpg
+map_ao textures/pzkpfw_v_ausf_d_panther_body_ao_ao.jpg
+
+newmtl 3d5a02cb-7b58-4471-9d62-b4b45b194668
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_f_c.jpg
+map_Ks textures/net_f_n_s.jpg
+map_normal textures/net_f_n_n.jpg
+map_ao textures/net_f_ao_ao.jpg
+map_d textures/net_f_c_a.png
+
+newmtl 583c31d3-6d1a-4493-b1ae-16585557dd60
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_v_ausf_d_panther_turret_c_ger_camo_tiger_green.jpg
+map_Ks textures/pzkpfw_v_ausf_d_panther_turret_n_s.jpg
+map_normal textures/pzkpfw_v_ausf_d_panther_turret_n_n.jpg
+map_ao textures/pzkpfw_v_ausf_d_panther_turret_ao_ao.jpg
+
+newmtl f2018c69-0752-45dc-9677-f87ecc43bd44
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_v_ausf_d_panther_gun_c_ger_camo_tiger_green.jpg
+map_Ks textures/pzkpfw_v_ausf_d_panther_gun_n_s.jpg
+map_normal textures/pzkpfw_v_ausf_d_panther_gun_n_n.jpg
+map_ao textures/pzkpfw_v_ausf_d_panther_gun_ao_ao.jpg
+
+newmtl 05d9535a-0820-495e-8e5a-67432ffed00a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_34_c.jpg
+map_Ks textures/mg_34_n_s.jpg
+map_normal textures/mg_34_n_n.jpg
+map_ao textures/mg_34_ao_ao.jpg
+map_d textures/mg_34_c_a.png
+
+newmtl b2938c24-0626-40f8-8c2a-2d9a599183cf
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/attch_panther_track_c_attch_panther_track_c.jpg
+map_Ks textures/attch_panther_track_n_s.jpg
+map_normal textures/attch_panther_track_n_n.jpg
+map_ao textures/attch_panther_track_ao_ao.jpg
+
+newmtl e285f1dc-e8a9-4082-90b4-f9769a530939
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_v_ausf_d_panther_body_c_ger_camo_tiger_green.jpg
+map_Ks textures/pzkpfw_v_ausf_d_panther_body_n_s.jpg
+map_normal textures/pzkpfw_v_ausf_d_panther_body_n_n.jpg
+map_ao textures/pzkpfw_v_ausf_d_panther_body_ao_ao.jpg
+

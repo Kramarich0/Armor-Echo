@@ -6,6 +6,8 @@ public class HealthMarkerSimple : MonoBehaviour
     [Header("Target")]
     public AITankHealth targetHealth;
     public TeamComponent targetTeam;
+    [Header("Tank Definition")]
+    public TankDefinition tankDef;
 
     [Header("Size")]
     public float width = 1f;
@@ -58,8 +60,8 @@ public class HealthMarkerSimple : MonoBehaviour
         }
 
         float ratio = 0f;
-        if (targetHealth.maxHealth > 0f)
-            ratio = Mathf.Clamp01(targetHealth.currentHealth / targetHealth.maxHealth);
+        if (tankDef.health > 0f)
+            ratio = Mathf.Clamp01(targetHealth.currentHealth / tankDef.health);
 
         var fillScale = new Vector3(width * ratio, height, 1f);
         var fillPosition = new Vector3(-width * 0.5f + (width * ratio) * 0.5f, 0f, -0.01f);

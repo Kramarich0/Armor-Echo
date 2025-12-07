@@ -10,15 +10,12 @@ public class AITankHealth : MonoBehaviour, IDamageable
 {
     private static readonly WaitForSeconds _waitForSeconds0_1 = new(0.1f);
     private static readonly WaitForFixedUpdate _waitForFixedUpdate = new();
+    [Header("Tank Definition")]
+    public TankDefinition tankDef;
 
-    [Header("Health")]
-    public float maxHealth = 10f;
     [HideInInspector] public float currentHealth;
     public System.Action<float, float> OnHealthChanged;
     private bool isDead = false;
-
-    [Header("Death")]
-    public GameObject deathPrefab;
 
     private TeamComponent teamComp;
     private string lastAttackerName;
@@ -33,8 +30,8 @@ public class AITankHealth : MonoBehaviour, IDamageable
     void Start()
     {
         teamComp = GetComponent<TeamComponent>();
-        currentHealth = maxHealth;
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        currentHealth = tankDef.health;
+        OnHealthChanged?.Invoke(currentHealth, tankDef.health);
 
         CacheComponents();
     }
@@ -56,7 +53,7 @@ public class AITankHealth : MonoBehaviour, IDamageable
         currentHealth -= amount;
         currentHealth = Mathf.Max(currentHealth, 0f);
         lastAttackerName = source;
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        OnHealthChanged?.Invoke(currentHealth, tankDef.health);
 
         if (currentHealth <= 0f)
         {
@@ -82,13 +79,13 @@ public class AITankHealth : MonoBehaviour, IDamageable
     {
         if (!this) yield break;
 
-        if (deathPrefab != null)
+        if (tankDef.deathPrefab != null)
         {
             CreateCorpseSafely();
         }
 
         int ticketCost = GetTicketCost();
-        string victimName = teamComp != null ? teamComp.displayName : null ?? gameObject.name;
+        string victimName = teamComp != null ? teamComp.DisplayName : null ?? gameObject.name;
 
         if (teamComp != null)
         {
@@ -145,7 +142,7 @@ public class AITankHealth : MonoBehaviour, IDamageable
         try
         {
             Vector3 spawnPos = transform.position;
-            GameObject hull = Instantiate(deathPrefab, spawnPos, transform.rotation);
+            GameObject hull = Instantiate(tankDef.deathPrefab, spawnPos, transform.rotation);
 
             EnsureCorpseHasWheels(hull);
 
@@ -177,7 +174,7 @@ public class AITankHealth : MonoBehaviour, IDamageable
         var corpseWheels = corpse.GetComponentsInChildren<WheelCollider>();
         if (corpseWheels.Length == 0)
         {
-            Log.Warning("Префаб трупа {TankName} не имеет  WheelCollider'ов! Это может вызвать баги.", deathPrefab.name);
+            Log.Warning("Префаб трупа {TankName} не имеет WheelCollider'ов! Это может вызвать баги.", tankDef.deathPrefab.name);
         }
     }
 

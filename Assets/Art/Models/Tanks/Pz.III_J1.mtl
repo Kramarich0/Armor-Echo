@@ -1,0 +1,139 @@
+newmtl 3f582b12-1d35-4f54-b2b6-793f3dee6174
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_c_ger_camo_grey.jpg
+map_Ks textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_n_s.jpg
+map_normal textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_n_n.jpg
+map_ao textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_ao_ao.jpg
+
+newmtl cc63194b-ecac-4c6b-a3a9-9bd24808be9d
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_c.jpg
+map_Ks textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_n_s.jpg
+map_normal textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_n_n.jpg
+map_ao textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_ao_ao.jpg
+map_Ke textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_c.jpg
+
+newmtl a2f9f2e5-3678-4b2c-a742-e2fdd5eb163b
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_b_c.jpg
+map_Ks textures/net_b_n_s.jpg
+map_normal textures/net_b_n_n.jpg
+map_ao textures/net_b_ao_ao.jpg
+map_d textures/net_b_c_a.png
+
+newmtl a77a99cf-ca4b-4ec6-9e1a-320667e48bf4
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_pzkpfw_iii_ausf_l_track_c.jpg
+map_Ks textures/ger_pzkpfw_iii_ausf_l_track_n_s.jpg
+map_normal textures/ger_pzkpfw_iii_ausf_l_track_n_n.jpg
+map_ao textures/ger_pzkpfw_iii_ausf_l_track_ao_ao.jpg
+map_d textures/ger_pzkpfw_iii_ausf_l_track_c_a.png
+
+newmtl 12f96a2b-3f7b-4394-bf22-bf805b74aa3a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+d 1
+map_Kd textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_c.jpg
+map_Ks textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_n_s.jpg
+map_normal textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_n_n.jpg
+map_ao textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_ao_ao.jpg
+map_d textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_c_a.png
+
+newmtl 60a9707d-6802-4f0e-ac06-a8653aef46f6
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_c_ger_camo_grey.jpg
+map_Ks textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_n_s.jpg
+map_normal textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_n_n.jpg
+map_ao textures/pzkpfw_iii_ausf_j_kwk_39_l_60_body_ao_ao.jpg
+
+newmtl 3d800a8d-089c-407f-a20d-56635460ee36
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_pzkpfw_iii_ausf_l_track_c.jpg
+map_Ks textures/ger_pzkpfw_iii_ausf_l_track_n_s.jpg
+map_normal textures/ger_pzkpfw_iii_ausf_l_track_n_n.jpg
+map_ao textures/ger_pzkpfw_iii_ausf_l_track_ao_ao.jpg
+map_d textures/ger_pzkpfw_iii_ausf_l_track_c_a.png
+
+newmtl 508b3a00-e521-46e6-83d9-a5076bbf8357
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_34_c.jpg
+map_Ks textures/mg_34_n_s.jpg
+map_normal textures/mg_34_n_n.jpg
+map_ao textures/mg_34_ao_ao.jpg
+map_d textures/mg_34_c_a.png
+
+newmtl 40152bda-8b1b-47f5-ac6f-b1d992a22465
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_iii_ausf_j_kwk_38_l_42_turret_c_ger_camo_grey.jpg
+map_Ks textures/pzkpfw_iii_ausf_j_kwk_38_l_42_turret_n_s.jpg
+map_normal textures/pzkpfw_iii_ausf_j_kwk_38_l_42_turret_n_n.jpg
+map_ao textures/pzkpfw_iii_ausf_j_kwk_38_l_42_turret_ao_ao.jpg
+
+newmtl bdd9f510-2c52-47a3-99ae-5fde31a6fa64
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_iii_ausf_j_kwk_39_l_60_gun_c_ger_camo_grey.jpg
+map_Ks textures/pzkpfw_iii_ausf_j_kwk_39_l_60_gun_n_s.jpg
+map_normal textures/pzkpfw_iii_ausf_j_kwk_39_l_60_gun_n_n.jpg
+map_ao textures/pzkpfw_iii_ausf_j_kwk_39_l_60_gun_ao_ao.jpg
+
+newmtl 81b29d40-e3b9-4782-8ef3-7b653a73407a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_d_c.jpg
+map_Ks textures/rifled_barrel_d_n_s.jpg
+map_normal textures/rifled_barrel_d_n_n.jpg
+map_ao textures/rifled_barrel_d_n_ao.jpg
+
+newmtl 77f5f3e9-fd2f-4421-af79-0170069fb2d2
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_winterketten_track_c.jpg
+map_Ks textures/ger_winterketten_track_n_s.jpg
+map_normal textures/ger_winterketten_track_n_n.jpg
+map_ao textures/ger_winterketten_track_ao_ao.jpg
+map_d textures/ger_winterketten_track_c_a.png
+
+newmtl 2af4227d-1bf0-4eed-9e02-c29fe1004702
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_winterketten_track_c.jpg
+map_Ks textures/ger_winterketten_track_n_s.jpg
+map_normal textures/ger_winterketten_track_n_n.jpg
+map_ao textures/ger_winterketten_track_ao_ao.jpg
+map_d textures/ger_winterketten_track_c_a.png
+

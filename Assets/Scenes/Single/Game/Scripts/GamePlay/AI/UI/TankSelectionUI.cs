@@ -95,7 +95,7 @@ public class TankSelectionUI : MonoBehaviour
         sb.AppendLine($"Класс: {def.tankClass}");
         sb.AppendLine($"HP: {def.health:F0}");
         sb.AppendLine($"Макс (km/h): вперёд {def.maxForwardSpeedKmh:F1} / назад {def.maxBackwardSpeedKmh:F1}");
-        sb.AppendLine($"MoveSpeed (логика): {def.moveSpeed:F2}, rotationSpeed: {def.rotationSpeed:F1}, turretRotationSpeed: {def.turretRotationSpeed:F1}");
+        sb.AppendLine($"MoveSpeed (логика): {def.MaxForwardSpeed:F2}, rotationSpeed: {def.rotationSpeed:F1}, turretRotationSpeed: {def.turretRotationSpeed:F1}");
         sb.AppendLine($"Физика: maxMotorTorque={def.maxMotorTorque:F0}, maxBrakeTorque={def.maxBrakeTorque:F0}, moveResponse={def.moveResponse:F2}, turnResponse={def.turnResponse:F2}");
         sb.AppendLine($"Обнаружение/стрейф: detect={def.detectionRadius:F0}m, strafeRadius={def.strafeRadius:F1}m, strafeSpeed={def.strafeSpeed:F2}");
         sb.AppendLine($"Spread (base/moving/stationary): {def.baseSpreadDegrees:F2}° / {def.movingSpreadFactor:F2} / {def.stationarySpreadFactor:F2}");

@@ -1,0 +1,156 @@
+newmtl 84a80125-8277-49f9-ab8b-1a291859875c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/is_1_gun_c_u.jpg
+map_Ks textures/is_1_gun_n_s.jpg
+map_normal textures/is_1_gun_n_n.jpg
+map_ao textures/is_1_gun_ao_ao.jpg
+
+newmtl da5c7ba9-8672-446a-b2ab-ba7aaa4cb345
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_a_c.jpg
+map_Ks textures/rifled_barrel_a_n_s.jpg
+map_normal textures/rifled_barrel_a_n_n.jpg
+map_ao textures/rifled_barrel_a_n_ao.jpg
+
+newmtl 2caa1188-0c5b-47e9-b67e-677a99423bde
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/is_1_kit_3rank_c_ussr_camo_green.jpg
+map_Ks textures/is_1_kit_3rank_n_s.jpg
+map_normal textures/is_1_kit_3rank_n_n.jpg
+map_ao textures/is_1_kit_3rank_ao_ao.jpg
+
+newmtl 32ff76bd-341c-4aa2-b961-cac283d8d921
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/camo_net_thread_a_c.jpg
+map_Ks textures/camo_net_thread_a_n_s.jpg
+map_normal textures/camo_net_thread_a_n_n.jpg
+map_ao textures/_white_ao_ao.jpg
+map_d textures/camo_net_thread_a_c_a.png
+
+newmtl 6179bc04-cb27-4539-9b68-8170af926311
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/camo_net_thread_d_c.jpg
+map_Ks textures/camo_net_thread_d_n_s.jpg
+map_normal textures/camo_net_thread_d_n_n.jpg
+map_ao textures/_white_ao_ao.jpg
+map_d textures/camo_net_thread_d_c_a.png
+
+newmtl 73f59c18-0711-4497-a93c-889a14728a07
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_mg_dt_c_ussr_mg_dt_c.jpg
+map_Ks textures/ussr_mg_dt_n_s.jpg
+map_normal textures/ussr_mg_dt_n_n.jpg
+map_ao textures/ussr_mg_dt_ao_ao.jpg
+
+newmtl 265abe6b-d546-441d-8a3d-a4d3214b075f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/is_1_turret_c_u.jpg
+map_Ks textures/is_1_turret_n_s.jpg
+map_normal textures/is_1_turret_n_n.jpg
+map_ao textures/is_1_turret_ao_ao.jpg
+
+newmtl 0b0e5c48-95f1-4d01-9aa9-3884b301735c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_object_248_phys_track_c.jpg
+map_Ks textures/ussr_object_248_phys_track_n_s.jpg
+map_normal textures/ussr_object_248_phys_track_n_n.jpg
+map_ao textures/ussr_object_248_phys_track_ao_ao.jpg
+
+newmtl ed5b2271-acac-47a6-bb7c-49c9c053988f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/is_2_body_c_ussr_camo_green.jpg
+map_Ks textures/is_2_body_n_s.jpg
+map_normal textures/is_2_body_n_n.jpg
+map_ao textures/is_2_body_ao_ao.jpg
+
+newmtl 557b2a30-beea-46c6-aa17-c963cca625c3
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl cbfca970-e4c0-433b-9d0f-e0e5e7a3e22d
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl 2bbc0a34-887e-4710-ae71-7ed3a50ac290
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_object_248_track_c.jpg
+map_Ks textures/ussr_object_248_track_n_s.jpg
+map_normal textures/ussr_object_248_track_n_n.jpg
+map_ao textures/ussr_object_248_track_ao_ao.jpg
+map_d textures/ussr_object_248_track_c_a.png
+
+newmtl 5d60d39b-6768-4777-81ea-35cd4ecbff1d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ussr_object_248_track_c.jpg
+map_Ks textures/ussr_object_248_track_n_s.jpg
+map_normal textures/ussr_object_248_track_n_n.jpg
+map_ao textures/ussr_object_248_track_ao_ao.jpg
+map_d textures/ussr_object_248_track_c_a.png
+
+newmtl 66437c3b-9763-4f30-a0db-f8fb9d096605
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_f_c.jpg
+map_Ks textures/net_f_n_s.jpg
+map_normal textures/net_f_n_n.jpg
+map_ao textures/net_f_ao_ao.jpg
+map_d textures/net_f_c_a.png
+
+newmtl 81732d21-afb0-493b-b6b0-4e41340a8c60
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/is_1_turret_c_u.jpg
+map_Ks textures/is_1_turret_n_s.jpg
+map_normal textures/is_1_turret_n_n.jpg
+map_ao textures/is_1_turret_ao_ao.jpg
+

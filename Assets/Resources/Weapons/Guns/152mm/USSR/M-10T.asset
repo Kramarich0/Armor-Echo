@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ad7d81ad51f4e42b8256b403db27e0, type: 3}
+  m_Name: M-10T
+  m_EditorClassIdentifier: Assembly-CSharp::GunDefinition
+  gunName: "\u041C-10\u0422"
+  caliber: 152
+  fireInterval: 30
+  liftSpeed: 2
+  minGunAngle: -4
+  maxGunAngle: 15
+  shootRange: 100
+  bulletUseGravity: 1
+  shootSound: {fileID: 0}
+  reloadSound: {fileID: 0}
+  bullets:
+  - bullet: {fileID: 11400000, guid: d3b291a75020a0c42bc563a9275b7629, type: 2}
+    muzzleVelocity: 436
+  - bullet: {fileID: 11400000, guid: 3ef1c5f49c762194fbebf141c61439d5, type: 2}
+    muzzleVelocity: 530
+  debugLogs: 0

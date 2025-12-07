@@ -1,0 +1,134 @@
+newmtl 2fa0d999-8110-4709-b4c2-aa8a8be0d1c5
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mk_1_valentine_body_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/mk_1_valentine_body_n_s.jpg
+map_normal textures/mk_1_valentine_body_n_n.jpg
+map_ao textures/mk_1_valentine_body_ao_ao.jpg
+
+newmtl 1613764a-34ea-464a-8208-c341a20bf5da
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl fbce2d07-1088-40d4-99ab-975fa35ee4d9
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl fa790ce9-6721-48bf-87ae-02326a674438
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mk_1_valentine_turret_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/mk_1_valentine_turret_n_s.jpg
+map_normal textures/mk_1_valentine_turret_n_n.jpg
+map_ao textures/mk_1_valentine_turret_ao_ao.jpg
+
+newmtl 10765295-877f-4aff-b9a0-ff36bc9e0c97
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mk_1_valentine_turret_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/mk_1_valentine_turret_n_s.jpg
+map_normal textures/mk_1_valentine_turret_n_n.jpg
+map_ao textures/mk_1_valentine_turret_ao_ao.jpg
+
+newmtl 7472329b-1b21-4c81-9903-d9973e561609
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mk_1_valentine_gun_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/mk_1_valentine_gun_n_s.jpg
+map_normal textures/mk_1_valentine_gun_n_n.jpg
+map_ao textures/mk_1_valentine_gun_ao_ao.jpg
+
+newmtl 1b646780-a173-4776-90e2-4afe09a03b8c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_c_c.jpg
+map_Ks textures/rifled_barrel_c_n_s.jpg
+map_normal textures/rifled_barrel_c_n_n.jpg
+map_ao textures/rifled_barrel_c_n_ao.jpg
+
+newmtl f0dc6146-882e-40e3-8447-7c07721d5b5d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_besa_mkii_c.jpg
+map_Ks textures/mg_besa_mkii_n_s.jpg
+map_normal textures/mg_besa_mkii_n_n.jpg
+map_ao textures/mg_besa_mkii_ao_ao.jpg
+
+newmtl 42973d4f-3970-4a52-81a7-53bd71973657
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/uk_mk_1_valentine_track_c.jpg
+map_Ks textures/uk_mk_1_valentine_track_n_s.jpg
+map_normal textures/uk_mk_1_valentine_track_n_n.jpg
+map_ao textures/uk_mk_1_valentine_track_ao_ao.jpg
+map_d textures/uk_mk_1_valentine_track_c_a.png
+
+newmtl f7e6a42a-f16c-460e-a864-0c10fe7cee61
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/uk_mk_1_valentine_track_c.jpg
+map_Ks textures/uk_mk_1_valentine_track_n_s.jpg
+map_normal textures/uk_mk_1_valentine_track_n_n.jpg
+map_ao textures/uk_mk_1_valentine_track_ao_ao.jpg
+map_d textures/uk_mk_1_valentine_track_c_a.png
+
+newmtl 4937e2d4-02fa-44b4-af01-34986293739d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mk_1_valentine_body_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/mk_1_valentine_body_n_s.jpg
+map_normal textures/mk_1_valentine_body_n_n.jpg
+map_ao textures/mk_1_valentine_body_ao_ao.jpg
+
+newmtl dc223cf0-2619-416a-8257-287b427332b0
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mk_1_valentine_body_c_uk_camo_very_dark_drab.jpg
+map_Ks textures/mk_1_valentine_body_n_s.jpg
+map_normal textures/mk_1_valentine_body_n_n.jpg
+map_ao textures/mk_1_valentine_body_ao_ao.jpg
+
+newmtl 257d11dc-5eaa-4d36-ac5e-d0bc6945c13e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_a_c.jpg
+map_Ks textures/net_a_n_s.jpg
+map_normal textures/net_a_n_n.jpg
+map_ao textures/net_a_ao_ao.jpg
+map_d textures/net_a_c_a.png
+

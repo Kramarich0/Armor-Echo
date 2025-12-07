@@ -1,0 +1,119 @@
+newmtl e89af692-bb7f-40e1-9837-079f014915ff
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_ausf_h1_tiger_turret_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/pzkpfw_vi_ausf_h1_tiger_turret_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_h1_tiger_turret_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_h1_tiger_turret_ao_ao.jpg
+
+newmtl 62fb6945-6417-48b1-869b-9c57817f9226
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_ausf_h1_tiger_turret_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/pzkpfw_vi_ausf_h1_tiger_turret_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_h1_tiger_turret_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_h1_tiger_turret_ao_ao.jpg
+
+newmtl 574ce35a-ebca-4509-9e44-c35cf2f6312c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_ausf_h1_tiger_gun_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/pzkpfw_vi_ausf_h1_tiger_gun_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_h1_tiger_gun_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_h1_tiger_gun_ao_ao.jpg
+
+newmtl ae26b20c-e460-4153-9488-32551d0ff289
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+d 1
+map_Kd textures/mg_34_c.jpg
+map_Ks textures/mg_34_n_s.jpg
+map_normal textures/mg_34_n_n.jpg
+map_ao textures/mg_34_ao_ao.jpg
+map_d textures/mg_34_c_a.png
+
+newmtl 3925d105-3ff7-4525-969b-8fabd3818164
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_ausf_h1_tiger_body_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/pzkpfw_vi_ausf_h1_tiger_body_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_h1_tiger_body_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_h1_tiger_body_ao_ao.jpg
+
+newmtl 8866172a-1096-4f12-b830-9564d28fbf9f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+d 1
+map_Kd textures/ger_pzkpfw_vi_ausf_h1_tiger_track_c.jpg
+map_Ks textures/ger_pzkpfw_vi_ausf_h1_tiger_track_n_s.jpg
+map_normal textures/ger_pzkpfw_vi_ausf_h1_tiger_track_n_n.jpg
+map_ao textures/ger_pzkpfw_vi_ausf_h1_tiger_track_ao_ao.jpg
+map_d textures/ger_pzkpfw_vi_ausf_h1_tiger_track_c_a.png
+
+newmtl 2047309b-794c-4410-96ae-7ca01a97fb3d
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_ausf_h1_tiger_body_c.jpg
+map_Ks textures/pzkpfw_vi_ausf_h1_tiger_body_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_h1_tiger_body_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_h1_tiger_body_ao_ao.jpg
+map_Ke textures/pzkpfw_vi_ausf_h1_tiger_body_c.jpg
+
+newmtl a8a9511b-5cf8-4551-ab54-0f5fac411cd8
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+d 1
+map_Kd textures/pzkpfw_vi_ausf_h1_tiger_body_at_c.jpg
+map_Ks textures/pzkpfw_vi_ausf_h1_tiger_body_at_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_h1_tiger_body_at_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_h1_tiger_body_at_ao_ao.jpg
+map_d textures/pzkpfw_vi_ausf_h1_tiger_body_at_c_a.png
+
+newmtl 1ff2885e-a78a-4f5b-8172-d40560f81f6e
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+d 1
+map_Kd textures/ger_pzkpfw_vi_ausf_h1_tiger_track_c.jpg
+map_Ks textures/ger_pzkpfw_vi_ausf_h1_tiger_track_n_s.jpg
+map_normal textures/ger_pzkpfw_vi_ausf_h1_tiger_track_n_n.jpg
+map_ao textures/ger_pzkpfw_vi_ausf_h1_tiger_track_ao_ao.jpg
+map_d textures/ger_pzkpfw_vi_ausf_h1_tiger_track_c_a.png
+
+newmtl b7801b30-4241-48ff-bdc9-58512cf13838
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_ausf_h1_tiger_body_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/pzkpfw_vi_ausf_h1_tiger_body_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_h1_tiger_body_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_h1_tiger_body_ao_ao.jpg
+
+newmtl db0985c4-27d5-491e-b9b9-8d4610eb81d0
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_ausf_h1_tiger_body_c_ger_camo_dunkelgelb.jpg
+map_Ks textures/pzkpfw_vi_ausf_h1_tiger_body_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_h1_tiger_body_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_h1_tiger_body_ao_ao.jpg
+

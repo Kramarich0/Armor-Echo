@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Sprgr. L4.5
   m_EditorClassIdentifier: Assembly-CSharp::BulletDefinition
   type: 0
+  bulletName: Sprgr. L4.5
   caliber: 76
+  massKg: 6.8
+  referenceVelocity: 773
+  noseType: 4
   damage: 40
   penetration: 120
-  speed: 800
   useGravity: 1
   ballisticK: 0.001
   deMarreK: 1.5

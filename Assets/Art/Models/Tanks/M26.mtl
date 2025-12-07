@@ -1,0 +1,154 @@
+newmtl 5e155865-200d-4f48-aef7-b6da10eb9b1a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m26_pershing_body_c_us_camo_olive.jpg
+map_Ks textures/m26_pershing_body_n_s.jpg
+map_normal textures/m26_pershing_body_n_n.jpg
+map_ao textures/m26_pershing_body_ao_ao.jpg
+
+newmtl 45385d98-1877-43e4-b03b-ec84e3d02d11
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m26_pershing_turret_c_us_camo_olive.jpg
+map_Ks textures/m26_pershing_turret_n_s.jpg
+map_normal textures/m26_pershing_turret_n_n.jpg
+map_ao textures/m26_pershing_turret_ao_ao.jpg
+
+newmtl fa7ab4f4-a7f8-4df2-93a4-b06f82bfc85c
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/m26_pershing_glass_c.jpg
+map_d textures/m26_pershing_glass_c_a.png
+
+newmtl b66dc156-8c4c-42d6-81b6-f9a194cf59bd
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m26_pershing_gun_c_us_camo_olive.jpg
+map_Ks textures/m26_pershing_gun_n_s.jpg
+map_normal textures/m26_pershing_gun_n_n.jpg
+map_ao textures/m26_pershing_gun_ao_ao.jpg
+
+newmtl f5a95033-aa43-4d19-bca0-45141b751383
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m1919a4_c.jpg
+map_Ks textures/mg_browning_m1919a4_n_s.jpg
+map_normal textures/mg_browning_m1919a4_n_n.jpg
+map_ao textures/mg_browning_m1919a4_ao_ao.jpg
+map_d textures/mg_browning_m1919a4_c_a.png
+
+newmtl 9199aeba-f4f5-4e8b-a18d-b6c0ac6a211d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_mount_c_us_camo_olive.jpg
+map_Ks textures/mg_browning_m2hb_mount_n_s.jpg
+map_normal textures/mg_browning_m2hb_mount_n_n.jpg
+map_ao textures/mg_browning_m2hb_mount_ao_ao.jpg
+
+newmtl 52dfffb3-2859-4f8c-aee0-3848d97a27a9
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_ammo_c.jpg
+map_Ks textures/mg_browning_m2hb_ammo_n_s.jpg
+map_normal textures/mg_browning_m2hb_ammo_n_n.jpg
+map_ao textures/mg_browning_m2hb_ammo_ao_ao.jpg
+
+newmtl 3cbae607-1920-44ab-b853-5330575c92b7
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_mount_c.jpg
+map_Ks textures/mg_browning_m2hb_mount_n_s.jpg
+map_normal textures/mg_browning_m2hb_mount_n_n.jpg
+map_ao textures/mg_browning_m2hb_mount_ao_ao.jpg
+
+newmtl 1ec4e789-eac2-44dd-9e5e-981b3221685f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_c.jpg
+map_Ks textures/mg_browning_m2hb_n_s.jpg
+map_normal textures/mg_browning_m2hb_n_n.jpg
+map_ao textures/mg_browning_m2hb_ao_ao.jpg
+
+newmtl 6339a871-20d8-4d5d-845a-3f6ed94dfade
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/m26_pershing_body_c.jpg
+map_Ks textures/m26_pershing_body_n_s.jpg
+map_normal textures/m26_pershing_body_n_n.jpg
+map_ao textures/m26_pershing_body_ao_ao.jpg
+map_Ke textures/m26_pershing_body_c.jpg
+
+newmtl 102aafab-7716-4006-9458-c0e7f8e30f1d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl 75b5c696-9b17-4080-bd14-de486eccccff
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl 62ae290e-53a6-484e-b622-147b7137448d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_t26e4_superpershing_track_c.jpg
+map_Ks textures/us_t26e4_superpershing_track_n_s.jpg
+map_normal textures/us_t26e4_superpershing_track_n_n.jpg
+map_ao textures/us_t26e4_superpershing_track_ao_ao.jpg
+map_d textures/us_t26e4_superpershing_track_c_a.png
+
+newmtl c9a5897d-abe9-46b9-8e89-596300c849da
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_t26e4_superpershing_track_c.jpg
+map_Ks textures/us_t26e4_superpershing_track_n_s.jpg
+map_normal textures/us_t26e4_superpershing_track_n_n.jpg
+map_ao textures/us_t26e4_superpershing_track_ao_ao.jpg
+map_d textures/us_t26e4_superpershing_track_c_a.png
+
+newmtl 6c818dc4-0dd6-429f-9b4e-62563f673869
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m26_pershing_turret_c_us_camo_olive.jpg
+map_Ks textures/m26_pershing_turret_n_s.jpg
+map_normal textures/m26_pershing_turret_n_n.jpg
+map_ao textures/m26_pershing_turret_ao_ao.jpg
+

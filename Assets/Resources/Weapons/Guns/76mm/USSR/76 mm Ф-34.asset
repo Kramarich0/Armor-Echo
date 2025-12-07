@@ -23,12 +23,10 @@ MonoBehaviour:
   shootSound: {fileID: 0}
   reloadSound: {fileID: 0}
   bullets:
-  - bullet: {fileID: 0}
-    muzzleVelocity: 0
-  - bullet: {fileID: 0}
-    muzzleVelocity: 0
-  - bullet: {fileID: 0}
-    muzzleVelocity: 0
-  - bullet: {fileID: 0}
-    muzzleVelocity: 0
+  - bullet: {fileID: 11400000, guid: b580cf99e68e799489acc3179f9123c3, type: 2}
+    muzzleVelocity: 662
+  - bullet: {fileID: 11400000, guid: d24adcc1d7646e54f8e4bb68feb6e97e, type: 2}
+    muzzleVelocity: 662
+  - bullet: {fileID: 11400000, guid: f09e9664f20b7524184da086a70e13ab, type: 2}
+    muzzleVelocity: 550
   debugLogs: 0

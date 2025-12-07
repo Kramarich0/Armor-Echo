@@ -1,0 +1,116 @@
+newmtl 4099016c-cb52-4239-ab3d-07c3096017ff
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/jp_type_97_kai_track_c.jpg
+map_Ks textures/jp_type_97_kai_track_n_s.jpg
+map_normal textures/jp_type_97_kai_track_n_n.jpg
+map_ao textures/jp_type_97_kai_track_ao_ao.jpg
+map_d textures/jp_type_97_kai_track_c_a.png
+
+newmtl fe93f050-9444-4969-9425-4693b24f5b23
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/jp_type_97_kai_track_c.jpg
+map_Ks textures/jp_type_97_kai_track_n_s.jpg
+map_normal textures/jp_type_97_kai_track_n_n.jpg
+map_ao textures/jp_type_97_kai_track_ao_ao.jpg
+map_d textures/jp_type_97_kai_track_c_a.png
+
+newmtl ba261162-1009-41fb-a194-5aa888162b17
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/type_97_chi_ha_body_c_jp_camo_chairo_brown.jpg
+map_Ks textures/type_97_chi_ha_body_n_s.jpg
+map_normal textures/type_97_chi_ha_body_n_n.jpg
+map_ao textures/type_97_chi_ha_body_ao_ao.jpg
+
+newmtl 3138252c-176b-46ea-a6f9-be553d6da621
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_b_c.jpg
+map_Ks textures/net_b_n_s.jpg
+map_normal textures/net_b_n_n.jpg
+map_ao textures/net_b_ao_ao.jpg
+map_d textures/net_b_c_a.png
+
+newmtl 9d64812b-decc-40af-b464-d4be1959f59d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/type_97_chi_ha_turret_c_jp_camo_chairo_brown.jpg
+map_Ks textures/type_97_chi_ha_turret_n_s.jpg
+map_normal textures/type_97_chi_ha_turret_n_n.jpg
+map_ao textures/type_97_chi_ha_turret_ao_ao.jpg
+
+newmtl fff9246e-9f77-4502-856e-384e307d43d4
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_type_97_c.jpg
+map_Ks textures/mg_type_97_n_s.jpg
+map_normal textures/mg_type_97_n_n.jpg
+map_ao textures/mg_type_97_ao_ao.jpg
+map_d textures/mg_type_97_c_a.png
+
+newmtl 2a6e595f-88d5-44f7-942c-bea299831798
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/type_97_chi_ha_gun_c_jp_camo_chairo_brown.jpg
+map_Ks textures/type_97_chi_ha_gun_n_s.jpg
+map_normal textures/type_97_chi_ha_gun_n_n.jpg
+map_ao textures/type_97_chi_ha_gun_ao_ao.jpg
+
+newmtl de26e49b-8a2d-4f2e-951e-cafeb23a4d89
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_b_c.jpg
+map_Ks textures/rifled_barrel_b_n_s.jpg
+map_normal textures/rifled_barrel_b_n_n.jpg
+map_ao textures/rifled_barrel_b_n_ao.jpg
+
+newmtl b4d185bf-3b76-4e3e-ac6b-be77b0698e91
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl f3e833fb-f14f-4cdf-a7c9-4fb01058ab67
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl 6f710e44-5bb4-442a-8bd7-f9a8ae5db755
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/chain_b_c.jpg
+map_Ks textures/chain_b_n_s.jpg
+map_normal textures/chain_b_n_n.jpg
+map_ao textures/chain_b_c_ao.jpg
+map_d textures/chain_b_c_a.png
+

@@ -1,0 +1,147 @@
+newmtl 23a5131b-4919-404e-9c19-32db29a8e680
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m4a4_sherman_body_c_cn_camo_light_olive.jpg
+map_Ks textures/m4a4_sherman_body_n_s.jpg
+map_normal textures/m4a4_sherman_body_n_n.jpg
+map_ao textures/m4a4_sherman_body_ao_ao.jpg
+
+newmtl 75adbdcf-6739-4480-a3e2-0b5d9252d594
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl e582398c-358e-41ad-b28e-e618a48e94e7
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/m4a4_sherman_body_c.jpg
+map_Ks textures/m4a4_sherman_body_n_s.jpg
+map_normal textures/m4a4_sherman_body_n_n.jpg
+map_ao textures/m4a4_sherman_body_ao_ao.jpg
+map_Ke textures/m4a4_sherman_body_c.jpg
+
+newmtl 2c5936ba-a517-4e5b-95cd-670b4110b871
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl a9d12089-a6d5-4ac4-acd7-bcdb946b0bd5
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_m4a2_sherman_1944_track_c.jpg
+map_Ks textures/us_m4a2_sherman_1944_track_n_s.jpg
+map_normal textures/us_m4a2_sherman_1944_track_n_n.jpg
+map_ao textures/us_m4a2_sherman_1944_track_ao_ao.jpg
+map_d textures/us_m4a2_sherman_1944_track_c_a.png
+
+newmtl b23fe131-48ae-4c30-abce-0d5770b3b4df
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m4a4_sherman_turret_c_cn_camo_light_olive.jpg
+map_Ks textures/m4a4_sherman_turret_n_s.jpg
+map_normal textures/m4a4_sherman_turret_n_n.jpg
+map_ao textures/m4a4_sherman_turret_ao_ao.jpg
+
+newmtl 1d043d8c-0596-4b58-92f2-d7bd69834051
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m4_sherman_late_gun_c_cn_camo_light_olive.jpg
+map_Ks textures/m4_sherman_late_gun_n_s.jpg
+map_normal textures/m4_sherman_late_gun_n_n.jpg
+map_ao textures/m4_sherman_late_gun_ao_ao.jpg
+
+newmtl 281307c3-3354-48c4-8037-7c8789735e86
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_b_c.jpg
+map_Ks textures/rifled_barrel_b_n_s.jpg
+map_normal textures/rifled_barrel_b_n_n.jpg
+map_ao textures/rifled_barrel_b_n_ao.jpg
+
+newmtl 92280697-549f-46c6-8f4b-ca994e747d78
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m1919a4_c.jpg
+map_Ks textures/mg_browning_m1919a4_n_s.jpg
+map_normal textures/mg_browning_m1919a4_n_n.jpg
+map_ao textures/mg_browning_m1919a4_ao_ao.jpg
+map_d textures/mg_browning_m1919a4_c_a.png
+
+newmtl de203c57-c69f-4992-a146-31b475b1f99c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_mount_c_cn_camo_light_olive.jpg
+map_Ks textures/mg_browning_m2hb_mount_n_s.jpg
+map_normal textures/mg_browning_m2hb_mount_n_n.jpg
+map_ao textures/mg_browning_m2hb_mount_ao_ao.jpg
+
+newmtl 51a1c8db-5568-4d57-8b1d-2c49305d5f86
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_ammo_c.jpg
+map_Ks textures/mg_browning_m2hb_ammo_n_s.jpg
+map_normal textures/mg_browning_m2hb_ammo_n_n.jpg
+map_ao textures/mg_browning_m2hb_ammo_ao_ao.jpg
+map_d textures/mg_browning_m2hb_ammo_c_a.png
+
+newmtl a0580e89-960c-44f2-bc84-3a25584aa9fb
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_c.jpg
+map_Ks textures/mg_browning_m2hb_n_s.jpg
+map_normal textures/mg_browning_m2hb_n_n.jpg
+map_ao textures/mg_browning_m2hb_ao_ao.jpg
+map_d textures/mg_browning_m2hb_c_a.png
+
+newmtl e91b3943-1954-4c38-9181-7fb2078aee89
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_m4a2_sherman_1944_track_c.jpg
+map_Ks textures/us_m4a2_sherman_1944_track_n_s.jpg
+map_normal textures/us_m4a2_sherman_1944_track_n_n.jpg
+map_ao textures/us_m4a2_sherman_1944_track_ao_ao.jpg
+map_d textures/us_m4a2_sherman_1944_track_c_a.png
+
+newmtl 86317cf8-c8a5-4095-9408-5c47226b9143
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m4a4_sherman_turret_c_cn_camo_light_olive.jpg
+map_Ks textures/m4a4_sherman_turret_n_s.jpg
+map_normal textures/m4a4_sherman_turret_n_n.jpg
+map_ao textures/m4a4_sherman_turret_ao_ao.jpg
+

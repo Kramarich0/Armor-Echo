@@ -277,8 +277,8 @@ public class TankShoot : MonoBehaviour
 
         TeamComponent teamComp = GetComponentInParent<TeamComponent>();
         TeamEnum team = teamComp ? teamComp.team : TeamEnum.Neutral;
-        string shooterDisplay = teamComp != null && !string.IsNullOrEmpty(teamComp.displayName)
-            ? teamComp.displayName
+        string shooterDisplay = teamComp != null && !string.IsNullOrEmpty(teamComp.DisplayName)
+            ? teamComp.DisplayName
             : gameObject.name;
 
         Collider[] shooterColliders = GetComponentsInParent<Collider>();

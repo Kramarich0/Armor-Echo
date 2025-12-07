@@ -10,7 +10,7 @@ public static class TankWheelSetup
         wheel.mass = Mathf.Clamp(recommended, 20f, 80f); 
         
         wheel.radius = 0.3f;
-        wheel.wheelDampingRate = 1.5f;
+        wheel.wheelDampingRate = 0.8f;
         wheel.suspensionDistance = 0.3f;
         wheel.forceAppPointDistance = 0.35f; 
         wheel.center = new Vector3(0f, 0f, 0f);
@@ -27,7 +27,7 @@ public static class TankWheelSetup
         fFriction.extremumValue = 1.25f;
         fFriction.asymptoteSlip = 0.9f;
         fFriction.asymptoteValue = 0.9f;
-        fFriction.stiffness = 1.2f;
+        fFriction.stiffness = 1f;
         wheel.forwardFriction = fFriction;
         
         WheelFrictionCurve sFriction = wheel.sidewaysFriction;
@@ -35,7 +35,7 @@ public static class TankWheelSetup
         sFriction.extremumValue = 1.15f;
         sFriction.asymptoteSlip = 0.55f;
         sFriction.asymptoteValue = 0.85f;
-        sFriction.stiffness = 1.2f;
+        sFriction.stiffness = 1f;
         wheel.sidewaysFriction = sFriction;
     }
 

@@ -76,7 +76,7 @@ public class CapturePoint : MonoBehaviour
             if (presentTankIds[tc.team].Add(tc.tankId))
             {
                 if (debugLogs) Log.Debug("[CapturePoint] Entered: {TankName} (ID: {TankId}), team={Team}. Count now: {TeamCount}",
-                              tc.displayName ?? tc.gameObject.name, tc.tankId, tc.team, presentTankIds[tc.team].Count);
+                              tc.DisplayName ?? tc.gameObject.name, tc.tankId, tc.team, presentTankIds[tc.team].Count);
             }
         }
         else
@@ -95,7 +95,7 @@ public class CapturePoint : MonoBehaviour
             if (presentTankIds[tc.team].Remove(tc.tankId))
             {
                 if (debugLogs) Log.Debug("[CapturePoint] Exited: {TankName} (ID: {TankId}), team={Team}. Count now: {TeamCount}",
-                              tc.displayName ?? tc.gameObject.name, tc.tankId, tc.team, presentTankIds[tc.team].Count);
+                              tc.DisplayName ?? tc.gameObject.name, tc.tankId, tc.team, presentTankIds[tc.team].Count);
             }
         }
     }

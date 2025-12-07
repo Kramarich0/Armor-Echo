@@ -1,0 +1,62 @@
+newmtl 10e6dec0-341e-4ab7-951a-fe5deecf011d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t66_track_diffuse.jpg
+map_Ks textures/t66_track_specular.jpg
+map_normal textures/t66_track_normal.jpg
+map_ao textures/t66_track_ambient.jpg
+map_d textures/t66_track_alpha.png
+
+newmtl 87284044-2a97-4626-a1f1-1dd32f419962
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t66_track_diffuse.jpg
+map_Ks textures/t66_track_specular.jpg
+map_normal textures/t66_track_normal.jpg
+map_ao textures/t66_track_ambient.jpg
+map_d textures/t66_track_alpha.png
+
+newmtl 51073e19-b963-4da7-9fde-318e1f7e6b39
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m4_thunderbolt_chassis_01_diffuse.jpg
+map_Ks textures/m4_thunderbolt_chassis_01_specular.jpg
+map_normal textures/m4_thunderbolt_chassis_01_normal.jpg
+map_ao textures/m4_thunderbolt_chassis_01_ambient.jpg
+
+newmtl 488ed3db-a65e-46b1-ab90-c57f5b0f1560
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m4_thunderbolt_hull_01_diffuse.jpg
+map_Ks textures/m4_thunderbolt_hull_01_specular.jpg
+map_normal textures/m4_thunderbolt_hull_01_normal.jpg
+map_ao textures/m4_thunderbolt_hull_01_ambient.jpg
+
+newmtl 5579baa0-5497-400e-a83d-9e5a321f0fcd
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m4_thunderbolt_turret_01_diffuse.jpg
+map_Ks textures/m4_thunderbolt_turret_01_specular.jpg
+map_normal textures/m4_thunderbolt_turret_01_normal.jpg
+map_ao textures/m4_thunderbolt_turret_01_ambient.jpg
+
+newmtl 0fdbc371-87a2-4759-805e-25088b5c2114
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m4_thunderbolt_guns_diffuse.jpg
+map_Ks textures/m4_thunderbolt_guns_specular.jpg
+map_normal textures/m4_thunderbolt_guns_normal.jpg
+map_ao textures/m4_thunderbolt_guns_ambient.jpg
+

@@ -1,0 +1,156 @@
+newmtl b456979c-7b43-4cdf-977b-b1af7ec963cf
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_ausf_b_tiger_armor_c_ger_camo_dunkelgelb_green_braun.jpg
+map_Ks textures/pzkpfw_vi_ausf_b_tiger_armor_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_b_tiger_armor_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_b_tiger_armor_ao_ao.jpg
+
+newmtl 742d61a1-6005-4c14-aa73-6940b102e60c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_kgs_73_800_152_new_phys_track_c.jpg
+map_Ks textures/ger_kgs_73_800_152_new_phys_track_n_s.jpg
+map_normal textures/ger_kgs_73_800_152_new_phys_track_n_n.jpg
+map_ao textures/ger_kgs_73_800_152_new_phys_track_n_ao.jpg
+
+newmtl 02422b05-971c-47dd-9a11-1555048ce28a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_ausf_b_tiger_body_c_ger_camo_dunkelgelb_green_braun.jpg
+map_Ks textures/pzkpfw_vi_ausf_b_tiger_body_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_b_tiger_body_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_b_tiger_body_ao_ao.jpg
+
+newmtl a9a8b9e7-9891-4c1a-9b17-b9301df89a24
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl b29dee3d-8719-4272-b6b4-a834a3f55694
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl 2db9aee9-2e4b-4465-8513-3c4e3e9e0b34
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_ausf_b_tiger_body_c_ger_camo_dunkelgelb_green_braun.jpg
+map_Ks textures/pzkpfw_vi_ausf_b_tiger_body_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_b_tiger_body_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_b_tiger_body_ao_ao.jpg
+
+newmtl baf03b68-699c-4707-870c-294cab0dfd9d
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_f_c.jpg
+map_Ks textures/net_f_n_s.jpg
+map_normal textures/net_f_n_n.jpg
+map_ao textures/net_f_c_ao.jpg
+map_d textures/net_f_c_a.png
+
+newmtl 7d49099b-dda8-469a-89aa-35440a29565b
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_ausf_b_tiger_turret_c_ger_camo_dunkelgelb_green_braun.jpg
+map_Ks textures/pzkpfw_vi_ausf_b_tiger_turret_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_b_tiger_turret_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_b_tiger_turret_ao_ao.jpg
+
+newmtl a482ecd6-738a-49c4-9ede-633d3189c760
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/pzkpfw_vi_ausf_b_tiger_gun_c_ger_camo_dunkelgelb_green_braun.jpg
+map_Ks textures/pzkpfw_vi_ausf_b_tiger_gun_n_s.jpg
+map_normal textures/pzkpfw_vi_ausf_b_tiger_gun_n_n.jpg
+map_ao textures/pzkpfw_vi_ausf_b_tiger_gun_ao_ao.jpg
+
+newmtl c5af0579-6b20-463a-9239-cf8af9767dcd
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_c_c.jpg
+map_Ks textures/rifled_barrel_c_n_s.jpg
+map_normal textures/rifled_barrel_c_n_n.jpg
+map_ao textures/rifled_barrel_c_n_ao.jpg
+
+newmtl 360ed171-291f-4d4a-b982-d567a6c7a4fe
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_34_c.jpg
+map_Ks textures/mg_34_n_s.jpg
+map_normal textures/mg_34_n_n.jpg
+map_ao textures/mg_34_ao_ao.jpg
+map_d textures/mg_34_c_a.png
+
+newmtl 5d53e11f-9aaa-459a-98ea-dde95864875f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/fliegerbeschussgerat_41_c_ger_camo_dunkelgelb_green_braun.jpg
+map_Ks textures/fliegerbeschussgerat_41_n_s.jpg
+map_normal textures/fliegerbeschussgerat_41_n_n.jpg
+map_ao textures/fliegerbeschussgerat_41_ao_ao.jpg
+
+newmtl dd9ce914-9c7b-46ee-8e5b-197dde62f2fc
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_pzkpfw_vi_ausf_b_tiger_early_p_track_c.jpg
+map_Ks textures/ger_pzkpfw_vi_ausf_b_tiger_early_p_track_n_s.jpg
+map_normal textures/ger_pzkpfw_vi_ausf_b_tiger_early_p_track_n_n.jpg
+map_ao textures/ger_pzkpfw_vi_ausf_b_tiger_early_p_track_ao_ao.jpg
+map_d textures/ger_pzkpfw_vi_ausf_b_tiger_early_p_track_c_a.png
+
+newmtl 0c0e26f0-0cc1-4f82-a7b5-43e609b85461
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/ger_pzkpfw_vi_ausf_b_tiger_early_p_track_c.jpg
+map_Ks textures/ger_pzkpfw_vi_ausf_b_tiger_early_p_track_n_s.jpg
+map_normal textures/ger_pzkpfw_vi_ausf_b_tiger_early_p_track_n_n.jpg
+map_ao textures/ger_pzkpfw_vi_ausf_b_tiger_early_p_track_ao_ao.jpg
+map_d textures/ger_pzkpfw_vi_ausf_b_tiger_early_p_track_c_a.png
+
+newmtl d848bfeb-c943-456f-84dc-2186bef440b6
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_ammo_c.jpg
+map_Ks textures/mg_browning_m2hb_ammo_n_s.jpg
+map_normal textures/mg_browning_m2hb_ammo_n_n.jpg
+map_ao textures/mg_browning_m2hb_ammo_ao_ao.jpg
+map_d textures/mg_browning_m2hb_ammo_c_a.png
+

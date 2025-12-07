@@ -1,0 +1,115 @@
+newmtl 0570f5d9-9520-47af-9c6f-b5d802a4c776
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/type_3_chi_nu_turret_c_jp_camo_olive.jpg
+map_Ks textures/type_3_chi_nu_turret_n_s.jpg
+map_normal textures/type_3_chi_nu_turret_n_n.jpg
+map_ao textures/type_3_chi_nu_turret_ao_ao.jpg
+
+newmtl 8105c82d-82bb-4c5c-bb36-4c0c0cc0cb56
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/type_3_chi_nu_gun_c_jp_camo_olive.jpg
+map_Ks textures/type_3_chi_nu_gun_n_s.jpg
+map_normal textures/type_3_chi_nu_gun_n_n.jpg
+map_ao textures/type_3_chi_nu_gun_ao_ao.jpg
+
+newmtl 94909db9-ce7c-4336-a86e-d3fbc89affa9
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_c_c.jpg
+map_Ks textures/rifled_barrel_c_n_s.jpg
+map_normal textures/rifled_barrel_c_n_n.jpg
+map_ao textures/rifled_barrel_c_n_ao.jpg
+
+newmtl ba7bcf58-7c68-4f80-b2bd-79014e87c426
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_type_97_c.jpg
+map_Ks textures/mg_type_97_n_s.jpg
+map_normal textures/mg_type_97_n_n.jpg
+map_ao textures/mg_type_97_ao_ao.jpg
+map_d textures/mg_type_97_c_a.png
+
+newmtl e55e5af5-b2de-4c48-8f90-19f50b81403b
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/type_3_chi_nu_body_c_jp_camo_olive.jpg
+map_Ks textures/type_3_chi_nu_body_n_s.jpg
+map_normal textures/type_3_chi_nu_body_n_n.jpg
+map_ao textures/type_3_chi_nu_body_ao_ao.jpg
+
+newmtl ea553904-594c-4649-a900-8d78bbbdddec
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/type_3_chi_nu_body_c_jp_camo_olive.jpg
+map_Ks textures/type_3_chi_nu_body_n_s.jpg
+map_normal textures/type_3_chi_nu_body_n_n.jpg
+map_ao textures/type_3_chi_nu_body_ao_ao.jpg
+
+newmtl 89e29507-96f2-48ae-be75-e7761c278056
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl f9591d36-3ba4-4cd4-a0a1-9172bdbf6378
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl e6959bc1-30f3-441c-a09c-6dcdc5a12932
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/type_3_chi_nu_body_c.jpg
+map_Ks textures/type_3_chi_nu_body_n_s.jpg
+map_normal textures/type_3_chi_nu_body_n_n.jpg
+map_ao textures/type_3_chi_nu_body_ao_ao.jpg
+map_Ke textures/type_3_chi_nu_body_c.jpg
+
+newmtl d22698fd-4992-4635-b930-c1f4456a48e2
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/jp_type_97_kai_track_c.jpg
+map_Ks textures/jp_type_97_kai_track_n_s.jpg
+map_normal textures/jp_type_97_kai_track_n_n.jpg
+map_ao textures/jp_type_97_kai_track_ao_ao.jpg
+map_d textures/jp_type_97_kai_track_c_a.png
+
+newmtl 955af304-d8f9-4efc-b078-dee03b9fef81
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/jp_type_97_kai_track_c.jpg
+map_Ks textures/jp_type_97_kai_track_n_s.jpg
+map_normal textures/jp_type_97_kai_track_n_n.jpg
+map_ao textures/jp_type_97_kai_track_ao_ao.jpg
+map_d textures/jp_type_97_kai_track_c_a.png
+

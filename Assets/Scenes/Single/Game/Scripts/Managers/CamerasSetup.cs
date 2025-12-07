@@ -1,3 +1,4 @@
+using System.Linq;
 using Serilog;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -33,8 +34,11 @@ public class TankCameraSetup : MonoBehaviour
         string baseTankName = playerTank.name.Replace("(Clone)", "").Trim();
         Log.Debug("playerTank base name: {baseTankName}", baseTankName);
 
-        Transform mainPivot = playerTank.transform.Find(baseTankName + "_main_pivot");
-        Transform commanderPivot = playerTank.transform.Find(baseTankName + "_commander_pivot");
+        Transform mainPivot = playerTank.GetComponentsInChildren<Transform>(true)
+            .FirstOrDefault(t => t.CompareTag("MainPivot"));
+
+        Transform commanderPivot = playerTank.GetComponentsInChildren<Transform>(true)
+            .FirstOrDefault(t => t.CompareTag("CommanderPivot"));
 
         Log.Debug("mainPivot name: {mainPivot}", mainPivot);
         Log.Debug("commanderPivot name: {commanderPivot}", commanderPivot);

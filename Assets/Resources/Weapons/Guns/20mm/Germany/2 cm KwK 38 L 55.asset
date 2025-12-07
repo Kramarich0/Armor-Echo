@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunDefinition
   gunName: 2 cm KwK 38 L 55
   caliber: 20
-  fireRate: 0.5
+  fireInterval: 1
+  liftSpeed: 1
   minGunAngle: -10
   maxGunAngle: 20
   shootRange: 1200
   bulletUseGravity: 1
   shootSound: {fileID: 0}
+  reloadSound: {fileID: 0}
   bullets:
   - bullet: {fileID: 11400000, guid: bc27dc69d7dede0439b455ec4a0eaa71, type: 2}
     muzzleVelocity: 1000
@@ -27,3 +29,4 @@ MonoBehaviour:
     muzzleVelocity: 1060
   - bullet: {fileID: 11400000, guid: 0b9a4f20db1b6594d9556ad33eba73a0, type: 2}
     muzzleVelocity: 995
+  debugLogs: 0

@@ -73,7 +73,7 @@ public class HealthDisplay : MonoBehaviour
 
         playerHealth = player;
         playerHealth.OnHealthChanged += UpdateDisplay;
-        UpdateDisplay(playerHealth.currentHealth, playerHealth.maxHealth);
+        UpdateDisplay(playerHealth.currentHealth, playerHealth.PlayerHealth);
     }
 
     void UpdateDisplay(float current, float max)

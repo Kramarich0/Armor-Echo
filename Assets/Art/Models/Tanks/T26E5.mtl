@@ -1,0 +1,193 @@
+newmtl 7e070f3e-c70d-4646-8e6a-037f0e17c0be
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t26e5_body_c_us_camo_olive.jpg
+map_Ks textures/t26e5_body_n_s.jpg
+map_normal textures/t26e5_body_n_n.jpg
+map_ao textures/t26e5_body_ao_ao.jpg
+
+newmtl 00b3323b-f664-4362-b194-cc017305e4d9
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_t26e5_track_c.jpg
+map_Ks textures/us_t26e5_track_n_s.jpg
+map_normal textures/us_t26e5_track_n_n.jpg
+map_ao textures/us_t26e5_track_ao_ao.jpg
+map_d textures/us_t26e5_track_c_a.png
+
+newmtl 41a372e8-cc47-4f95-b49a-96479bd5131f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_t26e5_track_c.jpg
+map_Ks textures/us_t26e5_track_n_s.jpg
+map_normal textures/us_t26e5_track_n_n.jpg
+map_ao textures/us_t26e5_track_ao_ao.jpg
+map_d textures/us_t26e5_track_c_a.png
+
+newmtl 3f9c3ede-73db-49d9-89a6-b003a50f6708
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl da2fcb1b-8c27-4663-88c2-0a7c7a3914a2
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl 9f07ec98-2eb4-4b4d-9463-557f05724b30
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m1919a4_c.jpg
+map_Ks textures/mg_browning_m1919a4_n_s.jpg
+map_normal textures/mg_browning_m1919a4_n_n.jpg
+map_ao textures/mg_browning_m1919a4_ao_ao.jpg
+map_d textures/mg_browning_m1919a4_c_a.png
+
+newmtl 9e8370c2-ba1a-4800-a8bc-b0b643b89e94
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t26e5_turret_c_us_camo_olive.jpg
+map_Ks textures/t26e5_turret_n_s.jpg
+map_normal textures/t26e5_turret_n_n.jpg
+map_ao textures/t26e5_turret_ao_ao.jpg
+
+newmtl 33826a1f-85c6-48cb-bdf6-02cb6dbb45b7
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t26e5_turret_c_us_camo_olive.jpg
+map_Ks textures/t26e5_turret_n_s.jpg
+map_normal textures/t26e5_turret_n_n.jpg
+map_ao textures/t26e5_turret_ao_ao.jpg
+
+newmtl 2e1f1ad2-4acd-432c-8366-c49c799dca0c
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/us_turret_glass_c.jpg
+map_d textures/us_turret_glass_c_a.png
+
+newmtl d7c0db17-53d7-4909-bad6-ad634184114a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t26e5_gun_c_us_camo_olive.jpg
+map_Ks textures/t26e5_gun_n_s.jpg
+map_normal textures/t26e5_gun_n_n.jpg
+map_ao textures/t26e5_gun_ao_ao.jpg
+
+newmtl 17590d94-70d5-4400-a500-c3e7a3ee66b5
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_a_c.jpg
+map_Ks textures/rifled_barrel_a_n_s.jpg
+map_normal textures/rifled_barrel_a_n_n.jpg
+map_ao textures/rifled_barrel_a_n_ao.jpg
+
+newmtl 78aa42fe-b130-44a1-ac34-3929426bb529
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_mount_c_us_camo_olive.jpg
+map_Ks textures/mg_browning_m2hb_mount_n_s.jpg
+map_normal textures/mg_browning_m2hb_mount_n_n.jpg
+map_ao textures/mg_browning_m2hb_mount_ao_ao.jpg
+
+newmtl b2ba015b-4e1d-4346-b4a5-abe7ebf682d4
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_c.jpg
+map_Ks textures/mg_browning_m2hb_n_s.jpg
+map_normal textures/mg_browning_m2hb_n_n.jpg
+map_ao textures/mg_browning_m2hb_ao_ao.jpg
+
+newmtl d42a4faa-1733-4298-96e1-76f9fdaa251f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_mount_c.jpg
+map_Ks textures/mg_browning_m2hb_mount_n_s.jpg
+map_normal textures/mg_browning_m2hb_mount_n_n.jpg
+map_ao textures/mg_browning_m2hb_mount_ao_ao.jpg
+
+newmtl f21e40f7-b191-4d1b-8c0d-284aeea2bb26
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m2hb_ammo_c.jpg
+map_Ks textures/mg_browning_m2hb_ammo_n_s.jpg
+map_normal textures/mg_browning_m2hb_ammo_n_n.jpg
+map_ao textures/mg_browning_m2hb_ammo_ao_ao.jpg
+
+newmtl cbdc2bab-b13b-4db5-a203-d0cf6c050ecc
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_t26e5_phys_track_c.jpg
+map_Ks textures/us_t26e5_phys_track_n_s.jpg
+map_normal textures/us_t26e5_phys_track_n_n.jpg
+map_ao textures/us_t26e5_phys_track_ao_ao.jpg
+
+newmtl f566c8c4-5eb3-4b8f-83fb-72e9321e8f7f
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t26e5_body_c_us_camo_olive.jpg
+map_Ks textures/t26e5_body_n_s.jpg
+map_normal textures/t26e5_body_n_n.jpg
+map_ao textures/t26e5_body_ao_ao.jpg
+
+newmtl ea12b72d-5526-4719-80af-7dd4177033c6
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t26e5_gun_c_us_camo_olive.jpg
+map_Ks textures/t26e5_gun_n_s.jpg
+map_normal textures/t26e5_gun_n_n.jpg
+map_ao textures/t26e5_gun_ao_ao.jpg
+
+newmtl 92d6e45b-c233-4f7c-a4b5-bef5363c4892
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/t26e5_turret_c_us_camo_olive.jpg
+map_Ks textures/t26e5_turret_n_s.jpg
+map_normal textures/t26e5_turret_n_n.jpg
+map_ao textures/t26e5_turret_ao_ao.jpg
+

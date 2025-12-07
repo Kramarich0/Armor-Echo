@@ -1,0 +1,178 @@
+newmtl ddcd3a97-1c27-4325-a15c-b4e379cdb67a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m3_stuart_body_c_us_camo_olive.jpg
+map_Ks textures/m3_stuart_body_n_s.jpg
+map_normal textures/m3_stuart_body_n_n.jpg
+map_ao textures/m3_stuart_body_ao_ao.jpg
+
+newmtl b2c5ac56-d62d-4313-ba06-32584ee556ec
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/net_c_c.jpg
+map_Ks textures/net_c_n_s.jpg
+map_normal textures/net_c_n_n.jpg
+map_ao textures/net_c_ao_ao.jpg
+map_d textures/net_c_c_a.png
+
+newmtl fe5405c4-04a7-47c7-aa89-24d67f92d351
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m3_stuart_turret_c_us_camo_olive.jpg
+map_Ks textures/m3_stuart_turret_n_s.jpg
+map_normal textures/m3_stuart_turret_n_n.jpg
+map_ao textures/m3_stuart_turret_ao_ao.jpg
+
+newmtl 9f5ab29e-9cca-4f69-8344-1ed551072114
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_mg_mount_browning_1919a4_early_c_us_mg_mount_browning_1919a4_early_c.jpg
+map_Ks textures/us_mg_mount_browning_1919a4_early_n_s.jpg
+map_normal textures/us_mg_mount_browning_1919a4_early_n_n.jpg
+map_ao textures/us_mg_mount_browning_1919a4_early_ao_ao.jpg
+
+newmtl aaf9c3eb-2345-423a-b405-8c6bd25ba0b8
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m1919a4_mount_c_us_camo_olive.jpg
+map_Ks textures/mg_browning_m1919a4_mount_n_s.jpg
+map_normal textures/mg_browning_m1919a4_mount_n_n.jpg
+map_ao textures/mg_browning_m1919a4_mount_ao_ao.jpg
+
+newmtl 36e2201e-c5bc-405c-8543-cc80782c5de0
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m1919a4_c.jpg
+map_Ks textures/mg_browning_m1919a4_n_s.jpg
+map_normal textures/mg_browning_m1919a4_n_n.jpg
+map_ao textures/mg_browning_m1919a4_ao_ao.jpg
+map_d textures/mg_browning_m1919a4_c_a.png
+
+newmtl 7fa42e7f-0cfe-4378-b73a-b17be1c5cef3
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/mg_browning_m1919a4_ammo_c.jpg
+map_Ks textures/mg_browning_m1919a4_ammo_n_s.jpg
+map_normal textures/mg_browning_m1919a4_ammo_n_n.jpg
+map_ao textures/mg_browning_m1919a4_ammo_ao_ao.jpg
+map_d textures/mg_browning_m1919a4_ammo_c_a.png
+
+newmtl e36e2188-f9f3-454f-91c3-2e0f017981c1
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m3_stuart_gun_c_us_camo_olive.jpg
+map_Ks textures/m3_stuart_gun_n_s.jpg
+map_normal textures/m3_stuart_gun_n_n.jpg
+map_ao textures/m3_stuart_gun_ao_ao.jpg
+
+newmtl 88fe2ef6-0842-4d97-971d-d88aefbe266a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/rifled_barrel_a_c.jpg
+map_Ks textures/rifled_barrel_a_n_s.jpg
+map_normal textures/rifled_barrel_a_n_n.jpg
+map_ao textures/rifled_barrel_a_n_ao.jpg
+
+newmtl e34a57e9-419f-4a4c-a1d1-24545e53fcb7
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_net_tile_roll_c_us_net_tile_roll_c.jpg
+map_Ks textures/us_net_tile_roll_n_s.jpg
+map_normal textures/us_net_tile_roll_n_n.jpg
+map_ao textures/us_net_tile_roll_ao_ao.jpg
+
+newmtl 28b4576d-8e1f-465d-a746-7a44307bc181
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_net_tile_c.jpg
+map_Ks textures/us_net_tile_n_s.jpg
+map_normal textures/us_net_tile_n_n.jpg
+map_ao textures/us_net_tile_ao_ao.jpg
+map_d textures/us_net_tile_c_a.png
+
+newmtl 8270e905-e4ae-4720-9ca4-db2bc3ca0e6a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_ao textures/headlight_glass_n_ao.jpg
+
+newmtl f939e5ca-9023-46ae-aaf6-2611ae462be8
+Kd 0.000 0.000 0.000
+Ks 1.000 1.000 1.000
+Ns 255
+Ke 0.000 0.000 0.000
+d 0.15
+map_Kd textures/headlight_glass_c.jpg
+map_Ks textures/headlight_glass_n_s.jpg
+map_normal textures/headlight_glass_n_n.jpg
+map_d textures/headlight_glass_c_a.png
+
+newmtl 979b3692-378d-4e19-8094-01eb5acd245f
+Kd 1.000 1.000 1.000
+Ks 0.753 0.753 0.753
+Ns 100
+Ke 0.000 0.000 0.000
+map_Kd textures/m3_stuart_body_c.jpg
+map_Ks textures/m3_stuart_body_n_s.jpg
+map_normal textures/m3_stuart_body_n_n.jpg
+map_ao textures/m3_stuart_body_ao_ao.jpg
+map_Ke textures/m3_stuart_body_c.jpg
+
+newmtl 87c7cef8-418c-4583-8613-2dd8327dc3c2
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_m2_medium_track_c.jpg
+map_Ks textures/us_m2_medium_track_n_s.jpg
+map_normal textures/us_m2_medium_track_n_n.jpg
+map_ao textures/us_m2_medium_track_ao_ao.jpg
+map_d textures/us_m2_medium_track_c_a.png
+
+newmtl 8a34c520-438e-4c19-b0f6-0a61881c1b3c
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/us_m2_medium_track_c.jpg
+map_Ks textures/us_m2_medium_track_n_s.jpg
+map_normal textures/us_m2_medium_track_n_n.jpg
+map_ao textures/us_m2_medium_track_ao_ao.jpg
+map_d textures/us_m2_medium_track_c_a.png
+
+newmtl f361ca83-d661-47ee-9658-0d66a577a55a
+Kd 1.000 1.000 1.000
+Ks 0.502 0.502 0.502
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/m3_stuart_body_c_us_camo_olive.jpg
+map_Ks textures/m3_stuart_body_n_s.jpg
+map_normal textures/m3_stuart_body_n_n.jpg
+map_ao textures/m3_stuart_body_ao_ao.jpg
+

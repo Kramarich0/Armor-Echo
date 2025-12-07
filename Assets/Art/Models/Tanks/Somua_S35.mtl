@@ -1,0 +1,60 @@
+newmtl d45d89ee-6ab1-4a73-bd84-6fc20c57cd37
+Kd 1.000 1.000 1.000
+Ks 0.314 0.314 0.314
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/somua_s35_track_diffuse.jpg
+map_Ks textures/somua_s35_track_specular.jpg
+map_normal textures/somua_s35_track_normal.jpg
+map_d textures/somua_s35_track_alpha.png
+
+newmtl 380bd4d4-1815-4423-b7ea-4eabf4ca5bf2
+Kd 1.000 1.000 1.000
+Ks 0.314 0.314 0.314
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/somua_s35_track_diffuse.jpg
+map_Ks textures/somua_s35_track_specular.jpg
+map_normal textures/somua_s35_track_normal.jpg
+map_d textures/somua_s35_track_alpha.png
+
+newmtl 44f5d0fb-b6bf-4ad2-9072-f001480811f7
+Kd 1.000 1.000 1.000
+Ks 0.314 0.314 0.314
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/somua_s35_chassis_01_diffuse.jpg
+map_Ks textures/somua_s35_chassis_01_specular.jpg
+map_normal textures/somua_s35_chassis_01_normal.jpg
+map_ao textures/somua_s35_chassis_01_ambient.jpg
+
+newmtl 0edb0417-b94b-42cd-a199-c90a36e9855c
+Kd 1.000 1.000 1.000
+Ks 0.314 0.314 0.314
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/somua_s35_hull_01_diffuse.jpg
+map_Ks textures/somua_s35_hull_01_specular.jpg
+map_normal textures/somua_s35_hull_01_normal.jpg
+map_ao textures/somua_s35_hull_01_ambient.jpg
+
+newmtl ae2e392a-449e-4b6c-a1f9-3ed77a274c06
+Kd 1.000 1.000 1.000
+Ks 0.314 0.314 0.314
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/somua_s35_turret_01_diffuse.jpg
+map_Ks textures/somua_s35_turret_01_specular.jpg
+map_normal textures/somua_s35_turret_01_normal.jpg
+map_ao textures/somua_s35_turret_01_ambient.jpg
+
+newmtl 9470f5d7-3f45-4aa1-b6d9-41ed9bb96282
+Kd 1.000 1.000 1.000
+Ks 0.314 0.314 0.314
+Ns 30
+Ke 0.000 0.000 0.000
+map_Kd textures/somua_s35_guns_diffuse.jpg
+map_Ks textures/somua_s35_guns_specular.jpg
+map_normal textures/somua_s35_guns_normal.jpg
+map_ao textures/somua_s35_guns_ambient.jpg
+

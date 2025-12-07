@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretAiming
   turretPivot: {fileID: 1445279130796248910}
-  gunPivot: {fileID: 5489519218136611971}
+  gunPivot: {fileID: 5383246343119977097}
   cameraTransform: {fileID: 0}
   sniperView: {fileID: 6905990106940105068}
   aimDistance: 200
@@ -797,10 +797,6 @@ PrefabInstance:
     - target: {fileID: 5118034773328762853, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
       propertyPath: m_Layer
       value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5125273449701423320, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
-      propertyPath: m_ImplicitCom
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5125961589035860045, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
       propertyPath: m_Layer
@@ -1638,9 +1634,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankShoot
   gunEnd: {fileID: 5489519218136611971}
   bulletSlots:
-  - displayName: 
-    type: 0
-    definition: {fileID: 0}
+  - displayName: M62
+    type: 2
+    definition: {fileID: 11400000, guid: 1abe54a865551fb4099f4c94377a1580, type: 2}
     pool: {fileID: 0}
   - displayName: 
     type: 0
@@ -1678,6 +1674,11 @@ WheelCollider:
 --- !u!146 &5054742011264802904 stripped
 WheelCollider:
   m_CorrespondingSourceObject: {fileID: 1194493522232588906, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
+  m_PrefabInstance: {fileID: 6248107403557149234}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5383246343119977097 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2017786988997189819, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
   m_PrefabInstance: {fileID: 6248107403557149234}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5489519218136611971 stripped

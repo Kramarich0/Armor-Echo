@@ -995,11 +995,6 @@ WheelCollider:
   m_CorrespondingSourceObject: {fileID: 3110258541362568231, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}
   m_PrefabInstance: {fileID: 8014012268567581093}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4980755997746942349 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3037764270710161448, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}
-  m_PrefabInstance: {fileID: 8014012268567581093}
-  m_PrefabAsset: {fileID: 0}
 --- !u!146 &5971127336062733030 stripped
 WheelCollider:
   m_CorrespondingSourceObject: {fileID: 4461599512677522243, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}
@@ -1090,7 +1085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankAI
   tankDefinition: {fileID: 11400000, guid: 6b9d2abbad6ada4478d785036d942bd7, type: 2}
   turret: {fileID: 6335338290622939}
-  gun: {fileID: 4980755997746942349}
+  gun: {fileID: 6460402366672941790}
   gunEnd: {fileID: 978846907847173888}
   body: {fileID: 3628268932666938880}
   bulletSlots:
@@ -1139,6 +1134,11 @@ MonoBehaviour:
   cachedTransform: {fileID: 0}
   rb: {fileID: 0}
   cachedColliders: []
+--- !u!4 &6460402366672941790 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3931792059651187579, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}
+  m_PrefabInstance: {fileID: 8014012268567581093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!146 &6660837036407842861 stripped
 WheelCollider:
   m_CorrespondingSourceObject: {fileID: 3695052091430877576, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}

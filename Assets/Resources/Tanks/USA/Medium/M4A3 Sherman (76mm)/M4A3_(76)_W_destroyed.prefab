@@ -276,6 +276,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 48d9ffa0c99e3d444ac04018f1614ad2, type: 2}
+    - target: {fileID: 5125273449701423320, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
+      propertyPath: m_LinearDamping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125273449701423320, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
+      propertyPath: m_AngularDamping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5333039329680050240, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

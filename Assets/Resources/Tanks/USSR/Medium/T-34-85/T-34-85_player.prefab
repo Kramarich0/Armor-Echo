@@ -141,7 +141,7 @@ MonoBehaviour:
   crosshairAimUI: {fileID: 0}
   crosshairSniperUI: {fileID: 0}
   sniperVignette: {fileID: 0}
-  tankShoot: {fileID: 0}
+  tankShoot: {fileID: 7379484487290285812}
   zoomStep: 2
   zoomSpeed: 8
   zoomFOVReduction: 15
@@ -1128,9 +1128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankShoot
   gunEnd: {fileID: 978846907847173888}
   bulletSlots:
-  - displayName: 
+  - displayName: "\u0411\u0420-350\u0410"
     type: 2
-    definition: {fileID: 0}
+    definition: {fileID: 11400000, guid: b580cf99e68e799489acc3179f9123c3, type: 2}
     pool: {fileID: 0}
   - displayName: 
     type: 0

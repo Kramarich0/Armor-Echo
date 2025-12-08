@@ -40,7 +40,7 @@ public class ArmorPlate : MonoBehaviour
         return transform.position;
     }
 
-    public Vector3 GetSmartWorldNormal(Vector3 contactPoint, Vector3 bulletDir)
+    public Vector3 GetSmartWorldNormal(Vector3 bulletDir)
     {
         Vector3 plateNormal = GetArmorWorldNormal();
 
@@ -51,9 +51,9 @@ public class ArmorPlate : MonoBehaviour
     }
 
 
-    public float CalculateEffectiveArmor(Vector3 contactPoint, Vector3 bulletDirection, BulletDefinition bulletDef, out float rawAngleDeg, out Vector3 outPlateNormal)
+    public float CalculateEffectiveArmor(Vector3 bulletDirection, BulletDefinition bulletDef, out float rawAngleDeg, out Vector3 outPlateNormal)
     {
-        Vector3 plateNormal = GetSmartWorldNormal(contactPoint, bulletDirection);
+        Vector3 plateNormal = GetSmartWorldNormal(bulletDirection);
         outPlateNormal = plateNormal;
 
         Vector3 bulletInto = -bulletDirection.normalized;
@@ -68,7 +68,7 @@ public class ArmorPlate : MonoBehaviour
         float clampedAngle = Mathf.Min(effectiveAngle, 89f);
 
         float cos = Mathf.Cos(clampedAngle * Mathf.Deg2Rad);
-        cos = Mathf.Max(0.001f, cos); 
+        cos = Mathf.Max(0.001f, cos);
         float effArmor = thickness / cos;
 
         effArmor *= Ballistics.GetArmorTypeModifier(armorType);
@@ -125,12 +125,6 @@ public class ArmorPlate : MonoBehaviour
         Vector3 center = box.transform.TransformPoint(box.center);
         Vector3 worldSize = Vector3.Scale(box.size, box.transform.lossyScale);
 
-        int thicknessAxis = 0;
-        if (worldSize.y < worldSize.x && worldSize.y < worldSize.z) thicknessAxis = 1;
-        else if (worldSize.z < worldSize.x && worldSize.z < worldSize.y) thicknessAxis = 2;
-
-        // worldSize[thicknessAxis] = 0.01f; // плоская плита
-
         Matrix4x4 old = Gizmos.matrix;
         Gizmos.matrix = Matrix4x4.TRS(center, box.transform.rotation, Vector3.one);
 
@@ -164,20 +158,6 @@ public class ArmorPlate : MonoBehaviour
         Vector3 left = rot * Quaternion.Euler(0, 200, 0) * Vector3.forward;
         Gizmos.DrawRay(position, right * 0.1f);
         Gizmos.DrawRay(position, left * 0.1f);
-    }
-
-    private void DrawCompactLabel(Vector3 worldPos, float angle)
-    {
-        string txt = $"{thickness:F0}mm · {angle:F0}°";
-
-        GUIStyle style = new(EditorStyles.boldLabel)
-        {
-            normal = { textColor = Color.white },
-            fontSize = 11,
-            alignment = TextAnchor.MiddleCenter
-        };
-
-        Handles.Label(worldPos, txt, style);
     }
 
     void OnDrawGizmosSelected()

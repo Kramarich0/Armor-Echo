@@ -31,4 +31,3 @@ MonoBehaviour:
   overmatchFactor: 1.5
   ricochetSpeedLoss: 0.55
   splashRadius: 0
-  visualPrefab: {fileID: 1324543289508254013, guid: 45eaf563aeaa416468359e64c61a0d3f, type: 3}

@@ -210,14 +210,18 @@ public class Bullet : MonoBehaviour
 
         if (armorPlate != null)
         {
-            float effectiveArmor = armorPlate.CalculateEffectiveArmor(contactPoint, bulletDirection, bulletDef, out float rawAngle, out Vector3 plateNormal);
-
             float speed = cachedSpeed;
             float penetration = cachedPenetration;
 
-            var impact = Ballistics.EvaluateImpact(bulletDef, speed, penetration, effectiveArmor, rawAngle, armorPlate.armorType, out float effArmorAfter);
-            if (debugLogs) Log.Debug("[Bullet] Plate normal={Normal} rawAngle={Angle:F1}", plateNormal, rawAngle);
+            float effectiveArmor = armorPlate.CalculateEffectiveArmor(bulletDirection, bulletDef, out float rawAngle, out Vector3 plateNormal);
+            var impact = Ballistics.EvaluateImpact(bulletDef, speed, penetration, effectiveArmor, rawAngle, out float effArmorAfter);
 
+            if (debugLogs) Log.Debug("[Bullet] Plate normal={Normal} rawAngle={Angle:F1}", plateNormal, rawAngle);
+            if (armorPlate.armorType == ArmorType.AddOn)
+            {
+                if (debugLogs) Log.Debug("[Bullet] Hit AddOn -> continue flying");
+                return;
+            }
             if (impact.causedRicochet && !bulletDef.ignoreAngle)
             {
                 if (debugLogs)
@@ -279,6 +283,7 @@ public class Bullet : MonoBehaviour
                     damageable.TakeDamage(bulletDef.damage, shooterName);
                 }
 
+                ReturnToPool();
                 return;
             }
             else

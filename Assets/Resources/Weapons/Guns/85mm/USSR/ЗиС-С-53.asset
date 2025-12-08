@@ -24,7 +24,7 @@ MonoBehaviour:
   reloadSound: {fileID: 8300000, guid: 5c7ad3df2bd2224468074329971cf6dc, type: 3}
   bullets:
   - bullet: {fileID: 11400000, guid: 5ddbf2559794fcd40860ed2b7fef162f, type: 2}
-    muzzleVelocity: 792
+    muzzleVelocity: 791
   - bullet: {fileID: 11400000, guid: 16c687080837a0d4bb7c18626744d877, type: 2}
     muzzleVelocity: 780
   - bullet: {fileID: 11400000, guid: 8ad7c1abbd0fdaf488426f3c7f60022d, type: 2}

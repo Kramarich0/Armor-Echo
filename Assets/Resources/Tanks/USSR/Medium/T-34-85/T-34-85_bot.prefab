@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3096501377526548693, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3188885294188292827, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}
       propertyPath: m_Layer
@@ -1048,6 +1048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AITankHealth
   tankDef: {fileID: 11400000, guid: 6b9d2abbad6ada4478d785036d942bd7, type: 2}
+  destructibleParts: []
   currentHealth: 0
 --- !u!195 &2393633097032504693
 NavMeshAgent:
@@ -1131,6 +1132,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   capturePointDetectionRadius: 60
+  reverseLockTimer: 0
   cachedTransform: {fileID: 0}
   rb: {fileID: 0}
   cachedColliders: []

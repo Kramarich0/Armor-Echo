@@ -20,6 +20,8 @@ public class LevelSelectManager : MonoBehaviour
     public GameObject loadingScreen;
     public Slider progressBar;
     public TextMeshProUGUI loadingText;
+    public Image loadingThumbnail;
+    public TextMeshProUGUI loadingLevelName;
 
     [Header("Level Thumbnails")]
     public Sprite[] levelThumbnails;
@@ -203,16 +205,17 @@ public class LevelSelectManager : MonoBehaviour
         return null;
     }
 
-
-
     public void PlayLevel(int level)
     {
-        if (!IsLevelUnlocked(level)) return;
-        if (isLoadingLevel) return;
+        if (!IsLevelUnlocked(level) || isLoadingLevel) return;
+
+        loadingThumbnail.sprite = GetLevelThumbnail(level);
+        loadingLevelName.text = levelNames[level];
 
         isLoadingLevel = true;
         StartCoroutine(ShowLoadingAndLoad(level));
     }
+
 
     private void OnEnable()
     {
@@ -222,23 +225,23 @@ public class LevelSelectManager : MonoBehaviour
 
     private IEnumerator LoadLevelWithStyle(string sceneName)
     {
-        if (levelSelectCanvas != null)
-            levelSelectCanvas.SetActive(false);
-
+        levelSelectCanvas?.SetActive(false);
         loadingScreen.SetActive(true);
-
-        float displayedProgress = 0f;
-        float timer = 0f;
-        float minDisplayTime = 3f;
 
         AsyncOperation op = SceneManager.LoadSceneAsync(sceneName);
         op.allowSceneActivation = false;
 
+        float displayedProgress = 0f;
+        float timer = 0f;
+        float minDisplayTime = 2f;
+
         while (!op.isDone)
         {
             timer += Time.unscaledDeltaTime;
+
             float targetProgress = Mathf.Clamp01(op.progress / 0.9f);
-            displayedProgress = Mathf.MoveTowards(displayedProgress, targetProgress, Time.unscaledDeltaTime * 0.25f);
+
+            displayedProgress = Mathf.MoveTowards(displayedProgress, targetProgress, Time.unscaledDeltaTime * 0.5f);
 
             if (progressBar != null)
                 progressBar.value = displayedProgress;
@@ -254,11 +257,14 @@ public class LevelSelectManager : MonoBehaviour
 
             if (op.progress >= 0.9f && timer >= minDisplayTime)
             {
-                if (progressBar != null) progressBar.value = 1f;
-                yield return _waitForSeconds0_1;
-                op.allowSceneActivation = true;
+                while (displayedProgress < 1f)
+                {
+                    displayedProgress = Mathf.MoveTowards(displayedProgress, 1f, Time.unscaledDeltaTime * 0.5f);
+                    if (progressBar != null) progressBar.value = displayedProgress;
+                    yield return null;
+                }
 
-                isLoadingLevel = false;
+                op.allowSceneActivation = true;
             }
 
             yield return null;

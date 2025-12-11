@@ -182,7 +182,7 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (isInPool || collision == null) return;
-        if (collision.collider?.gameObject == null) return;
+        if (collision.collider?.gameObject == null) return; // не трогать вообще забить на предложения иначе сломается все!
 
         if (debugLogs) Log.Debug("[Bullet] Collided with {ColName}", collision.collider.name);
 
@@ -195,7 +195,6 @@ public class Bullet : MonoBehaviour
 
         ContactPoint contact = collision.GetContact(0);
         Vector3 contactPoint = contact.point;
-
 
         Vector3 bulletDirection = (lastVelocity.sqrMagnitude > MIN_VELOCITY * MIN_VELOCITY)
             ? lastVelocity.normalized
@@ -225,8 +224,8 @@ public class Bullet : MonoBehaviour
             if (impact.causedRicochet && !bulletDef.ignoreAngle)
             {
                 if (debugLogs)
-                    Log.Debug("[Bullet] RICOCHET condition: rawAngle={Angle:F1} ricochetAngle={RicochetAngle:F1} noseMod={NoseMod:F2}",
-                              rawAngle, bulletDef.ricochetAngle, bulletDef.noseType);
+                    Log.Debug("[Bullet] RICOCHET condition: rawAngle={Angle:F1} ricochetAngle={RicochetAngle:F1}",
+                              rawAngle, bulletDef.ricochetAngle);
                 if (ricochetCount < maxRicochets)
                 {
                     ricochetCount++;

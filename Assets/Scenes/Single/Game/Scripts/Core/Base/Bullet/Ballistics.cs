@@ -57,23 +57,31 @@ public static partial class Ballistics
 
     public static float ComputePenetration(float muzzleVelocity, BulletDefinition def, float distance)
     {
-
         if (def == null) return 0f;
-        if (def.type == BulletType.HE || def.type == BulletType.HEAT) return def.penetration;
+        if (def.type == BulletType.HE) return def.penetration;
+        if (def.type == BulletType.HEAT)
+        {
+            float angleFactor = Mathf.Cos(Mathf.Clamp(distance > 0f ? 0f : 0f, 0f, 90f) * Mathf.Deg2Rad); // по сути дальность не влияет
+            return Mathf.Max(def.minPenetration, def.penetration * angleFactor);
+        }
 
         float v = ComputeSpeed(muzzleVelocity, def, distance);
+
         float keRatio = v / Mathf.Max(0.0001f, def.referenceVelocity);
         keRatio = Mathf.Clamp(keRatio, KE_RATIO_MIN, KE_RATIO_MAX);
+
         float caliberM = Mathf.Max(0.001f, def.caliber / 1000f);
         float sd = def.massKg / (caliberM * caliberM);
         float sdNormalized = Mathf.Log10(Mathf.Max(0.1f, sd)) - 3.0f;
-        float sdFactor = 1f + sdNormalized * 0.05f;
-        sdFactor = Mathf.Clamp(sdFactor, 0.95f, 1.10f);
+        float sdFactor = 1f + sdNormalized * (IsSubCaliber(def) ? 0.12f : 0.07f);
+        sdFactor = Mathf.Clamp(sdFactor, 0.9f, 1.2f);
+
         float pen = def.penetration * Mathf.Pow(keRatio, def.deMarreK) * sdFactor;
 
         if (def.minPenetration > 0f)
             pen = Mathf.Max(def.minPenetration, pen);
-        Debug.Log($"ComputePen: v={v:F1}, keRatio={keRatio:F3}, sd={sd:F2}, sdNormalized={sdNormalized:F2}, sdFactor={sdFactor:F3}, deMarreK={def.deMarreK:F2}, basePenDef={def.penetration:F1}");
+
+        // Debug.Log($"ComputePen: v={v:F1}, keRatio={keRatio:F3}, sd={sd:F2}, sdNormalized={sdNormalized:F2}, sdFactor={sdFactor:F3}, deMarreK={def.deMarreK:F2}, basePenDef={def.penetration:F1}");
 
         return Mathf.Max(def.minPenetration, pen);
     }
@@ -92,23 +100,22 @@ public static partial class Ballistics
         float ratio = def.caliber / Mathf.Max(0.0001f, effectiveArmorOut);
         float overmatchFactor = 0f;
         if ((def.type == BulletType.AP || IsSubCaliber(def)) && ratio >= def.overmatchFactor)
-            overmatchFactor = Mathf.Clamp01((ratio - def.overmatchFactor) / 2f);
+            overmatchFactor = Mathf.Clamp01((ratio - def.overmatchFactor) * 1.5f);
 
         BulletTypeModifiers typeMod = typeLookup.ContainsKey(def.type) ? typeLookup[def.type] : new BulletTypeModifiers(0.75f, 0.75f);
 
         float pen = basePenetration;
         if (pen <= 0f)
-        {
             pen = ComputePenetration(currentSpeed, def, 0f);
-        }
+
         pen *= Mathf.Pow(typeMod.armorMul, overmatchFactor);
 
         float kineticEnergy = 0.5f * def.massKg * currentSpeed * currentSpeed;
-        float ricochetEnergyThreshold = (DEFAULT_RICOCHET_THRESHOLD > 0f) ? DEFAULT_RICOCHET_THRESHOLD : DEFAULT_RICOCHET_THRESHOLD;
+        float ricochetEnergyThreshold = 4500f * def.massKg;
+        if (IsSubCaliber(def)) ricochetEnergyThreshold *= 0.5f;
 
         float finalRicochetAngle = def.ricochetAngle;
-        if (IsSubCaliber(def))
-            finalRicochetAngle *= 0.6f;
+        if (IsSubCaliber(def)) finalRicochetAngle *= 0.6f;
 
         res.causedRicochet = !def.ignoreAngle && angleToNormal > finalRicochetAngle && kineticEnergy > ricochetEnergyThreshold;
 
@@ -124,12 +131,19 @@ public static partial class Ballistics
         return res;
     }
 
+    private static float GetShatterReductionFor(BulletDefinition def)
+    {
+        if (def == null) return 1f;
+        if (IsSubCaliber(def))
+            return 0.4f;
+        return 1f;
+    }
 
     public static bool ShouldBreakSubcaliber(BulletDefinition def, float currentSpeed, float impactAngleDeg)
     {
         if (def == null || !IsSubCaliber(def)) return false;
 
-        float baseChance = 0.2f + (impactAngleDeg > 65f ? Mathf.InverseLerp(65f, 85f, impactAngleDeg) * 0.5f : 0f);
+        float baseChance = 0.25f + (impactAngleDeg > 60f ? Mathf.InverseLerp(60f, 85f, impactAngleDeg) * 0.5f : 0f);
         float speedRatio = currentSpeed / Mathf.Max(0.0001f, def.referenceVelocity);
         if (speedRatio < 0.6f) baseChance += (0.6f - speedRatio) * 0.6f;
 
@@ -153,7 +167,7 @@ public static partial class Ballistics
         float plasticLoss = Mathf.Clamp01(armorThickness / (armorThickness + def.caliber * 0.5f));
         float v = incomingSpeed * reflectFactor * (1f - 0.5f * plasticLoss);
 
-        if (IsSubCaliber(def)) v *= 0.8f;
+        if (IsSubCaliber(def)) v *= 0.7f;
 
         return Mathf.Max(1f, v);
     }
@@ -166,16 +180,6 @@ public static partial class Ballistics
     public static float GetArmorTypeModifier(ArmorType type)
     {
         if (armorTypeModifiers.TryGetValue(type, out float mod)) return mod;
-        return 1f;
-    }
-
-    private static float GetShatterReductionFor(BulletDefinition def)
-    {
-        if (def == null) return 1f;
-
-        if (IsSubCaliber(def))
-            return 0.5f;
-
         return 1f;
     }
 

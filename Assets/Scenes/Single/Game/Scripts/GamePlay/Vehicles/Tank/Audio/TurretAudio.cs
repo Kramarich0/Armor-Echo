@@ -32,7 +32,6 @@ public class TurretAudio
 
         if (rotating && (o.sniperView == null || !o.sniperView.IsSniperActive()))
         {
-            // если снайпер OFF — звук OFF
             s.Stop();
             return;
         }

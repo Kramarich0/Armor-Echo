@@ -193,7 +193,6 @@ public class AITankHealth : MonoBehaviour, IDamageable
         }
     }
 
-
     private void EnsureCorpseHasWheels(GameObject corpse)
     {
         var corpseWheels = corpse.GetComponentsInChildren<WheelCollider>();

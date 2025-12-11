@@ -211,7 +211,7 @@ public class LevelSelectManager : MonoBehaviour
         if (isLoadingLevel) return;
 
         isLoadingLevel = true;
-        StartCoroutine(LoadLevelWithStyle($"Level{level}"));
+        StartCoroutine(ShowLoadingAndLoad(level));
     }
 
     private void OnEnable()
@@ -265,6 +265,17 @@ public class LevelSelectManager : MonoBehaviour
         }
     }
 
+    private IEnumerator ShowLoadingAndLoad(int level)
+    {
+        levelSelectCanvas?.SetActive(false);
+
+        loadingScreen.SetActive(true);
+
+        yield return null;
+
+        yield return LoadLevelWithStyle($"Level{level}");
+    }
+
     private void HandleLanguageChanged(string languageCode)
     {
         if (levelCards != null)
@@ -286,7 +297,7 @@ public class LevelSelectManager : MonoBehaviour
         return placeholderSprite;
     }
 
-    public void BackToMainMenu() => SceneManager.LoadScene(SceneNames.MainMenu);
+    public void BackToTankSelect() => SceneManager.LoadScene(SceneNames.TankSelection);
 }
 
 public class LevelCardClick : MonoBehaviour, IPointerClickHandler

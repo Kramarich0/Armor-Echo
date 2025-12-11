@@ -53,9 +53,16 @@ public class TurretYaw
         {
             CurrentYaw = Mathf.MoveTowardsAngle(curYaw, targetYaw, o.owner.TurretRotationSpeed * Time.deltaTime);
             rotating = true;
+            float dt = Time.deltaTime;
+            if (dt <= 0f) dt = 0.0001f;
 
-            float actualSpeed = Mathf.Abs(Mathf.DeltaAngle(curYaw, CurrentYaw)) / Time.deltaTime;
+            float delta = Mathf.Abs(Mathf.DeltaAngle(curYaw, CurrentYaw));
+            float actualSpeed = delta / dt;
+            if (float.IsNaN(actualSpeed) || float.IsInfinity(actualSpeed))
+                actualSpeed = 0f;
             smoothedSpeed = Mathf.Lerp(smoothedSpeed, actualSpeed, Time.deltaTime * 10f);
+            if (float.IsNaN(smoothedSpeed) || float.IsInfinity(smoothedSpeed))
+                smoothedSpeed = 0f;
         }
         else
         {
@@ -70,6 +77,13 @@ public class TurretYaw
 
     public float GetNormalizedSpeed()
     {
-        return Mathf.Clamp01(smoothedSpeed / o.owner.TurretRotationSpeed);
+        float max = Mathf.Max(0.0001f, o.owner.TurretRotationSpeed);
+        float n = smoothedSpeed / max;
+
+        if (float.IsNaN(n) || float.IsInfinity(n))
+            return 0f;
+
+        return Mathf.Clamp01(n);
     }
+
 }

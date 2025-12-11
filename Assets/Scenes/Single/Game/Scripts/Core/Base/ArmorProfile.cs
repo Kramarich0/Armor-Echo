@@ -70,7 +70,7 @@ public class ArmorPlate : MonoBehaviour
         float cos = Mathf.Cos(clampedAngle * Mathf.Deg2Rad);
         cos = Mathf.Max(0.001f, cos);
         float effArmor = thickness / cos;
-
+   
         effArmor *= Ballistics.GetArmorTypeModifier(armorType);
 
         return effArmor;

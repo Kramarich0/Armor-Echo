@@ -14,8 +14,6 @@ public class BulletDefinition : ScriptableObject
     public float massKg = 6.8f;
     [Tooltip("Скорость, при которой указано паспортное пробитие (м/с)")]
     public float referenceVelocity = 773f;
-    [Tooltip("Тип носа снаряда")]
-    public NoseType noseType = NoseType.APCBC;
     [Tooltip("Базовый урон при пробитии.")]
     public int damage = 40;
 
@@ -47,7 +45,7 @@ public class BulletDefinition : ScriptableObject
     [Tooltip("Насколько снаряд 'вклинивается' в броню, уменьшая фактический угол попадания (APCBC = 8–12°).")]
     public float normalization = 5f;
 
-    [Tooltip("Если true — угол вообще игнорируется (кумулятивы).")]
+    [Tooltip("Если true — угол вообще игнорируется (фугасы).")]
     public bool ignoreAngle = false;
 
     [Header("=== OVERMATCH (эффект большого калибра) ===")]

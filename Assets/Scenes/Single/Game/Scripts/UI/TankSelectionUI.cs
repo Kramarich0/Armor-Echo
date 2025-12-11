@@ -11,15 +11,11 @@ public class TankSelectionUI : MonoBehaviour
     public Button prevButton;
     public Button startButton;
     public TMP_Text tankNameText;
-    public RawImage previewImage;
-    [Header("Tank Info UI (assign in inspector)")]
-    public TMP_Text descriptionText; 
-    public TMP_Text detailsText;   
-    public TMP_Text bulletsText;    
+    public TMP_Text descriptionText;
+    public TMP_Text detailsText;
+    public TMP_Text bulletsText;
 
-
-    [Header("Preview Camera & RenderTexture")]
-    public Camera previewCamera;
+    [Header("RenderTexture")]
     public Transform previewSpawnPoint;
 
     [Header("Tanks list")]
@@ -27,7 +23,6 @@ public class TankSelectionUI : MonoBehaviour
 
     private int index = 0;
     private GameObject currentPreview;
-    private readonly float rotationSpeed = 20f;
 
     void Start()
     {
@@ -36,14 +31,6 @@ public class TankSelectionUI : MonoBehaviour
         startButton.onClick.AddListener(StartBattle);
 
         ShowTank(index);
-    }
-
-    void Update()
-    {
-        if (currentPreview != null)
-        {
-            currentPreview.transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.World);
-        }
     }
 
     void NextTank()
@@ -79,7 +66,6 @@ public class TankSelectionUI : MonoBehaviour
         foreach (var rb in currentPreview.GetComponentsInChildren<Rigidbody>()) rb.isKinematic = true;
         foreach (var col in currentPreview.GetComponentsInChildren<Collider>()) col.enabled = false;
 
-        previewCamera.transform.LookAt(currentPreview.transform);
     }
 
     void StartBattle()
@@ -92,23 +78,22 @@ public class TankSelectionUI : MonoBehaviour
     {
         var sb = new StringBuilder();
 
-        sb.AppendLine($"Класс: {def.tankClass}");
-        sb.AppendLine($"HP: {def.health:F0}");
-        sb.AppendLine($"Макс (km/h): вперёд {def.maxForwardSpeedKmh:F1} / назад {def.maxBackwardSpeedKmh:F1}");
-        sb.AppendLine($"MoveSpeed (логика): {def.MaxForwardSpeed:F2}, rotationSpeed: {def.rotationSpeed:F1}, turretRotationSpeed: {def.turretRotationSpeed:F1}");
-        sb.AppendLine($"Физика: maxMotorTorque={def.maxMotorTorque:F0}, maxBrakeTorque={def.maxBrakeTorque:F0}, moveResponse={def.moveResponse:F2}, turnResponse={def.turnResponse:F2}");
-        sb.AppendLine($"Обнаружение/стрейф: detect={def.detectionRadius:F0}m, strafeRadius={def.strafeRadius:F1}m, strafeSpeed={def.strafeSpeed:F2}");
-        sb.AppendLine($"Spread (base/moving/stationary): {def.baseSpreadDegrees:F2}° / {def.movingSpreadFactor:F2} / {def.stationarySpreadFactor:F2}");
+        sb.AppendLine($"Тип: {def.tankClass}");
+        sb.AppendLine($"Здоровье: {def.health:F0}");
+        sb.AppendLine($"Макс скорость(км/ч): вперёд {def.maxForwardSpeedKmh:F1} / назад {def.maxBackwardSpeedKmh:F1}");
+        sb.AppendLine($"Скорость поворота шасси: {def.rotationSpeed:F1}");
+        sb.AppendLine($"Скорость поворота башни: {def.turretRotationSpeed:F1}");
         sb.AppendLine();
 
         var gun = def.primaryGun;
         if (gun != null)
         {
-            sb.AppendLine($"Пушка: {gun.gunName}");
-            sb.AppendLine($"  Калибр: {gun.caliber} мм  |  Интервал выстрела: {gun.fireInterval:F2}s  |  FireRate: {gun.FireRate:F2} rps");
-            sb.AppendLine($"  Подъём/углы: liftSpeed={gun.liftSpeed:F2}, minAngle={gun.minGunAngle}°, maxAngle={gun.maxGunAngle}°");
-            sb.AppendLine($"  Дальность: {gun.shootRange:F0} m  |  gravity:{gun.bulletUseGravity}");
-            sb.AppendLine($"  Слотов снарядов: {(gun.bullets != null ? gun.bullets.Length : 0)}  |  debugLogs: {gun.debugLogs}");
+            sb.AppendLine($"Орудие: {gun.gunName}");
+            sb.AppendLine($"Калибр: {gun.caliber} мм");
+            sb.AppendLine($"Перезарядка: {gun.fireInterval:F2}с");
+            sb.AppendLine($"Углы вертикальной наводки: +{gun.minGunAngle}°/-{gun.maxGunAngle}°");
+            sb.AppendLine($"Скорость вертикальной наводки:{gun.liftSpeed:F2}");
+            sb.AppendLine($"Снарядов: {(gun.bullets != null ? gun.bullets.Length : 0)}");
         }
         else
         {
@@ -120,12 +105,13 @@ public class TankSelectionUI : MonoBehaviour
 
     string BuildBulletsSummary(GunDefinition gun)
     {
-        if (gun == null) return "Снарядов нет.";
+        if (gun == null) return "Орудия нет.";
 
         var sb = new StringBuilder();
+
         if (gun.bullets == null || gun.bullets.Length == 0)
         {
-            sb.AppendLine("Снарядов нет в определении пушки.");
+            sb.AppendLine("Снарядов нет.");
             return sb.ToString();
         }
 
@@ -139,25 +125,15 @@ public class TankSelectionUI : MonoBehaviour
                 continue;
             }
 
-            // muzzle velocity: prefer slot.muzzleVelocity if >0, otherwise try gun.GetMuzzleVelocity
-            float muzzleFromSlot = slot.muzzleVelocity;
-            float muzzleFromGun = 0f;
-            try
-            {
-                muzzleFromGun = gun.GetMuzzleVelocity(bullet);
-            }
-            catch { muzzleFromGun = 0f; }
-
-            float muzzle = muzzleFromSlot > 0.0001f ? muzzleFromSlot : muzzleFromGun;
+            float muzzle = slot.muzzleVelocity > 0f ? slot.muzzleVelocity : gun.GetMuzzleVelocity(bullet);
 
             sb.AppendLine($"{i + 1}. {bullet.bulletName} ({bullet.type})");
-            sb.AppendLine($"   Калибр: {bullet.caliber} мм | Масса: {bullet.massKg:F2} kg | Пасп. скорость: {bullet.referenceVelocity:F0} m/s");
-            sb.AppendLine($"   Muzzle (этой пушкой): {(muzzle > 0f ? muzzle.ToString("F0") + " m/s" : "-")}");
-            sb.AppendLine($"   Урон: {bullet.damage} | Пробитие (начальное): {bullet.penetration:F0} mm | minPen: {bullet.minPenetration:F0} mm");
-            sb.AppendLine($"   Баллистика: ballisticK={bullet.ballisticK:F6}, deMarreK={bullet.deMarreK:F2}, minSpeed={bullet.minSpeed:F0} m/s");
-            sb.AppendLine($"   Рикошет: ricochetAngle={bullet.ricochetAngle:F0}°, normalization={bullet.normalization:F1}, ignoreAngle={bullet.ignoreAngle}");
-            sb.AppendLine($"   OvermatchFactor: {bullet.overmatchFactor:F2} | SplashRadius: {bullet.splashRadius:F2} m");
-            sb.AppendLine("");
+            sb.AppendLine($"Скорость полета: {(muzzle > 0 ? muzzle.ToString("F0") + " м/с" : "-")}");
+            sb.AppendLine($"Урон: {bullet.damage}");
+            sb.AppendLine($"Пробитие: {bullet.penetration:F0}");
+            sb.AppendLine($"Угол рикошета: {bullet.ricochetAngle:F0}°");
+            if (bullet.splashRadius != 0) { sb.AppendLine($"Радиус разлета осколков: {bullet.splashRadius:F2} м"); }
+            sb.AppendLine();
         }
 
         return sb.ToString();

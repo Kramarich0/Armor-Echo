@@ -7752,7 +7752,7 @@ GameObject:
   - component: {fileID: 9075497172311549722}
   - component: {fileID: 5125273449701423320}
   m_Layer: 0
-  m_Name: M4A3_(76)_W
+  m_Name: M4A3_(76)_W_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

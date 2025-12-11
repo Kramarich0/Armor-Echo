@@ -19,7 +19,7 @@ MonoBehaviour:
   referenceVelocity: 773
   noseType: 4
   damage: 100
-  penetration: 120
+  penetration: 165
   useGravity: 1
   ballisticK: 0.00058
   deMarreK: 1.12
@@ -31,4 +31,3 @@ MonoBehaviour:
   overmatchFactor: 1.5
   ricochetSpeedLoss: 0.65
   splashRadius: 0
-  visualPrefab: {fileID: 898282933906884019, guid: c77284e63d6359d45bf7601670bf92bb, type: 3}

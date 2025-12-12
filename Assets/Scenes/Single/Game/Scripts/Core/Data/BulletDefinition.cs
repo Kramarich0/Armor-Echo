@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "NewBullet", menuName = "Weapons/Bullet")]
 public class BulletDefinition : ScriptableObject
@@ -53,17 +54,16 @@ public class BulletDefinition : ScriptableObject
     [Tooltip("Если калибр больше толщины брони × этот коэффициент → снаряд получает бонус.")]
     public float overmatchFactor = 1.5f;
 
-
     [Header("=== RICOCHET PHYSICS (поведение после рикошета) ===")]
 
     [Tooltip("На сколько уменьшается скорость после рикошета (0.1–1).")]
     [Range(0.1f, 1f)]
     public float ricochetSpeedLoss = 0.6f;
 
-
     [Header("=== SPLASH / HE EFFECTS (фугасы, APHE) ===")]
 
     [Tooltip("Радиус осколочного урона. 0 = без сплэша (обычные AP).")]
     public float splashRadius = 0f;
-
+    [Header("=== UI ===")]
+    public Sprite bulletIcon; 
 }

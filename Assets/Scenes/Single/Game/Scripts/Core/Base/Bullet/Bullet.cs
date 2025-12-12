@@ -201,7 +201,7 @@ public class Bullet : MonoBehaviour
             : (rb.linearVelocity.sqrMagnitude > MIN_VELOCITY * MIN_VELOCITY ? rb.linearVelocity.normalized : transform.forward);
 
         float debugAngle = Vector3.Angle(contact.normal, -bulletDirection);
-        Debug.Log($"[DEBUG] contact.normal angle={debugAngle}");
+        Log.Debug($"[DEBUG] contact.normal angle={debugAngle}");
 
         if (debugLogs) Log.Debug("[Bullet] collision.collider={Col} contactPoint={Point} contactNormal={Normal} rb.velocity={Vel} lastVelocity={Last}",
                       collision.collider.name, contactPoint, contact.normal, rb.linearVelocity, lastVelocity);

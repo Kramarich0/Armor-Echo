@@ -1,4 +1,5 @@
 using System.Collections;
+using Serilog;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -48,13 +49,13 @@ public class LevelSelectManager : MonoBehaviour
     {
         if (levelSelectCanvas == null || levelCardPrefab == null)
         {
-            Debug.LogError("LevelSelectManager: Canvas или Prefab не назначены!");
+            Log.Error("LevelSelectManager: Canvas или Prefab не назначены!");
             return;
         }
 
         if (gridParent == null)
         {
-            Debug.Log("GridParent не назначен, создаём автоматически на Canvas");
+            Log.Debug("GridParent не назначен, создаём автоматически на Canvas");
             GameObject gridObj = new("GridParent", typeof(RectTransform), typeof(GridLayoutGroup));
             gridObj.transform.SetParent(levelSelectCanvas.transform, false);
             gridParent = gridObj.GetComponent<RectTransform>();
@@ -271,7 +272,7 @@ public class LevelCardClick : MonoBehaviour, IPointerClickHandler
             }
             else
             {
-                Debug.Log($"Уровень {level} закрыт. Клик заблокирован.");
+                Log.Debug($"Уровень {level} закрыт. Клик заблокирован.");
             }
         }
     }

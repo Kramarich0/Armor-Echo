@@ -17,7 +17,6 @@ MonoBehaviour:
   caliber: 88
   massKg: 10.2
   referenceVelocity: 773
-  noseType: 4
   damage: 100
   penetration: 165
   useGravity: 1
@@ -31,3 +30,4 @@ MonoBehaviour:
   overmatchFactor: 1.5
   ricochetSpeedLoss: 0.65
   splashRadius: 0
+  bulletIcon: {fileID: 21300000, guid: 91a8a54b3b9549943a7588210da5c489, type: 3}

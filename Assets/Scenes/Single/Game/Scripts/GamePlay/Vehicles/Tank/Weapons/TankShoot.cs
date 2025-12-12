@@ -1,3 +1,4 @@
+using Serilog;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,18 +10,14 @@ public class TankShoot : MonoBehaviour
     [Header("Gun")]
     public Transform gunEnd;
     [Header("Bullet System")]
-    public BulletSlot[] bulletSlots;
-
+    private BulletSlot[] bulletSlots;
     public int currentBulletIndex = 0;
-
     [Header("Effects")]
     public ParticleSystem muzzleSmoke;
     private ParticleSystem activeMuzzleSmoke;
     public AudioSource audioSource;
-
     [Header("Reload UI")]
     public ReloadDisplay reloadDisplay;
-
     [Header("Recoil Settings")]
     public float recoilDecay = 8f;
     public float recoilJitter = 0.01f;
@@ -49,15 +46,52 @@ public class TankShoot : MonoBehaviour
     {
         owner = GetComponentInParent<Tank>();
         if (owner == null)
-            Debug.LogError("TankShoot: Не найден компонент Tank в родителях!");
+            Log.Debug("TankShoot: Не найден компонент Tank в родителях!");
+
+
+        InitializeBulletSlots();
+    }
+
+    private void InitializeBulletSlots()
+    {
+        var gunDef = owner?.definition?.primaryGun;
+        if (gunDef == null || gunDef.bullets == null || gunDef.bullets.Length == 0)
+        {
+            Log.Warning("TankShoot: Gun has no bullets defined.");
+            bulletSlots = System.Array.Empty<BulletSlot>();
+            return;
+        }
+
+        bulletSlots = new BulletSlot[gunDef.bullets.Length];
+        for (int i = 0; i < gunDef.bullets.Length; i++)
+        {
+            var bulletDef = gunDef.bullets[i].bullet;
+            if (bulletDef == null) continue;
+
+            BulletPool foundPool = BulletPoolManager.Instance?.GetPoolFor(bulletDef);
+
+            if (foundPool == null)
+            {
+                Log.Error($"No BulletPool found for bullet: {bulletDef.name}");
+            }
+
+            bulletSlots[i] = new BulletSlot
+            {
+                displayName = bulletDef.bulletName,
+                type = bulletDef.type,
+                definition = bulletDef,
+                pool = foundPool
+            };
+        }
+
+        if (bulletSlots.Length > 0)
+            currentBulletIndex = Mathf.Clamp(currentBulletIndex, 0, bulletSlots.Length - 1);
+        else
+            currentBulletIndex = -1;
     }
 
     void Start()
     {
-        owner = GetComponentInParent<Tank>();
-        if (owner == null)
-            Debug.LogError("TankShoot: Не найден компонент Tank в родителях!");
-
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
         if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
 
@@ -72,13 +106,13 @@ public class TankShoot : MonoBehaviour
         {
             activeMuzzleSmoke = Instantiate(muzzleSmoke);
             activeMuzzleSmoke.transform.SetParent(gunEnd);
-            activeMuzzleSmoke.transform.localPosition = Vector3.zero;
-            activeMuzzleSmoke.transform.localRotation = Quaternion.identity;
-
+            activeMuzzleSmoke.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             var main = activeMuzzleSmoke.main;
             main.simulationSpace = ParticleSystemSimulationSpace.World;
             activeMuzzleSmoke.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
+
+        UpdateAmmoUI();
     }
 
     void OnEnable()
@@ -115,11 +149,12 @@ public class TankShoot : MonoBehaviour
                     float fullReloadTime = 1f / Mathf.Max(0.0001f, owner.FireRate);
                     nextFireTime = Time.time + fullReloadTime;
 
-                    Debug.Log($"Reload reset: {fullReloadTime:F2}s for {bulletSlots[index].displayName}");
+                    Log.Debug($"Reload reset: {fullReloadTime:F2}s for {bulletSlots[index].displayName}");
 
                     currentBulletIndex = index;
+                    UpdateAmmoUI();
 
-                    Debug.Log($"Switched to: {CurrentBullet.displayName}");
+                    Log.Debug($"Switched to: {CurrentBullet.displayName}");
                     reloadClipPlayed = false;
                 }
             }
@@ -178,7 +213,7 @@ public class TankShoot : MonoBehaviour
     {
         if (CurrentBullet == null || CurrentBullet.pool == null || CurrentBullet.definition == null)
         {
-            Debug.LogWarning("No valid bullet selected!");
+            Log.Warning("No valid bullet selected!");
             return;
         }
 
@@ -217,7 +252,7 @@ public class TankShoot : MonoBehaviour
 
         ApplyPhysicalRecoil(physicalRecoil);
 
-        Debug.Log($"Recoil - Caliber: {caliber}mm, Mass: {bulletMass}kg, Velocity: {muzzleVelocity}m/s, " +
+        Log.Debug($"Recoil - Caliber: {caliber}mm, Mass: {bulletMass}kg, Velocity: {muzzleVelocity}m/s, " +
                  $"Visual: {visualRecoil:F4}, Physical: {physicalRecoil:F2}N");
     }
 
@@ -227,6 +262,14 @@ public class TankShoot : MonoBehaviour
         if (parentRb != null && recoilForce > 0f)
         {
             parentRb.AddForceAtPosition(-gunEnd.forward * recoilForce, gunEnd.position, ForceMode.Impulse);
+        }
+    }
+
+    private void UpdateAmmoUI()
+    {
+        if (GameUIManager.Instance != null)
+        {
+            GameUIManager.Instance.UpdateAmmoSelection(bulletSlots, currentBulletIndex);
         }
     }
 
@@ -272,7 +315,7 @@ public class TankShoot : MonoBehaviour
         if (owner != null && CurrentBullet.definition != null)
         {
             if (owner.Caliber != CurrentBullet.definition.caliber)
-                Debug.LogWarning($"[TankShoot] Gun caliber ({owner.Caliber}mm) != ammo caliber ({CurrentBullet.definition.caliber}mm) for {CurrentBullet.displayName} on {gameObject.name}");
+                Log.Warning($"[TankShoot] Gun caliber ({owner.Caliber}mm) != ammo caliber ({CurrentBullet.definition.caliber}mm) for {CurrentBullet.displayName} on {gameObject.name}");
         }
 
         TeamComponent teamComp = GetComponentInParent<TeamComponent>();

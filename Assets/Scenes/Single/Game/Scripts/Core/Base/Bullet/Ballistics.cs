@@ -81,7 +81,7 @@ public static partial class Ballistics
         if (def.minPenetration > 0f)
             pen = Mathf.Max(def.minPenetration, pen);
 
-        // Debug.Log($"ComputePen: v={v:F1}, keRatio={keRatio:F3}, sd={sd:F2}, sdNormalized={sdNormalized:F2}, sdFactor={sdFactor:F3}, deMarreK={def.deMarreK:F2}, basePenDef={def.penetration:F1}");
+        // Log.Debug($"ComputePen: v={v:F1}, keRatio={keRatio:F3}, sd={sd:F2}, sdNormalized={sdNormalized:F2}, sdFactor={sdFactor:F3}, deMarreK={def.deMarreK:F2}, basePenDef={def.penetration:F1}");
 
         return Mathf.Max(def.minPenetration, pen);
     }

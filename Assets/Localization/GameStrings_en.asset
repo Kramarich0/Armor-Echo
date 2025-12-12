@@ -250,6 +250,10 @@ MonoBehaviour:
     m_Localized: Loading
     m_Metadata:
       m_Items: []
+  - m_Id: 6983755016167424
+    m_Localized: 'Credits: {0}'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

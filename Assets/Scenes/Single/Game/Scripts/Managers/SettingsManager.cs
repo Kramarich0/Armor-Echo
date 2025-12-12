@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Serilog;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -599,7 +600,7 @@ public class SettingsManager : MonoBehaviour
 
         SetupPreview();
 
-        Debug.Log($"SettingsManager: TryBindUI -> qualityDropdown={qualityDropdown != null}, aa={aaDropdown != null}, resolution={resolutionDropdown != null}, previewCamera={(previewCamera != null)}, previewImage={(previewImage != null)}");
+        Log.Debug($"SettingsManager: TryBindUI -> qualityDropdown={qualityDropdown != null}, aa={aaDropdown != null}, resolution={resolutionDropdown != null}, previewCamera={(previewCamera != null)}, previewImage={(previewImage != null)}");
 
         SetupUIOptions();
 
@@ -1032,7 +1033,7 @@ public class SettingsManager : MonoBehaviour
         currentAO = on;
         PlayerPrefs.SetInt("gfx_ao", on ? 1 : 0);
         PlayerPrefs.Save();
-        Debug.Log("AO toggled (if AO component present it must be enabled in Volume profile).");
+        Log.Debug("AO toggled (if AO component present it must be enabled in Volume profile).");
     }
 
     public void SetColorGradingEnabled(bool on)

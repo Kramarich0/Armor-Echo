@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Serilog;
 
 
 
@@ -17,15 +18,15 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
     public enum MapMode { Center, BottomLeft, CustomPoints }
 
     [Header("UI")]
-    public RectTransform mapRect;            
+    public RectTransform mapRect;
     public Image playerIconPrefab;
     public Image enemyIconPrefab;
     public Image allyIconPrefab;
 
     [Header("Objects")]
     public Transform player;
-    public List<Transform> enemies = new List<Transform>();
-    public List<Transform> allies = new List<Transform>();
+    public List<Transform> enemies = new();
+    public List<Transform> allies = new();
 
     [Header("Map Settings")]
     public MapMode mapMode = MapMode.Center;
@@ -34,50 +35,50 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
     [Tooltip("BottomLeft: мировые координаты нижнего левого угла текстуры")]
     public Vector3 mapWorldBottomLeft = Vector3.zero;
     [Tooltip("Размер области мира, которую покрывает текстура. X->world X, Y->world Z")]
-    public Vector2 mapWorldSize = new Vector2(1000f, 1000f);
+    public Vector2 mapWorldSize = new(1000f, 1000f);
 
     [Header("Custom points (precision)")]
     [Tooltip("Custom: две точки в мире и их UV(0..1) на текстуре (UV origin: left-bottom)")]
     public Vector3 worldA = Vector3.zero;
     [Range(0f, 1f)] public Vector2 uvA = Vector2.zero;
-    public Vector3 worldB = new Vector3(100f, 0f, 0f);
-    [Range(0f, 1f)] public Vector2 uvB = new Vector2(1f, 0f);
+    public Vector3 worldB = new(100f, 0f, 0f);
+    [Range(0f, 1f)] public Vector2 uvB = new(1f, 0f);
 
     [Header("Options")]
-    public bool flipZ = false; 
+    public bool flipZ = false;
     public bool rotateWithPlayer = true;
     public bool debugMode = false;
 
     [Header("Zoom Settings")]
     [Tooltip("Кнопочный/шаговый коэффициент зума для Ctrl + / - (меньше = более плавный)")]
-    public float keyZoomFactor = 0.85f; 
+    public float keyZoomFactor = 0.85f;
     [Tooltip("Чем больше, тем быстрее зум при одном 'шаге' колеса")]
-    public float wheelZoomSpeed = 0.15f; 
+    public float wheelZoomSpeed = 0.15f;
     [Tooltip("Минимальные размеры области (по X и Y)")]
-    public Vector2 minMapWorldSize = new Vector2(10f, 10f);
+    public Vector2 minMapWorldSize = new(10f, 10f);
     [Tooltip("Максимальные размеры области (по X и Y)")]
-    public Vector2 maxMapWorldSize = new Vector2(5000f, 5000f);
+    public Vector2 maxMapWorldSize = new(5000f, 5000f);
 
-    
+
     private RectTransform playerIcon;
-    private List<RectTransform> enemyIcons = new List<RectTransform>();
-    private List<RectTransform> allyIcons = new List<RectTransform>();
+    private List<RectTransform> enemyIcons = new();
+    private List<RectTransform> allyIcons = new();
 
-    
+
     private bool haveCustomMatrix = false;
-    private float m00, m01, m10, m11; 
+    private float m00, m01, m10, m11;
     private Vector2 offsetPixels = Vector2.zero;
 
-    
+
     private Canvas parentCanvas;
     private Camera uiCamera;
 
-    
+
     private RawImage rawImage;
     private Image imageComponent;
-    private Material imageMaterial; 
+    private Material imageMaterial;
 
-    
+
     private Vector2 initialMapWorldSize;
     private Vector3 initialMapWorldCenter;
     private Vector3 initialMapWorldBottomLeft;
@@ -86,7 +87,7 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
     {
         if (mapRect == null)
         {
-            Debug.LogError("[StaticMiniMapRealtimeAccurate] mapRect не задан!");
+            Log.Error("[StaticMiniMapRealtimeAccurate] mapRect не задан!");
             enabled = false;
             return;
         }
@@ -97,13 +98,13 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
         else
             uiCamera = null;
 
-        
+
         rawImage = mapRect.GetComponent<RawImage>();
         imageComponent = mapRect.GetComponent<Image>();
         if (imageComponent != null && imageComponent.material != null)
             imageMaterial = imageComponent.material;
 
-        
+
         initialMapWorldSize = mapWorldSize;
         initialMapWorldCenter = mapWorldCenter;
         initialMapWorldBottomLeft = mapWorldBottomLeft;
@@ -116,7 +117,7 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
         RebuildIconsList(allies, allyIcons, allyIconPrefab, "AllyIcon");
 
         RecalculateMapping();
-        ApplyTextureZoom(); 
+        ApplyTextureZoom();
     }
 
     void OnValidate()
@@ -133,12 +134,12 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
 
         if (mapMode == MapMode.CustomPoints)
         {
-            
-            Vector2 pA = new Vector2(uvA.x * sizePx.x, uvA.y * sizePx.y);
-            Vector2 pB = new Vector2(uvB.x * sizePx.x, uvB.y * sizePx.y);
 
-            Vector2 wA2 = new Vector2(worldA.x, worldA.z);
-            Vector2 wB2 = new Vector2(worldB.x, worldB.z);
+            Vector2 pA = new(uvA.x * sizePx.x, uvA.y * sizePx.y);
+            Vector2 pB = new(uvB.x * sizePx.x, uvB.y * sizePx.y);
+
+            Vector2 wA2 = new(worldA.x, worldA.z);
+            Vector2 wB2 = new(worldB.x, worldB.z);
 
             Vector2 v1 = wB2 - wA2;
             Vector2 m1 = pB - pA;
@@ -146,19 +147,19 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
             float len2 = v1.x * v1.x + v1.y * v1.y;
             if (len2 < 1e-6f)
             {
-                Debug.LogWarning("[MiniMap] Custom points слишком близко — fallback.");
+                Log.Warning("[MiniMap] Custom points слишком близко — fallback.");
                 haveCustomMatrix = false;
                 return;
             }
 
-            Vector2 v2 = new Vector2(-v1.y, v1.x); 
-            Vector2 m2 = new Vector2(-m1.y, m1.x);
+            Vector2 v2 = new(-v1.y, v1.x);
+            Vector2 m2 = new(-m1.y, m1.x);
 
             float a = v1.x, b = v2.x, c = v1.y, d = v2.y;
             float det = a * d - b * c;
             if (Mathf.Abs(det) < 1e-9f)
             {
-                Debug.LogWarning("[MiniMap] Det слишком мал для CustomPoints.");
+                Log.Warning("[MiniMap] Det слишком мал для CustomPoints.");
                 haveCustomMatrix = false;
                 return;
             }
@@ -177,19 +178,19 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
             offsetPixels = pA - new Vector2(m00 * wA2.x + m01 * wA2.y, m10 * wA2.x + m11 * wA2.y);
 
             haveCustomMatrix = true;
-            if (debugMode) Debug.Log($"[MiniMap] Custom matrix: M=[[{m00:F4},{m01:F4}],[{m10:F4},{m11:F4}]] offset={offsetPixels}");
+            if (debugMode) Log.Debug($"[MiniMap] Custom matrix: M=[[{m00:F4},{m01:F4}],[{m10:F4},{m11:F4}]] offset={offsetPixels}");
         }
         else
         {
-            
+
             haveCustomMatrix = true;
-            if (debugMode) Debug.Log("[MiniMap] Simple mapping (Center/BottomLeft) ready.");
+            if (debugMode) Log.Debug("[MiniMap] Simple mapping (Center/BottomLeft) ready.");
         }
     }
 
     void Update()
     {
-        
+
         if (rotateWithPlayer && player != null)
             mapRect.localEulerAngles = new Vector3(0f, 0f, -player.eulerAngles.y);
         else
@@ -200,39 +201,39 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
         UpdateAllIcons();
     }
 
-    
+
     void HandleZoomInput()
     {
         if (mapRect == null) return;
 
         bool ctrl = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
 
-        
+
         if (ctrl && (Input.GetKeyDown(KeyCode.Equals) || Input.GetKeyDown(KeyCode.KeypadPlus)))
         {
             PerformKeyboardZoom(true);
             return;
         }
-        
+
         if (ctrl && (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus)))
         {
             PerformKeyboardZoom(false);
             return;
         }
 
-        
+
         float scroll = Input.mouseScrollDelta.y;
         if (Mathf.Abs(scroll) < 1e-6f) return;
         if (!ctrl) return;
 
-        
+
         if (!RectTransformUtility.RectangleContainsScreenPoint(mapRect, Input.mousePosition, uiCamera)) return;
 
         Vector2 sizePx = mapRect.rect.size;
         Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(mapRect, Input.mousePosition, uiCamera, out localPoint);
 
-        
+
         Vector2 uv = (localPoint + sizePx * 0.5f);
         if (sizePx.x != 0f) uv.x /= sizePx.x; else uv.x = 0.5f;
         if (sizePx.y != 0f) uv.y /= sizePx.y; else uv.y = 0.5f;
@@ -277,7 +278,7 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
         }
         else
         {
-            
+
             Vector3 mid = (worldA + worldB) * 0.5f;
             Vector3 dirA = worldA - mid;
             Vector3 dirB = worldB - mid;
@@ -287,14 +288,14 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
             worldB = newB;
         }
 
-        
+
         ApplyTextureZoom();
         RecalculateMapping();
     }
 
     void PerformKeyboardZoom(bool zoomIn)
     {
-        
+
         float factor = zoomIn ? keyZoomFactor : (1f / keyZoomFactor);
 
         if (mapMode == MapMode.Center)
@@ -303,24 +304,24 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
             newSize.x = Mathf.Clamp(newSize.x, minMapWorldSize.x, maxMapWorldSize.x);
             newSize.y = Mathf.Clamp(newSize.y, minMapWorldSize.y, maxMapWorldSize.y);
 
-            
+
             mapWorldSize = newSize;
         }
         else if (mapMode == MapMode.BottomLeft)
         {
-            
+
             Vector2 newSize = mapWorldSize * factor;
             newSize.x = Mathf.Clamp(newSize.x, minMapWorldSize.x, maxMapWorldSize.x);
             newSize.y = Mathf.Clamp(newSize.y, minMapWorldSize.y, maxMapWorldSize.y);
 
-            
-            Vector3 centerBefore = new Vector3(mapWorldBottomLeft.x + mapWorldSize.x * 0.5f, 0f, mapWorldBottomLeft.z + mapWorldSize.y * 0.5f);
-            Vector3 newBottomLeft = new Vector3(centerBefore.x - newSize.x * 0.5f, mapWorldBottomLeft.y, centerBefore.z - newSize.y * 0.5f);
+
+            Vector3 centerBefore = new(mapWorldBottomLeft.x + mapWorldSize.x * 0.5f, 0f, mapWorldBottomLeft.z + mapWorldSize.y * 0.5f);
+            Vector3 newBottomLeft = new(centerBefore.x - newSize.x * 0.5f, mapWorldBottomLeft.y, centerBefore.z - newSize.y * 0.5f);
 
             mapWorldSize = newSize;
             mapWorldBottomLeft = newBottomLeft;
         }
-        else 
+        else
         {
             Vector3 mid = (worldA + worldB) * 0.5f;
             Vector3 dirA = worldA - mid;
@@ -333,25 +334,27 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
         RecalculateMapping();
     }
 
-    
+
     void ApplyTextureZoom()
     {
-        
+
         if (mapMode == MapMode.CustomPoints)
         {
-            if (debugMode) Debug.Log("[MiniMap] Texture zoom не поддерживается для CustomPoints. Только world-зум.");
+            if (debugMode) Log.Debug("[MiniMap] Texture zoom не поддерживается для CustomPoints. Только world-зум.");
             return;
         }
 
-        
+
         if (initialMapWorldSize.x <= 0f || initialMapWorldSize.y <= 0f)
         {
-            if (debugMode) Debug.LogWarning("[MiniMap] initialMapWorldSize некорректен.");
+            if (debugMode) Log.Warning("[MiniMap] initialMapWorldSize некорректен.");
             return;
         }
 
-        
-        float left = 0f, bottom = 0f, initLeft = 0f, initBottom = 0f;
+        float left;
+        float bottom;
+        float initLeft;
+        float initBottom;
         if (mapMode == MapMode.Center)
         {
             left = mapWorldCenter.x - mapWorldSize.x * 0.5f;
@@ -360,7 +363,7 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
             initLeft = initialMapWorldCenter.x - initialMapWorldSize.x * 0.5f;
             initBottom = initialMapWorldCenter.z - initialMapWorldSize.y * 0.5f;
         }
-        else 
+        else
         {
             left = mapWorldBottomLeft.x;
             bottom = mapWorldBottomLeft.z;
@@ -369,52 +372,52 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
             initBottom = initialMapWorldBottomLeft.z;
         }
 
-        
+
         float uLeft = (left - initLeft) / (initialMapWorldSize.x != 0f ? initialMapWorldSize.x : 1f);
         float vBottom = (bottom - initBottom) / (initialMapWorldSize.y != 0f ? initialMapWorldSize.y : 1f);
         float uWidth = mapWorldSize.x / (initialMapWorldSize.x != 0f ? initialMapWorldSize.x : 1f);
         float vHeight = mapWorldSize.y / (initialMapWorldSize.y != 0f ? initialMapWorldSize.y : 1f);
 
-        
+
         uLeft = Mathf.Clamp01(uLeft);
         vBottom = Mathf.Clamp01(vBottom);
         uWidth = Mathf.Clamp(uWidth, 1e-6f, 1f);
         vHeight = Mathf.Clamp(vHeight, 1e-6f, 1f);
 
-        
+
         if (flipZ)
         {
             vBottom = 1f - vBottom - vHeight;
             vBottom = Mathf.Clamp01(vBottom);
         }
 
-        
+
         if (rawImage != null)
         {
             rawImage.uvRect = new Rect(uLeft, vBottom, uWidth, vHeight);
-            if (debugMode) Debug.Log($"[MiniMap] Applied RawImage.uvRect = {rawImage.uvRect}");
+            if (debugMode) Log.Debug($"[MiniMap] Applied RawImage.uvRect = {rawImage.uvRect}");
             return;
         }
 
-        
+
         if (imageMaterial != null)
         {
-            
+
             try
             {
                 imageMaterial.SetTextureOffset("_MainTex", new Vector2(uLeft, vBottom));
                 imageMaterial.SetTextureScale("_MainTex", new Vector2(uWidth, vHeight));
-                
+
             }
             catch (System.Exception ex)
             {
-                if (debugMode) Debug.LogWarning("[MiniMap] Не удалось установить material texture offset/scale: " + ex.Message);
+                if (debugMode) Log.Warning("[MiniMap] Не удалось установить material texture offset/scale: " + ex.Message);
             }
             return;
         }
 
-        
-        if (debugMode) Debug.LogWarning("[MiniMap] Для видимого зума рекомендую использовать RawImage на mapRect. Image без кастомного материала может не показать zoom.");
+
+        if (debugMode) Log.Warning("[MiniMap] Для видимого зума рекомендую использовать RawImage на mapRect. Image без кастомного материала может не показать zoom.");
     }
 
     RectTransform InstantiateIcon(Image prefab, string name)
@@ -457,7 +460,7 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
         for (int i = 0; i < allies.Count; i++) UpdateIcon(allyIcons[i], allies[i], sizePx, halfPx);
     }
 
-    
+
     Vector2 MapPixelsFromWorldAccurate(Vector3 worldPos, Vector2 sizePx)
     {
         float wx = worldPos.x;
@@ -472,12 +475,12 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
         }
         else if (mapMode == MapMode.Center)
         {
-            
+
             float left = mapWorldCenter.x - mapWorldSize.x * 0.5f;
             float bottom = mapWorldCenter.z - mapWorldSize.y * 0.5f;
 
-            float nx = (wx - left) / (mapWorldSize.x != 0f ? mapWorldSize.x : 1f); 
-            float ny = (wz - bottom) / (mapWorldSize.y != 0f ? mapWorldSize.y : 1f); 
+            float nx = (wx - left) / (mapWorldSize.x != 0f ? mapWorldSize.x : 1f);
+            float ny = (wz - bottom) / (mapWorldSize.y != 0f ? mapWorldSize.y : 1f);
 
             if (flipZ) ny = 1f - ny;
 
@@ -485,7 +488,7 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
             float py = Mathf.Lerp(0f, sizePx.y, ny);
             return new Vector2(px - sizePx.x * 0.5f, py - sizePx.y * 0.5f);
         }
-        else 
+        else
         {
             float left = mapWorldBottomLeft.x;
             float bottom = mapWorldBottomLeft.z;
@@ -513,13 +516,13 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
 
         Vector2 anchored = MapPixelsFromWorldAccurate(obj.position, sizePx);
 
-        
+
         anchored.x = Mathf.Clamp(anchored.x, -halfPx.x, halfPx.x);
         anchored.y = Mathf.Clamp(anchored.y, -halfPx.y, halfPx.y);
 
         icon.anchoredPosition = anchored;
 
-        
+
         if (rotateWithPlayer && player != null)
             icon.localEulerAngles = new Vector3(0f, 0f, player.eulerAngles.y);
         else
@@ -527,11 +530,11 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
 
         if (debugMode && obj == player)
         {
-            Debug.Log($"[MiniMap] player world={obj.position} -> anchored={anchored} (pixels from center)");
+            Log.Debug($"[MiniMap] player world={obj.position} -> anchored={anchored} (pixels from center)");
         }
     }
 
-    
+
     void OnDrawGizmosSelected()
     {
         if (!debugMode || mapRect == null) return;
@@ -542,9 +545,9 @@ public class StaticMiniMapRealtimeAccurate : MonoBehaviour
 
         if (haveCustomMatrix)
         {
-            Vector2 pA_px = new Vector2(uvA.x * mapRect.rect.width, uvA.y * mapRect.rect.height);
-            Vector2 pB_px = new Vector2(uvB.x * mapRect.rect.width, uvB.y * mapRect.rect.height);
-            Debug.Log($"[MiniMap Debug] UV->pixels A={pA_px} B={pB_px}");
+            Vector2 pA_px = new(uvA.x * mapRect.rect.width, uvA.y * mapRect.rect.height);
+            Vector2 pB_px = new(uvB.x * mapRect.rect.width, uvB.y * mapRect.rect.height);
+            Log.Debug($"[MiniMap Debug] UV->pixels A={pA_px} B={pB_px}");
         }
     }
 }

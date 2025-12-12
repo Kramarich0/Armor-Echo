@@ -16,7 +16,7 @@ public class TankCameraSetup : MonoBehaviour
     {
         if (playerTank == null)
         {
-            Debug.LogError("[TankCameraSetup] Player tank not assigned!");
+            Log.Error("[TankCameraSetup] Player tank not assigned!");
             return;
         }
 
@@ -27,7 +27,7 @@ public class TankCameraSetup : MonoBehaviour
 
         if (mainCameraVC == null || commanderCameraVC == null)
         {
-            Debug.LogError("[TankCameraSetup] One or both virtual cameras not found by tag!");
+            Log.Error("[TankCameraSetup] One or both virtual cameras not found by tag!");
             return;
         }
 
@@ -49,7 +49,7 @@ public class TankCameraSetup : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("[TankCameraSetup] Main pivot not found!");
+            Log.Warning("[TankCameraSetup] Main pivot not found!");
         }
 
         if (commanderPivot != null)
@@ -59,7 +59,7 @@ public class TankCameraSetup : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("[TankCameraSetup] Commander pivot not found!");
+            Log.Warning("[TankCameraSetup] Commander pivot not found!");
         }
     }
 

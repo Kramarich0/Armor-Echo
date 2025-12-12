@@ -122,8 +122,12 @@ public class GameManager : MonoBehaviour
 
         if (GameObject.FindGameObjectWithTag("Player") != null)
         {
-            friendlyTickets += 200;
-            aliveFriendlyTanks++;
+            if (PlayerSelection.selectedTank != null)
+            {
+                int playerCost = GetTankCostByDefinition(PlayerSelection.selectedTank);
+                friendlyTickets += playerCost;
+                aliveFriendlyTanks++;
+            }
         }
 
         OnTicketsChanged?.Invoke(friendlyTickets, enemyTickets);
@@ -235,6 +239,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    int GetTankCostByDefinition(TankDefinition def)
+    {
+        return def.tankClass switch
+        {
+            TankClass.Light => 100,
+            TankClass.Medium => 200,
+            TankClass.Heavy => 300,
+            _ => 150
+        };
+    }
+
     private IEnumerator ShowDefeatAfterDelay()
     {
         yield return _waitForSecondsRealtime2;
@@ -246,13 +261,27 @@ public class GameManager : MonoBehaviour
         int finalScore = score + friendlyTickets;
         int stars = CalculateStars(finalScore);
         string sceneName = SceneManager.GetActiveScene().name;
-
         int levelIndex = 0;
+
         if (sceneName.StartsWith("Level"))
         {
             string numPart = sceneName[5..];
             if (int.TryParse(numPart, out int idx)) levelIndex = idx;
         }
+
+        int baseReward = friendlyTickets;
+        int starBonus = 0;
+        if (stars >= 2) starBonus += 50;
+        if (stars >= 3) starBonus += 100;
+
+        int currencyReward = baseReward + starBonus;
+
+        if (PlayerPrefs.GetInt($"Level{levelIndex}_Completed", 0) == 1)
+        {
+            currencyReward = Mathf.RoundToInt(currencyReward * 0.1f);
+        }
+
+        CurrencyManager.Add(currencyReward);
 
         int savedScore = PlayerPrefs.GetInt($"Level{levelIndex}_Score", 0);
         int savedStars = PlayerPrefs.GetInt($"Level{levelIndex}_Stars", 0);
@@ -268,14 +297,14 @@ public class GameManager : MonoBehaviour
 
         Log.Information("[GameManager] Level {LevelIndex} completed! Stars: {Stars}, Score: {Score}", levelIndex, stars, score);
 
-        StartCoroutine(ShowVictoryAfterDelay(finalScore, stars));
+        StartCoroutine(ShowVictoryAfterDelay(finalScore, stars, currencyReward));
         StartCoroutine(DelayedSave());
     }
 
-    private IEnumerator ShowVictoryAfterDelay(int finalScore, int stars)
+    private IEnumerator ShowVictoryAfterDelay(int finalScore, int stars, int currencyEarned)
     {
         yield return _waitForSecondsRealtime2;
-        GameUIManager.Instance?.ShowVictoryScreen(finalScore, stars);
+        GameUIManager.Instance?.ShowVictoryScreen(finalScore, stars, currencyEarned);
     }
 
     IEnumerator DelayedSave()

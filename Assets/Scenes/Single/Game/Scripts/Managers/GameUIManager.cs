@@ -11,6 +11,7 @@ public class GameUIManager : MonoBehaviour
     public static GameUIManager Instance { get; private set; }
     [Header("UI")]
     public string pausePanelTag = "PausePanel";
+    public AmmoSlotUI[] ammoSlots;
     private GameObject pausePanel;
     [Header("Defeat")]
     public string defeatPanelTag = "DefeatPanel";
@@ -18,6 +19,7 @@ public class GameUIManager : MonoBehaviour
     public string victoryPanelTag = "VictoryPanel";
     private GameObject victoryPanel;
     public TextMeshProUGUI victoryScoreText;
+    public TextMeshProUGUI victoryCurrencyText;
     private GameObject defeatPanel;
     [Header("Input")]
     public InputActionReference pauseAction;
@@ -30,6 +32,7 @@ public class GameUIManager : MonoBehaviour
     [Header("Victory")]
     public StarsDisplay victoryStarsDisplay;
     public bool debugLogs = false;
+
 
     private void Awake()
     {
@@ -251,17 +254,24 @@ public class GameUIManager : MonoBehaviour
         cg.interactable = show;
     }
 
-    public void ShowVictoryScreen(int score, int stars)
+    public void ShowVictoryScreen(int score, int stars, int currencyEarned = 0)
     {
         if (victoryPanel == null) return;
 
 
         if (victoryScoreText != null)
         {
-            var lse = victoryScoreText.GetComponent<LocalizeStringEvent>();
-            if (lse != null)
+            if (victoryScoreText.TryGetComponent<LocalizeStringEvent>(out var lse))
             {
                 LocalizationHelper.SetLocalizedText(lse, "victory_score_text", score);
+            }
+        }
+
+        if (victoryCurrencyText != null)
+        {
+            if (victoryCurrencyText.TryGetComponent<LocalizeStringEvent>(out var lse2))
+            {
+                LocalizationHelper.SetLocalizedText(lse2, "victory_currency_text", currencyEarned);
             }
         }
 
@@ -300,6 +310,34 @@ public class GameUIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
         isPaused = true;
+    }
+
+    public void UpdateAmmoSelection(BulletSlot[] allSlots, int currentSlotIndex)
+    {
+        if (ammoSlots == null || allSlots == null) return;
+
+        int uiLength = ammoSlots.Length;
+        int bulletLength = allSlots.Length;
+
+        for (int i = 0; i < uiLength; i++)
+        {
+            if (ammoSlots[i] == null)
+            {
+                Log.Warning($"ammoSlots[{i}] is null in GameUIManager!", this);
+                continue;
+            }
+            if (i < bulletLength && allSlots[i]?.definition != null)
+            {
+                var def = allSlots[i].definition;
+                ammoSlots[i].SetBullet(def.bulletIcon, def.bulletName, def.type);
+                ammoSlots[i].SetSelected(i == currentSlotIndex);
+            }
+            else
+            {
+                ammoSlots[i].SetBullet(null, "", BulletType.APHE);
+                ammoSlots[i].SetSelected(false);
+            }
+        }
     }
 
     public void ContinueGame() => ResumeGame();

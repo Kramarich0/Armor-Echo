@@ -4,6 +4,8 @@ using UnityEngine;
 public class TankDefinition : ScriptableObject
 {
     [Header("Basic Info")]
+    public bool isUnlocked;      
+    public int priceInStars;     
     public string tankName;
     public TankClass tankClass;
     public GameObject playerTankPrefab;

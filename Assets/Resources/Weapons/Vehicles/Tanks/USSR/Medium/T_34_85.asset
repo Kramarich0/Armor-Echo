@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9fdd3936ff7f6458645e70fc1bb8cc, type: 3}
   m_Name: T_34_85
   m_EditorClassIdentifier: Assembly-CSharp::TankDefinition
+  isUnlocked: 0
+  priceInStars: 1000
   tankName: T-34-85
   tankClass: 1
   playerTankPrefab: {fileID: 6200963950861381698, guid: 863ff87e921e0c249811fa3106d6d2e0, type: 3}
   deathPrefab: {fileID: 2678784560287047246, guid: b33d216a449337d43bab901744a7b1dc, type: 3}
-  previewPrefab: {fileID: 4123399953807548903, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}
+  previewPrefab: {fileID: 8106750666050687094, guid: 16b495d86b3d355458a96f36949a3aee, type: 3}
   health: 300
   rotationSpeed: 50
   turretRotationSpeed: 30

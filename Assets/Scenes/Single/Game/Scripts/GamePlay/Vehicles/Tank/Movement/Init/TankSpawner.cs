@@ -1,4 +1,5 @@
 using System.Linq;
+using Serilog;
 using UnityEngine;
 
 public class TankSpawner : MonoBehaviour
@@ -15,7 +16,7 @@ public class TankSpawner : MonoBehaviour
     {
         if (def == null || def.playerTankPrefab == null)
         {
-            Debug.LogError("TankSpawner: def или def.tankPrefab не задан!");
+            Log.Debug("TankSpawner: def или def.tankPrefab не задан!");
             return null;
         }
 
@@ -41,7 +42,7 @@ public class TankSpawner : MonoBehaviour
         Tank tank = instance.GetComponentInChildren<Tank>();
         if (tank == null)
         {
-            Debug.LogError("Spawned prefab не содержит Tank!");
+            Log.Debug("Spawned prefab не содержит Tank!");
             return;
         }
 
@@ -130,7 +131,6 @@ public class TankSpawner : MonoBehaviour
                 }
             }
 
-            FillBulletSlotsFromDefinition(ts, tank);
         }
 
     }
@@ -181,51 +181,6 @@ public class TankSpawner : MonoBehaviour
         }
         var go = GameObject.Find(name);
         return go;
-    }
-
-    void FillBulletSlotsFromDefinition(TankShoot tankShoot, Tank tank)
-    {
-        if (tank == null || tank.PrimaryGun == null)
-        {
-            Debug.LogWarning("FillBulletSlotsFromDefinition: нет GunDefinition");
-            return;
-        }
-
-        var defs = tank.PrimaryGun.bullets;
-        if (defs == null || defs.Length == 0)
-        {
-            Debug.LogWarning("GunDefinition не содержит bullets");
-            return;
-        }
-
-        tankShoot.bulletSlots = new BulletSlot[defs.Length];
-        for (int i = 0; i < defs.Length; i++)
-        {
-            var defEntry = defs[i];
-            var bdef = defEntry.bullet;
-            var slot = new BulletSlot();
-            slot.displayName = bdef != null ? bdef.bulletName : $"Slot{i}";
-            slot.type = bdef != null ? bdef.type : BulletType.AP;
-            slot.definition = bdef;
-
-            BulletPool pool = null;
-            if (BulletPoolManager.Instance != null)
-            {
-                pool = BulletPoolManager.Instance.GetPoolFor(bdef);
-            }
-            else
-            {
-                var pools = FindObjectsByType<BulletPool>(FindObjectsSortMode.None);
-                pool = pools.FirstOrDefault(p => p.HandlesDefinition(bdef));
-                if (pool == null) pool = pools.FirstOrDefault();
-            }
-
-            slot.pool = pool;
-            if (slot.pool == null)
-                Debug.LogWarning($"Не найден пул для снаряда {slot.displayName}. Установи пул в сцене или добавь соответствие в BulletPool.supportedDefinitions.");
-
-            tankShoot.bulletSlots[i] = slot;
-        }
     }
 
     void SetupCameras(GameObject playerTank)

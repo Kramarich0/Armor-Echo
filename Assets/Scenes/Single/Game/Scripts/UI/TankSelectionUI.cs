@@ -3,17 +3,20 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Text;
+using Serilog;
 
 public class TankSelectionUI : MonoBehaviour
 {
     [Header("UI")]
     public Button nextButton;
     public Button prevButton;
-    public Button startButton;
+    public Button actionButton;
     public TMP_Text tankNameText;
     public TMP_Text descriptionText;
     public TMP_Text detailsText;
     public TMP_Text bulletsText;
+    public TMP_Text priceLabel;
+    public TMP_Text balanceText;
 
     [Header("RenderTexture")]
     public Transform previewSpawnPoint;
@@ -28,9 +31,65 @@ public class TankSelectionUI : MonoBehaviour
     {
         nextButton.onClick.AddListener(NextTank);
         prevButton.onClick.AddListener(PrevTank);
-        startButton.onClick.AddListener(StartBattle);
-
+        actionButton.onClick.AddListener(OnActionButtonClicked);
+        // PlayerPrefs.DeleteAll(); // удалить потом !!!
+        for (int i = 0; i < availableTanks.Length; i++)
+        {
+            if (IsTankUnlocked(availableTanks[i]))
+            {
+                index = i;
+                break;
+            }
+        }
         ShowTank(index);
+        UpdateBalanceUI();
+    }
+
+    void OnActionButtonClicked()
+    {
+        var tank = availableTanks[index];
+        if (IsTankUnlocked(tank))
+        {
+            PlayerSelection.selectedTank = tank;
+            SceneManager.LoadSceneAsync(SceneNames.SelectLevel);
+        }
+        else
+        {
+            if (CurrencyManager.TrySpend(tank.priceInStars))
+            {
+                UnlockTank(tank);
+                ShowTank(index);
+                UpdateBalanceUI();
+            }
+            else
+            {
+                Log.Debug("Not enough stars!");
+                ToastHelper.Instance.Show("На балансе не хватает денег");
+            }
+        }
+    }
+
+    void UpdateBalanceUI()
+    {
+        if (balanceText != null)
+        {
+            int balance = CurrencyManager.GetBalance();
+            balanceText.text = $"Баланс: {balance}";
+        }
+    }
+
+    bool IsTankUnlocked(TankDefinition tank)
+    {
+        if (tank.isUnlocked)
+            return true;
+
+        return PlayerPrefs.GetInt($"UnlockedTank_{tank.name}", 0) == 1;
+    }
+
+    void UnlockTank(TankDefinition tank)
+    {
+        PlayerPrefs.SetInt($"UnlockedTank_{tank.name}", 1);
+        PlayerPrefs.Save();
     }
 
     void NextTank()
@@ -52,26 +111,30 @@ public class TankSelectionUI : MonoBehaviour
         if (def == null) return;
 
         tankNameText.text = def.tankName;
-        descriptionText.text = string.IsNullOrWhiteSpace(def.description) ? "Описание отсутствует." : def.description;
-
+        descriptionText.text = string.IsNullOrWhiteSpace(def.description)
+            ? "Описание отсутствует."
+            : def.description;
 
         detailsText.text = BuildTankAndGunSummary(def);
-
         bulletsText.text = BuildBulletsSummary(def.primaryGun);
 
         if (currentPreview != null) Destroy(currentPreview);
 
-        currentPreview = Instantiate(def.previewPrefab, previewSpawnPoint.position, previewSpawnPoint.rotation);
+        if (def.previewPrefab != null)
+        {
+            currentPreview = Instantiate(def.previewPrefab, previewSpawnPoint.position, previewSpawnPoint.rotation);
+            foreach (var rb in currentPreview.GetComponentsInChildren<Rigidbody>()) rb.isKinematic = true;
+            foreach (var col in currentPreview.GetComponentsInChildren<Collider>()) col.enabled = false;
+        }
 
-        foreach (var rb in currentPreview.GetComponentsInChildren<Rigidbody>()) rb.isKinematic = true;
-        foreach (var col in currentPreview.GetComponentsInChildren<Collider>()) col.enabled = false;
+        bool unlocked = IsTankUnlocked(def);
+        priceLabel.text = unlocked
+            ? "В наличии"
+            : $"Купить за {def.priceInStars}";
 
-    }
-
-    void StartBattle()
-    {
-        PlayerSelection.selectedTank = availableTanks[index];
-        SceneManager.LoadSceneAsync(SceneNames.SelectLevel);
+        actionButton.GetComponentInChildren<TMP_Text>().text = unlocked
+            ? "Начать бой"
+            : "Купить";
     }
 
     string BuildTankAndGunSummary(TankDefinition def)
@@ -93,7 +156,6 @@ public class TankSelectionUI : MonoBehaviour
             sb.AppendLine($"Перезарядка: {gun.fireInterval:F2}с");
             sb.AppendLine($"Углы вертикальной наводки: +{gun.minGunAngle}°/-{gun.maxGunAngle}°");
             sb.AppendLine($"Скорость вертикальной наводки:{gun.liftSpeed:F2}");
-            sb.AppendLine($"Снарядов: {(gun.bullets != null ? gun.bullets.Length : 0)}");
         }
         else
         {

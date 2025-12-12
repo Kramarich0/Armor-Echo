@@ -247,6 +247,10 @@ MonoBehaviour:
     m_Key: loading_text
     m_Metadata:
       m_Items: []
+  - m_Id: 6983755016167424
+    m_Key: victory_currency_text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -34,7 +34,7 @@
 //         if (GameUIManager.Instance != null)
 //             ApplyUI(GameNetUIManager.Instance);
 //         else
-//             Debug.LogError("[PlayerSetup] GameUIManager not found in scene!");
+//             Log.Error("[PlayerSetup] GameUIManager not found in scene!");
 //     }
 
 //     void ApplyUI(GameNetUIManager ui)

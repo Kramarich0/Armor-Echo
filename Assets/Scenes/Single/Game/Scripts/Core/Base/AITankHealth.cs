@@ -145,7 +145,7 @@ public class AITankHealth : MonoBehaviour, IDamageable
         {
             GameObject corpse = Instantiate(tankDef.deathPrefab, transform.position, transform.rotation);
 
-            CopyTankPose(transform, corpse.transform);
+            // CopyTankPose(transform, corpse.transform);
 
             if (destructibleParts == null || destructibleParts.Length == 0) return;
 

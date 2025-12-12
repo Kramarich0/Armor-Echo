@@ -1,3 +1,4 @@
+using Serilog;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -30,7 +31,7 @@ public class BreakableObject : MonoBehaviour
     {
         if (parts == null || parts.Length == 0)
         {
-            Debug.LogWarning("[BreakableObject] No parts assigned.");
+            Log.Warning("[BreakableObject] No parts assigned.");
             return;
         }
 
@@ -88,7 +89,7 @@ public class BreakableObject : MonoBehaviour
         if (breakSound != null)
             AudioSource.PlayClipAtPoint(breakSound, hitPoint, soundVolume);
 
-        Debug.Log("[BreakableObject] Object broken!");
+        Log.Debug("[BreakableObject] Object broken!");
     }
 }
 

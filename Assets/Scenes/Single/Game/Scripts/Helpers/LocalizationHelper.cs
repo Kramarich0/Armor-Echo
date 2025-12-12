@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using Serilog;
 
 public static class LocalizationHelper
 {
@@ -40,7 +41,7 @@ public static class LocalizationHelper
         if (handle.Status == AsyncOperationStatus.Succeeded)
             return handle.Result;
 
-        Debug.LogWarning($"LocalizationHelper: Не удалось получить строку '{entryKey}' из '{tableCollectionName}' (status: {handle.Status})");
+        Log.Warning($"LocalizationHelper: Не удалось получить строку '{entryKey}' из '{tableCollectionName}' (status: {handle.Status})");
         return entryKey;
     }
 }

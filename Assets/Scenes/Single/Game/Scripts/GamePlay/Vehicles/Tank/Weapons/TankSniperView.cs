@@ -154,17 +154,18 @@ public class TankSniperView : MonoBehaviour
             crossSniper.SetCamera(sniperCamera);
 
         sniperVignette?.SetActive(isSniperView);
-
-        if (isSniperView)
+        if (masterMixer != null)
         {
-            zoomTarget = Mathf.Clamp01(zoomTarget);
-            zoomCurrent = Mathf.Clamp01(zoomCurrent);
-            sniperSnapshot.TransitionTo(0.2f);
+            if (isSniperView)
+            {
+                zoomTarget = Mathf.Clamp01(zoomTarget);
+                zoomCurrent = Mathf.Clamp01(zoomCurrent);
+                sniperSnapshot.TransitionTo(0.2f);
+            }
+            else
+                normalSnapshot.TransitionTo(0.2f);
         }
-        else
-            normalSnapshot.TransitionTo(0.2f);
     }
-
 
     void OnDestroy()
     {

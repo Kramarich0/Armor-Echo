@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine.SceneManagement;
+using Serilog;
 
 public class LanguageSelector : MonoBehaviour
 {
@@ -37,60 +38,60 @@ public class LanguageSelector : MonoBehaviour
     }
     private IEnumerator Start()
     {
-        if (dropdown == null)
-        {
-            var allDropdowns = FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-            foreach (var dd in allDropdowns)
-            {
-                if (dd.name.ToLower().Contains("language"))
-                {
-                    dropdown = dd;
-                    break;
-                }
-            }
-
-            if (dropdown == null)
-                Debug.LogError("LanguageSelector: Dropdown не найден!");
-        }
-
-
-        if (dropdown != null)
-            dropdown.gameObject.SetActive(false);
         if (loadingText != null) loadingText.SetActive(true);
 
         yield return LocalizationSettings.InitializationOperation;
 
+        ApplySavedLanguage();
+
+        if (loadingText != null) loadingText.SetActive(false);
+
+        if (dropdown != null)
+        {
+            SetupDropdown();
+        }
+    }
+
+    private void ApplySavedLanguage()
+    {
+        int savedIndex = PlayerPrefs.GetInt("LanguageIndex", -1);
+        var locales = LocalizationSettings.AvailableLocales.Locales;
+
+        if (savedIndex >= 0 && savedIndex < locales.Count)
+        {
+            LocalizationSettings.SelectedLocale = locales[savedIndex];
+        }
+    }
+
+    private void SetupDropdown()
+    {
+        dropdown.gameObject.SetActive(false);
         dropdown.ClearOptions();
 
         foreach (var locale in LocalizationSettings.AvailableLocales.Locales)
         {
             string code = locale.Identifier.Code;
-            if (niceNames.TryGetValue(code, out string nice))
-                dropdown.options.Add(new TMP_Dropdown.OptionData(nice));
-            else
-                dropdown.options.Add(new TMP_Dropdown.OptionData(locale.LocaleName));
+            string nice = niceNames.GetValueOrDefault(code, locale.LocaleName);
+            dropdown.options.Add(new TMP_Dropdown.OptionData(nice));
         }
 
         int savedIndex = PlayerPrefs.GetInt("LanguageIndex", -1);
-        if (savedIndex >= 0 && savedIndex < dropdown.options.Count)
+        var locales = LocalizationSettings.AvailableLocales.Locales;
+
+        if (savedIndex >= 0 && savedIndex < locales.Count)
         {
             dropdown.value = savedIndex;
-            dropdown.RefreshShownValue();
-            StartCoroutine(SetLocale(savedIndex));
         }
         else
         {
-            var current = LocalizationSettings.SelectedLocale;
-            int index = LocalizationSettings.AvailableLocales.Locales.IndexOf(current);
-            dropdown.value = index;
-            dropdown.RefreshShownValue();
+            int currentIndex = locales.IndexOf(LocalizationSettings.SelectedLocale);
+            dropdown.value = Mathf.Max(0, currentIndex);
         }
 
-
+        dropdown.RefreshShownValue();
+        dropdown.onValueChanged.RemoveAllListeners();
         dropdown.onValueChanged.AddListener(OnDropdownChanged);
-
         dropdown.gameObject.SetActive(true);
-        if (loadingText != null) loadingText.SetActive(false);
     }
 
     private void OnDropdownChanged(int index)
@@ -114,31 +115,8 @@ public class LanguageSelector : MonoBehaviour
         isChanging = false;
     }
 
-    private void InitializeDropdown()
+    private void FindDropdownOnScene()
     {
-        dropdown.ClearOptions();
-
-        foreach (var locale in LocalizationSettings.AvailableLocales.Locales)
-        {
-            string code = locale.Identifier.Code;
-            if (niceNames.TryGetValue(code, out string nice))
-                dropdown.options.Add(new TMP_Dropdown.OptionData(nice));
-            else
-                dropdown.options.Add(new TMP_Dropdown.OptionData(locale.LocaleName));
-        }
-
-        int savedIndex = PlayerPrefs.GetInt("LanguageIndex", 0);
-        dropdown.value = Mathf.Clamp(savedIndex, 0, dropdown.options.Count - 1);
-        dropdown.RefreshShownValue();
-
-        dropdown.onValueChanged.RemoveAllListeners();
-        dropdown.onValueChanged.AddListener(OnDropdownChanged);
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        dropdown = null;
-
         var allDropdowns = FindObjectsByType<TMP_Dropdown>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (var dd in allDropdowns)
         {
@@ -148,23 +126,28 @@ public class LanguageSelector : MonoBehaviour
                 break;
             }
         }
-
-        if (dropdown == null)
-        {
-            Debug.LogWarning("LanguageSelector: Dropdown не найден на новой сцене!");
-            return;
-        }
-
-        InitializeDropdown();
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == SceneNames.Settings) 
+        {
+            FindDropdownOnScene();
+            if (dropdown != null)
+            {
+                SetupDropdown();
+            }
+        }
+    }
+
 }

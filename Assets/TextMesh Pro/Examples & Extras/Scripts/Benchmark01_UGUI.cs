@@ -46,7 +46,7 @@ namespace TMPro.Examples
 
                 //m_textMeshPro.anchorDampening = true;
 
-                if (TMProFont != null)
+            if (TMProFont != null)
                     m_textMeshPro.font = TMProFont;
 
                 //m_textMeshPro.font = Resources.Load("Fonts & Materials/Anton SDF", typeof(TextMeshProFont)) as TextMeshProFont; // Make sure the Anton SDF exists before calling this...           

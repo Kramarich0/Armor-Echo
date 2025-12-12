@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.IO;
 using System.Collections;
+using Serilog;
 
 public class MiniMapCapture : MonoBehaviour
 {
     public Camera miniMapCamera;
-    public int size = 4096; 
+    public int size = 4096;
 
     private IEnumerator Start()
     {
@@ -43,6 +44,7 @@ public class MiniMapCapture : MonoBehaviour
 
         File.WriteAllBytes(folder + fileName, tex.EncodeToPNG());
 
-        Debug.Log("MiniMap saved!  Path: " + folder + fileName);
+        Log.Debug("MiniMap saved!  Path: " + folder + fileName);
+
     }
 }

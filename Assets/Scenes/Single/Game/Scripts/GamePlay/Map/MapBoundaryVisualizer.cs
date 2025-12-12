@@ -3,6 +3,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using Serilog;
 
 [ExecuteAlways]
 [RequireComponent(typeof(MeshFilter))]
@@ -66,7 +67,7 @@ public class MapBoundaryMesh : MonoBehaviour
             cornerTransforms.Length < 3 ||
             cornerTransforms.Any(t => t == null))
         {
-            Debug.LogError("CornerTransforms заданы неверно.");
+            Log.Error("CornerTransforms заданы неверно.");
             return;
         }
 

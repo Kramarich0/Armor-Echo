@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9fdd3936ff7f6458645e70fc1bb8cc, type: 3}
   m_Name: M4A3 Sherman (76mm)
   m_EditorClassIdentifier: Assembly-CSharp::TankDefinition
+  isUnlocked: 1
+  priceInStars: 0
   tankName: M4A3 Sherman (76mm)
   tankClass: 1
   playerTankPrefab: {fileID: 1162357594381774910, guid: e0f29f56e7568db4d922bff49da58b6e, type: 3}

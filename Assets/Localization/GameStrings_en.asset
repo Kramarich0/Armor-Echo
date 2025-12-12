@@ -246,6 +246,10 @@ MonoBehaviour:
     m_Localized: Full Screen
     m_Metadata:
       m_Items: []
+  - m_Id: 6702110778318848
+    m_Localized: Loading
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

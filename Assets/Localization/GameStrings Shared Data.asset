@@ -243,6 +243,10 @@ MonoBehaviour:
     m_Key: fullscreen_text
     m_Metadata:
       m_Items: []
+  - m_Id: 6702110778318848
+    m_Key: loading_text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

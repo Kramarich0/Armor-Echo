@@ -1120,5 +1120,5 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    public void BackToMainMenu() => SceneManager.LoadScene(SceneNames.MainMenu);
+    public void BackToMainMenu() => SceneManager.LoadSceneAsync(SceneNames.MainMenu);
 }

@@ -5,21 +5,21 @@ public class MenuManager : MonoBehaviour
 {
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(SceneNames.MainMenu);
+        SceneManager.LoadSceneAsync(SceneNames.MainMenu);
     }
     public void DirectToLevelSelect()
     {
-        SceneManager.LoadScene(SceneNames.SelectLevel);
+        SceneManager.LoadSceneAsync(SceneNames.SelectLevel);
     }
 
     public void TankSelectionScene()
     {
-        SceneManager.LoadScene(SceneNames.TankSelection);
+        SceneManager.LoadSceneAsync(SceneNames.TankSelection);
     }
 
     public void SettingsScene()
     {
-        SceneManager.LoadScene(SceneNames.Settings);
+        SceneManager.LoadSceneAsync(SceneNames.Settings);
     }
 
     public void QuitGame()

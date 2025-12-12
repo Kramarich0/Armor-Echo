@@ -71,7 +71,7 @@ public class TankSelectionUI : MonoBehaviour
     void StartBattle()
     {
         PlayerSelection.selectedTank = availableTanks[index];
-        SceneManager.LoadScene(SceneNames.SelectLevel);
+        SceneManager.LoadSceneAsync(SceneNames.SelectLevel);
     }
 
     string BuildTankAndGunSummary(TankDefinition def)

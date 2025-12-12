@@ -303,8 +303,8 @@ public class GameUIManager : MonoBehaviour
     }
 
     public void ContinueGame() => ResumeGame();
-    public void RestartLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    public void BackToMainMenu() => SceneManager.LoadScene("MainMenu");
+    public void RestartLevel() => SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    public void BackToMainMenu() => SceneManager.LoadSceneAsync(SceneNames.MainMenu);
     public void NextLevel()
     {
         string currentScene = SceneManager.GetActiveScene().name;
@@ -325,7 +325,7 @@ public class GameUIManager : MonoBehaviour
         int nextLevel = currentLevel + 1;
         string nextSceneName = $"Level{nextLevel}";
 
-        SceneManager.LoadScene(nextSceneName);
+        SceneManager.LoadSceneAsync(nextSceneName);
     }
 
 }

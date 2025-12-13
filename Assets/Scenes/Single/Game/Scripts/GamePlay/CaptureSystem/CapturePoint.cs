@@ -31,12 +31,11 @@ public class CapturePoint : MonoBehaviour
 
     private Coroutine ticketCoroutine;
 
-    private readonly Dictionary<TeamEnum, HashSet<string>> presentTankIds = new()
+    private readonly Dictionary<TeamEnum, HashSet<int>> presentTankIds = new()
     {
-        { TeamEnum.Friendly, new HashSet<string>() },
-        { TeamEnum.Enemy,    new HashSet<string>() }
+        { TeamEnum.Friendly, new HashSet<int>() },
+        { TeamEnum.Enemy,    new HashSet<int>() }
     };
-
 
     private const float EPS = 0.001f;
 
@@ -73,10 +72,11 @@ public class CapturePoint : MonoBehaviour
 
         if (tc != null && tc.team != TeamEnum.Neutral)
         {
-            if (presentTankIds[tc.team].Add(tc.tankId))
+            int tankId = tc.GetInstanceID();
+            if (presentTankIds[tc.team].Add(tankId))
             {
                 if (debugLogs) Log.Debug("[CapturePoint] Entered: {TankName} (ID: {TankId}), team={Team}. Count now: {TeamCount}",
-                              tc.DisplayName ?? tc.gameObject.name, tc.tankId, tc.team, presentTankIds[tc.team].Count);
+                              tc.DisplayName ?? tc.gameObject.name, tankId, tc.team, presentTankIds[tc.team].Count);
             }
         }
         else
@@ -92,10 +92,11 @@ public class CapturePoint : MonoBehaviour
 
         if (tc != null && tc.team != TeamEnum.Neutral)
         {
-            if (presentTankIds[tc.team].Remove(tc.tankId))
+            int tankId = tc.GetInstanceID();
+            if (presentTankIds[tc.team].Remove(tankId))
             {
                 if (debugLogs) Log.Debug("[CapturePoint] Exited: {TankName} (ID: {TankId}), team={Team}. Count now: {TeamCount}",
-                              tc.DisplayName ?? tc.gameObject.name, tc.tankId, tc.team, presentTankIds[tc.team].Count);
+                              tc.DisplayName ?? tc.gameObject.name, tankId, tc.team, presentTankIds[tc.team].Count);
             }
         }
     }
@@ -266,23 +267,18 @@ public class CapturePoint : MonoBehaviour
 
     public void RemoveTeamComponent(TeamComponent tc)
     {
-        if (tc == null || string.IsNullOrEmpty(tc.tankId))
-        {
-            Log.Warning("[CapturePoint] Attempted to remove invalid tank");
-            return;
-        }
+        if (tc == null || tc.team == TeamEnum.Neutral) return;
 
-        if (tc.team == TeamEnum.Neutral) return;
-
+        int tankId = tc.GetInstanceID();
         if (presentTankIds.ContainsKey(tc.team))
         {
-            if (presentTankIds[tc.team].Remove(tc.tankId))
+            if (presentTankIds[tc.team].Remove(tankId))
             {
-                if (debugLogs) Log.Debug("[CapturePoint] Removed tank ID: {TankId}, team={Team}", tc.tankId, tc.team);
+                if (debugLogs) Log.Debug("[CapturePoint] Removed tank ID: {TankId}, team={Team}", tankId, tc.team);
             }
             else
             {
-                if (debugLogs) Log.Debug("[CapturePoint] Tank with ID {TankId} not found in removal list", tc.tankId);
+                if (debugLogs) Log.Debug("[CapturePoint] Tank with ID {TankId} not found in removal list", tankId);
             }
         }
     }

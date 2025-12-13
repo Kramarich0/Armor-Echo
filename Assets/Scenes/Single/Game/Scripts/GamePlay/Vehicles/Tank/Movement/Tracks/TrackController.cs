@@ -14,6 +14,8 @@ public class TrackController : MonoBehaviour
     [Header("Wheels (optional)")]
     public Transform[] leftWheels;
     public Transform[] rightWheels;
+    private Material leftTrackMat;
+    private Material rightTrackMat;
 
     private float leftDistance = 0f;
     private float rightDistance = 0f;
@@ -21,6 +23,8 @@ public class TrackController : MonoBehaviour
     void Start()
     {
         if (!tankRigidbody) tankRigidbody = GetComponentInParent<Rigidbody>();
+        if (leftTrackRenderer) leftTrackMat = leftTrackRenderer.material;
+        if (rightTrackRenderer) rightTrackMat = rightTrackRenderer.material;
     }
 
     void Update()
@@ -33,22 +37,27 @@ public class TrackController : MonoBehaviour
         float leftSpeed = forwardSpeed - turnSpeed * turnScrollFactor * tankRigidbody.transform.localScale.x;
         float rightSpeed = forwardSpeed + turnSpeed * turnScrollFactor * tankRigidbody.transform.localScale.x;
 
+        // и еще тут мб трабл с интегралом пока не тестил но может быть текстура сломается
         leftDistance += -leftSpeed * Time.deltaTime / (2f * Mathf.PI * wheelRadius);
         rightDistance += -rightSpeed * Time.deltaTime / (2f * Mathf.PI * wheelRadius);
 
         if (Application.isPlaying)
         {
-            if (leftTrackRenderer)
-                leftTrackRenderer.material.SetFloat("_Distance", leftDistance);
-            if (rightTrackRenderer)
-                rightTrackRenderer.material.SetFloat("_Distance", rightDistance);
+            if (leftTrackMat) leftTrackMat.SetFloat("_Distance", leftDistance);
+            if (rightTrackMat) rightTrackMat.SetFloat("_Distance", rightDistance);
         }
+        // вот это [1]
+        float leftRotation = leftSpeed * Time.deltaTime / (2f * Mathf.PI * wheelRadius) * 360f;
+        RotateWheels(leftWheels, leftRotation);
 
-        float avgSpeed = (forwardSpeed + turnSpeed * 0.5f) * Time.deltaTime;
-        float rotationDegrees = avgSpeed / (2f * Mathf.PI * wheelRadius) * 360f;
+        float rightRotation = rightSpeed * Time.deltaTime / (2f * Mathf.PI * wheelRadius) * 360f;
+        RotateWheels(rightWheels, rightRotation);
 
-        RotateWheels(leftWheels, rotationDegrees);
-        RotateWheels(rightWheels, rotationDegrees);
+        // float avgSpeed = (forwardSpeed + turnSpeed * 0.5f) * Time.deltaTime; если будут проблемы с ездой то удали то что выше[1] и все что тут закоменчено разкоменть
+        // float rotationDegrees = avgSpeed / (2f * Mathf.PI * wheelRadius) * 360f;
+
+        // RotateWheels(leftWheels, rotationDegrees); 
+        // RotateWheels(rightWheels, rotationDegrees);
     }
 
     void RotateWheels(Transform[] wheels, float degrees)

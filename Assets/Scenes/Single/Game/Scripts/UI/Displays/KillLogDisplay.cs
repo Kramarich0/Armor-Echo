@@ -117,11 +117,6 @@ public class KillLogDisplay : MonoBehaviour
     private void RefreshText()
     {
         if (killLogText == null) return;
-
-        killLogText.text = "";
-        foreach (var e in entries)
-        {
-            killLogText.text += e.text + "\n";
-        }
+        killLogText.text = string.Join("\n", entries.ConvertAll(e => e.text));
     }
 }

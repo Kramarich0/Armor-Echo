@@ -100,7 +100,8 @@ public class TankSniperView : MonoBehaviour
         }
 
 
-        zoomCurrent = Mathf.MoveTowards(zoomCurrent, zoomTarget, Time.deltaTime * zoomSpeed);
+        float speed = zoomSpeed * (1f + zoomCurrent * 1.5f);
+        zoomCurrent = Mathf.MoveTowards(zoomCurrent, zoomTarget, Time.deltaTime * speed);
     }
 
     void UpdateCamera()
@@ -123,7 +124,7 @@ public class TankSniperView : MonoBehaviour
         Quaternion finalRot = baseRot * recoilLocalRot;
 
         sniperCamera.transform.rotation = Quaternion.Slerp(sniperCamera.transform.rotation, finalRot, Time.deltaTime * followSpeed);
-        float minFOV = Mathf.Clamp(normalFOV - zoomFOVReduction, 15f, normalFOV - 2f);
+        float minFOV = Mathf.Lerp(normalFOV, 8f, zoomCurrent * zoomCurrent);
         sniperCamera.fieldOfView = Mathf.Lerp(normalFOV, minFOV, zoomCurrent);
     }
 
@@ -179,7 +180,7 @@ public class TankSniperView : MonoBehaviour
     {
         if (!isSniperView || sniperCamera == null || gunEnd == null) return;
 
-        float minFOV = Mathf.Clamp(normalFOV - zoomFOVReduction, 15f, normalFOV - 2f);
+        float minFOV = Mathf.Lerp(normalFOV, 8f, zoomCurrent * zoomCurrent);
         float currentFOV = Mathf.Lerp(normalFOV, minFOV, zoomCurrent);
         float recoilScale = currentFOV / normalFOV;
 

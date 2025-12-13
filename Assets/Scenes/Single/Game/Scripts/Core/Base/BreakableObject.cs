@@ -106,6 +106,7 @@ public class BreakablePart : MonoBehaviour
         if (collision.rigidbody != null)
             impact *= collision.rigidbody.mass;
 
-        owner.OnPartHit(impact, collision.contacts[0].point, collision);
+        ContactPoint contact = collision.GetContact(0);
+        owner.OnPartHit(impact, contact.point, collision);
     }
 }

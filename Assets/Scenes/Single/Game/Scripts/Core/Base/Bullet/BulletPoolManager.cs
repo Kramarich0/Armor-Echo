@@ -31,15 +31,24 @@ public class BulletPoolManager : MonoBehaviour
             if (pools == null || pools.Length == 0) return null;
         }
 
-        var byHandles = pools.FirstOrDefault(p => p.HandlesDefinition(def));
-        if (byHandles != null) return byHandles;
+        foreach (var pool in pools)
+        {
+            if (pool != null && pool.HandlesDefinition(def))
+                return pool;
+        }
 
-        var byName = pools.FirstOrDefault(p =>
-            p != null && p.GetComponent<BulletPool>() != null &&
-            p.gameObject.name.IndexOf(def.bulletName ?? "", System.StringComparison.OrdinalIgnoreCase) >= 0
-        );
-        if (byName != null) return byName;
+        string bulletName = def?.bulletName ?? "";
+        foreach (var pool in pools)
+        {
+            if (pool != null &&
+                pool.gameObject.name.IndexOf(bulletName, System.StringComparison.OrdinalIgnoreCase) >= 0)
+                return pool;
+        }
 
-        return pools.FirstOrDefault();
+        // Fallback
+        foreach (var pool in pools)
+            if (pool != null) return pool;
+
+        return null;
     }
 }

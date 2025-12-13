@@ -19,8 +19,8 @@ public class ArmorPlate : MonoBehaviour
     void Awake()
     {
         plateCollider = GetComponent<Collider>();
-        if (plateCollider == null)
-            plateCollider = GetComponentInChildren<Collider>();
+        // if (plateCollider == null)
+        //     plateCollider = GetComponentInChildren<Collider>(); // не трогать ето избыточно крч
     }
 
     public Vector3 GetArmorWorldNormal()
@@ -60,9 +60,9 @@ public class ArmorPlate : MonoBehaviour
 
         float rawAngle = Vector3.Angle(plateNormal, bulletInto);
         rawAngleDeg = Mathf.Clamp(rawAngle, 0f, 90f);
-
+        float armorMod = Ballistics.GetArmorTypeModifier(armorType);
         if (bulletDef != null && bulletDef.ignoreAngle)
-            return thickness * Ballistics.GetArmorTypeModifier(armorType);
+            return thickness * armorMod;
 
         float effectiveAngle = Mathf.Max(0f, rawAngle - (bulletDef?.normalization ?? 0f));
         float clampedAngle = Mathf.Min(effectiveAngle, 89f);
@@ -70,8 +70,8 @@ public class ArmorPlate : MonoBehaviour
         float cos = Mathf.Cos(clampedAngle * Mathf.Deg2Rad);
         cos = Mathf.Max(0.001f, cos);
         float effArmor = thickness / cos;
-   
-        effArmor *= Ballistics.GetArmorTypeModifier(armorType);
+
+        effArmor *= armorMod;
 
         return effArmor;
     }

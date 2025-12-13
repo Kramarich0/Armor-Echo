@@ -25,6 +25,7 @@ public class MapBoundaryMesh : MonoBehaviour
     private MeshFilter mf;
     private MeshRenderer mr;
     private Mesh mesh;
+    private bool isBuilt = false;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -40,10 +41,11 @@ public class MapBoundaryMesh : MonoBehaviour
             Build();
     }
 
-
     [ContextMenu("Rebuild Mesh")]
     public void Build()
     {
+        if (isBuilt && Application.isPlaying) return;
+
         if (mf == null) mf = GetComponent<MeshFilter>();
         if (mr == null) mr = GetComponent<MeshRenderer>();
 
@@ -171,6 +173,6 @@ public class MapBoundaryMesh : MonoBehaviour
             mr.sharedMaterial = new Material(sh);
         mr.sharedMaterial.color = lineColor;
         mr.sharedMaterial.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
-
+        isBuilt = true;
     }
 }

@@ -75,7 +75,11 @@ public class BulletPool : MonoBehaviour
     {
         if (def == null) return false;
 
-        if (supportedDefinitions != null && supportedDefinitions.Any(d => d == def)) return true;
+        if (supportedDefinitions != null)
+        {
+            foreach (var d in supportedDefinitions)
+                if (d == def) return true;
+        }
 
         if (prefab != null && !string.IsNullOrEmpty(def.bulletName))
         {

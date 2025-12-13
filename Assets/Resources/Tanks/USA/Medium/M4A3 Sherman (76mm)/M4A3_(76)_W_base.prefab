@@ -14982,7 +14982,7 @@ GameObject:
   - component: {fileID: 8185573924558091990}
   - component: {fileID: 3877129680879382808}
   m_Layer: 0
-  m_Name: vehicle#x_root_129_0
+  m_Name: hull_pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -15,6 +15,8 @@ public class TankShoot : MonoBehaviour
     [Header("Effects")]
     public ParticleSystem muzzleSmoke;
     private ParticleSystem activeMuzzleSmoke;
+    [Header("Audio")]
+    private AudioSource shootEffectSource;
     public AudioSource audioSource;
     [Header("Reload UI")]
     public ReloadDisplay reloadDisplay;
@@ -113,6 +115,14 @@ public class TankShoot : MonoBehaviour
         }
 
         UpdateAmmoUI();
+
+        shootEffectSource = gameObject.AddComponent<AudioSource>();
+        shootEffectSource.playOnAwake = false;
+        shootEffectSource.spatialBlend = 1f;
+        shootEffectSource.rolloffMode = AudioRolloffMode.Linear;
+        shootEffectSource.minDistance = 10f;
+        shootEffectSource.maxDistance = 500f;
+        AudioManager.AssignToMaster(shootEffectSource);
     }
 
     void OnEnable()
@@ -277,17 +287,10 @@ public class TankShoot : MonoBehaviour
     {
         if (owner.ShootSound != null)
         {
-            var tempSource = gameObject.AddComponent<AudioSource>();
-            tempSource.clip = owner.ShootSound;
-            tempSource.volume = Random.Range(0.9f, 1.1f);
-            tempSource.pitch = Random.Range(0.95f, 1.05f);
-            tempSource.spatialBlend = 1f;
-            tempSource.minDistance = 10f;
-            tempSource.maxDistance = 500f;
-            tempSource.rolloffMode = AudioRolloffMode.Linear;
-            AudioManager.AssignToMaster(tempSource);
-            tempSource.Play();
-            Destroy(tempSource, owner.ShootSound.length + 0.1f);
+            shootEffectSource.clip = owner.ShootSound;
+            shootEffectSource.volume = Random.Range(0.9f, 1.1f);
+            shootEffectSource.pitch = Random.Range(0.95f, 1.05f);
+            shootEffectSource.Play();
         }
 
         if (activeMuzzleSmoke != null)

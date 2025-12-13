@@ -16,6 +16,13 @@ public class AIWeapons
             return;
         }
 
+        if (!owner.perception.HasLineOfSight(target))
+        {
+            if (owner.debugLogs)
+                Log.Debug("[AIWeapons] No line of sight to target {TargetName}, skipping shot", target.name);
+            return;
+        }
+
         var bulletSlot = owner.GetBulletByType(bulletType);
         if (bulletSlot == null || bulletSlot.pool == null || bulletSlot.definition == null)
         {
@@ -75,7 +82,6 @@ public class AIWeapons
             float angleLow = Mathf.Atan2(v2 - sqrtDisc, g * distance);
 
             Vector3 flatDir = horizontal.normalized;
-            // Rotate flatDir up by angleLow around cross(flatDir, up)
             Vector3 axis = Vector3.Cross(flatDir, Vector3.up);
             Quaternion launchQuat = Quaternion.AngleAxis(angleLow * Mathf.Rad2Deg, axis);
             Vector3 launchDir = launchQuat * flatDir;

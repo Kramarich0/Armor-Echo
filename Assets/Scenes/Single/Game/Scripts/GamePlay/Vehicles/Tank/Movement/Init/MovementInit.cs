@@ -30,6 +30,13 @@ public class MovementInit
         owner.rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         if (owner.rb.angularDamping < 0.5f) owner.rb.angularDamping = 0.5f;
 
+        var existingSources = owner.GetComponents<AudioSource>();
+        foreach (var src in existingSources)
+        {
+            if (src.clip == owner.IdleSound || src.clip == owner.DriveSound)
+                Object.Destroy(src);
+        }
+
         ctx.idleSource = owner.gameObject.AddComponent<AudioSource>();
         ctx.driveSource = owner.gameObject.AddComponent<AudioSource>();
         AudioManager.AssignToMaster(ctx.idleSource);

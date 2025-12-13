@@ -125,7 +125,6 @@ public class TankAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
 
-        // teamComp may be assigned in AIInit.Awake; ensure null-safety
         teamComp = GetComponent<TeamComponent>();
 
         navAvailable = agent != null && agent.isOnNavMesh;

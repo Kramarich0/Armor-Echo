@@ -7,11 +7,12 @@ public class PlayerTankHealth : MonoBehaviour, IDamageable
     [Header("Tank Definition")]
     public TankDefinition tankDef;
     [Header("Destructible Parts")]
-    public Transform[] destructibleParts;
     [HideInInspector]
     public float PlayerHealth => tankDef != null ? tankDef.health : 10f;
     [HideInInspector] public float currentHealth;
     public System.Action<float, float> OnHealthChanged;
+    private bool isDying = false;
+
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class PlayerTankHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(int amount, string source = null)
     {
-        if (currentHealth <= 0) return;
+        if (currentHealth <= 0 || isDying) return;
 
         currentHealth -= amount;
         currentHealth = Mathf.Max(currentHealth, 0f);
@@ -29,12 +30,16 @@ public class PlayerTankHealth : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0f)
         {
+            isDying = true;
             Die();
         }
     }
 
     void Die()
     {
+        if (isDying) return;
+        isDying = true;
+
         DisablePlayerComponents();
 
         if (tankDef.deathPrefab != null)
@@ -43,60 +48,48 @@ public class PlayerTankHealth : MonoBehaviour, IDamageable
         }
 
         GameManager.Instance.OnPlayerTankDestroyed();
-        Destroy(gameObject);
 
+        Invoke(nameof(DestroySelf), 0f);
     }
 
+    private void DestroySelf() => Destroy(gameObject);
     private void CreateCorpseSafely()
     {
-        try
+        if (tankDef?.deathPrefab == null) return;
+
+        GameObject corpse = Instantiate(tankDef.deathPrefab, transform.position, transform.rotation);
+
+        if (tankDef.turretName != null)
         {
-            GameObject corpse = Instantiate(tankDef.deathPrefab, transform.position, transform.rotation);
-
-            CopyTankPose(transform, corpse.transform);
-
-            if (destructibleParts == null || destructibleParts.Length == 0) return;
-
-            foreach (Transform part in destructibleParts)
+            string turretName = tankDef.turretName;
+            Transform corpseTurret = corpse.transform.Find(turretName);
+            if (corpseTurret != null)
             {
-                Transform corpsePart = corpse.transform.Find(part.name);
-                if (corpsePart == null) continue;
-
-                if (!corpsePart.TryGetComponent<MeshRenderer>(out var mesh)) continue;
-
-                if (!corpsePart.TryGetComponent<Rigidbody>(out var rb))
+                Transform sourceTurret = transform.Find(turretName);
+                if (sourceTurret != null)
                 {
-                    rb = corpsePart.gameObject.AddComponent<Rigidbody>();
-                    rb.mass = 5f;
+                    corpseTurret.SetLocalPositionAndRotation(
+                        sourceTurret.localPosition,
+                        sourceTurret.localRotation
+                    );
                 }
-                rb.isKinematic = false;
-
-                Vector3 center = mesh.bounds.center;
-
-                Vector3 forceDir = Random.onUnitSphere;
-                float forceMag = corpsePart == corpse.transform ? Random.Range(1f, 3f) : Random.Range(2f, 6f);
-                rb.AddForceAtPosition(forceDir * forceMag, center, ForceMode.Impulse);
-
-                Vector3 torque = Random.onUnitSphere * Random.Range(5f, 15f);
-                rb.AddTorque(torque, ForceMode.Impulse);
             }
         }
-        catch (System.Exception e)
-        {
-            Log.Error(e, "Ошибка при создании трупа для объекта {TankName}", name);
-        }
-    }
 
-    private void CopyTankPose(Transform source, Transform target)
-    {
-        target.SetLocalPositionAndRotation(source.localPosition, source.localRotation);
-        for (int i = 0; i < source.childCount; i++)
+        if (tankDef.gunName != null)
         {
-            Transform srcChild = source.GetChild(i);
-            Transform tgtChild = target.Find(srcChild.name);
-            if (tgtChild != null)
+            string gunName = tankDef.gunName;
+            Transform corpseGun = corpse.transform.Find(gunName);
+            if (corpseGun != null)
             {
-                CopyTankPose(srcChild, tgtChild);
+                Transform sourceGun = transform.Find(gunName);
+                if (sourceGun != null)
+                {
+                    corpseGun.SetLocalPositionAndRotation(
+                        sourceGun.localPosition,
+                        sourceGun.localRotation
+                    );
+                }
             }
         }
     }

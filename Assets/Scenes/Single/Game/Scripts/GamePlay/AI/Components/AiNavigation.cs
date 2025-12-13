@@ -132,7 +132,6 @@ public class AINavigation
             desiredBrake = owner.MaxBrakeTorque;
             owner.leftTrack?.ApplyTorque(0f, desiredBrake);
             owner.rightTrack?.ApplyTorque(0f, desiredBrake);
-            reverseLockTimer -= Time.fixedDeltaTime;
             return;
         }
 

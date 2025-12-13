@@ -27,9 +27,9 @@ public class TankCountDisplay : MonoBehaviour
             return;
         }
 
-        Log.Warning("[TankCountDisplay] GameManager not found! Attempting auto-creation for {ObjectName}", gameObject.name);
-        GameObject gmObject = new("GameManager");
-        gmObject.AddComponent<GameManager>();
+        // Log.Warning("[TankCountDisplay] GameManager not found! Attempting auto-creation for {ObjectName}", gameObject.name);
+        // GameObject gmObject = new("GameManager");
+        // gmObject.AddComponent<GameManager>();
         SetupListeners();
     }
 

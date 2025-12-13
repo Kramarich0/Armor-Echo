@@ -75,51 +75,17 @@ public class GameUIManager : MonoBehaviour
 
         cursorWasVisible = Cursor.visible;
         cursorWasLockState = Cursor.lockState;
-
         SetPausePanel(true);
-
-        disabledPlayerInputs.Clear();
-        foreach (var p in FindObjectsByType<PlayerInput>(FindObjectsInactive.Include, FindObjectsSortMode.None))
-        {
-            if (!p.enabled) continue;
-            p.enabled = false;
-            disabledPlayerInputs.Add(p);
-        }
-
-        pausedAudioSources.Clear();
-        foreach (var audio in FindObjectsByType<AudioSource>(FindObjectsInactive.Include, FindObjectsSortMode.None))
-        {
-            if (!audio.isPlaying) continue;
-            audio.Pause();
-            pausedAudioSources.Add(audio);
-        }
-
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0f;
-        isPaused = true;
+        PauseGameLogic();
     }
 
     public void ResumeGame()
     {
         if (!isPaused || pausePanel == null) return;
-
         SetPausePanel(false);
-
-        foreach (var p in disabledPlayerInputs)
-            if (p != null) p.enabled = true;
-        disabledPlayerInputs.Clear();
-
-        foreach (var audio in pausedAudioSources)
-            if (audio != null)
-                audio.UnPause();
-        pausedAudioSources.Clear();
-
+        ResumeGameLogic(); 
         Cursor.visible = cursorWasVisible;
         Cursor.lockState = cursorWasLockState;
-
-        Time.timeScale = 1f;
-        isPaused = false;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -203,38 +169,11 @@ public class GameUIManager : MonoBehaviour
     public void ShowDefeatScreen()
     {
         if (defeatPanel == null) return;
-
         cursorWasVisible = Cursor.visible;
         cursorWasLockState = Cursor.lockState;
-
         SetDefeatPanel(true);
         SetPausePanel(false);
-
-        disabledPlayerInputs.Clear();
-        foreach (var p in FindObjectsByType<PlayerInput>(FindObjectsInactive.Include, FindObjectsSortMode.None))
-        {
-            if (p.enabled)
-            {
-                p.enabled = false;
-                disabledPlayerInputs.Add(p);
-            }
-        }
-
-        pausedAudioSources.Clear();
-        foreach (var audio in Object.FindObjectsByType<AudioSource>(FindObjectsInactive.Include, FindObjectsSortMode.None))
-        {
-            if (audio.isPlaying)
-            {
-                audio.Pause();
-                pausedAudioSources.Add(audio);
-            }
-        }
-
-
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0f;
-        isPaused = true;
+        PauseGameLogic();
     }
 
     private void SetVictoryPanel(bool show)
@@ -285,7 +224,11 @@ public class GameUIManager : MonoBehaviour
         SetPausePanel(false);
         SetDefeatPanel(false);
 
+        PauseGameLogic();
+    }
 
+    private void PauseGameLogic()
+    {
         disabledPlayerInputs.Clear();
         foreach (var p in FindObjectsByType<PlayerInput>(FindObjectsInactive.Include, FindObjectsSortMode.None))
         {
@@ -310,6 +253,20 @@ public class GameUIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
         isPaused = true;
+    }
+
+    private void ResumeGameLogic()
+    {
+        foreach (var p in disabledPlayerInputs)
+            if (p != null) p.enabled = true;
+        disabledPlayerInputs.Clear();
+
+        foreach (var audio in pausedAudioSources)
+            if (audio != null) audio.UnPause();
+        pausedAudioSources.Clear();
+
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 
     public void UpdateAmmoSelection(BulletSlot[] allSlots, int currentSlotIndex)

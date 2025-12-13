@@ -91,12 +91,12 @@ public class AICombat
         Vector3 dir = targetPos - owner.gunEnd.position;
         float dist = dir.magnitude;
         float time = dist / Mathf.Max(0.001f, projectileSpeed);
+        Vector3 shooterVel = owner.rb?.linearVelocity ?? Vector3.zero;
 
-        // iterate couple times for better lead
         for (int i = 0; i < 3; i++)
         {
             Vector3 predicted = targetPos + targetVel * time;
-            Vector3 toPred = predicted - owner.gunEnd.position;
+            Vector3 toPred = predicted + shooterVel * time - (owner.gunEnd.position + shooterVel * time);
             float d = toPred.magnitude;
             time = d / Mathf.Max(0.001f, projectileSpeed);
         }

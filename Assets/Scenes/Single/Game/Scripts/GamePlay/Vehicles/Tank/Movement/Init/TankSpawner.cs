@@ -33,7 +33,6 @@ public class TankSpawner : MonoBehaviour
     }
 
 
-
     void SetupTankInstance(GameObject instance, TankDefinition def)
     {
         if (instance == null) return;

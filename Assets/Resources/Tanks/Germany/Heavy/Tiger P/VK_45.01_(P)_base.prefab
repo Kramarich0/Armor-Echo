@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 2495934137258968421}
   - component: {fileID: 5015174719705004564}
   m_Layer: 12
-  m_Name: vehicle#x_root_40_0
+  m_Name: hull_pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

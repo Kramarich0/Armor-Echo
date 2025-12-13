@@ -351,41 +351,18 @@ public class GameManager : MonoBehaviour
         if (string.IsNullOrEmpty(entry)) return;
 
         killLog.Add(entry);
-
         if (killLog.Count > maxKillLogEntries)
             killLog.RemoveAt(0);
 
-        if (cachedKillLogObj == null)
+        if (cachedKillLogTmp == null)
         {
-            cachedKillLogObj = GameObject.Find("KillLogList");
-            if (cachedKillLogObj != null)
-            {
-                cachedKillLogLse = cachedKillLogObj.GetComponent<LocalizeStringEvent>();
-                cachedKillLogTmp = cachedKillLogObj.GetComponent<TextMeshProUGUI>();
-            }
-            else
-            {
-                cachedKillLogLse = FindFirstObjectByType<LocalizeStringEvent>();
-                if (cachedKillLogLse != null)
-                    cachedKillLogObj = cachedKillLogLse.gameObject;
-                else
-                {
-                    cachedKillLogTmp = FindFirstObjectByType<TextMeshProUGUI>();
-                    if (cachedKillLogTmp != null)
-                        cachedKillLogObj = cachedKillLogTmp.gameObject;
-                }
-            }
+            cachedKillLogTmp = GameObject.Find("KillLogList")?.GetComponent<TextMeshProUGUI>()
+                            ?? FindFirstObjectByType<TextMeshProUGUI>();
         }
 
-        string fullLog = string.Join("\n", killLog);
-
-        if (cachedKillLogLse != null)
+        if (cachedKillLogTmp != null)
         {
-            LocalizationHelper.SetLocalizedText(cachedKillLogLse, "kill_log_text", fullLog);
-        }
-        else if (cachedKillLogTmp != null)
-        {
-            cachedKillLogTmp.text = fullLog;
+            cachedKillLogTmp.text = string.Join("\n", killLog);
         }
 
         OnKillLogUpdated?.Invoke(entry);

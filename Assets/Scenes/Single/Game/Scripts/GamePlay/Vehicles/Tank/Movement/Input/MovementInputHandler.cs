@@ -61,6 +61,5 @@ public class MovementInputHandler
         float currentSpeedKmh = currentSpeedMS * 3.6f;
         if (owner.speedDisplay != null) owner.speedDisplay.SetSpeed((int)currentSpeedKmh);
 
-        if (ctx.reverseLockTimer > 0f) ctx.reverseLockTimer -= Time.deltaTime;
     }
 }

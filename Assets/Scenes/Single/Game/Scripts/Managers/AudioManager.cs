@@ -27,7 +27,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-
     public static void AssignToMaster(AudioSource source)
     {
         if (Instance != null && Instance.masterGroup != null)

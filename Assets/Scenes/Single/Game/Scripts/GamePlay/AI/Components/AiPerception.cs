@@ -15,26 +15,12 @@ public class AIPerception
     public AIPerception(TankAI owner)
     {
         this.owner = owner;
-        CacheEnemiesAndCapturePoints();
     }
 
     public static void InvalidateCaches()
     {
         allEnemiesCache = null;
         allCapturePointsCache = null;
-    }
-
-    private void CacheEnemiesAndCapturePoints()
-    {
-        allEnemiesCache = Object.FindObjectsByType<TeamComponent>(
-            FindObjectsInactive.Include,   
-            FindObjectsSortMode.None       
-        );
-
-        allCapturePointsCache = Object.FindObjectsByType<CapturePoint>(
-            FindObjectsInactive.Include,
-            FindObjectsSortMode.None
-        );
     }
 
     public void UpdatePerception()
@@ -57,16 +43,14 @@ public class AIPerception
 
     public void FindNearestEnemy()
     {
-        CacheEnemiesAndCapturePoints();
-
+        var allEnemies = GlobalAICache.GetAllEnemies();
         float bestDist = float.MaxValue;
         Transform best = null;
 
-        foreach (var tc in allEnemiesCache)
+        foreach (var tc in allEnemies)
         {
             if (tc == null) continue;
-            if (owner.teamComp != null && tc == owner.teamComp) continue;
-            if (owner.teamComp != null && tc.team == owner.teamComp.team) continue;
+            if (owner.teamComp != null && (tc == owner.teamComp || tc.team == owner.teamComp.team)) continue;
 
             float d = Vector3.SqrMagnitude(tc.transform.position - owner.transform.position);
             if (d < bestDist)
@@ -85,7 +69,6 @@ public class AIPerception
                 float pd = Vector3.SqrMagnitude(playerObj.transform.position - owner.transform.position);
                 if (pd < bestDist)
                 {
-                    bestDist = pd;
                     best = playerObj.transform;
                 }
             }
@@ -98,12 +81,11 @@ public class AIPerception
 
     public void FindNearestCapturePoint()
     {
-        CacheEnemiesAndCapturePoints();
-
+        var allPoints = GlobalAICache.GetAllCapturePoints();
         float bestDist = float.MaxValue;
         CapturePoint best = null;
 
-        foreach (var cp in allCapturePointsCache)
+        foreach (var cp in allPoints)
         {
             if (cp == null) continue;
             if (owner.teamComp != null && cp.GetControllingTeam() == owner.teamComp.team) continue;

@@ -12,7 +12,7 @@ public static class ColliderCache
         public IDamageable damageable;
     }
 
-
+    private static Collider[] overlapBuffer = new Collider[32];
     private static readonly Dictionary<Collider, CachedColliderData> cache = new();
 
 
@@ -96,10 +96,10 @@ public static class ColliderCache
         if (dedup.Count == 0)
         {
             const float probeRadius = 0.3f;
-            Collider[] hits = Physics.OverlapSphere(contactPoint, probeRadius);
-            foreach (var h in hits)
+            int hitCount = Physics.OverlapSphereNonAlloc(contactPoint, probeRadius, overlapBuffer);
+            for (int i = 0; i < hitCount; i++)
             {
-                var p = h.GetComponentInParent<ArmorPlate>();
+                var p = overlapBuffer[i].GetComponentInParent<ArmorPlate>();
                 if (p != null) dedup.Add(p);
             }
         }
@@ -124,7 +124,6 @@ public static class ColliderCache
 
         return bestPlate;
     }
-
 
     public static void ClearColliderCache(Collider collider)
     {

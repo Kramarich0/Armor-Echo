@@ -24,6 +24,7 @@ public class AIStateHandler
     float microMoveTimer = 0f;
     const float microMoveInterval = 1.2f;
     const float microMoveRadius = 0.9f;
+    private static Collider[] overlapBuffer = new Collider[16];
 
     public AIStateHandler(TankAI owner, AIPerception perception, AINavigation navigation, AICombat combat, AIWeapons weapons)
     {
@@ -132,50 +133,50 @@ public class AIStateHandler
         switch (currentTactic)
         {
             case Tactic.Strafe:
-            {
-                float dist = Vector3.Distance(owner.transform.position, currentTacticalPosition);
-                if (dist < Mathf.Max(1f, owner.StrafeRadius * 0.4f))
                 {
-                    if (owner.agent != null) owner.agent.stoppingDistance = Mathf.Max(0.3f, owner.ShootRange * 0.06f);
+                    float dist = Vector3.Distance(owner.transform.position, currentTacticalPosition);
+                    if (dist < Mathf.Max(1f, owner.StrafeRadius * 0.4f))
+                    {
+                        if (owner.agent != null) owner.agent.stoppingDistance = Mathf.Max(0.3f, owner.ShootRange * 0.06f);
+                    }
+                    else
+                    {
+                        navigation?.MoveTo(currentTacticalPosition);
+                    }
+                    UpdateAgentDefaultMovement(currentTacticalPosition);
+                    break;
                 }
-                else
+            case Tactic.Flank:
                 {
                     navigation?.MoveTo(currentTacticalPosition);
+                    if (owner.agent != null) owner.agent.stoppingDistance = Mathf.Clamp(owner.ShootRange * 0.12f, 0.3f, owner.ShootRange * 0.4f);
+                    UpdateAgentDefaultMovement(currentTacticalPosition);
+                    break;
                 }
-                UpdateAgentDefaultMovement(currentTacticalPosition);
-                break;
-            }
-            case Tactic.Flank:
-            {
-                navigation?.MoveTo(currentTacticalPosition);
-                if (owner.agent != null) owner.agent.stoppingDistance = Mathf.Clamp(owner.ShootRange * 0.12f, 0.3f, owner.ShootRange * 0.4f);
-                UpdateAgentDefaultMovement(currentTacticalPosition);
-                break;
-            }
             case Tactic.Retreat:
-            {
-                navigation?.MoveTo(currentTacticalPosition);
-                if (owner.agent != null) owner.agent.stoppingDistance = Mathf.Max(0.3f, owner.ShootRange * 0.05f);
-                UpdateAgentDefaultMovement(currentTacticalPosition);
-                break;
-            }
+                {
+                    navigation?.MoveTo(currentTacticalPosition);
+                    if (owner.agent != null) owner.agent.stoppingDistance = Mathf.Max(0.3f, owner.ShootRange * 0.05f);
+                    UpdateAgentDefaultMovement(currentTacticalPosition);
+                    break;
+                }
             case Tactic.Capture:
-            {
-                if (owner.currentCapturePointTarget != null)
-                    navigation?.MoveTo(owner.currentCapturePointTarget.transform.position);
-                UpdateAgentDefaultMovement(owner.currentCapturePointTarget != null ? owner.currentCapturePointTarget.transform.position : owner.transform.position);
-                break;
-            }
+                {
+                    if (owner.currentCapturePointTarget != null)
+                        navigation?.MoveTo(owner.currentCapturePointTarget.transform.position);
+                    UpdateAgentDefaultMovement(owner.currentCapturePointTarget != null ? owner.currentCapturePointTarget.transform.position : owner.transform.position);
+                    break;
+                }
             default:
-            {
-                float dist = Vector3.Distance(owner.transform.position, target.position);
-                if (dist < owner.ShootRange * 0.6f)
-                    navigation?.MoveTo(owner.transform.position + (owner.transform.position - target.position).normalized * (owner.ShootRange * 0.6f));
-                else
-                    navigation?.MoveTo(target.position);
-                UpdateAgentDefaultMovement(target.position);
-                break;
-            }
+                {
+                    float dist = Vector3.Distance(owner.transform.position, target.position);
+                    if (dist < owner.ShootRange * 0.6f)
+                        navigation?.MoveTo(owner.transform.position + (owner.transform.position - target.position).normalized * (owner.ShootRange * 0.6f));
+                    else
+                        navigation?.MoveTo(target.position);
+                    UpdateAgentDefaultMovement(target.position);
+                    break;
+                }
         }
     }
 
@@ -260,7 +261,10 @@ public class AIStateHandler
 
         int attempts = 10;
         float radiusBase = Mathf.Max(2f, owner.StrafeRadius);
-        List<Vector3> candidates = new List<Vector3>(attempts);
+
+        Vector3 bestCandidate = target.position + (owner.transform.position - target.position).normalized * radiusBase;
+        int minAllies = int.MaxValue;
+        bool foundFree = false;
 
         for (int i = 0; i < attempts; i++)
         {
@@ -283,14 +287,19 @@ public class AIStateHandler
             }
 
             if (IsPositionFree(cand, crowdCheckRadius))
+            {
                 return cand;
-            candidates.Add(cand);
+            }
+
+            int allyCount = CountNearbyAllies(cand);
+            if (allyCount < minAllies)
+            {
+                minAllies = allyCount;
+                bestCandidate = cand;
+            }
         }
 
-        candidates.Sort((a, b) => CountNearbyAllies(a).CompareTo(CountNearbyAllies(b)));
-        if (candidates.Count > 0) return candidates[0];
-
-        return target.position + (owner.transform.position - target.position).normalized * radiusBase;
+        return bestCandidate;
     }
 
     Vector3 PickFlankPosition(Transform enemy)
@@ -326,34 +335,44 @@ public class AIStateHandler
 
     bool IsPositionFree(Vector3 pos, float radius)
     {
-        Collider[] hits = Physics.OverlapSphere(pos, radius, LayerMask.GetMask("Tank"));
-        if (hits == null || hits.Length == 0) return true;
-        foreach (var c in hits)
+        int hitCount = Physics.OverlapSphereNonAlloc(
+      pos, radius, overlapBuffer,
+      LayerMask.GetMask("EnemyTank", "FriendlyTank", "PlayerTank")
+  );
+
+        for (int i = 0; i < hitCount; i++)
         {
+            var c = overlapBuffer[i];
             if (c == null) continue;
             Transform t = c.transform;
             if (t.IsChildOf(owner.transform) || t == owner.transform) continue;
             TankAI otherAI = t.GetComponentInParent<TankAI>();
-            if (otherAI == null) continue;
-            if (otherAI == owner) continue;
-            if (otherAI.teamComp != null && owner.teamComp != null && otherAI.teamComp.team == owner.teamComp.team) return false;
+            if (otherAI == null || otherAI == owner) continue;
+            if (otherAI.teamComp != null && owner.teamComp != null &&
+                otherAI.teamComp.team == owner.teamComp.team)
+                return false;
         }
         return true;
     }
 
     int CountNearbyAllies(Vector3 pos)
     {
-        Collider[] hits = Physics.OverlapSphere(pos, crowdCheckRadius, LayerMask.GetMask("Tank"));
+        int hitCount = Physics.OverlapSphereNonAlloc(
+          pos, crowdCheckRadius, overlapBuffer,
+          LayerMask.GetMask("EnemyTank", "FriendlyTank", "PlayerTank")
+        );
         int count = 0;
-        if (hits == null) return 0;
-        foreach (var c in hits)
+        for (int i = 0; i < hitCount; i++)
         {
+            var c = overlapBuffer[i];
             if (c == null) continue;
             Transform t = c.transform;
             if (t.IsChildOf(owner.transform) || t == owner.transform) continue;
             TankAI otherAI = t.GetComponentInParent<TankAI>();
             if (otherAI == null) continue;
-            if (otherAI.teamComp != null && owner.teamComp != null && otherAI.teamComp.team == owner.teamComp.team) count++;
+            if (otherAI.teamComp != null && owner.teamComp != null &&
+                otherAI.teamComp.team == owner.teamComp.team)
+                count++;
         }
         return count;
     }

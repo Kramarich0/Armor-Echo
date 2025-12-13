@@ -4,13 +4,15 @@ using UnityEngine;
 public class TankDefinition : ScriptableObject
 {
     [Header("Basic Info")]
-    public bool isUnlocked;      
-    public int priceInStars;     
+    public bool isUnlocked;
+    public int priceInStars;
     public string tankName;
     public TankClass tankClass;
     public GameObject playerTankPrefab;
     public GameObject deathPrefab;
     public GameObject previewPrefab;
+    public string turretName = "turret_pivot";
+    public string gunName = "gun_pivot";
 
     [Header("Core Stats")]
     public float health = 100f;

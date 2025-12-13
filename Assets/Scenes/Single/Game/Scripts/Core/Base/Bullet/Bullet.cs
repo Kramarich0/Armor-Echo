@@ -149,7 +149,7 @@ public class Bullet : MonoBehaviour
 
     #region Collision & physics helpers
 
-    private readonly Dictionary<Collider, float> ignoredCollidersTimed = new Dictionary<Collider, float>();
+    private readonly Dictionary<Collider, float> ignoredCollidersTimed = new();
 
     private void UpdateTimedIgnoredColliders()
     {
@@ -173,10 +173,6 @@ public class Bullet : MonoBehaviour
             ignoredCollidersTimed.Remove(_removeBuffer[i]);
         }
 
-        foreach (var key in ignoredCollidersTimed.Keys.ToList())
-        {
-            ignoredCollidersTimed[key] -= Time.fixedDeltaTime;
-        }
     }
 
     void OnCollisionEnter(Collision collision)

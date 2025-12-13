@@ -735,6 +735,10 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5326953903110996531, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}
+      propertyPath: m_Name
+      value: hull_pivot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5326953903110996531, guid: 13912972d1ec9ac4abe21d1c2d26d39f, type: 3}
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
@@ -1131,23 +1135,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankShoot
   gunEnd: {fileID: 978846907847173888}
-  bulletSlots:
-  - displayName: "\u0411\u0420-350\u0410"
-    type: 2
-    definition: {fileID: 11400000, guid: b580cf99e68e799489acc3179f9123c3, type: 2}
-    pool: {fileID: 0}
-  - displayName: 
-    type: 0
-    definition: {fileID: 0}
-    pool: {fileID: 0}
-  - displayName: 
-    type: 0
-    definition: {fileID: 0}
-    pool: {fileID: 0}
-  - displayName: 
-    type: 0
-    definition: {fileID: 0}
-    pool: {fileID: 0}
   currentBulletIndex: 0
   muzzleSmoke: {fileID: 4025423988474104904, guid: 9350b5bdb057fb745b616586dae49d50, type: 3}
   audioSource: {fileID: 0}

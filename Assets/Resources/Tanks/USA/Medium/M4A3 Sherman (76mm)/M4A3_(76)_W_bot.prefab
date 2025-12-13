@@ -488,10 +488,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 5125273449701423320, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
-      propertyPath: m_ImplicitCom
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5125961589035860045, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -921,6 +917,10 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8583610831387308883, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
+      propertyPath: m_Name
+      value: hull_pivot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8583610831387308883, guid: d63c600c8997d224b926dace041c8fd3, type: 3}
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
@@ -1128,7 +1128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AITankHealth
   tankDef: {fileID: 11400000, guid: 555330a6a377ec449aa278cd1e532e0c, type: 2}
-  destructibleParts: []
   currentHealth: 0
 --- !u!195 &3936796004142384801
 NavMeshAgent:
